@@ -39,6 +39,18 @@ menuentry "Arch Linux dual 2016.09.03" {
 }
 ```
 
+* 后更改为自动侦测磁盘的 UUID：  
+```
+menuentry "Arch Linux dual 2016.09.03" {
+	set imagefile="${imagedir}archlinux-2016.09.03-dual.iso"
+	search --no-floppy --set=imgdisk --file ${imagefile} 
+	probe --set=diskuuid --fs-uuid ${imgdisk}
+	loopback loop ${imagefile}
+	linux (loop)/arch/boot/x86_64/vmlinuz img_dev="/dev/disk/by-uuid/${diskuuid}" img_loop=${imagefile} earlymodules=loop
+	initrd (loop)/arch/boot/x86_64/archiso.img
+}
+```
+
 ## Ubuntu
 
 * 官方给出的标准配置为：  
@@ -78,6 +90,10 @@ menuentry "Ubuntu Desktop amd64 16.04.1" {
 # 版本
 ## grub.cfg Ver 1.0
 - 初始版本  
+
+## grub.cfg Ver 1.2
+- 加入镜像文件路径参数  
+- 更新 Arch Linux Live CD 引导为自搜寻设备位置  
 
 ---
 
