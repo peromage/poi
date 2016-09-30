@@ -1,0 +1,32 @@
+#!/bin/sh
+exec tail -n +3 $0
+### Ver 1.0 ###
+#################################################################
+insmod part_gpt
+insmod part_msdos
+terminal_input console
+terminal_output gfxterm
+set timeout=30
+
+menuentry "Arch Linux dual 2016.09.03" {
+	set isofile="/boot/image/archlinux-2016.09.03-dual.iso"
+	loopback loop $isofile
+	linux (loop)/arch/boot/x86_64/vmlinuz img_dev=/dev/disk/by-uuid/3973-2EAD img_loop=$isofile earlymodules=loop
+	initrd (loop)/arch/boot/x86_64/archiso.img
+}
+
+menuentry "Ubuntu Desktop amd64 16.04.1" {
+	set isofile="/boot/image/ubuntu-16.04.1-desktop-amd64.iso"
+	loopback loop $isofile
+	linux (loop)/casper/vmlinuz.efi boot=casper iso-scan/filename=$isofile noprompt noeject toram --
+	initrd (loop)/casper/initrd.lz
+}
+
+menuentry "Restart" {
+	echo "Restarting computer..."
+	reboot
+}
+menuentry "Shutdown" {
+	echo "Shuting down..."
+	halt
+}
