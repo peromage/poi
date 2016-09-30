@@ -1,16 +1,16 @@
 #!/bin/sh
 exec tail -n +3 $0
-### Ver 1.2 ###
-#################################################################
+### Ver 1.5 ###
+# This file used for booting from USB devices
 insmod part_gpt
 insmod part_msdos
 terminal_input console
 terminal_output gfxterm
 set imagedir="/boot/image/"
-set timeout=30
+set timeout=-1
 set default=0
 
-menuentry "Arch Linux dual 2016.09.03" {
+menuentry "Arch Linux 2016.09.03 dual" {
 	set imagefile="${imagedir}archlinux-2016.09.03-dual.iso"
 	search --no-floppy --set=imgdisk --file ${imagefile} 
 	probe --set=diskuuid --fs-uuid ${imgdisk}
@@ -19,17 +19,37 @@ menuentry "Arch Linux dual 2016.09.03" {
 	initrd (loop)/arch/boot/x86_64/archiso.img
 }
 
-menuentry "Ubuntu Desktop amd64 16.04.1" {
+menuentry "Ubuntu 16.04.1 desktop amd64" {
 	set imagefile="${imagedir}ubuntu-16.04.1-desktop-amd64.iso"
 	loopback loop ${imagefile}
 	linux (loop)/casper/vmlinuz.efi boot=casper iso-scan/filename=${imagefile} noprompt noeject toram --
 	initrd (loop)/casper/initrd.lz
 }
 
+menuentry "Linux Mint 18 cinnamon 64bit" {
+	set imagefile="${imagedir}linuxmint-18-cinnamon-64bit.iso"
+	loopback loop ${imagefile}
+	linux (loop)/casper/vmlinuz boot=casper iso-scan/filename=${imagefile} noprompt noeject toram --
+	initrd (loop)/casper/initrd.lz
+}
+
+menuentry "Deepin 15.3 amd64" {
+	set imagefile="${imagedir}deepin-15.3-amd64.iso"
+	loopback loop ${imagefile}
+	linux (loop)/live/vmlinuz.efi boot=live union=overlay findiso=${imagefile} noprompt noeject toram --
+	initrd (loop)/live/initrd.lz
+}
+
+menuentry "Pony PE 20151120 beta" {
+	insmod ntldr
+	ntldr /BOOTMGR
+}
+
 menuentry "Restart" {
 	echo "Restarting computer..."
 	reboot
 }
+
 menuentry "Shutdown" {
 	echo "Shuting down..."
 	halt
