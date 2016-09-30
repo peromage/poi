@@ -1,0 +1,30 @@
+# Project files
+**/.save/*
+.vscode/
+.vim/
+
+# Vim plugin directories
+plugged/
+vim-plugged/
+vim-plug/
+vim_plugged/
+vim_plug/
+coc-extensions/
+coc_extensions/
+data/
+userdata/
+user/
+
+# VSCode
+rivscode/*
+!rivscode/keybindings.json
+!rivscode/settings.json
+!rivscode/export_extensions.ps1
+
+# Session files
+saved_sessions/
+
+# Temp files
+.bash_history
+.netrwhist
+*.swp
