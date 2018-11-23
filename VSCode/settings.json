@@ -1,0 +1,8 @@
+{
+    "git.ignoreMissingGitWarning": true,
+    "workbench.statusBar.feedback.visible": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.enableExperiments": false,
+    "update.enableWindowsBackgroundUpdates": false,
+    "extensions.autoUpdate": false
+}
