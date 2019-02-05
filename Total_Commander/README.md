@@ -1,2 +1,2 @@
-Location:  
+Path:  
 `%COMMANDER_PATH%`

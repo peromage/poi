@@ -1,2 +1,2 @@
-Location:  
+Path:  
 `%APPDATA%/Code/User/`
