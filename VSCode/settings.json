@@ -10,4 +10,6 @@
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Dracula",
     "workbench.iconTheme": "vscode-icons",
+    "csharp.referencesCodeLens.enabled": false,
+    "debug.openDebug": "neverOpen",
 }
