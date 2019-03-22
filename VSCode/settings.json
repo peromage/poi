@@ -1,7 +1,7 @@
 {
     "git.ignoreMissingGitWarning": true,
     "workbench.statusBar.feedback.visible": false,
-    "workbench.startupEditor": "newUntitledFile",
+    "workbench.startupEditor": "none",
     "workbench.enableExperiments": false,
     "update.enableWindowsBackgroundUpdates": false,
     "extensions.autoUpdate": false,
@@ -12,4 +12,11 @@
     "workbench.iconTheme": "vscode-icons",
     "csharp.referencesCodeLens.enabled": false,
     "debug.openDebug": "neverOpen",
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": true,
+    "breadcrumbs.enabled": true,
+    "files.associations": {
+        "*.dvs": "vb"
+    },
+    "window.restoreWindows": "none",
 }
