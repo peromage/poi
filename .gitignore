@@ -13,9 +13,9 @@
 !everything/*.ini
 
 # frp
-!frpc/**
+!frp/**
 # git
-!gitc/**
+!git/**
 
 # nodejs-lts
 
@@ -28,7 +28,7 @@
 !usbboot/**
 
 # vim
-!vimc/**
+!vim/**
 
 # vscode-portable
 
