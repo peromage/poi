@@ -1,2 +1,0 @@
-Path:  
-`%COMMANDER_PATH%`

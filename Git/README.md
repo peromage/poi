@@ -1,2 +1,2 @@
 Path:  
-`%USERPROFILE%`
+`%USERPROFILE%\.gitconfig`

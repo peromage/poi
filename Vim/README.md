@@ -1,1 +1,2 @@
-Put `.vimrc` to home directory
+Path:
+`%USERPROFILE%\.vimrc`
