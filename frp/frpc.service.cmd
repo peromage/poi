@@ -1,3 +1,2 @@
 @echo off
-cd /d %userprofile%\scoop\apps\frp
-start /min frpc.exe -c frpc.ini
+start /min %userprofile%\scoop\apps\frp\frpc.exe -c %userprofile%\scoop\persist\frp\frpc.ini
