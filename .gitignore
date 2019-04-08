@@ -2,41 +2,35 @@
 ## Set for every folder
 *
 !*/
-!.gitignore
-!LICENSE
-!README.md
+!/.gitignore
+!/LICENSE
+!/README.md
 
 # colortool
-!colortool/**
+!/colortool/
 
 # everything
-!everything/*.ini
+!/everything/*.ini
 
 # frp
-!frp/**
+!/frp/
 # git
-!git/**
+!/git/
 
 # nodejs-lts
 
 # php
 
 # totalcommander
-!totalcommander/**
+!/totalcommander/
 
 # usbboot
-!usbboot/**
+!/usbboot/
 
 # vim
-!vim/**
+!/vim/
 
 # vscode-portable
-
-
-# !/vscode-portable
-# /vscode-portable/data/*
-# !/vscode-portable/data/user-data/
-# / 
-!/vscode-portable/data/user-data/User/*
+!/vscode-portable/data/user-data/User/*.ps1
+!/vscode-portable/data/user-data/User/settings.json
 !/vscode-portable/data/user-data/User/snippets/*
-
