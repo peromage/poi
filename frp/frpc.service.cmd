@@ -1,3 +1,3 @@
 @echo off
-cd /d C:\Users\F\_Opt\FRP\
+cd /d %userprofile%\scoop\apps\frp
 start /min frpc.exe -c frpc.ini
