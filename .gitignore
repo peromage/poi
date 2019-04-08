@@ -7,28 +7,28 @@
 !/README.md
 
 # colortool
-!/colortool/
+!/colortool/**
 
 # everything
 !/everything/*.ini
 
 # frp
-!/frp/
+!/frp/**
 # git
-!/git/
+!/git/**
 
 # nodejs-lts
 
 # php
 
 # totalcommander
-!/totalcommander/
+!/totalcommander/**
 
 # usbboot
-!/usbboot/
+!/usbboot/**
 
 # vim
-!/vim/
+!/vim/**
 
 # vscode-portable
 !/vscode-portable/data/user-data/User/*.ps1
