@@ -1,5 +1,7 @@
 Set-StrictMode -Off
-colortool dracula | Out-Null
+
+# set color 
+colortool Dracula-ColorTool | Out-Null
 
 function Prompt {
     $pt="$(Get-Location)"
@@ -8,5 +10,6 @@ function Prompt {
         $mt=$pt | Select-String "($hm)(.+)"
         $pt="~$($mt.matches.groups[2].value)"
     }
-    $pt+">> "
+    Write-Host -NoNewline $pt">>"
+    return " "
 }
