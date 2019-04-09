@@ -5,6 +5,8 @@
 !/.gitignore
 !/LICENSE
 !/README.md
+# setup folder
+!/_setup_/**
 
 # colortool
 !/colortool/**
