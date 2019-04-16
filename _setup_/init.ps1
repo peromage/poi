@@ -28,6 +28,14 @@ function Test-Administrator {
 }
 
 function Prompt {
+    # color patterns
+    $palette=@{
+        "Normal" = "White"
+        "Warning" = "DarkRed"
+        "OK" = "DarkGreen"
+        "PathPrimary" = "DarkBlue"
+        "PathSecondary" = "Cyan"
+    }
     # backup exit code
     $orgExtCode = $LASTEXITCODE
 
@@ -35,7 +43,9 @@ function Prompt {
     $currDir = ''
     $userIndicator = '>'
     $userInfo = "$ENV:USERNAME@$ENV:COMPUTERNAME"
-    $userColor = "DarkGreen"
+    $userColor = "Normal"
+    $extIndicator = ':|'
+    $extcolor = "Normal"
 
     # replace home dir with ~
     if($currPath.ToLower().StartsWith($HOME.ToLower())) {
@@ -53,23 +63,34 @@ function Prompt {
     # check if current user is admin
     if(Test-Administrator) {
         $userIndicator = '#'
-        $userColor = "DarkRed"
+        $userColor = "Warning"
     }
     else {
         $userIndicator = '$'
-        $userColor = "DarkGreen"
+        $userColor = "OK"
+    }
+    # check last exit status
+    if($orgExtCode -eq 0) {
+        $extIndicator = ':)'
+        $extcolor = "OK"
+    }
+    else {
+        $extIndicator = ':('
+        $extcolor = "Warning"
     }
 
     # overwrite title
     $Host.ui.RawUI.WindowTitle = $userInfo
 
     # overwrite prompt
-    Write-Host "$userInfo" -NoNewline -ForegroundColor $userColor
-    Write-Host ":" -NoNewline -ForegroundColor White
-    Write-Host "$currPath" -NoNewline -ForegroundColor DarkBlue
-    Write-Host "$currDir" -NoNewline -ForegroundColor DarkBlue
+    Write-Host "$extIndicator" -NoNewline -ForegroundColor $palette[$extcolor]
+    # Write-Host "$userInfo" -NoNewline -ForegroundColor $userColor
+    # Write-Host ":" -NoNewline -ForegroundColor White
+    # parent path and current dir can be set to different colors
+    Write-Host " $currPath" -NoNewline -ForegroundColor $palette["PathSecondary"]
+    Write-Host "$currDir" -NoNewline -ForegroundColor $palette["PathSecondary"]
     # Write-Host " ($orgExtCode)" -NoNewline
-    Write-Host $("$userIndicator" * ($nestedPromptLevel + 1)) -NoNewline -ForegroundColor White
+    Write-Host $("$userIndicator" * ($nestedPromptLevel + 1)) -NoNewline -ForegroundColor $palette[$userColor]
     # restore exit code
     $LASTEXITCODE = $orgExtCode
 
