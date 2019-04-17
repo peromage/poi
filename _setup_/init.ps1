@@ -28,6 +28,9 @@ function Test-Administrator {
 }
 
 function Prompt {
+    # backup exit code
+    $orgExtCode = $LASTEXITCODE
+
     # color patterns
     $palette=@{
         "Normal" = "White"
@@ -36,9 +39,7 @@ function Prompt {
         "PathPrimary" = "DarkBlue"
         "PathSecondary" = "Cyan"
     }
-    # backup exit code
-    $orgExtCode = $LASTEXITCODE
-
+    
     $currPath = (Resolve-Path .).Path
     $currDir = ''
     $userIndicator = '>'
@@ -87,10 +88,10 @@ function Prompt {
     # Write-Host "$userInfo" -NoNewline -ForegroundColor $userColor
     # Write-Host ":" -NoNewline -ForegroundColor White
     # parent path and current dir can be set to different colors
-    Write-Host " $currPath" -NoNewline -ForegroundColor $palette["PathSecondary"]
-    Write-Host "$currDir" -NoNewline -ForegroundColor $palette["PathSecondary"]
+    Write-Host " $currPath" -NoNewline -ForegroundColor $palette["PathPrimary"]
+    Write-Host "$currDir" -NoNewline -ForegroundColor $palette["PathPrimary"]
     # Write-Host " ($orgExtCode)" -NoNewline
-    Write-Host $("$userIndicator" * ($nestedPromptLevel + 1)) -NoNewline -ForegroundColor $palette[$userColor]
+    Write-Host $(" $userIndicator" * ($nestedPromptLevel + 1)) -NoNewline -ForegroundColor $palette[$userColor]
     # restore exit code
     $LASTEXITCODE = $orgExtCode
 
