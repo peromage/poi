@@ -1,9 +1,7 @@
 Set-StrictMode -Off
 
 # set color 
-if(Get-Command colortool -ErrorAction SilentlyContinue) {
-    colortool Dracula-Alt | Out-Null
-}
+colortool Dracula-Alt | Out-Null
 
 Set-PSReadlineOption -Color @{
     "Command" = [ConsoleColor]::Green
@@ -86,14 +84,13 @@ function Prompt {
     $Host.ui.RawUI.WindowTitle = $userInfo
 
     # overwrite prompt
-    Write-Host "$extIndicator" -NoNewline -ForegroundColor $palette[$extcolor]
-    # Write-Host "$userInfo" -NoNewline -ForegroundColor $userColor
-    # Write-Host ":" -NoNewline -ForegroundColor White
+    Write-Host "$userInfo" -NoNewline -ForegroundColor $palette[$userColor]
+    Write-Host ":" -NoNewline -ForegroundColor $palette["Normal"]
     # parent path and current dir can be set to different colors
-    Write-Host " $currPath" -NoNewline -ForegroundColor $palette["PathPrimary"]
+    Write-Host "$currPath" -NoNewline -ForegroundColor $palette["PathPrimary"]
     Write-Host "$currDir" -NoNewline -ForegroundColor $palette["PathPrimary"]
-    # Write-Host " ($orgExtCode)" -NoNewline
-    Write-Host $(" $userIndicator" * ($nestedPromptLevel + 1)) -NoNewline -ForegroundColor $palette[$userColor]
+    Write-Host " $extIndicator" -NoNewline -ForegroundColor $palette[$extcolor]
+    Write-Host $(" $userIndicator" * ($nestedPromptLevel + 1)) -NoNewline -ForegroundColor $palette["Normal"]
     # restore exit code
     $LASTEXITCODE = $orgExtCode
 
