@@ -3,7 +3,7 @@
 ## Default Paths
 
 ### git
-user config: `%USERPROFILE%/.gitconfig`  
+user config: `~/.gitconfig`  
 
 ### powershell
 AllUsersAllHosts: `$PROFILE.AllUsersAllHosts`  
