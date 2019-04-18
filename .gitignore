@@ -1,42 +1,35 @@
-## Ignore White List
-## Set for every folder
-*
-!*/
-!/.gitignore
-!/LICENSE
-!/README.md
+## Ignore Blacklist
 
 # powershell
-!/powershell/**
 
 # shell
-!/shell/**
 
 # colortool
-!/colortool/**
 
 # everything
-!/everything/*.ini
+everything/*.db
 
 # frp
-!/frp/**
+
+
 # git
-!/git/**
+
 
 # nodejs-lts
 
 # php
 
 # totalcommander
-!/totalcommander/**
 
 # usbboot
-!/usbboot/**
 
 # vim
-!/vim/**
 
 # vscode-portable
+vscode-portable/data/extensions/
+# set whitelist
+vscode-portable/data/user-data/*
+!vscode-portable/data/user-data/*/
 !/vscode-portable/data/user-data/User/*.ps1
 !/vscode-portable/data/user-data/User/settings.json
 !/vscode-portable/data/user-data/User/snippets/*
