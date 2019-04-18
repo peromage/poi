@@ -1,7 +1,7 @@
 Set-StrictMode -Off
 
 # set color 
-if(Get-Command colortool -ErrorAction SilentlyContinue) {colortool Dracula-Alt | Out-Null}
+if(Get-Command colortool -ErrorAction SilentlyContinue) {colortool -q Dracula-Alt}
 
 Set-PSReadlineOption -Color @{
     "Command" = [ConsoleColor]::Green
