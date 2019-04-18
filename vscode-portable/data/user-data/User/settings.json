@@ -19,4 +19,5 @@
         "*.dvs": "vb"
     },
     "window.restoreWindows": "none",
+    "powershell.powerShellExePath": "C:\\Windows\\SysWow64\\WindowsPowerShell\\v1.0\\powershell.exe",
 }
