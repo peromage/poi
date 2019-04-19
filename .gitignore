@@ -1,5 +1,6 @@
 ## Ignore Blacklist
 
+
 # powershell
 
 # shell
@@ -24,6 +25,8 @@ everything/*.db
 # usbboot
 
 # vim
+# ignore vim temp files
+**/*~
 
 # vscode-portable
 vscode-portable/data/extensions/
