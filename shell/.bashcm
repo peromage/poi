@@ -48,11 +48,12 @@ function colortest() {
     word="gYm"
 
     # print columns with background colors
+    # usage: pcbg <word> <color_code>
     function pcbg() {
-        printf "%${width}s " ${1:3}
-        printf "$1%${width}s " $2
+        printf "%${width}s " ${2:3}
+        printf "$2%${width}s " $1
         for i in {40..47}; do
-            printf "$1\e[${i}m%${width}s\e[0m " $2
+            printf "$2\e[${i}m%${width}s\e[0m " $1
         done
         printf "\n"
     }
@@ -64,11 +65,11 @@ function colortest() {
     done
     printf "\n" 
     # print row by row
-    pcbg "\e[0m" $word
-    pcbg "\e[1m" $word
+    pcbg $word "\e[0m"
+    pcbg $word "\e[1m"
     for j in {30..37}; do
-         pcbg "\e[${j}m" $word
-         pcbg "\e[1;${j}m" $word
+         pcbg $word "\e[${j}m"
+         pcbg $word "\e[1;${j}m"
     done
 }
 # =============== end functions ======================
