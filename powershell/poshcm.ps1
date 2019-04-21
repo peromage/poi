@@ -74,7 +74,7 @@ function Prompt {
         param($symbol, $colorcode)
 
         # login
-        $login = gssc $"$ENV:USERNAME@$ENV:COMPUTERNAME" $colorcode
+        $login = gssc "$ENV:USERNAME@$ENV:COMPUTERNAME" $colorcode
         # path
         $currpath = gssc $(if($pwd.Path.ToLower().StartsWith($HOME.ToLower())){"~"+$pwd.Path.Substring($HOME.Length)} else{$pwd.Path}) "33m"
         # check last exit status
