@@ -1,20 +1,50 @@
 Set-StrictMode -Off
 
-# set color 
-if(Get-Command colortool -ErrorAction SilentlyContinue) {colortool -q Dracula-Alt}
-
-Set-PSReadlineOption -Color @{
-    "Command" = [ConsoleColor]::Green
-    "Parameter" = [ConsoleColor]::Gray
-    "Operator" = [ConsoleColor]::Magenta
-    "Variable" = [ConsoleColor]::White
-    "String" = [ConsoleColor]::Yellow
-    "Number" = [ConsoleColor]::Blue
-    "Type" = [ConsoleColor]::Cyan
-    "Comment" = [ConsoleColor]::DarkCyan
+# variables
+# color palette
+$ConsolePalette = [ordered]@{
+    "30m" = [System.ConsoleColor]::Black
+    "31m" = [System.ConsoleColor]::DarkBlue
+    "32m" = [System.ConsoleColor]::DarkGreen
+    "33m" = [System.ConsoleColor]::DarkCyan
+    "34m" = [System.ConsoleColor]::DarkRed
+    "35m" = [System.ConsoleColor]::DarkMagenta
+    "36m" = [System.ConsoleColor]::DarkYellow
+    "37m" = [System.ConsoleColor]::Gray
+    "1;30m" = [System.ConsoleColor]::DarkGray
+    "1;31m" = [System.ConsoleColor]::Blue
+    "1;32m" = [System.ConsoleColor]::Green
+    "1;33m" = [System.ConsoleColor]::Cyan
+    "1;34m" = [System.ConsoleColor]::Red
+    "1;35m" = [System.ConsoleColor]::Magenta
+    "1;36m" = [System.ConsoleColor]::Yellow
+    "1;37m" = [System.ConsoleColor]::White
+    "40m" = [System.ConsoleColor]::Black
+    "41m" = [System.ConsoleColor]::DarkBlue
+    "42m" = [System.ConsoleColor]::DarkGreen
+    "43m" = [System.ConsoleColor]::DarkCyan
+    "44m" = [System.ConsoleColor]::DarkRed
+    "45m" = [System.ConsoleColor]::DarkMagenta
+    "46m" = [System.ConsoleColor]::DarkYellow
+    "47m" = [System.ConsoleColor]::Gray
 }
 
-function Get-AllColors {
+# set color pattern 
+if(Get-Command colortool -ErrorAction SilentlyContinue) {colortool -q Dracula-Alt}
+
+# set psreadline
+Set-PSReadlineOption -Color @{
+    "Command" = $ConsolePalette["1;32m"]
+    "Parameter" = $ConsolePalette["37m"]
+    "Operator" = $ConsolePalette["1;35m"]
+    "Variable" = $ConsolePalette["1;37m"]
+    "String" = $ConsolePalette["1;36m"]
+    "Number" = $ConsolePalette["1;31m"]
+    "Type" = $ConsolePalette["1;33m"]
+    "Comment" = $ConsolePalette["33m"]
+}
+
+function Show-ConsoleColor {
     $colors = [enum]::GetValues([System.ConsoleColor])
     Foreach ($bgcolor in $colors){
         Foreach ($fgcolor in $colors) { Write-Host "$fgcolor|"  -ForegroundColor $fgcolor -BackgroundColor $bgcolor -NoNewLine }
@@ -22,77 +52,49 @@ function Get-AllColors {
     }
 }
 
+# test admin
 function Test-Administrator {
     $user = [Security.Principal.WindowsIdentity]::GetCurrent();
-    (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+    return (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 }
 
 function Prompt {
     # backup exit code
-    $orgExtCode = $LASTEXITCODE
+    $ret = $LASTEXITCODE
 
-    # color patterns
-    $palette=@{
-        "Normal" = "White"
-        "Warning" = "DarkRed"
-        "OK" = "DarkGreen"
-        "PathPrimary" = "DarkBlue"
-        "PathSecondary" = "Cyan"
+    # give string some colors
+    # usage: gssc <word> <color_code>
+    function gssc {
+        param($word, $colorcode)
+        return "$([char]0x1b)[${colorcode}${word}$([char]0x1b)[0m"
     }
-    
-    $currPath = (Resolve-Path .).Path
-    $currDir = ''
-    $userIndicator = '>'
-    $userInfo = "$ENV:USERNAME@$ENV:COMPUTERNAME"
-    $userColor = "Normal"
-    $extIndicator = ':|'
-    $extcolor = "Normal"
 
-    # replace home dir with ~
-    if($currPath.ToLower().StartsWith($HOME.ToLower())) {
-        $currPath = '~' + $currPath.Substring($HOME.Length)
+    # prompt style generator 1
+    function style1 {
+        param($symbol, $colorcode)
+
+        # login
+        $login = gssc $"$ENV:USERNAME@$ENV:COMPUTERNAME" $colorcode
+        # path
+        $currpath = gssc $(if($pwd.Path.ToLower().StartsWith($HOME.ToLower())){"~"+$pwd.Path.Substring($HOME.Length)} else{$pwd.Path}) "33m"
+        # check last exit status
+        $face = if($ret -eq 0){gssc ":)" "32m"} else{gssc ":(" "31m"}
+
+        # overwrite title
+        $Host.ui.RawUI.WindowTitle = "$ENV:USERNAME@$ENV:COMPUTERNAME"
+        # override prompt
+        Write-Host "${login}:${currpath} ${face} $("$symbol" * ($nestedPromptLevel + 1))" -NoNewline
     }
-    # get current dir and parent path when not at home or root
-    if($currPath -match '^(.+\\)([^\\]+)$') {
-        $currPath = $Matches[1]
-        $currDir = $Matches[2]
-    }
-    else {
-        $currDir = $currPath
-        $currPath = ''
-    }
-    # check if current user is admin
+
     if(Test-Administrator) {
-        $userIndicator = '#'
-        $userColor = "Warning"
+        style1 "#" "31m"
     }
     else {
-        $userIndicator = '$'
-        $userColor = "OK"
+        style1 "$" "32m"
     }
-    # check last exit status
-    if($orgExtCode -eq 0) {
-        $extIndicator = ':)'
-        $extcolor = "OK"
-    }
-    else {
-        $extIndicator = ':('
-        $extcolor = "Warning"
-    }
-
-    # overwrite title
-    $Host.ui.RawUI.WindowTitle = $userInfo
-
-    # overwrite prompt
-    Write-Host "$userInfo" -NoNewline -ForegroundColor $palette[$userColor]
-    Write-Host ":" -NoNewline -ForegroundColor $palette["Normal"]
-    # parent path and current dir can be set to different colors
-    Write-Host "$currPath" -NoNewline -ForegroundColor $palette["PathPrimary"]
-    Write-Host "$currDir" -NoNewline -ForegroundColor $palette["PathPrimary"]
-    Write-Host " $extIndicator" -NoNewline -ForegroundColor $palette[$extcolor]
-    Write-Host $(" $userIndicator" * ($nestedPromptLevel + 1)) -NoNewline -ForegroundColor $palette["Normal"]
     # restore exit code
-    $LASTEXITCODE = $orgExtCode
+    $LASTEXITCODE = $ret
 
+    # hide "PS>"
     return " "
 }

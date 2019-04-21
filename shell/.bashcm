@@ -15,40 +15,37 @@ esac
 # ============== functions ===========================
 function _bash_prompt() {
     # backup last exit code
-    pret=$?
+    ret=$?
 
-    # print word in color
-    # usage: pwic <word> <fgcolor>
-    function pwic() {
-        echo "\[\e[${2}m\]${1}\[\e[m\]"
+    # give word some colors
+    # usage: gssc <word> <color_code>
+    function gssc() {
+        echo "\[\e[${2}\]${1}\[\e[0m\]"
     }
 
-    # variables
-    pemoji=""
-    psymbol=""
-    ppath="$(pwic "\w" "34")"
-    ptime="$(date +"%H:%M")"
-    pinfo="\u@\h"
+    # prompt style generator 1
+    # usage: style1 <symbol> <color_code>
+    function style1() {
+        # login
+        login=$(gssc "\u@\h" $2)
+        # path
+        currpath=$(gssc "\w" "33m")
+        # last exit status
+        face=$([ "$ret" -eq "0" ] && echo "$(gssc ":)" "32m")" || echo "$(gssc ":(" "31m")")
 
-    case "$pret" in
-        0) pemoji="$(pwic ":)" "32")" ;;
-        *) pemoji="$(pwic ":(" "31")" ;;
-    esac
+        #override prompt
+        PS1="${login}:${currpath} ${face} ${1} "
+    }
 
     case "$UID" in
         0)
-            psymbol="#"
-            pinfo="$(pwic $pinfo 31)"
-            ;;
+            style1 "#" "31m";;
         *)
-            psymbol="\$"
-            pinfo="$(pwic $pinfo 32)"
-            ;;
+            style1 "\$" "32m";;
     esac
-
-    PS1="${pinfo}:${ppath} ${pemoji} ${psymbol} "
 }
-# ====================================================
+# =============== end functions ======================
+
 if [ -n "$BASH_VERSION" ]; then
     export PROMPT_COMMAND=_bash_prompt
 #elif [ -n "$ZSH_VERSION"]; then
