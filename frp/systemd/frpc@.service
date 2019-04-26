@@ -1,5 +1,5 @@
 [Unit]
-Description=Frp Client Service
+Description=Frp Client Service (%i)
 After=network.target
 
 [Service]
@@ -7,8 +7,8 @@ Type=idle
 User=nobody
 Restart=on-failure
 RestartSec=5s
-ExecStart=/usr/bin/frpc -c /etc/frp/%i.ini
-ExecReload=/usr/bin/frpc reload -c /etc/frp/%i.ini
+ExecStart=/usr/local/bin/frpc -c /usr/local/etc/frpc@%i.ini
+ExecReload=/usr/local/bin/frpc reload -c /usr/local/etc/frpc@%i.ini
 
 [Install]
 WantedBy=multi-user.target
