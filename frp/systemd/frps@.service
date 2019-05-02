@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-User=nobody
+#User=nobody
 Restart=on-failure
 RestartSec=5s
 ExecStart=/usr/local/bin/frps -c /usr/local/etc/frps@%i.ini
