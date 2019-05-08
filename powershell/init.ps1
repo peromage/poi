@@ -2,7 +2,7 @@ Set-StrictMode -Off
 
 $ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()`
     ).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
-$PS1 = '"$ENV:USERNAME@$ENV:COMPUTERNAME:$pwd.Path $ "'
+$PS1 = '"$ENV:USERNAME@${ENV:COMPUTERNAME}:$pwd $ "'
 
 # load modules
 if (Test-Path "$PSScriptRoot\utils.ps1") { . "$PSScriptRoot\utils.ps1" }
@@ -16,11 +16,5 @@ if (Test-Path "$PSScriptRoot\prompts.ps1") {
 }
 
 function Prompt {
-    # backup exit code
-    $ret = $LASTEXITCODE
-
-
-    # restore exit code
-    $LASTEXITCODE = $ret
     return Invoke-Expression $PS1
 }

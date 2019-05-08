@@ -22,9 +22,9 @@ DIR=$(dirname $BASH_SOURCE)
 # set bash theme
 if [ -n "$BASH_VERSION" ]; then
     # Load theme
-    if [ -f "$DIR/bash_themes.sh" ]; then
-        source "$DIR/bash_themes.sh"
-        _BASH_PROMPT2_ $UID
+    if [ -f "$DIR/bash_prompts.sh" ]; then
+        source "$DIR/bash_prompts.sh"
+        PROMPT_SELECTOR "simple_with_return" $UID
     fi
 fi
 
