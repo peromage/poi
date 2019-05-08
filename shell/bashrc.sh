@@ -16,8 +16,9 @@ esac
 #-----Main-----#
 # get current directory of init.sh
 DIR=$(dirname $BASH_SOURCE)
-# load utils
+# load modules
 [ -f "$DIR/utils.sh" ] && source "$DIR/utils.sh"
+[ -f "$DIR/alias.sh" ] && source "$DIR/alias.sh"
 
 # set bash theme
 if [ -n "$BASH_VERSION" ]; then

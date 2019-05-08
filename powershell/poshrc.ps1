@@ -5,6 +5,7 @@ $ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 $PS1 = '"$ENV:USERNAME@${ENV:COMPUTERNAME}:$pwd $ "'
 
 # load modules
+if (Test-Path "$PSScriptRoot\alias.ps1") { . "$PSScriptRoot\alias.ps1"}
 if (Test-Path "$PSScriptRoot\utils.ps1") { . "$PSScriptRoot\utils.ps1" }
 if (Test-Path "$PSScriptRoot\themes.ps1") {
     . "$PSScriptRoot\themes.ps1"
