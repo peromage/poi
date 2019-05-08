@@ -3,40 +3,35 @@ function Show-ColorTest {
     $width = 7
     $word = "gYm"
     $esc = [char]0x1b
-
-    # print columns with background colors
-    # usage: pcbg <word> <color_code>
-    function pcbg {
-        param($word, $colorcode)
-        Write-Host ("{0,$width}" -f $colorcode.Substring(2)) -NoNewline
-        Write-Host ("{0,$width}" -f $word) -NoNewline
-        foreach ($i in 40..47) {
-            Write-Host ("$colorcode$esc[${i}m{0,$width}$esc[0m" -f $word) -NoNewline
-        }
-        Write-Host
-    }
+    $palette = @("Black", "DarkRed", "DarkGreen", "DarkYellow", "DarkBlue", "DarkMagenta", "DarkCyan", "Gray" `
+        , "DarkGray", "Red", "Green", "Yellow", "Blue", "Magenta", "Cyan", "White", "Faint", "Bold")
 
     # header
-    Write-Host ("{0,$width} {1,$width}" -f "code", "m") -NoNewline
-    foreach ($i in 40..47) {
-        Write-Host ("{0,$width}" -f "${i}m") -NoNewline
+    Write-Host -NoNewline ("{0,$width} {1,$width}" -f "code", "m")
+    foreach ($a in 40..47) {
+        Write-Host -NoNewline ("{0,$width}" -f "${a}m")
     }
     Write-Host
-    # print row by row
-    pcbg $word "$esc[0m"
-    pcbg $word "$esc[1m"
-    foreach ($i in 30..37) {
-        pcbg $word "$esc[${i}m"
-        pcbg $word "$esc[1;${i}m"
-    }
-}
-
-# Console supported colors
-function Show-ConsoleColor {
-    $colors = [enum]::GetValues([System.ConsoleColor])
-    foreach ($bgcolor in $colors){
-        foreach ($fgcolor in $colors) { Write-Host "$fgcolor|"  -ForegroundColor $fgcolor -BackgroundColor $bgcolor -NoNewLine }
-        Write-Host " on $bgcolor"
+    # body
+    foreach ($i in 29..37) {
+        foreach ($j in 0..1) {
+            $code = ""
+            $name = ""
+            if ($i -ge 30) {
+                $code = "${j};${i}"
+                $name = $palette[$($i-30+$j*8)]
+            } 
+            else {
+                $code = "${j}"
+                $name = $palette[-1-$j]
+            }
+            Write-Host -NoNewline ("{0,$width}" -f "${code}m")
+            Write-Host -NoNewline ("{0,$width}" -f $word)
+            foreach ($k in 40..47) {
+                Write-Host -NoNewline ("$esc[${code};${k}m{0,$width}$esc[0m" -f $word)
+            }
+            Write-Host (" {1,11} | {0}" -f "$esc[${code}m${name}$esc[0m", $name)
+        }
     }
 }
 
