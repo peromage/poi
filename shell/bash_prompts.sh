@@ -19,7 +19,7 @@ function _RET_FACE_() {
 }
 
 # usage: _bash_style1_ <$UID>
-function _BASH_THEME1_() {
+function _BASH_PROMPT1_() {
     case "$1" in
         0) export PS1="[$(_CSI_ "\u@\h" "31m"):\W]# " ;;
         *) export PS1="[$(_CSI_ "\u@\h" "32m"):\W]$ " ;;
@@ -27,7 +27,7 @@ function _BASH_THEME1_() {
 }
 
 # usage: _bash_style1_ <$UID>
-function _BASH_THEME2_() {
+function _BASH_PROMPT2_() {
     case "$1" in
         0) export PS1="[$(_CSI_ "\u@\h" "31m"):\W \[\$?\]]# " ;;
         *) export PS1="[$(_CSI_ "\u@\h" "32m"):\W \[\$?\]]$ " ;;
@@ -35,7 +35,7 @@ function _BASH_THEME2_() {
 }
 
 # usage: _bash_style1_ <$UID>
-function _BASH_THEME3_() {
+function _BASH_PROMPT3_() {
     case "$1" in
         0) export PS1="$(_CSI_ "\u@\h" "31m") \w $(_RET_FACE_)\n+++ " ;;
         *) export PS1="$(_CSI_ "\u@\h" "32m") \w $(_RET_FACE_)\n--- " ;;

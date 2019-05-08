@@ -24,6 +24,9 @@ if [ -n "$BASH_VERSION" ]; then
     # Load theme
     if [ -f "$DIR/bash_themes.sh" ]; then
         source "$DIR/bash_themes.sh"
-        _BASH_THEME2_ $UID
+        _BASH_PROMPT2_ $UID
     fi
 fi
+
+#-----Cleanup-----#
+unset DIR
