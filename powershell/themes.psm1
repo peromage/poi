@@ -28,10 +28,15 @@ $CONSOLEPALETTE = [ordered]@{
 
 function THEME_SELECTOR {
     param($Scheme)
-    # make sure colortool installed
-    if (Get-Command colortool -ErrorAction SilentlyContinue) {
-        colortool -q $Scheme
+
+    # make sure colortool is installed
+    $colortool = "$PSScriptRoot\colortool\ColorTool.exe"
+    if (Test-Path $colortool) {
+        $colortool = $colortool + " -q $Scheme"
+        Invoke-Expression $colortool
         [System.Console]::ResetColor()
+
+        # additional settings
         switch ($Scheme) {
             "dracula-alt" { 
                 # set psreadline
