@@ -49,3 +49,5 @@ function THEME_SELECTOR {
         }
     }
 }
+
+Export-ModuleMember -Function THEME_SELECTOR

@@ -20,19 +20,23 @@ function _PWD_HOME_TILDE_DIR_ {
 
 function _PROMPT_SIMPLE_ {
     param($isadmin)
+
     if ($isadmin) {
-        $Global:PS1 = '"[$(_CSI_ "$ENV:USERNAME" "31m")@${ENV:COMPUTERNAME}:$(_PWD_HOME_TILDE_DIR_)]# "'
+        Write-Output '"[$(_CSI_ "$ENV:USERNAME" "31m")@${ENV:COMPUTERNAME}:$(_PWD_HOME_TILDE_DIR_)]# "'
         $Host.ui.RawUI.WindowTitle = "Administrator:$ENV:USERNAME@$ENV:COMPUTERNAME"
     }
     else {
-        $Global:PS1 = '"[$(_CSI_ "$ENV:USERNAME" "32m")@${ENV:COMPUTERNAME}:$(_PWD_HOME_TILDE_DIR_)]$ "'
+        Write-Output '"[$(_CSI_ "$ENV:USERNAME" "32m")@${ENV:COMPUTERNAME}:$(_PWD_HOME_TILDE_DIR_)]$ "'
         $Host.ui.RawUI.WindowTitle = "$ENV:USERNAME@$ENV:COMPUTERNAME"
     }
 }
 
 function PROMPT_SELECTOR {
     param($Style, $IsAdmin)
+
     switch ($Style) {
-        "simple" { _PROMPT_SIMPLE_ $IsAdmin; break }
+        "simple" { Write-Output $(_PROMPT_SIMPLE_ $IsAdmin); break }
     }
 }
+
+Export-ModuleMember -Function *

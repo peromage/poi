@@ -5,17 +5,17 @@ $ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 $PS1 = '"$ENV:USERNAME@${ENV:COMPUTERNAME}:$pwd $ "'
 
 # load modules
-if (Test-Path "$PSScriptRoot\alias.ps1") { . "$PSScriptRoot\alias.ps1"}
-if (Test-Path "$PSScriptRoot\utils.ps1") { . "$PSScriptRoot\utils.ps1" }
-if (Test-Path "$PSScriptRoot\themes.ps1") {
-    . "$PSScriptRoot\themes.ps1"
+if (Test-Path "$PSScriptRoot\alias.psm1") { Import-Module "$PSScriptRoot\alias.psm1"}
+if (Test-Path "$PSScriptRoot\utils.psm1") { Import-Module "$PSScriptRoot\utils.psm1" }
+if (Test-Path "$PSScriptRoot\themes.psm1") {
+    Import-Module "$PSScriptRoot\themes.psm1"
     THEME_SELECTOR "dracula-alt"
 }
-if (Test-Path "$PSScriptRoot\prompts.ps1") {
-    . "$PSScriptRoot\prompts.ps1"
-    PROMPT_SELECTOR "simple" $ADMIN
+if (Test-Path "$PSScriptRoot\prompts.psm1") {
+    Import-Module "$PSScriptRoot\prompts.psm1"
+    $Global:PS1 = PROMPT_SELECTOR "simple" $ADMIN
 }
 
 function Prompt {
-    return Invoke-Expression $PS1
+    return Invoke-Expression $Global:PS1
 }
