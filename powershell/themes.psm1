@@ -1,5 +1,5 @@
 # color palette
-$CONSOLEPALETTE = [ordered]@{
+$CONSOLE_PALETTE = [ordered]@{
     "30m" = [System.ConsoleColor]::Black
     "31m" = [System.ConsoleColor]::DarkBlue
     "32m" = [System.ConsoleColor]::DarkGreen
@@ -26,33 +26,43 @@ $CONSOLEPALETTE = [ordered]@{
     "47m" = [System.ConsoleColor]::Gray
 }
 
-function THEME_SELECTOR {
-    param($Scheme)
 
-    # make sure colortool is installed
-    $colortool = "$PSScriptRoot\colortool\ColorTool.exe"
-    if (Test-Path $colortool) {
-        $colortool = $colortool + " -q $Scheme"
-        Invoke-Expression $colortool
+
+function _COLORTOOL_ {
+    param($theme)
+
+    $COLORTOOL = "$PSScriptRoot\colortool\ColorTool.exe"
+    if (Test-Path $COLORTOOL) {
         [System.Console]::ResetColor()
+        Invoke-Expression $COLORTOOL + " $theme"
+        return 0
+    }
+    return -1
+}
 
-        # additional settings
-        switch ($Scheme) {
-            "dracula-alt" { 
-                # set psreadline
-                Set-PSReadlineOption -Color @{
-                    "Command" = [ConsoleColor]::Green
-                    "Parameter" = [ConsoleColor]::Gray
-                    "Operator" = [ConsoleColor]::Magenta
-                    "Variable" = [ConsoleColor]::White
-                    "String" = [ConsoleColor]::Yellow
-                    "Number" = [ConsoleColor]::Blue
-                    "Type" = [ConsoleColor]::Cyan
-                    "Comment" = [ConsoleColor]::DarkCyan
-                }
-            }
+function _THEME_DRACULA_ {
+    if ((_COLORTOOL_ "Dracula-Alt.itermcolors") -eq 0) {
+        # set psreadline
+        Set-PSReadlineOption -Color @{
+            "Command" = [ConsoleColor]::Green
+            "Parameter" = [ConsoleColor]::Gray
+            "Operator" = [ConsoleColor]::Magenta
+            "Variable" = [ConsoleColor]::White
+            "String" = [ConsoleColor]::Yellow
+            "Number" = [ConsoleColor]::Blue
+            "Type" = [ConsoleColor]::Cyan
+            "Comment" = [ConsoleColor]::DarkCyan
         }
     }
 }
 
-Export-ModuleMember -Function THEME_SELECTOR
+function THEME_SELECTOR {
+    param($Scheme)
+
+    # make a choice
+    switch ($Scheme) {
+        "dracula-alt" { _THEME_DRACULA_; break }
+    }
+}
+
+Export-ModuleMember -Function THEME_SELECTOR -Variable CONSOLE_PALETTE
