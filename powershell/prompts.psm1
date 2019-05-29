@@ -12,8 +12,8 @@ function _CSI_ {
 
 # substitute home prefix with tilde
 function _PWD_HOME_TILDE_ {
-    $p = $pwd.Path
-    if ($p.ToLower().StartsWith($HOME.ToLower())) { Write-Output "~"+$p.Substring($HOME.Length) }
+    $p = (Get-Item .).FullName
+    if ($p.ToLower().StartsWith($HOME.ToLower())) { Write-Output ("~" + $p.Substring($HOME.Length))}
     else { Write-Output $p }
 }
 
@@ -21,6 +21,17 @@ function _PWD_HOME_TILDE_DIR_ {
     $p = (Get-Item .).BaseName
     if ($p.ToLower() -eq $ENV:USERNAME.ToLower()) { Write-Output "~" }
     else { Write-Output $p }
+}
+
+function _PROMPT_WIN_ {
+    if ($Script:ADMIN) {
+        Write-Output '"$(_CSI_ "$ENV:USERNAME" "31m")@${ENV:COMPUTERNAME}:$(_PWD_HOME_TILDE_)>>_ "'
+        $Host.ui.RawUI.WindowTitle = "Administrator:$ENV:USERNAME@$ENV:COMPUTERNAME"
+    }
+    else {
+        Write-Output '"$(_CSI_ "$ENV:USERNAME" "32m")@${ENV:COMPUTERNAME}:$(_PWD_HOME_TILDE_)>_ "'
+        $Host.ui.RawUI.WindowTitle = "$ENV:USERNAME@$ENV:COMPUTERNAME"
+    }
 }
 
 function _PROMPT_SIMPLE_ {
@@ -39,6 +50,7 @@ function PROMPT_SELECTOR {
 
     switch ($Style) {
         "simple" { $Script:PS1 = _PROMPT_SIMPLE_; break }
+        "win" { $Script:PS1 = _PROMPT_WIN_; break }
     }
 }
 

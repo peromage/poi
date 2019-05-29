@@ -26,26 +26,26 @@ $CONSOLE_PALETTE = [ordered]@{
     "47m" = [System.ConsoleColor]::Gray
 }
 
-function SET_SCHEME {
+function THEME_SETTER {
     param($ColorToolArgs, $PSReadlineArgs)
 
     $COLORTOOL = "$PSScriptRoot\colortool\ColorTool.exe"
     $DEFAULTCOLORS = @{
-        "CommandColor" = "$([char]0x1b)[93m"
-        "CommentColor" = "$([char]0x1b)[32m"
-        "ContinuationPromptColor" = "$([char]0x1b)[37m"
-        "DefaultTokenColor" = "$([char]0x1b)[37m"
-        "EmphasisColor" = "$([char]0x1b)[96m"
-        "ErrorColor" = "$([char]0x1b)[91m"
-        "KeywordColor" = "$([char]0x1b)[92m"
-        "MemberColor" = "$([char]0x1b)[97m"
-        "NumberColor" = "$([char]0x1b)[97m"
-        "OperatorColor" = "$([char]0x1b)[90m"
-        "ParameterColor" = "$([char]0x1b)[90m"
-        "SelectionColor" = "$([char]0x1b)[30;47m"
-        "StringColor" = "$([char]0x1b)[36m"
-        "TypeColor" = "$([char]0x1b)[37m"
-        "VariableColor" = "$([char]0x1b)[92m"
+        "Command" = "$([char]0x1b)[93m"
+        "Comment" = "$([char]0x1b)[32m"
+        "ContinuationPrompt" = "$([char]0x1b)[37m"
+        "Default" = "$([char]0x1b)[37m"
+        "Emphasis" = "$([char]0x1b)[96m"
+        "Error" = "$([char]0x1b)[91m"
+        "Keyword" = "$([char]0x1b)[92m"
+        "Member" = "$([char]0x1b)[97m"
+        "Number" = "$([char]0x1b)[97m"
+        "Operator" = "$([char]0x1b)[90m"
+        "Parameter" = "$([char]0x1b)[90m"
+        "Selection" = "$([char]0x1b)[30;47m"
+        "String" = "$([char]0x1b)[36m"
+        "Type" = "$([char]0x1b)[37m"
+        "Variable" = "$([char]0x1b)[92m"
     }
 
     # only apply scheme when colortool exists
@@ -55,9 +55,7 @@ function SET_SCHEME {
         [System.Console]::ResetColor()
         if ($PSReadlineArgs) { Set-PSReadlineOption -colors $PSReadlineArgs }
         else { Set-PSReadlineOption -colors $DEFAULTCOLORS }
-        return 0
     }
-    return -1
 }
 
 function THEME_SELECTOR {
@@ -73,21 +71,21 @@ function THEME_SELECTOR {
                 "Variable" = [ConsoleColor]::White
                 "String" = [ConsoleColor]::Yellow
                 "Number" = [ConsoleColor]::Blue
-                "Type" = [ConsoleColor]::Cxyan
+                "Type" = [ConsoleColor]::Cyan
                 "Comment" = [ConsoleColor]::DarkCyan
             }
-            SET_SCHEME "Dracula-Alt.itermcolors" $colors
+            THEME_SETTER "Dracula-Alt.itermcolors" $colors
             break
         }
-        "solarized-dark" { SET_SCHEME "solarized_dark.itermcolors"; break }
-        "solarized-light" { SET_SCHEME "solarized_light.itermcolors"; break }
-        "campbell" { SET_SCHEME "campbell.ini"; break }
-        "campbell-legacy" { SET_SCHEME "campbell-legacy.ini"; break }
-        "cmd-legacy" { SET_SCHEME "cmd-legacy.ini"; break }
-        "onehalf-dark" { SET_SCHEME "OneHalfDark.itermcolors"; break }
-        "onehalf-light" { SET_SCHEME "OneHalfLight.itermcolors"; break }
-        "deuteranopia" { SET_SCHEME "deuteranopia.itermcolors"; break }
+        "solarized-dark" { THEME_SETTER "solarized_dark.itermcolors"; break }
+        "solarized-light" { THEME_SETTER "solarized_light.itermcolors"; break }
+        "campbell" { THEME_SETTER "campbell.ini"; break }
+        "campbell-legacy" { THEME_SETTER "campbell-legacy.ini"; break }
+        "cmd-legacy" { THEME_SETTER "cmd-legacy.ini"; break }
+        "onehalf-dark" { THEME_SETTER "OneHalfDark.itermcolors"; break }
+        "onehalf-light" { THEME_SETTER "OneHalfLight.itermcolors"; break }
+        "deuteranopia" { THEME_SETTER "deuteranopia.itermcolors"; break }
     }
 }
 
-Export-ModuleMember -Function THEME_SELECTOR, SET_SCHEME -Variable CONSOLE_PALETTE
+Export-ModuleMember -Function THEME_SELECTOR, THEME_SETTER -Variable CONSOLE_PALETTE
