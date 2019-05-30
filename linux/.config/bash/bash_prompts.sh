@@ -11,6 +11,7 @@ function _RET_() {
 
 function _RET_FACE_COLOR_() {
     local ret=$?
+	echo $ret
     if [ "$ret" -ne 0 ]; then
         echo "$(_CSI_ ":(" "31m")"
     else
@@ -74,19 +75,11 @@ function _PROMPT_SIMPLE_() {
     esac
 }
 
-# simple_with_return
-function _PROMPT_SIMPLE_W_RET_() {
-    case "$UID" in
-        0) export PS1="[$(_CSI_ "\u@\h" "31m"):\W \[\$?\]]# ";;
-        *) export PS1="[$(_CSI_ "\u@\h" "32m"):\W \[\$?\]]$ ";;
-    esac
-}
-
 # two_lines
 function _PROMPT_TWO_LINES_() {
     case "$UID" in
-        0) export PS1=" $(_CSI_ "\u@\h" "31m"):$(_CSI_ "\w" "33m") [$(_CSI_ "\d \A" "37m")]\n $(_RET_FACE_COLOR_) +++ ";;
-        *) export PS1=" $(_CSI_ "\u@\h" "32m"):$(_CSI_ "\w" "33m") [$(_CSI_ "\d \A" "37m")]\n $(_RET_FACE_COLOR_) --- ";;
+        0) export PS1=" $(_CSI_ "\u@\h" "31m"):$(_CSI_ "\w" "33m") [$(_CSI_ "\d \A" "37m")]\n +++ ";;
+        *) export PS1=" $(_CSI_ "\u@\h" "32m"):$(_CSI_ "\w" "33m") [$(_CSI_ "\d \A" "37m")]\n --- ";;
     esac
 }
 
@@ -94,7 +87,6 @@ function _PROMPT_TWO_LINES_() {
 function PROMPT_SELECTOR() {
     case "$1" in
         "simple") _PROMPT_SIMPLE_;;
-        "simple_with_return") _PROMPT_SIMPLE_W_RET_;;
         "two_lines") _PROMPT_TWO_LINES_;;
     esac
 }
