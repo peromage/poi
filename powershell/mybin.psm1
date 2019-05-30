@@ -1,3 +1,6 @@
+$ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()`
+    ).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+
 $MyBin = @{
     "7z.exe" = "7-zip\7zFM.exe"
     "aria2.exe" = "aria2\aria2c.exe"
@@ -7,24 +10,34 @@ $MyBin = @{
     "picpick.exe" = "picpick\picpick.exe"
     "vnc.exe" = "vncviewer\vncviewer.exe"
     "tc.exe" = "totalcommander\TOTALCMD64.EXE"
-    "vscode.cmd" = "vscode\bin\code.cmd"
+    "code.cmd" = "vscode\bin\code.cmd"
+    "vlc.exe" = "vlc\vlc.exe"
 }
 
-function Generate-Bin {
+function Install-MyBin {
     param (
-        [string]$BinPath = $pwd.Path,
-        [string]$TargetPath = $pwd.Path
+        $BinPath = $pwd.Path,
+        $TargetPath = $pwd.Path
     )
 
-    foreach ($b in $MyBin.GetEnumerator())
-    {
-        $link = Join-Path $BinPath $b.Name
-        $target = Join-Path $TargetPath $b.Value
-        if (Test-Path $target)
+    if ($ADMIN) {
+        foreach ($b in $MyBin.GetEnumerator())
         {
-            New-Item -ItemType SymbolicLink -Force -Path $link -Value $target > $null
+            $link = Join-Path $BinPath $b.Name
+            $target = Join-Path $TargetPath $b.Value
+            $parent = Split-Path -Parent $target
+            if (-not (Test-Path $target))
+            {
+                if (-not (Test-Path $parent)) { New-Item -ItemType Directory $parent | Out-Null }
+                New-Item -ItemType File $target | Out-Null
+            }
+            New-Item -ItemType SymbolicLink -Force -Path $link -Value $target | Out-Null
         }
+        Write-Output "Done."
+    }
+    else {
+        Write-Output "To continue, run as admin."
     }
 }
 
-Export-ModuleMember -Function Generate-Bin
+Export-ModuleMember -Function Install-MyBin
