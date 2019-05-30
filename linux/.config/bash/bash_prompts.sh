@@ -9,12 +9,21 @@ function _RET_() {
     echo "$ret"
 }
 
-function _RET_FACE_() {
+function _RET_FACE_COLOR_() {
     local ret=$?
     if [ "$ret" -ne 0 ]; then
         echo "$(_CSI_ ":(" "31m")"
     else
         echo "$(_CSI_ ":)" "32m")"
+    fi
+}
+
+function _RET_FACE_() {
+    local ret=$?
+    if [ "$ret" -ne 0 ]; then
+        echo ":("
+    else
+        echo ":)"
     fi
 }
 
@@ -59,7 +68,7 @@ function _PWD_FISH_COLLAPSED_() {
 #----- Styles -----#
 # simple
 function _PROMPT_SIMPLE_() {
-    case "$1" in
+    case "$UID" in
         0) export PS1="[$(_CSI_ "\u@\h" "31m"):\W]# ";;
         *) export PS1="[$(_CSI_ "\u@\h" "32m"):\W]$ ";;
     esac
@@ -67,7 +76,7 @@ function _PROMPT_SIMPLE_() {
 
 # simple_with_return
 function _PROMPT_SIMPLE_W_RET_() {
-    case "$1" in
+    case "$UID" in
         0) export PS1="[$(_CSI_ "\u@\h" "31m"):\W \[\$?\]]# ";;
         *) export PS1="[$(_CSI_ "\u@\h" "32m"):\W \[\$?\]]$ ";;
     esac
@@ -75,17 +84,17 @@ function _PROMPT_SIMPLE_W_RET_() {
 
 # two_lines
 function _PROMPT_TWO_LINES_() {
-    case "$1" in
-        0) export PS1="$(_CSI_ "\u@\h" "31m") \w $(_RET_FACE_)\n+++ ";;
-        *) export PS1="$(_CSI_ "\u@\h" "32m") \w $(_RET_FACE_)\n--- ";;
+    case "$UID" in
+        0) export PS1=" $(_CSI_ "\u@\h" "31m"):$(_CSI_ "\w" "33m") [$(_CSI_ "\d \A" "37m")]\n $(_RET_FACE_COLOR_) +++ ";;
+        *) export PS1=" $(_CSI_ "\u@\h" "32m"):$(_CSI_ "\w" "33m") [$(_CSI_ "\d \A" "37m")]\n $(_RET_FACE_COLOR_) --- ";;
     esac
 }
 
 # usage: PROMPT_SELECTOR <style> <UID>
 function PROMPT_SELECTOR() {
     case "$1" in
-        "simple") _PROMPT_SIMPLE_ $2;;
-        "simple_with_return") _PROMPT_SIMPLE_W_RET_ $2;;
-        "two_lines") _PROMPT_TWO_LINES_ $2;;
+        "simple") _PROMPT_SIMPLE_;;
+        "simple_with_return") _PROMPT_SIMPLE_W_RET_;;
+        "two_lines") _PROMPT_TWO_LINES_;;
     esac
 }

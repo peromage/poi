@@ -25,7 +25,7 @@ if [ -n "$BASH_VERSION" ]; then
     # Load theme
     if [ -f "$DIR/bash_prompts.sh" ]; then
         source "$DIR/bash_prompts.sh"
-        PROMPT_SELECTOR "simple_with_return" $UID
+        PROMPT_SELECTOR "two_lines"
     fi
 fi
 
