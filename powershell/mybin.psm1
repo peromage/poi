@@ -12,6 +12,7 @@ $MyBin = @{
     "tc.exe" = "totalcommander\TOTALCMD64.EXE"
     "code.cmd" = "vscode\bin\code.cmd"
     "vlc.exe" = "vlc\vlc.exe"
+    "chrome.exe" = "chrome\chrome.exe"
 }
 
 function Install-MyBin {
