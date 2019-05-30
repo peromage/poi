@@ -12,7 +12,7 @@ if (Test-Path "$PSScriptRoot\themes.psm1") {
 
 if (Test-Path "$PSScriptRoot\prompts.psm1") {
     Import-Module "$PSScriptRoot\prompts.psm1"
-    PROMPT_SELECTOR "win"
+    PROMPT_SELECTOR "cmder"
 }
 
 function Prompt {

@@ -23,13 +23,13 @@ function _PWD_HOME_TILDE_DIR_ {
     else { Write-Output $p }
 }
 
-function _PROMPT_WIN_ {
+function _PROMPT_CMDER_ {
     if ($Script:ADMIN) {
-        Write-Output '"$(_CSI_ "$ENV:USERNAME" "31m")@${ENV:COMPUTERNAME}:$(_PWD_HOME_TILDE_)>>_ "'
+        Write-Output '" $(_CSI_ (Get-Item .).FullName "31m")`n !> "'
         $Host.ui.RawUI.WindowTitle = "Administrator:$ENV:USERNAME@$ENV:COMPUTERNAME"
     }
     else {
-        Write-Output '"$(_CSI_ "$ENV:USERNAME" "32m")@${ENV:COMPUTERNAME}:$(_PWD_HOME_TILDE_)>_ "'
+        Write-Output '" $(_CSI_ (Get-Item .).FullName "32m")`n > "'
         $Host.ui.RawUI.WindowTitle = "$ENV:USERNAME@$ENV:COMPUTERNAME"
     }
 }
@@ -50,7 +50,7 @@ function PROMPT_SELECTOR {
 
     switch ($Style) {
         "simple" { $Script:PS1 = _PROMPT_SIMPLE_; break }
-        "win" { $Script:PS1 = _PROMPT_WIN_; break }
+        "cmder" { $Script:PS1 = _PROMPT_CMDER_; break }
     }
 }
 
