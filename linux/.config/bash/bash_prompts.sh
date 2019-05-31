@@ -1,9 +1,3 @@
-# Control Sequence Introducer
-# usage: _csi_ <csi_code> <word>
-function _CSI_() {
-    echo "\[\e[${1}\]${2}\[\e[0m\]"
-}
-
 function _RET_FACE_COLOR_() {
     case "$?" in
         0) echo -e "\e[32m:)\e[0m";;
@@ -12,11 +6,10 @@ function _RET_FACE_COLOR_() {
 }
 
 function _RET_FACE_() {
-    if [ "\$?" -ne 0 ]; then
-        echo ":("
-    else
-        echo ":)"
-    fi
+    case "$?" in
+        0) echo ":)";;
+        *) echo ":(";;
+    esac
 }
 
 function _PWD_FISH_COLLAPSED_() {
