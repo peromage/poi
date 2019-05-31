@@ -1,14 +1,14 @@
 function _RET_FACE_COLOR_() {
     case "$?" in
-        0) echo -e "\e[32m:)\e[0m";;
-        *) echo -e "\e[31m:(\e[0m";;
+        0) echo -e '\e[32m:)\e[0m';;
+        *) echo -e '\e[31m:(\e[0m';;
     esac
 }
 
 function _RET_FACE_() {
     case "$?" in
-        0) echo ":)";;
-        *) echo ":(";;
+        0) echo ':)';;
+        *) echo ':(';;
     esac
 }
 
@@ -54,15 +54,15 @@ function _PWD_FISH_COLLAPSED_() {
 # simple
 function _PROMPT_SIMPLE_() {
     case "$UID" in
-        0) export PS1="[\[\e[31m\]\u@\h\[\e[0m\]:\W]# ";;
-        *) export PS1="[\[\e[32m\]\u@\h\[\e[0m\]:\W]$ ";;
+        0) export PS1='[\[\e[31m\]\u@\h\[\e[0m\]:\W]# ';;
+        *) export PS1='[\[\e[32m\]\u@\h\[\e[0m\]:\W]$ ';;
     esac
 }
 
 # two_lines
 function _PROMPT_TWO_LINES_() {
     case "$UID" in
-        0) export PS1=" \[\e[31m\]\u@\h\[\e[0m\]:\[\e[33m\]\w\[\e[0m\] \[\e[37m\][\d \A]\[\e[0m\]\n $(_RET_FACE_COLOR_) +++ ";;
+        0) export PS1=' \[\e[31m\]\u@\h\[\e[0m\]:\[\e[33m\]\w\[\e[0m\] \[\e[37m\][\d \A]\[\e[0m\]\n $(_RET_FACE_COLOR_) +++ ';;
         *) export PS1=' \[\e[32m\]\u@\h\[\e[0m\]:\[\e[33m\]\w\[\e[0m\] \[\e[37m\][\d \A]\[\e[0m\]\n $(_RET_FACE_COLOR_) --- ';;
     esac
 }
