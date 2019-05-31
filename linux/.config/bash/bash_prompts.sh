@@ -1,27 +1,18 @@
 # Control Sequence Introducer
-# usage: _csi_ <word> <csi_code>
+# usage: _csi_ <csi_code> <word>
 function _CSI_() {
-    echo "\[\e[${2}\]${1}\[\e[0m\]"
-}
-
-function _RET_() {
-    local ret=$?
-    echo "$ret"
+    echo "\[\e[${1}\]${2}\[\e[0m\]"
 }
 
 function _RET_FACE_COLOR_() {
-    local ret=$?
-	echo $ret
-    if [ "$ret" -ne 0 ]; then
-        echo "$(_CSI_ ":(" "31m")"
-    else
-        echo "$(_CSI_ ":)" "32m")"
-    fi
+    case "$?" in
+        0) echo -e "\e[32m:)\e[0m";;
+        *) echo -e "\e[31m:(\e[0m";;
+    esac
 }
 
 function _RET_FACE_() {
-    local ret=$?
-    if [ "$ret" -ne 0 ]; then
+    if [ "\$?" -ne 0 ]; then
         echo ":("
     else
         echo ":)"
@@ -70,16 +61,16 @@ function _PWD_FISH_COLLAPSED_() {
 # simple
 function _PROMPT_SIMPLE_() {
     case "$UID" in
-        0) export PS1="[$(_CSI_ "\u@\h" "31m"):\W]# ";;
-        *) export PS1="[$(_CSI_ "\u@\h" "32m"):\W]$ ";;
+        0) export PS1="[\[\e[31m\]\u@\h\[\e[0m\]:\W]# ";;
+        *) export PS1="[\[\e[32m\]\u@\h\[\e[0m\]:\W]$ ";;
     esac
 }
 
 # two_lines
 function _PROMPT_TWO_LINES_() {
     case "$UID" in
-        0) export PS1=" $(_CSI_ "\u@\h" "31m"):$(_CSI_ "\w" "33m") [$(_CSI_ "\d \A" "37m")]\n +++ ";;
-        *) export PS1=" $(_CSI_ "\u@\h" "32m"):$(_CSI_ "\w" "33m") [$(_CSI_ "\d \A" "37m")]\n --- ";;
+        0) export PS1=" \[\e[31m\]\u@\h\[\e[0m\]:\[\e[33m\]\w\[\e[0m\] \[\e[37m\][\d \A]\[\e[0m\]\n $(_RET_FACE_COLOR_) +++ ";;
+        *) export PS1=' \[\e[32m\]\u@\h\[\e[0m\]:\[\e[33m\]\w\[\e[0m\] \[\e[37m\][\d \A]\[\e[0m\]\n $(_RET_FACE_COLOR_) --- ';;
     esac
 }
 
