@@ -42,20 +42,18 @@ function Test-Administrator {
     return $Script:ADMIN
 }
 
-function sudo
-{
+function sudo {
     if ($Script:ADMIN) {
         Write-Output "Already as admin!"
     }
     else {
         if ($args.Length -eq 0)
         {
-            Write-Output "At least one parameter."
+            Write-Output "Usage: sudo <command> [arguments]"
         }
         elseif ($args.Length -ge 1)
         {
-            $commands = "-noexit -command cd $pwd;"
-            $commands = $commands +  ($args -join ' ')
+            $commands = "-noexit -command cd $pwd;" + ($args -join ' ')
 
             $proc = New-Object -TypeName System.Diagnostics.Process
             $proc.StartInfo.FileName = "powershell.exe"
@@ -68,4 +66,21 @@ function sudo
     }
 }
 
-Export-ModuleMember -Function Show-ColorTest, Test-Administrator, sudo
+function su {
+    if ($Script:ADMIN) {
+        Write-Output "Already as admin!"
+    }
+    else {
+        $commands = "-noexit -command cd $pwd;"
+
+        $proc = New-Object -TypeName System.Diagnostics.Process
+        $proc.StartInfo.FileName = "powershell.exe"
+        $proc.StartInfo.Arguments = $commands
+        $proc.StartInfo.UseShellExecute = $true
+        $proc.StartInfo.Verb = "runas"
+
+        $proc.Start() | Out-Null
+    }
+}
+
+Export-ModuleMember -Function *
