@@ -21,7 +21,7 @@ function Install-MyBin {
         $TargetPath = $pwd.Path
     )
 
-    if ($ADMIN) {
+    if ($Script:ADMIN) {
         foreach ($b in $MyBin.GetEnumerator())
         {
             $link = Join-Path $BinPath $b.Name

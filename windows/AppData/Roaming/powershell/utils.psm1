@@ -1,3 +1,6 @@
+$ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()`
+    ).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+
 # Console color test
 function Show-ColorTest {
     $width = 7
@@ -36,8 +39,33 @@ function Show-ColorTest {
 }
 
 function Test-Administrator {
-    $user = [Security.Principal.WindowsIdentity]::GetCurrent()
-    return (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+    return $Script:ADMIN
 }
 
-Export-ModuleMember -Function Show-ColorTest, Test-Administrator
+function sudo
+{
+    if ($Script:ADMIN) {
+        Write-Output "Already as admin!"
+    }
+    else {
+        if ($args.Length -eq 0)
+        {
+            Write-Output "At least one parameter."
+        }
+        elseif ($args.Length -ge 1)
+        {
+            $commands = "-noexit -command cd $pwd;"
+            $commands = $commands +  ($args -join ' ')
+
+            $proc = New-Object -TypeName System.Diagnostics.Process
+            $proc.StartInfo.FileName = "powershell.exe"
+            $proc.StartInfo.Arguments = $commands
+            $proc.StartInfo.UseShellExecute = $true
+            $proc.StartInfo.Verb = "runas"
+    
+            $proc.Start() | Out-Null
+        }
+    }
+}
+
+Export-ModuleMember -Function Show-ColorTest, Test-Administrator, sudo
