@@ -1,6 +1,8 @@
 $ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()`
     ).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 
+$DEFAULT_PATH = Join-Path -Path $HOME -ChildPath ".local\bin"
+
 $MyBin = @{
     "7z.exe" = "7-zip\7zFM.exe"
     "aria2.exe" = "aria2\aria2c.exe"
@@ -13,12 +15,13 @@ $MyBin = @{
     "code.cmd" = "vscode\bin\code.cmd"
     "vlc.exe" = "vlc\vlc.exe"
     "chrome.exe" = "chrome\chrome.exe"
+    "fsc.exe" = "fscapture\FSCapture.exe"
 }
 
 function Install-MyBin {
     param (
-        $BinPath = $pwd.Path,
-        $TargetPath = $pwd.Path
+        $BinPath = $DEFAULT_PATH,
+        $TargetPath = $DEFAULT_PATH
     )
 
     if ($Script:ADMIN) {

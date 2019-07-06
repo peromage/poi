@@ -5,6 +5,8 @@ if (Test-Path "$PSScriptRoot\alias.psm1") { Import-Module "$PSScriptRoot\alias.p
 
 if (Test-Path "$PSScriptRoot\utils.psm1") { Import-Module "$PSScriptRoot\utils.psm1" }
 
+if (Test-Path "$PSScriptRoot\mybin.psm1") { Import-Module "$PSScriptRoot\mybin.psm1" }
+
 if (Test-Path "$PSScriptRoot\themes.psm1") { 
     Import-Module "$PSScriptRoot\themes.psm1"
     THEME_SELECTOR "dracula"
