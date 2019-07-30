@@ -16,6 +16,7 @@ $MyBin = @{
     "vlc.exe" = "vlc\vlc.exe"
     "chrome.exe" = "chrome\chrome.exe"
     "fsc.exe" = "fscapture\FSCapture.exe"
+    "npp.exe" = "notepadpp\notepad++.exe"
 }
 
 function Install-MyBin {
