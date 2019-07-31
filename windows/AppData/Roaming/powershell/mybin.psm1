@@ -4,39 +4,39 @@ $ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 $DEFAULT_PATH = Join-Path -Path $HOME -ChildPath ".local\bin"
 
 $MyBin = @{
-    "7z.exe" = "7-zip\7zFM.exe"
-    "aria2.exe" = "aria2\aria2c.exe"
-    "git.exe" = "git\bin\git.exe"
-    "bash.exe" = "git\bin\bash.exe"
-    "jcp.exe" = "jcpicker\jcpicker.exe"
-    "picpick.exe" = "picpick\picpick.exe"
-    "vnc.exe" = "vncviewer\vncviewer.exe"
-    "tc.exe" = "totalcommander\TOTALCMD64.EXE"
-    "code.cmd" = "vscode\bin\code.cmd"
-    "vlc.exe" = "vlc\vlc.exe"
-    "chrome.exe" = "chrome\chrome.exe"
-    "fsc.exe" = "fscapture\FSCapture.exe"
-    "npp.exe" = "notepadpp\notepad++.exe"
+    "7z" = "7-zip\7zFM.exe"
+    "aria2" = "aria2\aria2c.exe"
+    "git" = "git\bin\git.exe"
+    "bash" = "git\bin\bash.exe"
+    "jcp" = "jcpicker\jcpicker.exe"
+    "picpick" = "picpick\picpick.exe"
+    "vnc" = "vncviewer\vncviewer.exe"
+    "tc" = "totalcommander\TOTALCMD64.EXE"
+    "code" = "vscode\bin\code.cmd"
+    "vlc" = "vlc\vlc.exe"
+    "chrome" = "chrome\chrome.exe"
+    "fsc" = "fscapture\FSCapture.exe"
+    "npp" = "notepadpp\notepad++.exe"
 }
 
-function Install-MyBin {
+function Install-SymlinkShims {
     param (
         $BinPath = $DEFAULT_PATH,
-        $TargetPath = $DEFAULT_PATH
+        $ShimPath = $DEFAULT_PATH
     )
 
     if ($Script:ADMIN) {
         foreach ($b in $MyBin.GetEnumerator())
         {
-            $link = Join-Path $BinPath $b.Name
-            $target = Join-Path $TargetPath $b.Value
-            $parent = Split-Path -Parent $target
-            if (-not (Test-Path $target))
+            $shim = Join-Path $ShimPath ($b.Name + ".exe")
+            $bin = Join-Path $BinPath $b.Value
+            if (-not (Test-Path $bin))
             {
-                if (-not (Test-Path $parent)) { New-Item -ItemType Directory $parent | Out-Null }
-                New-Item -ItemType File $target | Out-Null
+                # set bin placeholder
+                New-Item -Force -ItemType File $bin | Out-Null
             }
-            New-Item -ItemType SymbolicLink -Force -Path $link -Value $target | Out-Null
+            # set symlink
+            New-Item -ItemType SymbolicLink -Force -Path $shim -Value $bin | Out-Null
         }
         Write-Output "Done."
     }
@@ -45,4 +45,25 @@ function Install-MyBin {
     }
 }
 
-Export-ModuleMember -Function Install-MyBin
+function Install-ScriptShims {
+    param (
+        $BinPath = $DEFAULT_PATH,
+        $ShimPath = $DEFAULT_PATH
+    )
+
+    foreach ($b in $MyBin.GetEnumerator())
+    {
+        $shim = Join-Path $ShimPath ($b.Name + ".cmd")
+        $bin = Join-Path $BinPath $b.Value
+        if (-not (Test-Path $bin))
+        {
+            # set bin placeholder
+            New-Item -Force -ItemType File $bin | Out-Null
+        }
+        # set script
+        Set-Content $shim $bin
+    }
+    Write-Output "Done."
+}
+
+Export-ModuleMember -Function *
