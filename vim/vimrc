@@ -1,5 +1,5 @@
 set list
-set listchars=tab:>-,trail:-,extends:>,precedes:<,eol:$,nbsp:%
+set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
