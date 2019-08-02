@@ -2,34 +2,89 @@
 
 ## Default Paths
 
-### git
-user config: `~/.gitconfig`  
+### git/
+> *\**: `ANYWHERE`
 
-### powershell
-AllUsersAllHosts: `$PROFILE.AllUsersAllHosts`  
-AllUsersCurrentHost: `$PROFILE.AllUsersCurrentHost`  
-CurrentUserAllHosts: `$PROFILE.CurrentUserAllHosts`  
-CurrentUserCurrentHost: `$PROFILE.CurrentUserCurrentHost`  
+Add content to `~/.gitconfig`:
+```
+[include]
+    # On Windows
+    #path = "X:/PATH_TO_gitrc"
+    path = "PATH_TO_gitrc"
+```
 
-### shell
-user config: `~/.bashrc`  
+### powershell/
+> *\**: `ANYWHERE`
 
-### totalcommander
-config: `%COMMANDER_PATH%`  
+Get configuration file location for different scope  
+- *AllUsersAllHosts*: `$PROFILE.AllUsersAllHosts`  
+- *AllUsersCurrentHost*: `$PROFILE.AllUsersCurrentHost`  
+- *CurrentUserAllHosts*: `$PROFILE.CurrentUserAllHosts`  
+- *CurrentUserCurrentHost*: `$PROFILE.CurrentUserCurrentHost`  
 
-### vim
-user config: `~/.vimrc`  
+Add content to the configuration file above:
+```
+. PATH_TO_poshrc.ps1
+```
+
+### bash/
+> *\**: `ANYWHERE`
+
+Add content to `~/.bashrc`:
+```
+source PATH_TO_bashrc.sh
+```
+
+### totalcommander/
+> *\**: `INSTALLATION_DIR`
+
+### vim/
+> *\**: `ANYWHERE`
+
+Add content to `~/.vimrc` or on Windows `~\_vimrc`:
+```
+source PATH_TO_vimrc
+```
 
 ### vscode-portable
 user data: `%dir%/data/user-data/`  
 extensions: `%dir$/data/extensions/`  
 
-### vscode  
-user data: `%APPDATA%/Code/`  
-extensions: `%USERPROFILE%/.vscode/`  
+### vscode/
+- **Windows**
+  - *userdata\\\**: `%APPDATA%\Code\`
+  - *extensions\\\**: `%USERPROFILE%\.vscode\extensions\`
+- **Linux** 
+  - *userdata/\**: `~/.config/Code/`
+  - *extensions/\**: `~/.vscode/extensions/`
+- **Portable**
+  - *userdata/\**: `INSTALLATION_DIR/data/user-data/`
+  - *extensions/\**: `INSTALLATION_DIR/data/extensions/`
 
-### colortool
-schemes: `%dir%/schemes`  
 
-### everything
-config: `%dir%`  
+### i3/
+> *\**: `~/.config/i3/`
+
+### frp/
+> *\**: `ANYWHERE`
+
+### x/
+> *.Xresources*: `~/`
+
+### tigervnc/
+> *\**: ~/.vnc/
+
+## Linux Services Path
+
+### systemd
+- *system*: `/etc/systemd/system/`
+- *user*: `~/.config/systemd/user/`
+
+### netctl
+- *system*: `/etc/netctl/`
+
+## Windows Services Path
+
+### task scheduler
+- *system*: `C:\etc\tasks`
+- *user*: `~\.config\tasks`

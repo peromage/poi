@@ -61,7 +61,7 @@ function Install-ScriptShims {
             New-Item -Force -ItemType File $bin | Out-Null
         }
         # set script
-        Set-Content $shim $bin
+        Set-Content $shim "@call $bin %*"
     }
     Write-Output "Done."
 }

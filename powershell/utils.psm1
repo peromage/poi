@@ -147,6 +147,11 @@ function Get-EnvUserPath {
 
 function Set-EnVUserPath {
 	param ($path)
+	
+	if (-not $path.EndsWith(";")) {
+		$path = $path + ";"
+	}
+	
 	[System.Environment]::SetEnvironmentVariable("path", $path, [System.EnvironmentVariableTarget]::User)
 }
 
