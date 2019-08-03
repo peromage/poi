@@ -36,7 +36,17 @@ source PATH_TO_bashrc.sh
 ```
 
 ### totalcommander/
-> *\**: `INSTALLATION_DIR`
+> *DEFAULT.BAR*: `INSTALLATION_DIR`
+> *default.br2*: `INSTALLATION_DIR`
+> *tcrc.ini*: `ANYWHERE`
+
+Add content to `INSTALLATION_DIR\wincmd.ini`:
+```
+[Configuration]
+UseIniInProgramDir=7
+RedirectSection=1
+AlternateUserIni=PATH_TO_tcrc.ini
+```
 
 ### vim/
 > *\**: `ANYWHERE`
