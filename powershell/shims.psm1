@@ -15,21 +15,26 @@ $MyBin = @{
     "code" = "vscode\bin\code.cmd"
     "vlc" = "vlc\vlc.exe"
     "chrome" = "chrome\chrome.exe"
-    "fsc" = "fscapture\FSCapture.exe"
-    "npp" = "notepadpp\notepad++.exe"
+    "npp" = "notepad++\notepad++.exe"
+}
+
+function GetPathFromPrompt {
+	param($prompt)
+	$output = $DEFAULT_PATH
+	$input = Read-Host "$prompt ($output)"
+	if ($input -ne "") {$output = $input}
+	return $output
 }
 
 function Install-SymlinkShims {
-    param (
-        $BinPath = $DEFAULT_PATH,
-        $ShimPath = $DEFAULT_PATH
-    )
+    $binPath = GetPathFromPrompt "Binaries path"
+    $shimPath = GetPathFromPrompt "Shims path"
 
     if ($Script:ADMIN) {
         foreach ($b in $MyBin.GetEnumerator())
         {
-            $shim = Join-Path $ShimPath ($b.Name + ".exe")
-            $bin = Join-Path $BinPath $b.Value
+            $shim = Join-Path $shimPath ($b.Name + ".exe")
+            $bin = Join-Path $binPath $b.Value
             if (-not (Test-Path $bin))
             {
                 # set bin placeholder
@@ -46,15 +51,13 @@ function Install-SymlinkShims {
 }
 
 function Install-ScriptShims {
-    param (
-        $BinPath = $DEFAULT_PATH,
-        $ShimPath = $DEFAULT_PATH
-    )
-
+	$binPath = GetPathFromPrompt "Binaries path"
+    $shimPath = GetPathFromPrompt "Shims path"
+	
     foreach ($b in $MyBin.GetEnumerator())
     {
-        $shim = Join-Path $ShimPath ($b.Name + ".cmd")
-        $bin = Join-Path $BinPath $b.Value
+        $shim = Join-Path $shimPath ($b.Name + ".cmd")
+        $bin = Join-Path $binPath $b.Value
         if (-not (Test-Path $bin))
         {
             # set bin placeholder
@@ -66,4 +69,4 @@ function Install-ScriptShims {
     Write-Output "Done."
 }
 
-Export-ModuleMember -Function *
+Export-ModuleMember -Function Install-ScriptShims, Install-SymlinkShims
