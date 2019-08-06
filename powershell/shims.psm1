@@ -73,7 +73,10 @@ function Install-Shims {
 	$sel = "1"
 	Write-Host "[1] Script shims (recommended)"
 	Write-Host "[2] Symlink shims (administrator privilege required)"
-	$sel = Read-Host "Select a way to install (default: $sel)"
+    $tmp = Read-Host "Select a way to install (default: $sel)"
+    if ($tmp.Length -lt 0) {
+        $sel = $tmp
+    }
 	
 	switch ($sel) {
 		"1" {Install-ScriptShims}
