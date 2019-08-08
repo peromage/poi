@@ -1,0 +1,11 @@
+{
+    "dir": "dotnet",
+    "bin": [
+        {
+            "path": "dotnet.exe"
+        }
+    ],
+    "env": [
+        "."
+    ]
+}

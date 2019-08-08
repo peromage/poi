@@ -1,0 +1,8 @@
+{
+    "dir": "7zip",
+    "bin": [
+        {
+            "path": "7zFM.exe"
+        }
+    ]
+}

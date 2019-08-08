@@ -1,0 +1,10 @@
+{
+    "dir": "repo",
+    "bin": [
+        {
+            "path": "binary_path",
+            "args": "-3",
+            "interpreter": "py"
+        }
+    ]
+}

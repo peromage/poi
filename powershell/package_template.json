@@ -1,0 +1,13 @@
+{
+    "dir": "package_dir_name",
+    "bin": [
+        {
+            "path": "binary_path",
+            "args": "arguments",
+            "interpreter": "interpreter_path"
+        }
+    ],
+    "env": [
+        "environment_path"
+    ]
+}

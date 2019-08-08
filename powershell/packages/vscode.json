@@ -1,0 +1,10 @@
+{
+    "dir": "vscode",
+    "bin": [
+        {
+            "path": "binary_path",
+            "args": "/k",
+            "interpreter": "cmd.exe"
+        }
+    ]
+}

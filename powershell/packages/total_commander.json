@@ -1,0 +1,8 @@
+{
+    "dir": "totalcommander",
+    "bin": [
+        {
+            "path": "TOTALCMD64.EXE"
+        }
+    ]
+}

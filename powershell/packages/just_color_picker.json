@@ -1,0 +1,8 @@
+{
+    "dir": "jcp",
+    "bin": [
+        {
+            "path": "jcpicker.exe"
+        }
+    ]
+}

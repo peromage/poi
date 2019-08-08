@@ -1,0 +1,8 @@
+{
+    "dir": "chrome",
+    "bin": [
+        {
+            "path": "chrome.exe"
+        }
+    ]
+}

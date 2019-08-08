@@ -1,0 +1,11 @@
+{
+    "dir": "git",
+    "bin": [
+        {
+            "path": "bin\\git.exe"
+        },
+        {
+            "path": "bin\\bash.exe"
+        }
+    ]
+}

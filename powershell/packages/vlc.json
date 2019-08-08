@@ -1,0 +1,8 @@
+{
+    "dir": "vlc",
+    "bin": [
+        {
+            "path": "vlc.exe"
+        }
+    ]
+}

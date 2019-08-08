@@ -1,0 +1,8 @@
+{
+    "dir": "tigervnc",
+    "bin": [
+        {
+            "path": "vncviewer.exe"
+        }
+    ]
+}

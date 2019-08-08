@@ -1,0 +1,8 @@
+{
+    "dir": "aria2",
+    "bin": [
+        {
+            "path": "aria2c.exe"
+        }
+    ]
+}

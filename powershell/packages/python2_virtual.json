@@ -1,0 +1,10 @@
+{
+    "dir": "vpython2",
+    "bin": [
+        {
+            "path": "binary_path",
+            "args": "-noexit -command",
+            "interpreter": "powershell.exe"
+        }
+    ]
+}

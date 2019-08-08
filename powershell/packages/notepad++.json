@@ -1,0 +1,8 @@
+{
+    "dir": "notepad++",
+    "bin": [
+        {
+            "path": "notepad++.exe"
+        }
+    ]
+}
