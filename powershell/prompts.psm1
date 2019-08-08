@@ -1,7 +1,5 @@
 # default style
 $PS1 = '"$ENV:USERNAME@${ENV:COMPUTERNAME}:$pwd $ "'
-$ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()`
-    ).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 $ESC = [char]0x1b
 
 # substitute home prefix with tilde
@@ -18,7 +16,7 @@ function _PWD_HOME_TILDE_DIR_ {
 }
 
 function _PROMPT_CMDER_ {
-    if ($Script:ADMIN) {
+    if (Test-Administrator) {
         $Script:PS1 = '" $ESC[31m$pwd$ESC[0m`n !> "'
         $Host.ui.RawUI.WindowTitle = "Administrator:$ENV:USERNAME@$ENV:COMPUTERNAME"
     }
@@ -29,7 +27,7 @@ function _PROMPT_CMDER_ {
 }
 
 function _PROMPT_SIMPLE_ {
-    if ($Script:ADMIN) {
+    if (Test-Administrator) {
         $Script:PS1 = '"[$ESC[31m${ENV:USERNAME}$ESC[0m@${ENV:COMPUTERNAME}:$(_PWD_HOME_TILDE_DIR_)]# "'
         $Host.ui.RawUI.WindowTitle = "Administrator:$ENV:USERNAME@$ENV:COMPUTERNAME"
     }

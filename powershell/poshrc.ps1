@@ -1,6 +1,10 @@
 Set-StrictMode -Off
 
 # load modules
+if (Test-Path "$PSScriptRoot\core.psm1") { Import-Module "$PSScriptRoot\core.psm1"}
+
+if (Test-Path "$PSScriptRoot\env_helper.psm1") { Import-Module "$PSScriptRoot\env_helper.psm1"}
+
 if (Test-Path "$PSScriptRoot\alias.psm1") { Import-Module "$PSScriptRoot\alias.psm1"}
 
 if (Test-Path "$PSScriptRoot\utils.psm1") { Import-Module "$PSScriptRoot\utils.psm1" }
@@ -17,6 +21,6 @@ if (Test-Path "$PSScriptRoot\prompts.psm1") {
     PROMPT_SELECTOR "cmder"
 }
 
-function Prompt {
+function global:Prompt {
     return PS1
 }

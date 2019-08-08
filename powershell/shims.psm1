@@ -1,6 +1,3 @@
-$ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()`
-    ).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
-
 $DEFAULT_PATH = Join-Path -Path $HOME -ChildPath ".local\bin"
 
 $MyBin = @{
@@ -30,7 +27,7 @@ function Install-SymlinkShims {
     $binPath = GetPathFromPrompt "Binaries path"
     $shimPath = GetPathFromPrompt "Shims path"
 
-    if ($Script:ADMIN) {
+    if (Test-Administrator) {
         foreach ($b in $MyBin.GetEnumerator())
         {
             $shim = Join-Path $shimPath ($b.Name + ".exe")
