@@ -1,3 +1,7 @@
+Import-Module (Join-Path $PSScriptRoot "constants.psm1") `
+    -Variable $SAVEDIR, $DEFAULT_SCHEME, $DEFAULT_PSCOLORS `
+    -Function DEFAULT_PROMPT `
+    -ErrorAction Stop
 # Backup old prompt
 function _SAVED_PROMPT {""}
 Copy-Item function:prompt function:_SAVED_PROMPT
@@ -19,51 +23,59 @@ $_SAVED_PSCOLOR = [ordered]@{
     "Type" = (Get-PSReadLineOption).TypeColor
     "Variable" = (Get-PSReadLineOption).VariableColor
 }
-$_DEFAULT_SCHEME = "default"
+$_SAVED_SCHEME_PATH = Join-Path $SAVEDIR "saved_scheme.ini"
+$_DEFAULT_SCHEME_PATH = Join-Path $SAVEDIR "default_scheme.ini"
 $_CURRENT_PROMPT_MOD = ""
-$_PROMPTS_DIR = "$PSScriptRoot\styles\prompts\"
-$_PSCOLORS_DIR = "$PSScriptRoot\styles\themes\"
-$_SCHEMES_DIR = "$PSScriptRoot\styles\themes\schemes\"
-$_COLORTOOL = "$PSScriptRoot\styles\themes\ColorTool.exe"
+$_PROMPTS_DIR = Join-Path $PSScriptRoot "styles\prompts\"
+$_PSCOLORS_DIR = Join-Path $PSScriptRoot "styles\themes\"
+$_SCHEMES_DIR = Join-Path $PSScriptRoot "styles\themes\schemes\"
+$_COLORTOOL = Join-Path $PSScriptRoot "styles\themes\ColorTool.exe"
 
-function ChangePrompt([switch]$Restore, $style) {
+function ChangePrompt([switch]$Restore, [switch]$Default, [parameter(Mandatory = $true)]$style) {
     if ($Restore) {
         Copy-Item function:_SAVED_PROMPT function:prompt
+        Remove-Module $_CURRENT_PROMPT_MOD -ErrorAction Ignore
+        return
+    }
+    if ($Default) {
+        Copy-Item function:DEFAULT_PROMPT function:prompt
         Remove-Module $_CURRENT_PROMPT_MOD -ErrorAction Ignore
         return
     }
     $mod = Join-Path $_PROMPTS_DIR "$style.psm1"
     if (Test-Path $mod) {
         Remove-Module $_CURRENT_PROMPT_MOD -ErrorAction Ignore
-        Import-Module $mod
-        Copy-Item function:PSPrompt function:prompt -ErrorAction SilentlyContinue
+        Import-Module $mod -Function PSPrompt -ErrorAction Stop
+        Copy-Item function:PSPrompt function:prompt
         $_CURRENT_PROMPT_MOD = $mod
         return
     }
-    Write-Error "No such prompt module exists $mod"
+    Write-Error "No such prompt module found: $mod"
 }
 
-function ChangeTheme([switch]$Restore, $style) {
+function ChangeTheme([switch]$Restore, [switch]$Default, [parameter(Mandatory = $true)]$style) {
     if ($Restore) {
         Set-PSReadLineOption -Colors $_SAVED_PSCOLOR
-        _LoadColorToolScheme $_DEFAULT_SCHEME
+        Invoke-Expression "$_COLORTOOL -q $_SAVED_SCHEME_PATH"
+        return
+    }
+    if ($Default) {
+        Set-PSReadLineOption -Colors $DEFAULT_PSCOLORS
+        Set-Content $_DEFAULT_SCHEME_PATH $DEFAULT_SCHEME
+        Invoke-Expression "$_COLORTOOL -q $_DEFAULT_SCHEME_PATH"
         return
     }
     # PSColor is not mandatory
     $col = Join-Path $_PSCOLORS_DIR "$style.psm1"
     if (Test-Path $col) {
-        Import-Module $col
-        Set-PSReadLineOption -Colors $PSColor -ErrorAction SilentlyContinue
+        Import-Module $col -Variable $PSColor -ErrorAction Stop
+        Set-PSReadLineOption -Colors $PSColor
         Remove-Module $col
     }
-    _LoadColorToolScheme $style
-}
-
-function _LoadColorToolScheme($scheme) {
     # Now colortool has issue detecting schemes.
     # So we have to manually go through different suffixes.
     if (Test-Path $_COLORTOOL) {
-        $name = Join-Path $_SCHEMES_DIR $scheme
+        $name = Join-Path $_SCHEMES_DIR $style
         $sch = "$name.ini"
         if (Test-Path $sch) {
             Invoke-Expression "$_COLORTOOL -q $sch"
@@ -79,10 +91,10 @@ function _LoadColorToolScheme($scheme) {
             Invoke-Expression "$_COLORTOOL -q $sch"
             return
         }
-        Write-Error "No such scheme exists $scheme"
+        Write-Error "No such scheme found: $style"
         return
     }
-    Write-Error "ColorTool does not exist at $_COLORTOOL"
+    Write-Error "ColorTool was not found: $_COLORTOOL"
 }
 
 Export-ModuleMember -Function ChangePrompt, ChangeTheme

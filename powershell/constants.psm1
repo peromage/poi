@@ -1,4 +1,4 @@
-# color palette
+# Color palette
 $CONSOLE_PALETTE = [ordered]@{
     "30m" = [System.ConsoleColor]::Black
     "31m" = [System.ConsoleColor]::DarkBlue
@@ -26,7 +26,7 @@ $CONSOLE_PALETTE = [ordered]@{
     "47m" = [System.ConsoleColor]::Gray
 }
 
-# default PSReadline color scheme
+# Default PSReadline color scheme
 $DEFAULT_PSCOLORS = [ordered]@{
     "Command" = "$([char]0x1b)[93m"
     "Comment" = "$([char]0x1b)[32m"
@@ -45,7 +45,7 @@ $DEFAULT_PSCOLORS = [ordered]@{
     "Variable" = "$([char]0x1b)[92m"
 }
 
-# default color theme (ini format)
+# Default color theme (ini format)
 $DEFAULT_SCHEME = @"
 [table]
 DARK_BLACK = 38,40,53
@@ -89,8 +89,15 @@ $MyBin = @{
     "npp" = "notepad++\notepad++.exe"
 }
 
-# default style
-$DEFAULT_PROMPT = 'PS ' + '$pwd' + '> '
+# Default style
+function DEFAULT_PROMPT {
+    return "PS $pwd> "
+}
+
+# Escape sequence
 $ESC = [char]0x1b
 
-Export-ModuleMember -Variable *
+# Local save dir
+$SAVEDIR = Join-Path $PSScriptRoot "..\.save\"
+
+Export-ModuleMember -Variable * -Function *
