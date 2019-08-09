@@ -50,4 +50,18 @@ function ConvertJsonFileToHash($file) {
     return $hash
 }
 
+function ConvertHashToJson($hash) {
+    $json = ConvertTo-Json $hash
+    return $json
+}
+
+function ConvertJsonToHash($json) {
+    $obj = ConvertFrom-Json $json
+    $hash = @{}
+    foreach ($p in $obj.PSObject.Properties) {
+        $hash[$p.Name] = $p.Value
+    }
+    return $hash
+}
+
 Export-ModuleMember -Function *
