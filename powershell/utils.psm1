@@ -35,4 +35,19 @@ function Show-ColorTest {
     }
 }
 
+function ConvertHashToJsonFile($hash, $file) {
+    $json = ConvertTo-Json $hash
+    Set-Content $file $json -ErrorAction Stop
+}
+
+function ConvertJsonFileToHash($file) {
+    $json = Get-Content -Raw $file -ErrorAction Stop
+    $obj = ConvertFrom-Json $json
+    $hash = @{}
+    foreach ($p in $obj.PSObject.Properties) {
+        $hash[$p.Name] = $p.Value
+    }
+    return $hash
+}
+
 Export-ModuleMember -Function *
