@@ -76,7 +76,6 @@ function ChangeTheme([switch]$List, [switch]$Save, [switch]$Restore, [switch]$De
         return
     }
     if ($Save) {
-        ColorTool -o $SAVED_SCHEME_PATH
         ConvertHashToJsonFile $SAVED_PSCOLOR_PATH `
         @{
             "Command" = (Get-PSReadLineOption).CommandColor
@@ -95,6 +94,7 @@ function ChangeTheme([switch]$List, [switch]$Save, [switch]$Restore, [switch]$De
             "Type" = (Get-PSReadLineOption).TypeColor
             "Variable" = (Get-PSReadLineOption).VariableColor
         }
+        ColorTool -o $SAVED_SCHEME_PATH
         return
     }
     if ($Restore) {
@@ -150,13 +150,12 @@ function ChangeTheme([switch]$List, [switch]$Save, [switch]$Restore, [switch]$De
     Write-Output "No such scheme found: $style"
 }
 
-# ### Doing backup at startup ###
-# # Backup old prompt
-# ChangePrompt -Save | Out-Null
-# # Backup old theme
-# if ((-not (Test-Path $SAVED_PSCOLOR_PATH)) -or (-not (Test-Path $SAVED_SCHEME_PATH))) {
-#     ChangeTheme -Save | Out-Null
-# }
-# ### End backup ###
+## Auto backup while importing
+# Backup old prompt
+ChangePrompt -Save
+# Backup old theme
+if ((-not (Test-Path $SAVED_PSCOLOR_PATH)) -or (-not (Test-Path $SAVED_SCHEME_PATH))) {
+    ChangeTheme -Save
+}
 
 Export-ModuleMember -Function ChangePrompt, ChangeTheme
