@@ -4,15 +4,15 @@ Set-StrictMode -Off
 if (Test-Path "$PSScriptRoot\core.psm1") { Import-Module  -Global "$PSScriptRoot\core.psm1"}
 
 ### Optional modules
-RiceModule -Load aliases
-RiceModule -Load stylers
-#RiceModule -Load path_helpers
-#RiceModule -Load path_helpers
-#RiceModule -Load constants
-#RiceModule -Load utils
-#RiceModule -Load shim
+RiceModule -Load -Global aliases
+RiceModule -Load -Global stylers
+#RiceModule -Load -Global path_helpers
+#RiceModule -Load -Global constants
+#RiceModule -Load -Global utils
+#RiceModule -Load -Global shim
 
 ### Set environment (current shell)
 
+### Set default style
 ChangePrompt cmder
 ChangeTheme dracula-alt

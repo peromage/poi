@@ -45,32 +45,40 @@ function su {
     }
 }
 
-function RiceModule([switch]$Load, [switch]$Unload, [switch]$List, $mod) {
+function RiceModule([switch]$Load, [switch]$Global, [switch]$Unload, [switch]$List, [switch]$FullPath, $mod) {
     if ($List) {
-        Write-Host "Available Rice modules:`n======================="
-        Get-ChildItem $PSScriptRoot | Where-Object {$_.Name -match "\.psm1$"} | %{$_.BaseName}
+        Write-Output "Available Rice modules:`n======================="
+        Get-ChildItem $PSScriptRoot | Where-Object {$_.Name.EndsWith('.psm1')} | ForEach-Object {$_.BaseName}
         return
     }
-    else {
-        $path = Join-Path $PSScriptRoot "$mod.psm1"
-        if ($Load) {
-            if (Test-Path $path) {
+    if ($Load) {
+        $path = ""
+        if ($FullPath) {
+            $path = $mod
+        }
+        else {
+            $path = Join-Path $PSScriptRoot "$mod.psm1"
+        }
+        if (Test-Path $path) {
+            if ($Global) {
                 Import-Module -Global $path
-                return
             }
-            Write-Host -ForegroundColor Red "No such module found: $path"
-            return
-        }
-        if ($Unload) {
-            try {
-                Remove-Module $mod -ErrorAction Stop | Out-Null
-            } catch {
-                Write-Host -ForegroundColor Red "Could not unload module $mod"
+            else {
+                Import-Module $path
             }
             return
         }
+        Write-Output "No such module found: $path"
+        return
     }
-    
+    if ($Unload) {
+        try {
+            Remove-Module $mod -ErrorAction Stop | Out-Null
+        } catch {
+            Write-Output "Could not unload module $mod"
+        }
+        return
+    }
 }
 
 Export-ModuleMember -Function *

@@ -3,7 +3,7 @@
     "bin": [
         {
             "path": "binary_path",
-            "args": "-noexit -command",
+            "args": "-noexit -command $path",
             "interpreter": "powershell.exe"
         }
     ]

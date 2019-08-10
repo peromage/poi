@@ -1,4 +1,6 @@
-Import-Module (Join-Path $PSScriptRoot "utils.psm1")
+Import-Module (Join-Path $PSScriptRoot "core.psm1")
+Import-Module (Join-Path $PSScriptRoot "json_utils.psm1")
+Import-Module (Join-Path $PSScriptRoot "file_utils.psm1")
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
     -Variable SAVEDIR, DEFAULT_SCHEME, DEFAULT_PSCOLORS `
     -Function DEFAULT_PROMPT `
@@ -18,7 +20,7 @@ function _SAVED_PROMPT {""}
 ### Private methods
 function ColorTool {
     if (-not (Test-Path $_COLORTOOL)) {
-        Write-Host -ForegroundColor Red "ColorTool was not found at: $_COLORTOOL"
+        Write-Output "ColorTool was not found at: $_COLORTOOL"
         return
     }
     $ctargs = $args -join " "
@@ -34,42 +36,49 @@ function SetPSColorFromJson([switch]$File, $json) {
     }
 }
 
-function UnloadModule($mod) {
-    try {
-        Remove-Module $mod -ErrorAction Stop | Out-Null
-    } catch {
-        
+# Recursively unload all prompt modules in prompt dir
+function UnloadAllPromptMod {
+    Copy-Item function:DEFAULT_PROMPT function:prompt
+    foreach ($i in (FilterFilesWithoutExtension $_PROMPTS_DIR '.psm1')) {
+        RiceModule -Unload $i | Out-Null
     }
 }
 ### End private methods
 
-function ChangePrompt([switch]$Save, [switch]$Restore, [switch]$Default, $style) {
+function ChangePrompt([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style) {
+    if ($List) {
+        FilterFilesWithoutExtension $_PROMPTS_DIR '.psm1'
+        return
+    }
     if ($Save) {
         Copy-Item function:prompt function:_SAVED_PROMPT
         return
     }
     if ($Restore) {
+        UnloadAllPromptMod
         Copy-Item function:_SAVED_PROMPT function:prompt
-        UnloadModule $_CURRENT_PROMPT_MOD
         return
     }
     if ($Default) {
-        Copy-Item function:DEFAULT_PROMPT function:prompt
-        UnloadModule $_CURRENT_PROMPT_MOD
+        UnloadAllPromptMod
         return
     }
     $mod = Join-Path $_PROMPTS_DIR "$style.psm1"
     if (Test-Path $mod) {
-        UnloadModule $_CURRENT_PROMPT_MOD
-        Import-Module $mod -Function PSPrompt -ErrorAction Stop
+        UnloadAllPromptMod
+        RiceModule -Load -Global -FullPath $mod
         Copy-Item function:PSPrompt function:prompt
-        $_CURRENT_PROMPT_MOD = $mod
+        $_CURRENT_PROMPT_MOD = $style
         return
     }
-    Write-Host -ForegroundColor Red "No such prompt module found: $mod"
+    Write-Output "No such prompt module found: $mod"
 }
 
-function ChangeTheme([switch]$Save, [switch]$Restore, [switch]$Default, $style) {
+function ChangeTheme([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style) {
+    if ($List) {
+        ColorTool -s
+        return
+    }
     if ($Save) {
         ColorTool -o $_SAVED_SCHEME_PATH
         ConvertHashToJsonFile `
@@ -97,13 +106,13 @@ function ChangeTheme([switch]$Save, [switch]$Restore, [switch]$Default, $style) 
             SetPSColorFromJson -File $_SAVED_PSCOLOR_PATH
         }
         else {
-            Write-Host -ForegroundColor Red "No saved pscolor found: $_SAVED_PSCOLOR_PATH"
+            Write-Output "No saved pscolor found: $_SAVED_PSCOLOR_PATH"
         }
         if (Test-Path $_SAVED_SCHEME_PATH) {
             ColorTool -q $_SAVED_SCHEME_PATH
         }
         else {
-            Write-Host -ForegroundColor Red "No saved color scheme found: $_SAVED_SCHEME_PATH"
+            Write-Output "No saved color scheme found: $_SAVED_SCHEME_PATH"
         }
         return
     }
@@ -140,7 +149,7 @@ function ChangeTheme([switch]$Save, [switch]$Restore, [switch]$Default, $style) 
         ColorTool -q $sch
         return
     }
-    Write-Host -ForegroundColor Red "No such scheme found: $style"
+    Write-Output "No such scheme found: $style"
 }
 
 ### Doing backup at startup ###
