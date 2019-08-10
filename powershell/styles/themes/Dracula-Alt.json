@@ -1,0 +1,10 @@
+{
+    "Parameter":  "Gray",
+    "String":  "Yellow",
+    "Operator":  "Magenta",
+    "Variable":  "White",
+    "Type":  "Cyan",
+    "Comment":  "DarkCyan",
+    "Command":  "Green",
+    "Number":  "Blue"
+}
