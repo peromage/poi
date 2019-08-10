@@ -10,9 +10,9 @@ $_SAVED_SCHEME_PATH = Join-Path $SAVEDIR "saved_scheme.ini"
 $_DEFAULT_SCHEME_PATH = Join-Path $SAVEDIR "default_scheme.ini"
 $_CURRENT_PROMPT_MOD = ""
 $_PROMPTS_DIR = Join-Path $PSScriptRoot "styles\prompts\"
-$_PSCOLORS_DIR = Join-Path $PSScriptRoot "styles\themes\"
-$_SCHEMES_DIR = Join-Path $PSScriptRoot "styles\themes\schemes\"
-$_COLORTOOL = Join-Path $PSScriptRoot "styles\themes\ColorTool.exe"
+$_PSCOLORS_DIR = Join-Path $PSScriptRoot "styles\pscolors\"
+$_SCHEMES_DIR = Join-Path $PSScriptRoot "styles\schemes\"
+$_COLORTOOL = Join-Path $PSScriptRoot "styles\ColorTool.exe"
 function _SAVED_PROMPT {""}
 ### End constants
 
