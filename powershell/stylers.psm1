@@ -25,8 +25,13 @@ function ColorTool {
     Invoke-Expression "$_COLORTOOL $ctargs"
 }
 
-function SetPSColorFromJsonFile($file) {
-    Set-PSReadLineOption -Colors (ConvertJsonFileToHash $file)
+function SetPSColorFromJson([switch]$File, $json) {
+    if ($File) {
+        Set-PSReadLineOption -Colors (ConvertJsonFileToHash $json)
+    }
+    else {
+        Set-PSReadLineOption -Colors (ConvertJsonToHash $json)
+    }
 }
 
 function UnloadModule($mod) {
@@ -89,7 +94,7 @@ function ChangeTheme([switch]$Save, [switch]$Restore, [switch]$Default, $style) 
     }
     if ($Restore) {
         if (Test-Path $_SAVED_PSCOLOR_PATH) {
-            SetPSColorFromJsonFile $_SAVED_PSCOLOR_PATH
+            SetPSColorFromJson -File $_SAVED_PSCOLOR_PATH
         }
         else {
             Write-Host -ForegroundColor Red "No saved pscolor found: $_SAVED_PSCOLOR_PATH"
@@ -103,7 +108,7 @@ function ChangeTheme([switch]$Save, [switch]$Restore, [switch]$Default, $style) 
         return
     }
     if ($Default) {
-        SetPSColorFromJsonFile $DEFAULT_PSCOLORS
+        SetPSColorFromJson $DEFAULT_PSCOLORS
         Set-Content $_DEFAULT_SCHEME_PATH $DEFAULT_SCHEME
         ColorTool -q $_DEFAULT_SCHEME_PATH
         Remove-Item $_DEFAULT_SCHEME_PATH
@@ -112,7 +117,10 @@ function ChangeTheme([switch]$Save, [switch]$Restore, [switch]$Default, $style) 
     # PSColor is not mandatory
     $col = Join-Path $_PSCOLORS_DIR "$style.json"
     if (Test-Path $col) {
-        SetPSColorFromJsonFile $col
+        SetPSColorFromJson -File $col
+    }
+    else {
+        SetPSColorFromJson $DEFAULT_PSCOLORS
     }
     # Now colortool has issue detecting schemes.
     # So we have to manually go through different suffixes.
