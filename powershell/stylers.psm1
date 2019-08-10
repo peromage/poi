@@ -1,6 +1,5 @@
 Import-Module (Join-Path $PSScriptRoot "core.psm1")
 Import-Module (Join-Path $PSScriptRoot "json_utils.psm1")
-Import-Module (Join-Path $PSScriptRoot "file_utils.psm1")
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
     -Variable SAVEDIR, DEFAULT_SCHEME, DEFAULT_PSCOLORS `
     -Function DEFAULT_PROMPT `
@@ -39,15 +38,16 @@ function SetPSColorFromJson([switch]$File, $json) {
 # Recursively unload all prompt modules in prompt dir
 function UnloadAllPromptMod {
     Copy-Item function:DEFAULT_PROMPT function:prompt
-    foreach ($i in (FilterFilesWithoutExtension $_PROMPTS_DIR '.psm1')) {
-        RiceModule -Unload $i | Out-Null
+    $loaded = Get-Module | Where-Object {$_.Path.StartsWith($_PROMPTS_DIR)}
+    foreach ($i in $loaded) {
+        RiceModule -Unload $i.Name
     }
 }
 ### End private methods
 
 function ChangePrompt([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style) {
     if ($List) {
-        FilterFilesWithoutExtension $_PROMPTS_DIR '.psm1'
+        Get-ChildItem $_PROMPTS_DIR | Where-Object {$_.Name.EndsWith('.psm1')} | ForEach-Object {$_.BaseName}
         return
     }
     if ($Save) {
