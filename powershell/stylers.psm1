@@ -8,11 +8,10 @@ Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
 $_SAVED_PSCOLOR_PATH = Join-Path $SAVEDIR "saved_pscolor.json"
 $_SAVED_SCHEME_PATH = Join-Path $SAVEDIR "saved_scheme.ini"
 $_DEFAULT_SCHEME_PATH = Join-Path $SAVEDIR "default_scheme.ini"
-$_CURRENT_PROMPT_MOD = ""
+$_COLORTOOL = Join-Path $PSScriptRoot "styles\ColorTool.exe"
 $_PROMPTS_DIR = Join-Path $PSScriptRoot "styles\prompts\"
 $_PSCOLORS_DIR = Join-Path $PSScriptRoot "styles\pscolors\"
 $_SCHEMES_DIR = Join-Path $PSScriptRoot "styles\schemes\"
-$_COLORTOOL = Join-Path $PSScriptRoot "styles\ColorTool.exe"
 function _SAVED_PROMPT {""}
 ### End constants
 
@@ -40,7 +39,7 @@ function UnloadAllPromptMod {
     Copy-Item function:DEFAULT_PROMPT function:prompt
     $loaded = Get-Module | Where-Object {$_.Path.StartsWith($_PROMPTS_DIR)}
     foreach ($i in $loaded) {
-        RiceModule -Unload $i.Name
+        RiceModule -Unload $i.Name | Out-Null
     }
 }
 ### End private methods
@@ -63,10 +62,10 @@ function ChangePrompt([switch]$List, [switch]$Save, [switch]$Restore, [switch]$D
         UnloadAllPromptMod
         return
     }
-    $mod = Join-Path $_PROMPTS_DIR "$style.psm1"
-    if (Test-Path $mod) {
-        UnloadAllPromptMod
-        RiceModule -Load -Global -FullPath $mod
+    $mod = Join-Path ($_PROMPTS_DIR.Substring($PSScriptRoot.Length)) "$style"
+    UnloadAllPromptMod
+    $ret = RiceModule -Load $mod
+    if ($ret[-1]) {
         Copy-Item function:PSPrompt function:prompt
         $_CURRENT_PROMPT_MOD = $style
         return
@@ -152,13 +151,13 @@ function ChangeTheme([switch]$List, [switch]$Save, [switch]$Restore, [switch]$De
     Write-Output "No such scheme found: $style"
 }
 
-### Doing backup at startup ###
-# Backup old prompt
-ChangePrompt -Save | Out-Null
-# Backup old theme
-if ((-not (Test-Path $_SAVED_PSCOLOR_PATH)) -or (-not (Test-Path $_SAVED_SCHEME_PATH))) {
-    ChangeTheme -Save | Out-Null
-}
-### End backup ###
+# ### Doing backup at startup ###
+# # Backup old prompt
+# ChangePrompt -Save | Out-Null
+# # Backup old theme
+# if ((-not (Test-Path $_SAVED_PSCOLOR_PATH)) -or (-not (Test-Path $_SAVED_SCHEME_PATH))) {
+#     ChangeTheme -Save | Out-Null
+# }
+# ### End backup ###
 
 Export-ModuleMember -Function ChangePrompt, ChangeTheme

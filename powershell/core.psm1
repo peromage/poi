@@ -45,39 +45,47 @@ function su {
     }
 }
 
-function RiceModule([switch]$Load, [switch]$Global, [switch]$Unload, [switch]$List, [switch]$FullPath, $mod) {
+# Only works for Rice modules
+function RiceModule([switch]$Load, [switch]$Local, [switch]$Unload, [switch]$List, [string]$mod) {
     if ($List) {
         Write-Output "Available Rice modules:`n======================="
         Get-ChildItem $PSScriptRoot | Where-Object {$_.Name.EndsWith('.psm1')} | ForEach-Object {$_.BaseName}
         return
     }
+    # Use relative path to load
     if ($Load) {
-        $path = ""
-        if ($FullPath) {
-            $path = $mod
-        }
-        else {
-            $path = Join-Path $PSScriptRoot "$mod.psm1"
-        }
+        $path = Join-Path $PSScriptRoot "$mod.psm1"
         if (Test-Path $path) {
-            if ($Global) {
-                Import-Module -Global $path
-            }
-            else {
+            if ($Local) {
                 Import-Module $path
             }
-            return
+            else {
+                Import-Module -Global $path
+            }
+            return $true
         }
-        Write-Output "No such module found: $path"
-        return
+        else {
+            # Write-Output "No such module found: $path"
+            return $false
+        }
     }
+    # Give module name to unload
     if ($Unload) {
         try {
-            Remove-Module $mod -ErrorAction Stop | Out-Null
-        } catch {
-            Write-Output "Could not unload module $mod"
+            $loaded = Get-Module -Name $mod -ErrorAction Stop
+            if ($loaded.Path.StartsWith($PSScriptRoot)) {
+                Remove-Module $loaded.Name
+                return $true
+            }
+            else {
+                # Write-Output "Not a Rice Module. Use <Remove-Module> to remove."
+                return $false
+            }
         }
-        return
+        catch {
+            # Write-Output "Could not unload module $mod"
+            return $false
+        }
     }
 }
 
