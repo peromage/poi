@@ -1,13 +1,10 @@
 Import-Module (Join-Path $PSScriptRoot "core.psm1")
 Import-Module (Join-Path $PSScriptRoot "json_utils.psm1")
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
-    -Variable SAVEDIR, DEFAULT_SCHEME, DEFAULT_PSCOLORS `
+    -Variable SAVEDIR, DEFAULT_SCHEME, DEFAULT_PSCOLORS, SAVED_SCHEME_PATH, SAVED_PSCOLOR_PATH `
     -Function DEFAULT_PROMPT `
 
 ### Variables
-$_SAVED_PSCOLOR_PATH = Join-Path $SAVEDIR "saved_pscolor.json"
-$_SAVED_SCHEME_PATH = Join-Path $SAVEDIR "saved_scheme.ini"
-$_DEFAULT_SCHEME_PATH = Join-Path $SAVEDIR "default_scheme.ini"
 $_COLORTOOL = Join-Path $PSScriptRoot "styles\ColorTool.exe"
 $_PROMPTS_DIR = Join-Path $PSScriptRoot "styles\prompts\"
 $_PSCOLORS_DIR = Join-Path $PSScriptRoot "styles\pscolors\"
@@ -79,8 +76,8 @@ function ChangeTheme([switch]$List, [switch]$Save, [switch]$Restore, [switch]$De
         return
     }
     if ($Save) {
-        ColorTool -o $_SAVED_SCHEME_PATH
-        ConvertHashToJsonFile `
+        ColorTool -o $SAVED_SCHEME_PATH
+        ConvertHashToJsonFile $SAVED_PSCOLOR_PATH `
         @{
             "Command" = (Get-PSReadLineOption).CommandColor
             "Comment" = (Get-PSReadLineOption).CommentColor
@@ -97,29 +94,31 @@ function ChangeTheme([switch]$List, [switch]$Save, [switch]$Restore, [switch]$De
             "String" = (Get-PSReadLineOption).StringColor
             "Type" = (Get-PSReadLineOption).TypeColor
             "Variable" = (Get-PSReadLineOption).VariableColor
-        } $_SAVED_PSCOLOR_PATH
+        }
         return
     }
     if ($Restore) {
-        if (Test-Path $_SAVED_PSCOLOR_PATH) {
-            SetPSColorFromJson -File $_SAVED_PSCOLOR_PATH
+        if (Test-Path $SAVED_PSCOLOR_PATH) {
+            SetPSColorFromJson -File $SAVED_PSCOLOR_PATH
         }
         else {
-            Write-Output "No saved pscolor found: $_SAVED_PSCOLOR_PATH"
+            Write-Output "No saved pscolor found: $SAVED_PSCOLOR_PATH"
         }
-        if (Test-Path $_SAVED_SCHEME_PATH) {
-            ColorTool -q $_SAVED_SCHEME_PATH
+        if (Test-Path $SAVED_SCHEME_PATH) {
+            ColorTool -q $SAVED_SCHEME_PATH
         }
         else {
-            Write-Output "No saved color scheme found: $_SAVED_SCHEME_PATH"
+            Write-Output "No saved color scheme found: $SAVED_SCHEME_PATH"
         }
         return
     }
     if ($Default) {
         SetPSColorFromJson $DEFAULT_PSCOLORS
-        Set-Content $_DEFAULT_SCHEME_PATH $DEFAULT_SCHEME
-        ColorTool -q $_DEFAULT_SCHEME_PATH
-        Remove-Item $_DEFAULT_SCHEME_PATH
+        $def = Join-Path $_SCHEMES_DIR ".default.ini"
+        New-Item -Force $def | Out-Null
+        Set-Content $def $DEFAULT_SCHEME
+        ColorTool -q $def
+        Remove-Item $def
         return
     }
     # PSColor is not mandatory
@@ -155,7 +154,7 @@ function ChangeTheme([switch]$List, [switch]$Save, [switch]$Restore, [switch]$De
 # # Backup old prompt
 # ChangePrompt -Save | Out-Null
 # # Backup old theme
-# if ((-not (Test-Path $_SAVED_PSCOLOR_PATH)) -or (-not (Test-Path $_SAVED_SCHEME_PATH))) {
+# if ((-not (Test-Path $SAVED_PSCOLOR_PATH)) -or (-not (Test-Path $SAVED_SCHEME_PATH))) {
 #     ChangeTheme -Save | Out-Null
 # }
 # ### End backup ###

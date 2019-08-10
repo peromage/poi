@@ -1,5 +1,6 @@
-function ConvertHashToJsonFile($hash, $file) {
+function ConvertHashToJsonFile($file, $hash) {
     $json = ConvertTo-Json $hash
+    New-Item -Force $file | Out-Null
     Set-Content $file $json -ErrorAction Stop
 }
 # Only depth 1 supported

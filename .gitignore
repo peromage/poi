@@ -1,2 +1,2 @@
 # Ignore local saved files
-.save/*
+**/.save/*
