@@ -1,10 +1,18 @@
-function _PROMPT_CMDER_ {
-    if (Test-Administrator) {
-        $Script:PS1 = '" $ESC[31m$pwd$ESC[0m`n !> "'
-        $Host.ui.RawUI.WindowTitle = "Administrator:$ENV:USERNAME@$ENV:COMPUTERNAME"
-    }
-    else {
-        $Script:PS1 = '" $ESC[32m$pwd$ESC[0m`n > "'
-        $Host.ui.RawUI.WindowTitle = "$ENV:USERNAME@$ENV:COMPUTERNAME"
-    }
+$_PS1 = ""
+$_TITLE = ""
+$ESC = [char]0x1b
+if (Test-Administrator) {
+    $_PS1 = '" $ESC[31m$pwd$ESC[0m`n !> "'
+    $_TITLE = "Administrator:$ENV:USERNAME@$ENV:COMPUTERNAME"
 }
+else {
+    $_PS1 = '" $ESC[32m$pwd$ESC[0m`n > "'
+    $_TITLE = "$ENV:USERNAME@$ENV:COMPUTERNAME"
+}
+
+function PSPrompt {
+    $Host.ui.RawUI.WindowTitle = $_TITLE
+    return Invoke-Expression $_PS1
+}
+
+Export-ModuleMember -Function PSPrompt

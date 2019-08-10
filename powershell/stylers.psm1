@@ -29,6 +29,15 @@ function ColorTool {
 function SetPSColorFromJsonFile($file) {
     Set-PSReadLineOption -Colors (ConvertJsonFileToHash $file)
 }
+
+function UnloadModule($mod) {
+    try {
+        Get-Module -Name $mod -ErrorAction Stop | Out-Null
+        Remove-Module $mod
+    } catch {
+        
+    }
+}
 ### End private methods
 
 function ChangePrompt([switch]$Save, [switch]$Restore, [switch]$Default, $style) {
@@ -38,17 +47,17 @@ function ChangePrompt([switch]$Save, [switch]$Restore, [switch]$Default, $style)
     }
     if ($Restore) {
         Copy-Item function:_SAVED_PROMPT function:prompt
-        Remove-Module $_CURRENT_PROMPT_MOD -ErrorAction Ignore
+        UnloadModule $_CURRENT_PROMPT_MOD
         return
     }
     if ($Default) {
         Copy-Item function:DEFAULT_PROMPT function:prompt
-        Remove-Module $_CURRENT_PROMPT_MOD -ErrorAction Ignore
+        UnloadModule $_CURRENT_PROMPT_MOD
         return
     }
     $mod = Join-Path $_PROMPTS_DIR "$style.psm1"
     if (Test-Path $mod) {
-        Remove-Module $_CURRENT_PROMPT_MOD -ErrorAction Ignore
+        UnloadModule $_CURRENT_PROMPT_MOD
         Import-Module $mod -Function PSPrompt -ErrorAction Stop
         Copy-Item function:PSPrompt function:prompt
         $_CURRENT_PROMPT_MOD = $mod
