@@ -39,7 +39,7 @@ function Remove-EnvUserPath {
 	Set-EnVUserPath $newPath
 }
 
-function Find-EnvUserPath {
+function Test-EnvUserPath {
 	param($path)
 	
 	$currPath = Get-EnvUserPath
