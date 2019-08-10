@@ -45,4 +45,32 @@ function su {
     }
 }
 
+function RiceModule([switch]$Load, [switch]$Unload, [switch]$List, $mod) {
+    if ($List) {
+        Write-Host "Available Rice modules:`n======================="
+        Get-ChildItem $PSScriptRoot | Where-Object {$_.Name -match "\.psm1$"} | %{$_.BaseName}
+        return
+    }
+    else {
+        $path = Join-Path $PSScriptRoot "$mod.psm1"
+        if ($Load) {
+            if (Test-Path $path) {
+                Import-Module -Global $path
+                return
+            }
+            Write-Host -ForegroundColor Red "No such module found: $path"
+            return
+        }
+        if ($Unload) {
+            try {
+                Remove-Module $mod -ErrorAction Stop | Out-Null
+            } catch {
+                Write-Host -ForegroundColor Red "Could not unload module $mod"
+            }
+            return
+        }
+    }
+    
+}
+
 Export-ModuleMember -Function *

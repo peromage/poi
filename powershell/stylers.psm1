@@ -1,8 +1,7 @@
+Import-Module (Join-Path $PSScriptRoot "utils.psm1")
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
     -Variable SAVEDIR, DEFAULT_SCHEME, DEFAULT_PSCOLORS `
     -Function DEFAULT_PROMPT `
-    -ErrorAction Stop
-Import-Module (Join-Path $PSScriptRoot "utils.psm1") -ErrorAction Stop
 
 ### Variables
 $_SAVED_PSCOLOR_PATH = Join-Path $SAVEDIR "saved_pscolor.json"
@@ -32,8 +31,7 @@ function SetPSColorFromJsonFile($file) {
 
 function UnloadModule($mod) {
     try {
-        Get-Module -Name $mod -ErrorAction Stop | Out-Null
-        Remove-Module $mod
+        Remove-Module $mod -ErrorAction Stop | Out-Null
     } catch {
         
     }
