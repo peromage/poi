@@ -16,5 +16,5 @@ RiceModule -Load stylers
 ### Set environment (current shell)
 
 ### Init style
-ChangePrompt cmder
+ChangePrompt p-cmder
 ChangeTheme dracula-alt
