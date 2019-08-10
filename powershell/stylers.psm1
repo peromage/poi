@@ -22,7 +22,8 @@ function ColorTool {
     Invoke-Expression "$_COLORTOOL $ctargs"
 }
 
-function SetPSColorFromJson([switch]$File, $json) {
+function SetPSColorFromJson {
+    param ([switch]$File, $json)
     if ($File) {
         Set-PSReadLineOption -Colors (ConvertJsonFileToHash $json)
     }
@@ -41,7 +42,9 @@ function UnloadAllPromptMod {
 }
 ### End private methods
 
-function ChangePrompt([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style) {
+function ChangePrompt {
+    param ([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style)
+
     if ($List) {
         Get-ChildItem $_PROMPTS_DIR | Where-Object {$_.Name.EndsWith('.psm1')} | ForEach-Object {$_.BaseName}
         return
@@ -70,7 +73,9 @@ function ChangePrompt([switch]$List, [switch]$Save, [switch]$Restore, [switch]$D
     Write-Output "No such prompt module found: $mod"
 }
 
-function ChangeTheme([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style) {
+function ChangeTheme {
+    param ([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style)
+
     if ($List) {
         ColorTool -s
         return

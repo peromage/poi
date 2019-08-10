@@ -1,13 +1,11 @@
-function Add-EnvUserPath($path) {
-    
+function Add-EnvUserPath {
+    param ($path)
     if (Test-EnvUserPath $path) {
         return
     }
-    
     if (-not $path.EndsWith(";")) {
         $path = $path + ";"
     }
-    
     $currPath = Get-EnvUserPath
     if (-not $currPath.EndsWith(";")) {
         $currPath = $currPath + ";"
@@ -16,12 +14,11 @@ function Add-EnvUserPath($path) {
     Set-EnVUserPath $currPath
 }
 
-function Remove-EnvUserPath($path) {
-    
+function Remove-EnvUserPath {
+    param ($path)
     if (-not (Test-EnvUserPath $path)) {
         return
     }
-    
     $currPath = Get-EnvUserPath
     $arr = $currPath.Split(';')
     $newPath = ""
@@ -37,8 +34,8 @@ function Remove-EnvUserPath($path) {
     Set-EnVUserPath $newPath
 }
 
-function Test-EnvUserPath($path) {
-    
+function Test-EnvUserPath {
+    param ($path)
     $currPath = Get-EnvUserPath
     $arr = $currPath.Split(';')
     foreach ($i in $arr) {
@@ -57,12 +54,11 @@ function Get-EnvUserPath {
     return $path
 }
 
-function Set-EnVUserPath($path) {
-    
+function Set-EnVUserPath {
+    param ($path)
     if (-not $path.EndsWith(";")) {
         $path = $path + ";"
     }
-    
     [System.Environment]::SetEnvironmentVariable("path", $path, [System.EnvironmentVariableTarget]::User)
 }
 
