@@ -17,7 +17,7 @@ function CopyFile {
 
     $dir = [System.IO.Path]::GetDirectoryName($target)
     if (-not (Test-Path $dir)) {
-        New-Item -ItemType Directory $dir
+        New-Item -ItemType Directory $dir | Out-Null
     }
     Copy-Item -Force $source $target
 }
@@ -27,7 +27,7 @@ function WriteFile {
 
     $dir = [System.IO.Path]::GetDirectoryName($target)
     if (-not (Test-Path $dir)) {
-        New-Item -ItemType Directory $dir
+        New-Item -ItemType Directory $dir | Out-Null
     }
     Set-Content -Force $target $content
 }
