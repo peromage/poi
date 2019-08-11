@@ -1,25 +1,20 @@
 Import-Module (Join-Path $PSScriptRoot "core.psm1")
 Import-Module (Join-Path $PSScriptRoot "json_utils.psm1")
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
-    -Variable SAVEDIR, DEFAULT_SCHEME, DEFAULT_PSCOLORS, SAVED_SCHEME_PATH, SAVED_PSCOLOR_PATH `
+    -Variable SAVEDIR, DEFAULT_SCHEME, DEFAULT_PSCOLORS, SAVED_SCHEME_PATH, SAVED_PSCOLOR_PATH, `
+        COLORTOOL, PROMPTS_DIR, PSCOLORS_DIR, SCHEMES_DIR `
     -Function DEFAULT_PROMPT `
 
-### Variables
-$_COLORTOOL = Join-Path $PSScriptRoot "styles\ColorTool.exe"
-$_PROMPTS_DIR = Join-Path $PSScriptRoot "styles\prompts\"
-$_PSCOLORS_DIR = Join-Path $PSScriptRoot "styles\pscolors\"
-$_SCHEMES_DIR = Join-Path $PSScriptRoot "styles\schemes\"
 function _SAVED_PROMPT {""}
-### End constants
 
 ### Private methods
 function ColorTool {
-    if (-not (Test-Path $_COLORTOOL)) {
-        Write-Output "ColorTool was not found at: $_COLORTOOL"
+    if (-not (Test-Path $COLORTOOL)) {
+        Write-Output "ColorTool was not found at: $COLORTOOL"
         return
     }
     $ctargs = $args -join " "
-    Invoke-Expression "$_COLORTOOL $ctargs"
+    Invoke-Expression "$COLORTOOL $ctargs"
 }
 
 function SetPSColorFromJson {
@@ -35,7 +30,7 @@ function SetPSColorFromJson {
 # Recursively unload all prompt modules in prompt dir
 function UnloadAllPromptMod {
     Copy-Item function:DEFAULT_PROMPT function:prompt
-    $loaded = Get-Module | Where-Object {$_.Path.StartsWith($_PROMPTS_DIR)}
+    $loaded = Get-Module | Where-Object {$_.Path.StartsWith($PROMPTS_DIR)}
     foreach ($i in $loaded) {
         RiceModule -Unload $i.Name | Out-Null
     }
@@ -46,7 +41,7 @@ function ChangePrompt {
     param ([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style)
 
     if ($List) {
-        Get-ChildItem $_PROMPTS_DIR | Where-Object {$_.Name.EndsWith('.psm1')} | ForEach-Object {$_.BaseName}
+        Get-ChildItem $PROMPTS_DIR | Where-Object {$_.Name.EndsWith('.psm1')} | ForEach-Object {$_.BaseName}
         return
     }
     if ($Save) {
@@ -62,7 +57,7 @@ function ChangePrompt {
         UnloadAllPromptMod
         return
     }
-    $mod = Join-Path ($_PROMPTS_DIR.Substring($PSScriptRoot.Length)) "$style"
+    $mod = Join-Path ($PROMPTS_DIR.Substring($PSScriptRoot.Length)) "$style"
     UnloadAllPromptMod
     $ret = RiceModule -Load $mod
     if ($ret[-1]) {
@@ -119,7 +114,7 @@ function ChangeTheme {
     }
     if ($Default) {
         SetPSColorFromJson $DEFAULT_PSCOLORS
-        $def = Join-Path $_SCHEMES_DIR ".default.ini"
+        $def = Join-Path $SCHEMES_DIR ".default.ini"
         New-Item -Force $def | Out-Null
         Set-Content $def $DEFAULT_SCHEME
         ColorTool -q $def
@@ -127,7 +122,7 @@ function ChangeTheme {
         return
     }
     # PSColor is not mandatory
-    $col = Join-Path $_PSCOLORS_DIR "$style.json"
+    $col = Join-Path $PSCOLORS_DIR "$style.json"
     if (Test-Path $col) {
         SetPSColorFromJson -File $col
     }
@@ -136,7 +131,7 @@ function ChangeTheme {
     }
     # Now colortool has issue detecting schemes.
     # So we have to manually go through different suffixes.
-    $name = Join-Path $_SCHEMES_DIR $style
+    $name = Join-Path $SCHEMES_DIR $style
     $sch = "$name.ini"
     if (Test-Path $sch) {
         ColorTool -q $sch

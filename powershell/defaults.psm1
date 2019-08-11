@@ -72,8 +72,17 @@ function DEFAULT_PROMPT {
 
 # Local save dir
 $SAVEDIR = Join-Path $PSScriptRoot ".save\"
-# Saved files
+
+# Syler related
 $SAVED_PSCOLOR_PATH = Join-Path $SAVEDIR "saved_pscolor.json"
 $SAVED_SCHEME_PATH = Join-Path $SAVEDIR "saved_scheme.ini"
+$COLORTOOL = Join-Path $PSScriptRoot "styles\ColorTool.exe"
+$PROMPTS_DIR = Join-Path $PSScriptRoot "styles\prompts\"
+$PSCOLORS_DIR = Join-Path $PSScriptRoot "styles\pscolors\"
+$SCHEMES_DIR = Join-Path $PSScriptRoot "styles\schemes\"
+
+# Shim related
+$DEFAULT_BIN_PATH = Join-Path $HOME ".local\bin"
+$DEFAULT_SHIM_PATH = Join-Path $HOME ".local\shim"
 
 Export-ModuleMember -Variable * -Function *
