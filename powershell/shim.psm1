@@ -68,7 +68,7 @@ function RiceShim {
             Remove-Item $shimexe
         }
         else {
-
+            Write-Output "Specify package name. Use <RiceShim -List> to see all available packages."
         }
         return
     }
