@@ -10,10 +10,13 @@ RiceModule -Load stylers
 #RiceModule -Load path_helpers
 #RiceModule -Load constants
 #RiceModule -Load utils
-#RiceModule -Load shim
+RiceModule -Load shim
 } | Out-Null
+### End loading optional modules
 
 ### Set environment (current shell)
+
+### End set environment
 
 ### Init style
 # Backup old prompt
@@ -25,3 +28,4 @@ if ((-not (Test-Path "$PSScriptRoot\.save\saved_pscolor.json")) -or `
 }
 ChangePrompt p-cmder
 ChangeTheme dracula-alt
+### End init style

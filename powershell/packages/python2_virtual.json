@@ -2,7 +2,8 @@
     "dir": "vpython2",
     "bin": [
         {
-            "path": "binary_path",
+            "name": "py2",
+            "exec": "binary_path",
             "args": "-noexit -command $path",
             "interpreter": "powershell.exe"
         }

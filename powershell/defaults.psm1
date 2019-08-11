@@ -84,5 +84,7 @@ $SCHEMES_DIR = Join-Path $PSScriptRoot "styles\schemes\"
 # Shim related
 $DEFAULT_BIN_PATH = Join-Path $HOME ".local\bin"
 $DEFAULT_SHIM_PATH = Join-Path $HOME ".local\shim"
+$PACKAGES_DIR = Join-Path $PSScriptRoot "packages\"
+$SHIM_SRC_PATH = Join-Path $PSScriptRoot "shim_src\shim.cs"
 
 Export-ModuleMember -Variable * -Function *
