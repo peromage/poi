@@ -14,21 +14,13 @@ function FilterFilesWithFullPath {
 
 function CopyFile {
     param ($source, $target)
-
-    $dir = [System.IO.Path]::GetDirectoryName($target)
-    if (-not (Test-Path $dir)) {
-        New-Item -ItemType Directory $dir | Out-Null
-    }
+    New-Item -Force $target | Out-Null
     Copy-Item -Force $source $target
 }
 
 function WriteFile {
     param ($target, $content)
-
-    $dir = [System.IO.Path]::GetDirectoryName($target)
-    if (-not (Test-Path $dir)) {
-        New-Item -ItemType Directory $dir | Out-Null
-    }
+    New-Item -Force $target | Out-Null
     Set-Content -Force $target $content
 }
 

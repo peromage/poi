@@ -1,6 +1,6 @@
 Import-Module (Join-Path $PSScriptRoot "json_utils.psm1")
 Import-Module (Join-Path $PSScriptRoot "file_utils.psm1") `
-    -Function FilterFilesWithoutExtension
+    -Function FilterFilesWithoutExtension, WriteFile
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
     -Variable DEFAULT_SCHEME, DEFAULT_PSCOLORS, SAVED_SCHEME_PATH, SAVED_PSCOLOR_PATH, `
         COLORTOOL, PROMPTS_DIR, PSCOLORS_DIR, SCHEMES_DIR `
@@ -116,8 +116,7 @@ function ChangeTheme {
     if ($Default) {
         SetPSColorFromJson $DEFAULT_PSCOLORS
         $def = Join-Path $SCHEMES_DIR ".default.ini"
-        New-Item -Force $def | Out-Null
-        Set-Content $def $DEFAULT_SCHEME
+        WriteFile $def $DEFAULT_SCHEME
         ColorTool -q $def
         Remove-Item $def
         return
