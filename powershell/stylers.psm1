@@ -1,7 +1,7 @@
 Import-Module (Join-Path $PSScriptRoot "core.psm1")
 Import-Module (Join-Path $PSScriptRoot "json_utils.psm1")
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
-    -Variable SAVEDIR, DEFAULT_SCHEME, DEFAULT_PSCOLORS, SAVED_SCHEME_PATH, SAVED_PSCOLOR_PATH, `
+    -Variable DEFAULT_SCHEME, DEFAULT_PSCOLORS, SAVED_SCHEME_PATH, SAVED_PSCOLOR_PATH, `
         COLORTOOL, PROMPTS_DIR, PSCOLORS_DIR, SCHEMES_DIR `
     -Function DEFAULT_PROMPT `
 
@@ -148,14 +148,6 @@ function ChangeTheme {
         return
     }
     Write-Output "No such scheme found: $style"
-}
-
-## Auto backup while importing
-# Backup old prompt
-ChangePrompt -Save
-# Backup old theme
-if ((-not (Test-Path $SAVED_PSCOLOR_PATH)) -or (-not (Test-Path $SAVED_SCHEME_PATH))) {
-    ChangeTheme -Save
 }
 
 Export-ModuleMember -Function ChangePrompt, ChangeTheme

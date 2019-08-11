@@ -16,5 +16,12 @@ RiceModule -Load stylers
 ### Set environment (current shell)
 
 ### Init style
+# Backup old prompt
+ChangePrompt -Save
+# Backup old theme
+if ((-not (Test-Path "$PSScriptRoot\.save\saved_pscolor.json")) -or `
+    (-not (Test-Path "$PSScriptRoot\.save\saved_scheme.ini"))) {
+    ChangeTheme -Save
+}
 ChangePrompt p-cmder
 ChangeTheme dracula-alt
