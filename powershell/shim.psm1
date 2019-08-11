@@ -1,14 +1,14 @@
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
-    -Variable DEFAULT_BIN_PATH, DEFAULT_SHIM_PATH, PACKAGES_DIR
+    -Variable DEFAULT_BIN_PATH, DEFAULT_SHIM_PATH, PACKAGES_DIR, SHIM_SRC_PATH
 Import-Module (Join-Path $PSScriptRoot "file_utils.psm1") `
     -Function FilterFilesWithoutExtension, CopyFile, WriteFile
-    Import-Module (Join-Path $PSScriptRoot "file_utils.psm1") `
+Import-Module (Join-Path $PSScriptRoot "json_utils.psm1") `
     -Function ConvertJsonFileToHash
 
 function GetPathFromPrompt {
     param($prompt, $default)
     $output = $default
-    $input = Read-Host "$prompt ($output): "
+    $input = Read-Host "$prompt ($output)"
     if ($input -ne "") {$output = $input}
     return $output
 }
@@ -56,9 +56,9 @@ function RiceShim {
                             $execpath = $exec
                             $execargs = $b.args
                         }
-                        CopyFile $shimexe (Join-Path $spath $b.name+".exe")
-                        $shimconf = "path=$execpath`nargs=$execargs"
-                        WriteFile (Join-Path $spath $b.name+".shim") $shimconf
+                        $target = Join-Path $spath $b.name
+                        CopyFile $shimexe "$target.exe"
+                        WriteFile "$target.shim" "path=$execpath`nargs=$execargs"
                     }
                 }
                 else {
@@ -73,3 +73,5 @@ function RiceShim {
         return
     }
 }
+
+Export-ModuleMember -Function RiceShim

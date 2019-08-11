@@ -31,3 +31,5 @@ function WriteFile {
     }
     Set-Content $target $content
 }
+
+Export-ModuleMember -Function *
