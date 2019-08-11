@@ -1,3 +1,9 @@
+function Test-Administrator {
+    $ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()`
+        ).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+    return $ADMIN
+}
+
 # Console color test
 function Show-ColorTest {
     $width = 7

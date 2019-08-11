@@ -1,9 +1,3 @@
-function Test-Administrator {
-    $ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()`
-        ).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
-    return $ADMIN
-}
-
 # Only works for Rice modules
 function RiceModule {
     param ([switch]$Load, [switch]$Local, [switch]$Unload, [switch]$List, [string]$mod)

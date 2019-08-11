@@ -1,4 +1,3 @@
-Import-Module (Join-Path $PSScriptRoot "core.psm1")
 Import-Module (Join-Path $PSScriptRoot "json_utils.psm1")
 Import-Module (Join-Path $PSScriptRoot "file_utils.psm1") `
     -Function FilterFilesWithoutExtension
@@ -34,7 +33,7 @@ function UnloadAllPromptMod {
     Copy-Item function:DEFAULT_PROMPT function:prompt
     $loaded = Get-Module | Where-Object {$_.Path.StartsWith($PROMPTS_DIR)}
     foreach ($i in $loaded) {
-        RiceModule -Unload $i.Name | Out-Null
+        Remove-Module $i.Name
     }
 }
 ### End private methods
@@ -59,10 +58,10 @@ function ChangePrompt {
         UnloadAllPromptMod
         return
     }
-    $mod = Join-Path ($PROMPTS_DIR.Substring($PSScriptRoot.Length)) "$style"
     UnloadAllPromptMod
-    $ret = RiceModule -Load $mod
-    if ($ret[-1]) {
+    $mod = Join-Path $PROMPTS_DIR "$style.psm1"
+    if (Test-Path $mod) {
+        Import-Module $mod
         Copy-Item function:PSPrompt function:prompt
         $_CURRENT_PROMPT_MOD = $style
         return
