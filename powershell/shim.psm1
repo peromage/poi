@@ -49,7 +49,7 @@ function RiceShim {
                         # script file
                         if ($b.interpreter.Length -ne 0) {
                             $execpath = $b.interpreter
-                            $execargs = $b.args.Replace('$path', $exec)
+                            $execargs = $b.args.Replace('$exec', $exec)
                         }
                         # executable
                         else {

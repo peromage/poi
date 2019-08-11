@@ -1,6 +1,6 @@
 Import-Module (Join-Path $PSScriptRoot "core.psm1")
 Import-Module (Join-Path $PSScriptRoot "json_utils.psm1")
-Import-Module (Join-Path $PSScriptRoot "file_utils.psm1")
+Import-Module (Join-Path $PSScriptRoot "file_utils.psm1") `
     -Function FilterFilesWithoutExtension
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
     -Variable DEFAULT_SCHEME, DEFAULT_PSCOLORS, SAVED_SCHEME_PATH, SAVED_PSCOLOR_PATH, `

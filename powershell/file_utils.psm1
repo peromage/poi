@@ -19,7 +19,7 @@ function CopyFile {
     if (-not (Test-Path $dir)) {
         New-Item -ItemType Directory $dir
     }
-    Copy-Item $source $target
+    Copy-Item -Force $source $target
 }
 
 function WriteFile {
@@ -29,7 +29,7 @@ function WriteFile {
     if (-not (Test-Path $dir)) {
         New-Item -ItemType Directory $dir
     }
-    Set-Content $target $content
+    Set-Content -Force $target $content
 }
 
 Export-ModuleMember -Function *
