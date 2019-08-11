@@ -17,11 +17,11 @@ function RiceModule {
             else {
                 Import-Module -Global $path
             }
-            return $true
+            return
         }
         else {
-            # Write-Output "No such module found: $path"
-            return $false
+            Write-Output "No such module found: $path"
+            return
         }
     }
     # Give module name to unload
@@ -30,16 +30,16 @@ function RiceModule {
             $loaded = Get-Module -Name $mod -ErrorAction Stop
             if ($loaded.Path.StartsWith($PSScriptRoot)) {
                 Remove-Module $loaded.Name
-                return $true
+                return
             }
             else {
-                # Write-Output "Not a Rice Module. Use <Remove-Module> to remove."
-                return $false
+                Write-Output "$mod is not a Rice Module. Use <Remove-Module> to remove."
+                return
             }
         }
         catch {
-            # Write-Output "Could not unload module $mod"
-            return $false
+            Write-Output "Could not unload module $mod"
+            return
         }
     }
 }
