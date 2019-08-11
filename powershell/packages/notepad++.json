@@ -2,7 +2,8 @@
     "dir": "notepad++",
     "bin": [
         {
-            "path": "notepad++.exe"
+            "name": "npp",
+            "exec": "notepad++.exe"
         }
     ]
 }

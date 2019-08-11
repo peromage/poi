@@ -1,8 +1,9 @@
 {
-    "dir": "repo",
+    "dir": "git-repo",
     "bin": [
         {
-            "path": "binary_path",
+            "name": "repo",
+            "exec": "repo",
             "args": "-3",
             "interpreter": "py"
         }

@@ -1,5 +1,7 @@
 Import-Module (Join-Path $PSScriptRoot "core.psm1")
 Import-Module (Join-Path $PSScriptRoot "json_utils.psm1")
+Import-Module (Join-Path $PSScriptRoot "file_utils.psm1")
+    -Function FilterFilesWithoutExtension
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
     -Variable DEFAULT_SCHEME, DEFAULT_PSCOLORS, SAVED_SCHEME_PATH, SAVED_PSCOLOR_PATH, `
         COLORTOOL, PROMPTS_DIR, PSCOLORS_DIR, SCHEMES_DIR `
@@ -41,7 +43,7 @@ function ChangePrompt {
     param ([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style)
 
     if ($List) {
-        Get-ChildItem $PROMPTS_DIR | Where-Object {$_.Name.EndsWith('.psm1')} | ForEach-Object {$_.BaseName}
+        FilterFilesWithoutExtension $PROMPTS_DIR ".psm1"
         return
     }
     if ($Save) {

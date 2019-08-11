@@ -2,7 +2,8 @@
     "dir": "vscode",
     "bin": [
         {
-            "path": "binary_path",
+            "name": "code",
+            "exec": "bin\\code.cmd",
             "args": "/k",
             "interpreter": "cmd.exe"
         }

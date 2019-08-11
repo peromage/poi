@@ -2,7 +2,8 @@
     "dir": "chrome",
     "bin": [
         {
-            "path": "chrome.exe"
+            "name": "chrome",
+            "exec": "chrome.exe"
         }
     ]
 }

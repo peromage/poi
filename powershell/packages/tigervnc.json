@@ -2,7 +2,8 @@
     "dir": "tigervnc",
     "bin": [
         {
-            "path": "vncviewer.exe"
+            "name": "vnc",
+            "exec": "vncviewer.exe"
         }
     ]
 }

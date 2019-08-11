@@ -2,7 +2,8 @@
     "dir": "vlc",
     "bin": [
         {
-            "path": "vlc.exe"
+            "name": "vlc",
+            "exec": "vlc.exe"
         }
     ]
 }

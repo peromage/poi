@@ -2,7 +2,8 @@
     "dir": "aria2",
     "bin": [
         {
-            "path": "aria2c.exe"
+            "name": "aria2",
+            "exec": "aria2c.exe"
         }
     ]
 }

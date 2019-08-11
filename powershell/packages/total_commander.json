@@ -2,7 +2,8 @@
     "dir": "totalcommander",
     "bin": [
         {
-            "path": "TOTALCMD64.EXE"
+            "name": "tc",
+            "exec": "TOTALCMD64.EXE"
         }
     ]
 }

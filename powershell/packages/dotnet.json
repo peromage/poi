@@ -1,8 +1,9 @@
 {
-    "dir": "dotnet",
+    "dir": "dotnet-sdk",
     "bin": [
         {
-            "path": "dotnet.exe"
+            "name": "dotnet",
+            "exec": "dotnet.exe"
         }
     ],
     "env": [

@@ -2,10 +2,12 @@
     "dir": "git",
     "bin": [
         {
-            "path": "bin\\git.exe"
+            "name": "git",
+            "exec": "bin\\git.exe"
         },
         {
-            "path": "bin\\bash.exe"
+            "name": "bash",
+            "exec": "bin\\bash.exe"
         }
     ]
 }

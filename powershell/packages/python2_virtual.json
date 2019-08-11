@@ -3,8 +3,8 @@
     "bin": [
         {
             "name": "py2",
-            "exec": "binary_path",
-            "args": "-noexit -command $path",
+            "exec": "Scripts\\activate.ps1",
+            "args": "-noexit -command . $path",
             "interpreter": "powershell.exe"
         }
     ]

@@ -2,8 +2,9 @@
     "dir": "vpython3",
     "bin": [
         {
-            "path": "binary_path",
-            "args": "-noexit -command",
+            "name": "py3",
+            "exec": "Scripts\\activate.ps1",
+            "args": "-noexit -command . $path",
             "interpreter": "powershell.exe"
         }
     ]

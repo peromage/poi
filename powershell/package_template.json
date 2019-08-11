@@ -2,7 +2,8 @@
     "dir": "package_dir_name",
     "bin": [
         {
-            "path": "binary_path",
+            "name": "shortcut_name",
+            "exec": "binary_path",
             "args": "arguments",
             "interpreter": "interpreter_path"
         }
