@@ -5,12 +5,12 @@ if (Test-Path "$PSScriptRoot\core.psm1") {Import-Module -Global "$PSScriptRoot\c
 ### Loading optional modules
 # Suppress output
 Invoke-Command -ScriptBlock {
-#RiceModule -Load test_utils
+# RiceModule -Load test_utils
 RiceModule -Load commands
 RiceModule -Load stylers
-#RiceModule -Load path_helpers
-#RiceModule -Load constants
-RiceModule -Load shim
+# RiceModule -Load path_helpers
+# RiceModule -Load constants
+# RiceModule -Load shim
 } | Out-Null
 ### End loading optional modules
 
