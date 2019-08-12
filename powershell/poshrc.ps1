@@ -23,6 +23,6 @@ if ((-not (Test-Path "$PSScriptRoot\.save\saved_pscolor.json")) -or `
     (-not (Test-Path "$PSScriptRoot\.save\saved_scheme.ini"))) {
     RiceTheme -Save
 }
-RicePrompt p-cmder
+RicePrompt cmder
 RiceTheme dracula-alt
 ### End init style
