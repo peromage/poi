@@ -1,7 +1,7 @@
 $_PS1 = ""
 $_TITLE = ""
 $ESC = [char]0x1b
-if (Test-Administrator) {
+if (TestAdmin) {
     $_PS1 = '" $ESC[31m$pwd$ESC[0m`n !> "'
     $_TITLE = "Administrator:$ENV:USERNAME@$ENV:COMPUTERNAME"
 }

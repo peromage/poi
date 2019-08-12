@@ -12,7 +12,7 @@ function _PWD_HOME_TILDE_DIR_ {
     else { Write-Output $p }
 }
 
-if (Test-Administrator) {
+if (TestAdmin) {
     $_PS1 = '"[$ESC[31m${ENV:USERNAME}$ESC[0m@${ENV:COMPUTERNAME}:$(_PWD_HOME_TILDE_DIR_)]# "'
     $_TITLE = "Administrator:$ENV:USERNAME@$ENV:COMPUTERNAME"
 }

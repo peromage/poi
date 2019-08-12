@@ -1,11 +1,11 @@
-function Test-Administrator {
+function TestAdmin {
     $ADMIN = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()`
         ).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
     return $ADMIN
 }
 
 # Console color test
-function Show-ColorTest {
+function TestColor {
     $width = 7
     $word = "gYm"
     $esc = [char]0x1b
@@ -40,3 +40,5 @@ function Show-ColorTest {
         }
     }
 }
+
+Export-ModuleMember -Function *
