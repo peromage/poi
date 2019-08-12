@@ -1,6 +1,6 @@
 # Only works for Rice modules
 function RiceModule {
-    param ([switch]$Load, [switch]$Local, [switch]$Unload, [switch]$List, [string]$mod)
+    param ([switch]$Load, [switch]$Unload, [switch]$List, [string]$mod)
     
     if ($List) {
         Write-Output "Available Rice modules:`n======================="
@@ -11,12 +11,7 @@ function RiceModule {
     if ($Load) {
         $path = Join-Path $PSScriptRoot "$mod.psm1"
         if (Test-Path $path) {
-            if ($Local) {
-                Import-Module $path
-            }
-            else {
-                Import-Module -Global $path
-            }
+            Import-Module -Global $path
             return
         }
         else {

@@ -61,7 +61,7 @@ function RicePrompt {
     UnloadAllPromptMod
     $mod = Join-Path $PROMPTS_DIR "$style.psm1"
     if (Test-Path $mod) {
-        Import-Module $mod
+        Import-Module $mod -Function PSPrompt
         Copy-Item function:PSPrompt function:prompt
         $_CURRENT_PROMPT_MOD = $style
         return
