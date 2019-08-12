@@ -85,6 +85,23 @@ Options:
     -Install    : Install specified app. Can use space to separate several apps at a time
         -All    : Install all apps specified under packages directory
 ```
+App shim manifest template. You can specify multiple binary shortcut in a package manifest. `name` and `exec` are mandatory. If executable is a script, you should specify interpreter.
+```json
+{
+    "dir": "package_dir_name",
+    "bin": [
+        {
+            "name": "shortcut_name",
+            "exec": "binary_path",
+            "args": "arguments",
+            "interpreter": "interpreter_path"
+        }
+    ],
+    "env": [
+        "environment_path"
+    ]
+}
+```
 
 ### commands.psm1
 Linux style commands

@@ -48,23 +48,6 @@ FOREGROUND = DARK_CYAN
 BACKGROUND = BRIGHT_WHITE
 "@
 
-$MyBin = @"
-{
-    "tc":  "totalcommander\\TOTALCMD64.EXE",
-    "chrome":  "chrome\\chrome.exe",
-    "jcp":  "jcpicker\\jcpicker.exe",
-    "picpick":  "picpick\\picpick.exe",
-    "aria2":  "aria2\\aria2c.exe",
-    "bash":  "git\\bin\\bash.exe",
-    "7z":  "7-zip\\7zFM.exe",
-    "git":  "git\\bin\\git.exe",
-    "vlc":  "vlc\\vlc.exe",
-    "code":  "vscode\\bin\\code.cmd",
-    "npp":  "notepad++\\notepad++.exe",
-    "vnc":  "vncviewer\\vncviewer.exe"
-}
-"@
-
 # Default style
 function DEFAULT_PROMPT {
     return "PS $pwd> "
