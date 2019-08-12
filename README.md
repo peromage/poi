@@ -89,6 +89,3 @@ extensions: `%dir$/data/extensions/`
 ### task scheduler
 - *system*: `C:\etc\tasks`
 - *user*: `~\.config\tasks`
-
-## Credits
-Shim is inspired by [Scoop](https://github.com/lukesampson/scoop)

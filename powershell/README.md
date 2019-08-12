@@ -105,3 +105,6 @@ App shim manifest template. You can specify multiple binary shortcut in a packag
 
 ### commands.psm1
 Linux style commands
+
+## Credits
+Shim is inspired by [Scoop](https://github.com/lukesampson/scoop)
