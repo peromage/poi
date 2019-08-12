@@ -6,17 +6,8 @@ Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
         COLORTOOL, PROMPTS_DIR, PSCOLORS_DIR, SCHEMES_DIR `
     -Function DEFAULT_PROMPT `
 
-function _SAVED_PROMPT {""}
-
 ### Private methods
-function ColorTool {
-    if (-not (Test-Path $COLORTOOL)) {
-        Write-Output "ColorTool was not found at: $COLORTOOL"
-        return
-    }
-    $ctargs = $args -join " "
-    Invoke-Expression "$COLORTOOL $ctargs"
-}
+function _SAVED_PROMPT {""}
 
 function SetPSColorFromJson {
     param ([switch]$File, $json)
@@ -38,7 +29,16 @@ function UnloadAllPromptMod {
 }
 ### End private methods
 
-function ChangePrompt {
+function ColorTool {
+    if (-not (Test-Path $COLORTOOL)) {
+        Write-Output "ColorTool was not found at: $COLORTOOL"
+        return
+    }
+    $ctargs = $args -join " "
+    Invoke-Expression "$COLORTOOL $ctargs"
+}
+
+function RicePrompt {
     param ([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style)
 
     if ($List) {
@@ -69,7 +69,7 @@ function ChangePrompt {
     Write-Output "No such prompt module found: $mod"
 }
 
-function ChangeTheme {
+function RiceTheme {
     param ([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style)
 
     if ($List) {
@@ -150,4 +150,4 @@ function ChangeTheme {
     Write-Output "No such scheme found: $style"
 }
 
-Export-ModuleMember -Function ChangePrompt, ChangeTheme
+Export-ModuleMember -Function RicePrompt, RiceTheme, ColorTool

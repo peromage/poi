@@ -17,12 +17,12 @@ RiceModule -Load stylers
 
 ### Init style
 # Backup old prompt
-ChangePrompt -Save
+RicePrompt -Save
 # Backup old theme
 if ((-not (Test-Path "$PSScriptRoot\.save\saved_pscolor.json")) -or `
     (-not (Test-Path "$PSScriptRoot\.save\saved_scheme.ini"))) {
-    ChangeTheme -Save
+    RiceTheme -Save
 }
-ChangePrompt p-cmder
-ChangeTheme dracula-alt
+RicePrompt p-cmder
+RiceTheme dracula-alt
 ### End init style
