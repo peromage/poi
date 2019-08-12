@@ -1,7 +1,7 @@
 Set-StrictMode -Off
 
 ### Loading core modules
-if (Test-Path "$PSScriptRoot\core.psm1") {Import-Module -Global "$PSScriptRoot\core.psm1"}
+if (Test-Path "$PSScriptRoot\modules\core.psm1") {Import-Module -Global "$PSScriptRoot\modules\core.psm1"}
 ### Loading optional modules
 # RiceModule -Load test_utils
 RiceModule -Load commands

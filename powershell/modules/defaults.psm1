@@ -71,20 +71,21 @@ function DEFAULT_PROMPT {
 }
 
 # Local save dir
-$SAVEDIR = Join-Path $PSScriptRoot ".save\"
+$ROOTDIR = (Resolve-Path "$PSScriptRoot\..\").Path
+$SAVEDIR = Join-Path $ROOTDIR ".save\"
 
 # Syler related
 $SAVED_PSCOLOR_PATH = Join-Path $SAVEDIR "saved_pscolor.json"
 $SAVED_SCHEME_PATH = Join-Path $SAVEDIR "saved_scheme.ini"
-$COLORTOOL = Join-Path $PSScriptRoot "styles\ColorTool.exe"
-$PROMPTS_DIR = Join-Path $PSScriptRoot "styles\prompts\"
-$PSCOLORS_DIR = Join-Path $PSScriptRoot "styles\pscolors\"
-$SCHEMES_DIR = Join-Path $PSScriptRoot "styles\schemes\"
+$COLORTOOL = Join-Path $ROOTDIR "styles\ColorTool.exe"
+$PROMPTS_DIR = Join-Path $ROOTDIR "styles\prompts\"
+$PSCOLORS_DIR = Join-Path $ROOTDIR "styles\pscolors\"
+$SCHEMES_DIR = Join-Path $ROOTDIR "styles\schemes\"
 
 # Shim related
 $DEFAULT_BIN_PATH = Join-Path $HOME ".local\bin"
 $DEFAULT_SHIM_PATH = Join-Path $HOME ".local\shim"
-$PACKAGES_DIR = Join-Path $PSScriptRoot "packages\"
-$SHIM_SRC_PATH = Join-Path $PSScriptRoot "shim_src\shim.cs"
+$PACKAGES_DIR = Join-Path $ROOTDIR "packages\"
+$SHIM_SRC_PATH = Join-Path $ROOTDIR "shim_src\shim.cs"
 
 Export-ModuleMember -Variable * -Function *
