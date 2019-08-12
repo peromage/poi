@@ -4,8 +4,8 @@
         {
             "name": "repo",
             "exec": "repo",
-            "args": "-3 $exec",
-            "interpreter": "py"
+            "args": "$exec",
+            "interpreter": "python"
         }
     ]
 }
