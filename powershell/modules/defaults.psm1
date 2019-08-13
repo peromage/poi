@@ -66,8 +66,8 @@ $PSCOLORS_DIR = Join-Path $ROOTDIR "styles\pscolors\"
 $SCHEMES_DIR = Join-Path $ROOTDIR "styles\schemes\"
 
 # Shim related
-$DEFAULT_BIN_PATH = Join-Path $HOME ".local\bin"
-$DEFAULT_SHIM_PATH = Join-Path $HOME ".local\shim"
+$DEFAULT_LIB_PATH = Join-Path $HOME ".local\lib\"
+$DEFAULT_BIN_PATH = Join-Path $HOME ".local\bin\"
 $PACKAGES_DIR = Join-Path $ROOTDIR "packages\"
 $SHIM_SRC_PATH = Join-Path $ROOTDIR "shim_src\shim.cs"
 
