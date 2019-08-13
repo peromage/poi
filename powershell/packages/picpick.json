@@ -1,0 +1,9 @@
+{
+    "dir": "picpick",
+    "bin": [
+        {
+            "name": "picpick",
+            "exec": "picpick.exe"
+        }
+    ]
+}

@@ -1,8 +1,8 @@
 {
-    "dir": "python\\vpython3",
+    "dir": "python2_venv",
     "bin": [
         {
-            "name": "py3",
+            "name": "py2v",
             "exec": "Scripts\\activate.ps1",
             "args": "-noexit -command . $exec",
             "interpreter": "powershell.exe"
