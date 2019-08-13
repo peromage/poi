@@ -1,5 +1,5 @@
 # Terminal color test
-function colortest() {
+function testcolor() {
     width=7
     word="gYm"
 

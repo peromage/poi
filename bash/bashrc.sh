@@ -1,33 +1,42 @@
-#-----Initialization-----#
-# interactive mode initialization script
-# prevent from being loaded twice
+### Init
+# Interactive mode initialization script
+# Prevent from being loaded twice
 if [ -z "$INIT_SH_LOADED" ]; then
     INIT_SH_LOADED=1
 else
     return
 fi
-
-# if in non-interactive mode then exit
+# If in non-interactive mode then exit
 case "$-" in
     *i*) ;;
     *) return
 esac
+### End init
 
-#-----Main-----#
-# get current directory of init.sh
-DIR=$(dirname $BASH_SOURCE)
-# load modules
-[ -f "$DIR/utils.sh" ] && source "$DIR/utils.sh"
-[ -f "$DIR/alias.sh" ] && source "$DIR/alias.sh"
+### Main
+# Set sub dir
+_DIR=$(dirname $(realpath $BASH_SOURCE))
+_MODULESDIR=$_DIR/modules
+_STYLESDIR=$_DIR/styles
+# End set sub dir
 
-# set bash theme
+# Load modules
+[ -f "$_MODULESDIR/aliases.sh" ] && . "$_MODULESDIR/aliases.sh"
+# [ -f "$_MODULESDIR/test_utils.sh" ] && . "$_MODULESDIR/test_utils.sh"
+# End load modules
+
+# Set shell style
+# For bash
 if [ -n "$BASH_VERSION" ]; then
-    # Load theme
-    if [ -f "$DIR/bash_prompts.sh" ]; then
-        source "$DIR/bash_prompts.sh"
-        PROMPT_SELECTOR "two_lines"
+    # Load style
+    if [ -f "$_STYLESDIR/cmder.sh" ]; then
+        . "$_STYLESDIR/cmder.sh"
     fi
 fi
+# End set shell style
+### End main
 
-#-----Cleanup-----#
-unset DIR
+### Cleanup
+unset _MODULESDIR
+unset _STYLESDIR
+### End Cleanup
