@@ -20,4 +20,10 @@
     },
     "window.restoreWindows": "none",
     "powershell.powerShellExePath": "C:\\Windows\\SysWow64\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "update.mode": "none",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true,
+    "files.eol": "\n",
+    "editor.rulers": [80, 120],
 }
