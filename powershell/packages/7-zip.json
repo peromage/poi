@@ -1,5 +1,5 @@
 {
-    "dir": "7zip",
+    "dir": "7-zip",
     "bin": [
         {
             "name": "7z",

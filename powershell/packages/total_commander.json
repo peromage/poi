@@ -1,5 +1,5 @@
 {
-    "dir": "totalcommander",
+    "dir": "total_commander",
     "bin": [
         {
             "name": "tc",
