@@ -1,0 +1,9 @@
+{
+    "dir": "python3",
+    "bin": [
+        {
+            "name": "python3",
+            "exec": "python.exe"
+        }
+    ]
+}
