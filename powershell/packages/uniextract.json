@@ -1,0 +1,9 @@
+{
+    "dir": "uniextract",
+    "bin": [
+        {
+            "name": "uniextract",
+            "exec": "UniExtract.exe"
+        }
+    ]
+}
