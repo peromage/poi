@@ -62,4 +62,9 @@ function Set-EnVUserPath {
     [System.Environment]::SetEnvironmentVariable("path", $path, [System.EnvironmentVariableTarget]::User)
 }
 
+function Update-EnvPath {
+    $env:Path = @([System.Environment]::GetEnvironmentVariable("path", [System.EnvironmentVariableTarget]::Machine),
+                  [System.Environment]::GetEnvironmentVariable("path", [System.EnvironmentVariableTarget]::User)) -join ";"
+}
+
 Export-ModuleMember -Function *
