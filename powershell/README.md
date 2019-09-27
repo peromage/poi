@@ -99,6 +99,9 @@ App shim manifest template. You can specify multiple binary shortcut in a packag
     ],
     "env": [
         "environment_path"
+    ],
+    "post": [
+        "post installation command"
     ]
 }
 ```

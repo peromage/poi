@@ -4,6 +4,8 @@ Import-Module (Join-Path $PSScriptRoot "file_helpers.psm1") `
     -Function Show-FilesWithoutExtension, Copy-File, Write-File
 Import-Module (Join-Path $PSScriptRoot "json_helpers.psm1") `
     -Function Convert-JsonFileToHash
+Import-Module (Join-Path $PSScriptRoot "path_helpers.psm1") `
+    -Function Add-EnvUserPath, Remove-EnvUserPath
 
 function GetPathFromPrompt {
     param($prompt, $default)
@@ -22,6 +24,7 @@ function RiceShim {
     }
 
     if ($Install) {
+        $success = $false
         $lpath = GetPathFromPrompt "Specify lib path" $DEFAULT_LIB_PATH
         $bpath = GetPathFromPrompt "Specify bin path" $DEFAULT_BIN_PATH
         $pacs = ""
@@ -32,15 +35,20 @@ function RiceShim {
             $pacs = $args
         }
         if ($pacs.Count -ne 0) {
-            # compile shim
+            # Compile shim
             $shimexe = "$ENV:TEMP\shim.exe"
             Add-Type -OutputAssembly $shimexe -OutputType ConsoleApplication `
                 (Get-Content -Raw $SHIM_SRC_PATH)
+            # Add bin directory to user path
+            Add-EnvUserPath $bpath
+            # Walk through each package config
             foreach ($i in $pacs) {
                 $pac = Join-Path $PACKAGES_DIR "$i.json"
                 if (Test-Path $pac) {
                     $conf = Convert-JsonFileToHash $pac
+                    # App directory
                     $dir = Join-Path $lpath $conf.dir
+                    # Install shim for each bin
                     foreach ($b in $conf.bin) {
                         $execpath = ""
                         $execargs = ""
@@ -60,11 +68,23 @@ function RiceShim {
                         Copy-File $shimexe "$target.exe"
                         Write-File "$target.shim" "path=$execpath`nargs=$execargs"
                     }
+                    # Apply env settings
+                    if ($null -ne $conf.env) {
+                        foreach ($e in $conf.env) {Add-EnvUserPath $e}
+                    }
+                    # Apply post installation script
+                    if ($null -ne $conf.post) {
+                        foreach ($p in $conf.post) {Invoke-Expression $p}
+                    }
+                    $success = $true
                 }
                 else {
                     Write-Output "No package file found: $pac"
                 }
             }
+            # If no package installed, remove shim path env variable
+            if (-not $success) {Remove-EnvUserPath $bpath}
+            # Remove temp compiled shim binary
             Remove-Item $shimexe
         }
         else {
