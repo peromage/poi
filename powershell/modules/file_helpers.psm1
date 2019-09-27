@@ -13,8 +13,15 @@ function Show-FilesWithFullPath {
 }
 
 function Copy-File {
-    param ($source, $target)
-    New-Item -Force $target | Out-Null
+    param ($source, $target, [switch]$d)
+    if ($d) {
+        if (-not (Test-Path $target)) {
+            New-Item -ItemType Directory $target | Out-Null
+        }
+    }
+    else {
+        New-Item -Force $target | Out-Null
+    }
     Copy-Item -Force $source $target
 }
 
