@@ -1,0 +1,9 @@
+{
+    "dir": "unified_logging_tool",
+    "bin": [
+        {
+            "name": "ult",
+            "exec": "fdpgui.exe"
+        }
+    ]
+}
