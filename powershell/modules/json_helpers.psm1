@@ -1,4 +1,4 @@
-function ConvertHashToJsonFile {
+function Convert-HashToJsonFile {
     param ($file, $hash)
     $json = ConvertTo-Json $hash
     New-Item -Force $file | Out-Null
@@ -6,7 +6,7 @@ function ConvertHashToJsonFile {
 }
 # Only depth 1 supported
 # Will be replaced with powershell 6 built-in method
-function ConvertJsonFileToHash {
+function Convert-JsonFileToHash {
     param ($file)
     $json = Get-Content -Raw $file -ErrorAction Stop
     $obj = ConvertFrom-Json $json
@@ -17,14 +17,14 @@ function ConvertJsonFileToHash {
     return $hash
 }
 
-function ConvertHashToJson {
+function Convert-HashToJson {
     param ($hash)
     $json = ConvertTo-Json $hash
     return $json
 }
 # Only depth 1 supported
 # Will be replaced with powershell 6 built-in method
-function ConvertJsonToHash {
+function Convert-JsonToHash {
     param ($json)
     $obj = ConvertFrom-Json $json
     $hash = @{}

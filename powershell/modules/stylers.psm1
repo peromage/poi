@@ -1,6 +1,6 @@
-Import-Module (Join-Path $PSScriptRoot "json_utils.psm1")
-Import-Module (Join-Path $PSScriptRoot "file_utils.psm1") `
-    -Function FilterFilesWithoutExtension, WriteFile
+Import-Module (Join-Path $PSScriptRoot "json_helpers.psm1")
+Import-Module (Join-Path $PSScriptRoot "file_helpers.psm1") `
+    -Function Show-FilesWithoutExtension, Write-File
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
     -Variable DEFAULT_SCHEME, DEFAULT_PSCOLORS, SAVED_SCHEME_PATH, SAVED_PSCOLOR_PATH, `
         COLORTOOL, PROMPTS_DIR, PSCOLORS_DIR, SCHEMES_DIR `
@@ -12,10 +12,10 @@ function _SAVED_PROMPT {""}
 function SetPSColorFromJson {
     param ([switch]$File, $json)
     if ($File) {
-        Set-PSReadLineOption -Colors (ConvertJsonFileToHash $json)
+        Set-PSReadLineOption -Colors (Convert-JsonFileToHash $json)
     }
     else {
-        Set-PSReadLineOption -Colors (ConvertJsonToHash $json)
+        Set-PSReadLineOption -Colors (Convert-JsonToHash $json)
     }
 }
 
@@ -42,7 +42,7 @@ function RicePrompt {
     param ([switch]$List, [switch]$Save, [switch]$Restore, [switch]$Default, $style)
 
     if ($List) {
-        FilterFilesWithoutExtension $PROMPTS_DIR ".psm1"
+        Show-FilesWithoutExtension $PROMPTS_DIR ".psm1"
         return
     }
     if ($Save) {
@@ -77,7 +77,7 @@ function RiceTheme {
         return
     }
     if ($Save) {
-        ConvertHashToJsonFile $SAVED_PSCOLOR_PATH `
+        Convert-HashToJsonFile $SAVED_PSCOLOR_PATH `
         @{
             "Command" = (Get-PSReadLineOption).CommandColor
             "Comment" = (Get-PSReadLineOption).CommentColor
@@ -116,7 +116,7 @@ function RiceTheme {
     if ($Default) {
         SetPSColorFromJson $DEFAULT_PSCOLORS
         $def = Join-Path $SCHEMES_DIR ".default.ini"
-        WriteFile $def $DEFAULT_SCHEME
+        Write-File $def $DEFAULT_SCHEME
         ColorTool -q $def
         Remove-Item $def
         return

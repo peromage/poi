@@ -1,9 +1,9 @@
 Import-Module (Join-Path $PSScriptRoot "defaults.psm1") `
     -Variable DEFAULT_LIB_PATH, DEFAULT_BIN_PATH, PACKAGES_DIR, SHIM_SRC_PATH
-Import-Module (Join-Path $PSScriptRoot "file_utils.psm1") `
-    -Function FilterFilesWithoutExtension, CopyFile, WriteFile
-Import-Module (Join-Path $PSScriptRoot "json_utils.psm1") `
-    -Function ConvertJsonFileToHash
+Import-Module (Join-Path $PSScriptRoot "file_helpers.psm1") `
+    -Function Show-FilesWithoutExtension, Copy-File, Write-File
+Import-Module (Join-Path $PSScriptRoot "json_helpers.psm1") `
+    -Function Convert-JsonFileToHash
 
 function GetPathFromPrompt {
     param($prompt, $default)
@@ -17,7 +17,7 @@ function RiceShim {
     param ([switch]$List, [switch]$Install, [switch]$All)
 
     if ($List) {
-        FilterFilesWithoutExtension $PACKAGES_DIR ".json"
+        Show-FilesWithoutExtension $PACKAGES_DIR ".json"
         return
     }
 
@@ -26,7 +26,7 @@ function RiceShim {
         $bpath = GetPathFromPrompt "Specify bin path" $DEFAULT_BIN_PATH
         $pacs = ""
         if ($All) {
-            $pacs = FilterFilesWithoutExtension $PACKAGES_DIR ".json"
+            $pacs = Show-FilesWithoutExtension $PACKAGES_DIR ".json"
         }
         else {
             $pacs = $args
@@ -39,7 +39,7 @@ function RiceShim {
             foreach ($i in $pacs) {
                 $pac = Join-Path $PACKAGES_DIR "$i.json"
                 if (Test-Path $pac) {
-                    $conf = ConvertJsonFileToHash $pac
+                    $conf = Convert-JsonFileToHash $pac
                     $dir = Join-Path $lpath $conf.dir
                     foreach ($b in $conf.bin) {
                         $execpath = ""
@@ -57,8 +57,8 @@ function RiceShim {
                             $execargs = $b.args
                         }
                         $target = Join-Path $bpath $b.name
-                        CopyFile $shimexe "$target.exe"
-                        WriteFile "$target.shim" "path=$execpath`nargs=$execargs"
+                        Copy-File $shimexe "$target.exe"
+                        Write-File "$target.shim" "path=$execpath`nargs=$execargs"
                     }
                 }
                 else {
