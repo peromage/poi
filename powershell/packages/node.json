@@ -1,0 +1,17 @@
+{
+    "dir": "node",
+    "bin": [
+        {
+            "name": "node",
+            "exec": "node.exe"
+        },
+        {
+            "name": "npm",
+            "exec": "npm"
+        },
+        {
+            "name": "npx",
+            "exec": "npx"
+        }
+    ]
+}
