@@ -7,11 +7,15 @@
         },
         {
             "name": "npm",
-            "exec": "npm"
+            "exec": "npm.cmd",
+            "interpreterargs": "/c $exec",
+            "interpreter": "cmd.exe"
         },
         {
             "name": "npx",
-            "exec": "npx"
+            "exec": "npx.cmd",
+            "interpreterargs": "/c $exec",
+            "interpreter": "cmd.exe"
         }
     ]
 }
