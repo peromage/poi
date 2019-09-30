@@ -4,7 +4,7 @@
         {
             "name": "py3v",
             "exec": "Scripts\\activate.ps1",
-            "args": "-noexit -command . $exec",
+            "interpreterargs": "-noexit -command . $exec",
             "interpreter": "powershell.exe"
         }
     ]

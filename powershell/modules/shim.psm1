@@ -55,12 +55,12 @@ function RiceShim {
                         # script file
                         if ($b.interpreter.Length -ne 0) {
                             $execpath = $b.interpreter
-                            $execargs = $b.args.Replace('$exec', $exec)
+                            $execargs = $b.interpreterargs.Replace('$exec', $exec)
                         }
                         # executable
                         else {
                             $execpath = $exec
-                            $execargs = $b.args
+                            $execargs = $b.interpreterargs
                         }
                         $target = Join-Path $bpath $b.name
                         Copy-File $shimexe "$target.exe"

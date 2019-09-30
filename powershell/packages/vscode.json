@@ -4,7 +4,7 @@
         {
             "name": "code",
             "exec": "bin\\code.cmd",
-            "args": "/c $exec",
+            "interpreterargs": "/c $exec",
             "interpreter": "cmd.exe"
         }
     ]

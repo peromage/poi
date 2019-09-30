@@ -93,7 +93,7 @@ App shim manifest template. You can specify multiple binary shortcut in a packag
         {
             "name": "shortcut_name",
             "exec": "binary_path",
-            "args": "arguments",
+            "interpreterargs": "arguments",
             "interpreter": "interpreter_path"
         }
     ],
