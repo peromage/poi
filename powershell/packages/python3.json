@@ -8,6 +8,10 @@
         {
             "name": "python",
             "exec": "python.exe"
+        },
+        {
+            "name": "pip",
+            "exec": "Scripts\\pip.exe"
         }
     ]
 }
