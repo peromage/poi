@@ -60,6 +60,7 @@ function Set-EnVUserPath {
         $path = $path + ";"
     }
     [System.Environment]::SetEnvironmentVariable("path", $path, [System.EnvironmentVariableTarget]::User)
+    Update-EnvPath
 }
 
 function Update-EnvPath {
