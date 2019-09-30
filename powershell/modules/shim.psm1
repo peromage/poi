@@ -18,7 +18,7 @@ function GetPathFromPrompt {
 function RiceShim {
     [CmdletBinding(PositionalBinding=$false)]
     param ([switch]$List, [switch]$Install, [switch]$All,
-           [string]$Lib = $null, [string]$Bin = $null,
+           [string]$Lib = "", [string]$Bin = "",
            [string[]][Parameter(ValueFromRemainingArguments)]$packages
            )
 
@@ -29,9 +29,10 @@ function RiceShim {
 
     if ($Install) {
         $success = $false
-        $lpath = if ($null -eq $Lib) {GetPathFromPrompt "Specify lib path" $DEFAULT_LIB_PATH} else {$Lib}
-        $bpath = if ($null -eq $Bin) {GetPathFromPrompt "Specify bin path" $DEFAULT_BIN_PATH} else {$Bin}
+        $lpath = if ("" -eq $Lib) {GetPathFromPrompt "Specify lib path" $DEFAULT_LIB_PATH} else {$Lib}
+        $bpath = if ("" -eq $Bin) {GetPathFromPrompt "Specify bin path" $DEFAULT_BIN_PATH} else {$Bin}
         $pacs = if ($All) {Show-FilesWithoutExtension $PACKAGES_DIR ".json"} else {$packages}
+
         if ($pacs.Count -ne 0) {
             # Compile shim
             $shimexe = "$ENV:TEMP\shim.exe"
