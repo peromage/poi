@@ -1,9 +1,0 @@
-{
-    "dir": "tokenloader",
-    "bin": [
-        {
-            "name": "tokenloader",
-            "exec": "tokenloader.exe"
-        }
-    ]
-}

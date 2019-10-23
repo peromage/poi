@@ -1,9 +1,0 @@
-{
-    "dir": "consoleapp",
-    "bin": [
-        {
-            "name": "consoleapp",
-            "exec": "win\\consoleapp.exe"
-        }
-    ]
-}

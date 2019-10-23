@@ -1,9 +1,0 @@
-{
-    "dir": "engineering_debug_tool",
-    "bin": [
-        {
-            "name": "edt",
-            "exec": "edt.exe"
-        }
-    ]
-}

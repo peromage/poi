@@ -1,9 +1,0 @@
-{
-    "dir": "diagnostic_engineering_tool",
-    "bin": [
-        {
-            "name": "det",
-            "exec": "DiagnosticEngineeringTool.exe"
-        }
-    ]
-}

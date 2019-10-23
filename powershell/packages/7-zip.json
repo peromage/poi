@@ -2,7 +2,7 @@
     "dir": "7-zip",
     "bin": [
         {
-            "name": "7z",
+            "name": "7zfm",
             "exec": "7zFM.exe"
         }
     ]
