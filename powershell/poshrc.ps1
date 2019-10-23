@@ -1,18 +1,5 @@
 Set-StrictMode -Off
 
-function RiceThePrompt {
-    RiceModule -Load stylers
-    # Backup old prompt
-    RicePrompt -Save
-    # Backup old theme
-    if ((-not (Test-Path "$PSScriptRoot\.save\saved_pscolor.json")) -or `
-        (-not (Test-Path "$PSScriptRoot\.save\saved_scheme.ini"))) {
-        RiceTheme -Save
-    }
-    RicePrompt cmder
-    RiceTheme dracula-alt
-}
-
 ### Loading core modules
 if (Test-Path "$PSScriptRoot\modules\core.psm1") {Import-Module -Global "$PSScriptRoot\modules\core.psm1"}
 ### Loading optional modules
@@ -28,8 +15,20 @@ RiceModule -Load commands
 ### End set environment
 
 ### Handle arguments
-### Enable stylish command
-# The first argument specify on and off. 0:off, other:on.
-if ($args[0] -ne 0) {
-    RiceThePrompt
+## Usage poshrc.ps1 [theme] [prompt]
+if ($args.Count -gt 0) {
+    RiceModule -Load stylers
+    # Backup old prompt
+    RicePrompt -Save
+    # Backup old theme
+    if ((-not (Test-Path "$PSScriptRoot\.save\saved_pscolor.json")) -or `
+        (-not (Test-Path "$PSScriptRoot\.save\saved_scheme.ini"))) {
+        RiceTheme -Save
+    }
+    if ($null -ne $args[0]) {
+        RiceTheme $args[0]
+    }
+    if ($null -ne $args[1]) {
+        RicePrompt $args[1]
+    }
 }
