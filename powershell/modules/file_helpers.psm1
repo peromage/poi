@@ -31,4 +31,10 @@ function Write-File {
     Set-Content -Force $target $content
 }
 
+function Add-File {
+    param ($target, $content)
+    if (-not (Test-Path $target)) {New-Item -Force $target | Out-Null}
+    Set-Content -Force $target $content
+}
+
 Export-ModuleMember -Function *
