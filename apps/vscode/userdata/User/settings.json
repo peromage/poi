@@ -8,10 +8,9 @@
     "workbench.editor.tabSizing": "shrink",
     "explorer.autoReveal": false,
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Tiny Light",
+    "workbench.colorTheme": "One Dark Pro Vivid",
     "workbench.iconTheme": "vscode-icons",
     "csharp.referencesCodeLens.enabled": false,
-    "debug.openDebug": "openOnFirstSessionStart",
     "editor.renderControlCharacters": true,
     "breadcrumbs.enabled": true,
     "files.associations": {
@@ -28,10 +27,9 @@
         80,
         120
     ],
-    "editor.fontFamily": "Sarasa Term CL, Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "Cascadia Code, Sarasa Term CL, Consolas, 'Courier New', monospace",
     "editor.cursorStyle": "block",
     "editor.showFoldingControls": "always",
-    "editor.fontWeight": "500",
     "files.insertFinalNewline": true,
     "files.simpleDialog.enable": true,
     "files.trimFinalNewlines": true,
@@ -49,4 +47,11 @@
     "terminal.integrated.enableBell": true,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
+    "editor.fontLigatures": true,
+    "workbench.sideBar.location": "left",
+    "todo-tree.general.tags": [
+        "TODO",
+        "FIXME",
+        "RAISE"
+    ]
 }
