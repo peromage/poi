@@ -1,10 +1,8 @@
 # Initialize variables
-$_loaded_blocks = @("commands")
+$_loaded_blocks = @("commands", "path")
 $_loaded_prompt = "linux"
 
-#####################
-# Functional blocks #
-#####################
+#region Functional Blocks
 $_blocks = @{}
 
 $_blocks["commands"] =
@@ -69,32 +67,43 @@ $_blocks["commands"] =
             $proc.Start() | Out-Null
         }
     }
+
+    function linktopath {
+        param($target,
+              $name=(Get-Item $target).Name,
+              $bin_path="$HOME\.local\bin")
+        New-Item -ItemType SymbolicLink `
+                 -Target $target `
+                 -Path $bin_path `
+                 -Name $name `
+                 -Force
+    }
 }
 
-$_blocks["path_helpers"] =
+$_blocks["path"] =
 {
-    function Add-EnvUserPath {
+    function Add-UserPath {
         param ($path)
-        if (Test-EnvUserPath $path) {
+        if (Test-UserPath $path) {
             return
         }
         if (-not $path.EndsWith(";")) {
             $path = $path + ";"
         }
-        $currPath = Get-EnvUserPath
+        $currPath = Get-UserPath
         if (-not $currPath.EndsWith(";")) {
             $currPath = $currPath + ";"
         }
         $currPath = $currPath + $path
-        Set-EnVUserPath $currPath
+        Set-UserPath $currPath
     }
 
-    function Remove-EnvUserPath {
+    function Remove-UserPath {
         param ($path)
-        if (-not (Test-EnvUserPath $path)) {
+        if (-not (Test-UserPath $path)) {
             return
         }
-        $currPath = Get-EnvUserPath
+        $currPath = Get-UserPath
         $arr = $currPath.Split(';')
         $newPath = ""
         foreach ($i in $arr) {
@@ -106,12 +115,12 @@ $_blocks["path_helpers"] =
             }
             $newPath = $newPath + $i + ";"
         }
-        Set-EnVUserPath $newPath
+        Set-UserPath $newPath
     }
 
-    function Test-EnvUserPath {
+    function Test-UserPath {
         param ($path)
-        $currPath = Get-EnvUserPath
+        $currPath = Get-UserPath
         $arr = $currPath.Split(';')
         foreach ($i in $arr) {
             if ($i.EndsWith($path)) {
@@ -121,7 +130,7 @@ $_blocks["path_helpers"] =
         return $false
     }
 
-    function Get-EnvUserPath {
+    function Get-UserPath {
         $path = [System.Environment]::GetEnvironmentVariable(
             "path", [System.EnvironmentVariableTarget]::User)
         if ($null -eq $path) {
@@ -130,7 +139,7 @@ $_blocks["path_helpers"] =
         return $path
     }
 
-    function Set-EnVUserPath {
+    function Set-UserPath {
         param ($path)
         if (-not $path.EndsWith(";")) {
             $path = $path + ";"
@@ -148,10 +157,9 @@ $_blocks["path_helpers"] =
                 "path", [System.EnvironmentVariableTarget]::User)) -join ";"
     }
 }
+#endregion
 
-##########
-# Prompt #
-##########
+#region Prompts
 $_prompts = @{}
 
 $_prompts["cmder"] =
@@ -198,10 +206,9 @@ $_prompts["linux"] =
     $Host.ui.RawUI.WindowTitle = $_TITLE
     return Invoke-Expression $_PS1
 }
+#endregion
 
-################################################################################
-# DO NOT TOUCH BELOW ###########################################################
-################################################################################
+#region Don't Touch Below
 # Initialize registered blocks
 foreach ($blk in $_loaded_blocks) {
     $b = $_blocks[$blk]
@@ -223,3 +230,4 @@ Remove-Variable _loaded_blocks
 Remove-Variable _loaded_prompt
 Remove-Variable _prompts
 Remove-Variable _blocks
+#endregion
