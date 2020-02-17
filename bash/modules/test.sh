@@ -1,7 +1,7 @@
 # Terminal color test
 function testcolor() {
-    width=7
-    word="gYm"
+    local width=7
+    local word="gYm"
 
     # print columns with background colors
     # usage: pcbg <word> <color_code>
