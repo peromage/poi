@@ -2,9 +2,9 @@
 Code          | Name                                  | Effect
 -----         | -----                                 | -----
 CSI n A       | CUU – Cursor Up                       | Moves the cursor n (default 1) cells in the given direction. If the cursor is already at the edge of the screen, this has no effect.
-CSI n B       | CUD – Cursor Down                     | 
-CSI n C       | CUF – Cursor Forward                  | 
-CSI n D       | CUB – Cursor Back                     | 
+CSI n B       | CUD – Cursor Down                     |
+CSI n C       | CUF – Cursor Forward                  |
+CSI n D       | CUB – Cursor Back                     |
 CSI n E       | CNL – Cursor Next Line                | Moves cursor to beginning of the line n (default 1) lines down. (not ANSI.SYS)
 CSI n F       | CPL – Cursor Previous Line            | Moves cursor to beginning of the line n (default 1) lines up. (not ANSI.SYS)
 CSI n G       | CHA – Cursor Horizontal Absolute      | Moves the cursor to column n (default 1). (not ANSI.SYS)
@@ -35,37 +35,37 @@ CSI ? 2004 l    | Turn off bracketed paste mode.
 Code    | Effect                                                        | Note
 -----   | -----                                                         | -----
 0       | Reset / Normal                                                | all attributes off
-1       | Bold or increased intensity                                   | 
-2       | Faint (decreased intensity)                                   | 
+1       | Bold or increased intensity                                   |
+2       | Faint (decreased intensity)                                   |
 3       | Italic                                                        | Not widely supported. Sometimes treated as inverse.
-4       | Underline                                                     | 
+4       | Underline                                                     |
 5       | Slow Blink                                                    | less than 150 per minute
 6       | Rapid Blink                                                   | MS-DOS ANSI.SYS; 150+ per minute; not widely supported
 7       | reverse video                                                 | swap foreground and background colors
 8       | Conceal                                                       | Not widely supported.
 9       | Crossed-out                                                   | Characters legible, but marked for deletion.
-10      | Primary(default) font                                         | 
+10      | Primary(default) font                                         |
 11–19   | Alternative font                                              | Select alternative font {\displaystyle n-10} {\displaystyle n-10}
 20      | Fraktur                                                       | Rarely supported
 21      | Doubly underline or Bold off                                  | Double-underline per ECMA-48.[22] See discussion
 22      | Normal color or intensity                                     | Neither bold nor faint
-23      | Not italic, not Fraktur                                       | 
+23      | Not italic, not Fraktur                                       |
 24      | Underline off                                                 | Not singly or doubly underlined
-25      | Blink off                                                     | 
-27      | Inverse off                                                   | 
+25      | Blink off                                                     |
+27      | Inverse off                                                   |
 28      | Reveal                                                        | conceal off
-29      | Not crossed out                                               | 
+29      | Not crossed out                                               |
 30–37   | Set foreground color                                          | See color table below
 38      | Set foreground color                                          | Next arguments are 5;n or 2;r;g;b, see below
 39      | Default foreground color                                      | implementation defined (according to standard)
 40–47   | Set background color                                          | See color table below
 48      | Set background color                                          | Next arguments are 5;n or 2;r;g;b, see below
 49      | Default background color                                      | implementation defined (according to standard)
-51      | Framed                                                        | 
-52      | Encircled                                                     | 
-53      | Overlined                                                     | 
-54      | Not framed or encircled                                       | 
-55      | Not overlined                                                 | 
+51      | Framed                                                        |
+52      | Encircled                                                     |
+53      | Overlined                                                     |
+54      | Not framed or encircled                                       |
+55      | Not overlined                                                 |
 60      | ideogram underline or right side line                         | Rarely supported
 61      | ideogram double underline or double line on the right side    | Rarely supported
 62      | ideogram overline or left side line                           | Rarely supported
@@ -74,3 +74,43 @@ Code    | Effect                                                        | Note
 65      | ideogram attributes off                                       | reset the effects of all of 60–64
 90–97   | Set bright foreground color                                   | aixterm (not in standard)
 100–107 | Set bright background color                                   | aixterm (not in standard)
+
+## Color code
+### Foreground
+Black: \u001b[30m
+Red: \u001b[31m
+Green: \u001b[32m
+Yellow: \u001b[33m
+Blue: \u001b[34m
+Magenta: \u001b[35m
+Cyan: \u001b[36m
+White: \u001b[37m
+Bright Black: \u001b[30;1m
+Bright Red: \u001b[31;1m
+Bright Green: \u001b[32;1m
+Bright Yellow: \u001b[33;1m
+Bright Blue: \u001b[34;1m
+Bright Magenta: \u001b[35;1m
+Bright Cyan: \u001b[36;1m
+Bright White: \u001b[37;1m
+
+### Background
+Background Black: \u001b[40m
+Background Red: \u001b[41m
+Background Green: \u001b[42m
+Background Yellow: \u001b[43m
+Background Blue: \u001b[44m
+Background Magenta: \u001b[45m
+Background Cyan: \u001b[46m
+Background White: \u001b[47m
+Background Bright Black: \u001b[40;1m
+Background Bright Red: \u001b[41;1m
+Background Bright Green: \u001b[42;1m
+Background Bright Yellow: \u001b[43;1m
+Background Bright Blue: \u001b[44;1m
+Background Bright Magenta: \u001b[45;1m
+Background Bright Cyan: \u001b[46;1m
+Background Bright White: \u001b[47;1m
+
+### Reset
+Reset: \u001b[0m
