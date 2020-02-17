@@ -6,9 +6,9 @@ function prompt {
         $_CWD = $pwd.Path
     }
     if (issu) {
-        $_PS1 = ">$ESC[31m${ENV:USERNAME}$ESC[0m@${ENV:COMPUTERNAME}:$_CWD# "
+        $_PS1 = ">$ESC[31m${ENV:USERNAME}@${ENV:COMPUTERNAME}:$ESC[0m$_CWD# "
     } else {
-        $_PS1 = ">$ESC[32m${ENV:USERNAME}$ESC[0m@${ENV:COMPUTERNAME}:$_CWD$ "
+        $_PS1 = ">$ESC[32m${ENV:USERNAME}@${ENV:COMPUTERNAME}:$ESC[0m$_CWD$ "
     }
     return $_PS1
 }

@@ -1,14 +1,16 @@
-# Initialize variables
-$_loaded_modules = "commands, path"
-$_loaded_prompt = "myposh"
+# Author: Fang
+# Date: 2020/02/17
 
-#region DO NOT TOUCH BELOW
+# Don't add code before the initialization
+#region Initialization DO NOT TOUCH
 # Module loader: Search and load module in a directory
 function loadmodule {
-    param($m, $p)
+    # $p: Folder where the module resides
+    # $m: Module names. Separated by ','
+    param($p, $m)
     $modules = $m.Split(",")|ForEach-Object {$_.Trim()}
     foreach ($i in $modules) {
-        $temp = "$PSScriptRoot\$p\$i.psm1"
+        $temp = "$p\$i.psm1"
         if (Test-Path $temp) {
             Import-Module $temp
         } else {
@@ -16,11 +18,14 @@ function loadmodule {
         }
     }
 }
+#endregion
+
+#region My code
 # Loading modules
-loadmodule $_loaded_modules modules
+loadmodule "$PSScriptRoot\modules" "commands,path"
 # Loading prompt
-loadmodule $_loaded_prompt prompts
+loadmodule "$PSScriptRoot\prompts" "myposh"
+
 # Clean up
-Remove-Variable _loaded_modules
-Remove-Variable _loaded_prompt
+
 #endregion
