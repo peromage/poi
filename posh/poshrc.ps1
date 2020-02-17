@@ -1,27 +1,26 @@
 # Initialize variables
-$_loaded_modules = @("commands", "path")
+$_loaded_modules = "commands, path"
 $_loaded_prompt = "myposh"
 
 #region DO NOT TOUCH BELOW
-$_loaded = $null
-# Loading modules
-foreach ($i in $_loaded_modules) {
-    $_loaded = "$PSScriptRoot\modules\$i.psm1"
-    if (Test-Path $_loaded) {
-        Import-Module $_loaded
-    } else {
-        Write-Output "Module not found: $_loaded"
+# Module loader: Search and load module in a directory
+function loadmodule {
+    param($m, $p)
+    $modules = $m.Split(",")|ForEach-Object {$_.Trim()}
+    foreach ($i in $modules) {
+        $temp = "$PSScriptRoot\$p\$i.psm1"
+        if (Test-Path $temp) {
+            Import-Module $temp
+        } else {
+            Write-Output "Module not found: $temp"
+        }
     }
 }
+# Loading modules
+loadmodule $_loaded_modules modules
 # Loading prompt
-$_loaded = "$PSScriptRoot\prompts\$_loaded_prompt.psm1"
-if (Test-Path $_loaded) {
-    Import-Module $_loaded
-} else {
-    Write-Output "Module not found: $_loaded"
-}
+loadmodule $_loaded_prompt prompts
 # Clean up
 Remove-Variable _loaded_modules
 Remove-Variable _loaded_prompt
-Remove-Variable _loaded
 #endregion
