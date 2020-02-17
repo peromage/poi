@@ -1,6 +1,6 @@
 # Initialize variables
 $_loaded_blocks = @("commands", "path")
-$_loaded_prompt = "linux"
+$_loaded_prompt = "myposh"
 
 #region Functional Blocks
 $_blocks = @{}
@@ -205,6 +205,22 @@ $_prompts["linux"] =
 
     $Host.ui.RawUI.WindowTitle = $_TITLE
     return Invoke-Expression $_PS1
+}
+
+$_prompts["myposh"] =
+{
+    $ESC = [char]0x1b
+    if ($pwd.Path.ToLower().StartsWith($HOME.ToLower())) {
+        $_CWD = "~" + $pwd.Path.Substring($HOME.Length)
+    } else{
+        $_CWD = $pwd.Path
+    }
+    if (issu) {
+        $_PS1 = ">$ESC[31m${ENV:USERNAME}$ESC[0m@${ENV:COMPUTERNAME}:$_CWD# "
+    } else {
+        $_PS1 = ">$ESC[32m${ENV:USERNAME}$ESC[0m@${ENV:COMPUTERNAME}:$_CWD$ "
+    }
+    return $_PS1
 }
 #endregion
 
