@@ -19,7 +19,7 @@ function testcolor() {
     for i in {40..47}; do
         printf "%${width}s " "${i}m"
     done
-    printf "\n" 
+    printf "\n"
     # print row by row
     pcbg $word "\e[0m"
     pcbg $word "\e[1m"
