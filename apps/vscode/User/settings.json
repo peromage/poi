@@ -16,7 +16,7 @@
         "*.dvs": "vb"
     },
     "window.restoreWindows": "none",
-    "powershell.powerShellExePath": "C:\\Windows\\SysWow64\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "powershell.powerShellExePath": "powershell.exe",
     "update.mode": "manual",
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
