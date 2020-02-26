@@ -60,7 +60,8 @@ function su {
 }
 
 function linktopath {
-    param($target,
+    [CmdletBinding(PositionalBinding=$false)]
+    param([Parameter(Position=0)]$target,
           $name=(Get-Item $target).Name,
           $binpath="$HOME\.local\bin")
     New-Item -ItemType SymbolicLink `
