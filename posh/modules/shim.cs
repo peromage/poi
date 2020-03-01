@@ -1,3 +1,8 @@
+//#define DEBUG
+#undef DEBUG
+//#define HARDCODED
+#undef HARDCODED
+
 namespace Rice {
 using System;
 using System.IO;
@@ -8,11 +13,11 @@ using System.Text.RegularExpressions;
 using System.ComponentModel;
 using System.Reflection;
 
-internal class ShimAgent {
-    // Static hardcoding shim configurations
+internal class Shim {
+    // Hardcoding shim configurations
     // Replace fileds before compiling
-    #if (BUILTIN)
-    private Func<ShimConfig> Config = () =>{
+    #if (HARDCODED)
+    private static Func<ShimConfig> Config = () =>{
         return new ShimConfig() {
             path = "{{PathToExe}}",
             args = "{{ExeExecutionArgs}}",
@@ -23,7 +28,7 @@ internal class ShimAgent {
     };
     // Dynamic configure through config file
     #else
-    private Func<ShimConfig> Config = () => {
+    private static Func<ShimConfig> Config = () => {
         string shimConfigExt = ".shim";
         string shimConfigPattern = @"(?<key>\S[^=]*\S)\s*=\s*(?<value>\S.*\S)";
         string shimPath = Assembly.GetExecutingAssembly().Location;
@@ -47,22 +52,56 @@ internal class ShimAgent {
         };
     };
     #endif
-    private ShimConfig _config;
 
-    public ShimAgent(string[] argv) {
-        _config = Config();
-        if (_config.valid)
-            // Combine passed arguments with pre-defined arguments
-            _config.args += " " + string.Join(" ", argv);
+    public static int Main(string[] argv) {
+        int exit_code = -1;
+        // Get default configuration
+        ShimConfig config = Shim.Config();
+        if (!config.valid) {
+            "shim".log(".shim file not found!");
+            return exit_code;
+        }
+        // Combine passed arguments with pre-defined arguments
+        config.args += " " + string.Join(" ", argv);
+        ShimAgent agent = new ShimAgent(config);
+        // Start delegated process
+        try {
+            exit_code = agent.Execute();
+        } catch (Win32Exception ex) {
+            // Try to run as admin if evaluated privilege required
+            if ((ErrorCode)ex.NativeErrorCode == ErrorCode.ERROR_ELEVATION_REQUIRED) {
+                try {
+                    "shim".log("Evaluation required");
+                    exit_code = agent.Execute(true);
+                } catch (Win32Exception ex1) {
+                    if ((ErrorCode)ex1.NativeErrorCode == ErrorCode.ERROR_CANCELLED)
+                        "shim".log("Evaluation cancelled by user.");
+                    else
+                        "shim".log($"Unknown error: {ex.ToString()}");
+                }
+            } else {
+                "shim".log($"Unknown error: {ex.ToString()}");
+            }
+        } catch (Exception ex) {
+            "shim".log($"Unknown error: {ex.ToString()}");
+        }
+        return exit_code;
+    }
+}
+
+internal class ShimAgent {
+
+    public ShimConfig Conf { get; set; }
+
+    public ShimAgent(ShimConfig config) {
+        Conf = config;
     }
 
     public int Execute(bool evaluated = false) {
-        if (!_config.valid)
-            throw new FileNotFoundException(".shim file not found!");
         // Set startup arguemnts
         ProcessStartInfo psinfo = new ProcessStartInfo() {
-            FileName = _config.path,
-            Arguments = _config.args,
+            FileName = Conf.path,
+            Arguments = Conf.args,
             // Additional arguments for evaluated privilege
             UseShellExecute = evaluated ? true : false,
             Verb = evaluated ? "runas" : ""
@@ -70,7 +109,7 @@ internal class ShimAgent {
         using (Process ps = new Process()) {
             ps.StartInfo = psinfo;
             ps.Start();
-            if (bool.Parse(_config.wait)) {
+            if (bool.Parse(Conf.wait)) {
                 ps.WaitForExit();
                 return ps.ExitCode;
             }
@@ -106,33 +145,11 @@ internal static class Extensions {
             return source[key];
         return default_value;
     }
-}
-
-internal class Shim {
-    public static int Main(string[] argv) {
-        int exit_code = -1;
-        ShimAgent agent = new ShimAgent(argv);
-        try {
-            exit_code = agent.Execute();
-        } catch (Win32Exception ex) {
-            // Try to run as admin if evaluated privilege required
-            if ((ErrorCode)ex.NativeErrorCode == ErrorCode.ERROR_ELEVATION_REQUIRED) {
-                try {
-                    Console.WriteLine("Evaluation required");
-                    exit_code = agent.Execute(true);
-                } catch (Win32Exception ex1) {
-                    if ((ErrorCode)ex1.NativeErrorCode == ErrorCode.ERROR_CANCELLED)
-                        Console.WriteLine("Evaluation cancelled by user.");
-                    else
-                        Console.WriteLine($"Unknown error: {ex.ToString()}");
-                }
-            } else {
-                Console.WriteLine($"Unknown error: {ex.ToString()}");
-            }
-        } catch (Exception ex) {
-            Console.WriteLine($"Unknown error: {ex.ToString()}");
-        }
-        return exit_code;
+    public static void log(this string source, string message) {
+        #if (DEBUG)
+        string from = string.IsNullOrWhiteSpace(source) ? string.Empty : $"[{source}]";
+        Console.WriteLine(from + message);
+        #endif
     }
 }
 
