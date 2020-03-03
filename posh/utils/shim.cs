@@ -118,13 +118,14 @@ internal class ShimAgent {
         }
         using (Process ps = new Process()) {
             ps.StartInfo = psinfo;
-            ps.Start();
             if (bool.Parse(Conf.wait)) {
+                ps.Start();
                 ps.WaitForExit();
                 return ps.ExitCode;
             }
-            // Default exit code
+            ps.Start();
         }
+        // Default exit code
         return 0;
     }
 }
