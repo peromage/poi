@@ -1,5 +1,3 @@
-//#define DEBUG
-#undef DEBUG
 //#define HARDCODED
 #undef HARDCODED
 
@@ -53,16 +51,26 @@ internal class Shim {
     };
     #endif
 
+    public static string[] HandleCli(string[] argv) {
+        List<string> args_list = new List<string>(argv);
+        // Extract shim cli arguments
+        if (args_list.Remove("--shim-debug")) {
+            Logger.Enable = true;
+        }
+        return args_list.ToArray();
+    }
+
     public static int Main(string[] argv) {
         int exit_code = -1;
         // Get default configuration
         ShimConfig config = Shim.Config();
         if (!config.valid) {
-            "shim".log(".shim file not found!");
+            Logger.Debug("shim", ".shim file not found!");
             return exit_code;
         }
-        // Combine passed arguments with pre-defined arguments
-        config.args += " " + string.Join(" ", argv);
+        // Handle shim cli arguments first
+        // Then combine passed arguments with pre-defined arguments
+        config.args += " " + string.Join(" ", Shim.HandleCli(argv));
         ShimAgent agent = new ShimAgent(config);
         // Start delegated process
         try {
@@ -71,19 +79,19 @@ internal class Shim {
             // Try to run as admin if evaluated privilege required
             if ((ErrorCode)ex.NativeErrorCode == ErrorCode.ERROR_ELEVATION_REQUIRED) {
                 try {
-                    "shim".log("Evaluation required");
+                    Logger.Debug("shim", "Evaluation required");
                     exit_code = agent.Execute(true);
                 } catch (Win32Exception ex1) {
                     if ((ErrorCode)ex1.NativeErrorCode == ErrorCode.ERROR_CANCELLED)
-                        "shim".log("Evaluation cancelled by user.");
+                        Logger.Debug("shim", "Evaluation cancelled by user.");
                     else
-                        "shim".log($"Unknown error: {ex.ToString()}");
+                        Logger.Debug("shim", $"Unknown error: {ex.ToString()}");
                 }
             } else {
-                "shim".log($"Unknown error: {ex.ToString()}");
+                Logger.Debug("shim", $"Unknown error: {ex.ToString()}");
             }
         } catch (Exception ex) {
-            "shim".log($"Unknown error: {ex.ToString()}");
+            Logger.Debug("shim", $"Unknown error: {ex.ToString()}");
         }
         return exit_code;
     }
@@ -99,13 +107,15 @@ internal class ShimAgent {
 
     public int Execute(bool evaluated = false) {
         // Set startup arguemnts
-        ProcessStartInfo psinfo = new ProcessStartInfo() {
-            FileName = Conf.path,
-            Arguments = Conf.args,
-            // Additional arguments for evaluated privilege
-            UseShellExecute = evaluated ? true : false,
-            Verb = evaluated ? "runas" : ""
-        };
+        ProcessStartInfo psinfo = new ProcessStartInfo(Conf.path, Conf.args);
+        // Additional arguments for evaluated privilege
+        if (evaluated) {
+            psinfo.UseShellExecute = true;
+            psinfo.Verb = "runas";
+        } else {
+            psinfo.UseShellExecute = false;
+            psinfo.Verb = "";
+        }
         using (Process ps = new Process()) {
             ps.StartInfo = psinfo;
             ps.Start();
@@ -114,8 +124,8 @@ internal class ShimAgent {
                 return ps.ExitCode;
             }
             // Default exit code
-            return 0;
         }
+        return 0;
     }
 }
 
@@ -145,11 +155,17 @@ internal static class Extensions {
             return source[key];
         return default_value;
     }
-    public static void log(this string source, string message) {
-        #if (DEBUG)
-        string from = string.IsNullOrWhiteSpace(source) ? string.Empty : $"[{source}]";
-        Console.WriteLine(from + message);
-        #endif
+}
+
+internal static class Logger {
+    public static bool Enable { get; set; } = false;
+    public static void Debug(string source, string message) {
+        if (!Logger.Enable)
+            return;
+        if (string.IsNullOrWhiteSpace(source))
+            Console.WriteLine(message);
+        else
+            Console.WriteLine($"[{source}] {message}");
     }
 }
 
