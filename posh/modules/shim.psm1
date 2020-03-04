@@ -40,7 +40,8 @@ function createshim {
         $src_code = $src_code -replace $Conf.PATT_DEFINE, "#define"
     }
     # Compile to shim
-    Add-Type -OutputAssembly "$bin\$name.exe" -OutputType ConsoleApplication $src_code
+    Add-Type -OutputAssembly "$bin\$name.exe" -OutputType ConsoleApplication -TypeDefinition $src_code
+    Write-Output "Generated: $bin\$name.exe -> $path"
     # Put shim config in a .shim file if not hardcoded
     if (-not $hardcode) {
         Set-Content -Path "$bin\$name.shim" -Value `
@@ -49,9 +50,8 @@ function createshim {
                 "args=$arguments"
                 "wait=$($wait.ToString())"
             )
-        Write-Output "Generated: $bin\$name.exe(.shim) -> $path"
+        Write-Output "Generated: $bin\$name.shim"
     }
-    Write-Output "Generated: $bin\$name.exe -> $path"
 }
 
 function linktopath {
