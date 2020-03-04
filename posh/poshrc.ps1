@@ -22,7 +22,7 @@ function loadmodule {
 
 #region My code
 # Loading modules
-loadmodule "$PSScriptRoot\modules" "commands,path"
+loadmodule "$PSScriptRoot\modules" "commands,path,shim"
 # Loading prompt
 loadmodule "$PSScriptRoot\prompts" "myposh"
 

@@ -58,15 +58,3 @@ function su {
         $proc.Start() | Out-Null
     }
 }
-
-function linktopath {
-    [CmdletBinding(PositionalBinding=$false)]
-    param([Parameter(Position=0)]$target,
-          $name=(Get-Item $target).Name,
-          $binpath="$HOME\.local\bin")
-    New-Item -ItemType SymbolicLink `
-             -Target $target `
-             -Path $binpath `
-             -Name $name `
-             -Force
-}

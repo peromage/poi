@@ -17,9 +17,9 @@ internal class Shim {
     #if (HARDCODED)
     private static Func<ShimConfig> Config = () =>{
         return new ShimConfig() {
-            path = "{{PathToExe}}",
-            args = "{{ExeExecutionArgs}}",
-            wait = "{{WaitForExit}}",
+            path = @"{{PathToExe}}",
+            args = @"{{ExeExecutionArgs}}",
+            wait = @"{{WaitForExit}}",
             cwd = Environment.CurrentDirectory,
             valid = true
         };
@@ -42,9 +42,9 @@ internal class Shim {
                             .ToDictionary(m => m.Groups["key"].Value,
                                           m => m.Groups["value"].Value);
         return new ShimConfig() {
-            path = configDict.Get("path", ""),
-            args = configDict.Get("args", ""),
-            wait = configDict.Get("wait", bool.TrueString),
+            path = configDict.TryGet("path", ""),
+            args = configDict.TryGet("args", ""),
+            wait = configDict.TryGet("wait", bool.TrueString),
             cwd = Environment.CurrentDirectory,
             valid = true
         };
@@ -85,13 +85,13 @@ internal class Shim {
                     if ((ErrorCode)ex1.NativeErrorCode == ErrorCode.ERROR_CANCELLED)
                         Logger.Debug("shim", "Evaluation cancelled by user.");
                     else
-                        Logger.Debug("shim", $"Unknown error: {ex.ToString()}");
+                        Logger.Debug("shim", "Unknown error: {0}".FormatWith(ex.ToString()));
                 }
             } else {
-                Logger.Debug("shim", $"Unknown error: {ex.ToString()}");
+                Logger.Debug("shim", "Unknown error: {0}".FormatWith(ex.ToString()));
             }
         } catch (Exception ex) {
-            Logger.Debug("shim", $"Unknown error: {ex.ToString()}");
+            Logger.Debug("shim", "Unknown error: {0}".FormatWith(ex.ToString()));
         }
         return exit_code;
     }
@@ -148,7 +148,7 @@ internal enum ErrorCode: uint {
 }
 
 internal static class Extensions {
-    public static TValue Get<TKey, TValue>(
+    public static TValue TryGet<TKey, TValue>(
         this IDictionary<TKey, TValue> source,
         TKey key,
         TValue default_value) {
@@ -156,17 +156,25 @@ internal static class Extensions {
             return source[key];
         return default_value;
     }
+
+    public static string FormatWith(this string source, params object[] values) {
+        return String.Format(source, values);
+    }
 }
 
 internal static class Logger {
-    public static bool Enable { get; set; } = false;
+    public static bool Enable { get; set; }
+
+    static Logger() {
+        Enable = false;
+    }
     public static void Debug(string source, string message) {
         if (!Logger.Enable)
             return;
         if (string.IsNullOrWhiteSpace(source))
             Console.WriteLine(message);
         else
-            Console.WriteLine($"[{source}] {message}");
+            Console.WriteLine("[{0}] {1}".FormatWith(source, message));
     }
 }
 
