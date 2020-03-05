@@ -1,18 +1,3 @@
-function touch {
-    if($args[0]) {
-        New-Item -ItemType File -Path $args[0]
-    } else {
-        "Usage: touch <file[,file1[,file2...]]>"
-    }
-}
-
-function vim {
-    if($args.Length -eq 0) {
-        bash -c "vim"
-    } else {
-        bash -c "vim $($args[0].Replace("\", "/"))"}
-    }
-
 function ll {
     Get-ChildItem $args[0] `
     | Select-Object Mode,Length,LastWriteTime,Name,Target `
