@@ -41,7 +41,7 @@ function createshim {
     }
     # Compile to shim
     Add-Type -OutputAssembly "$bin\$name.exe" -OutputType ConsoleApplication -TypeDefinition $src_code
-    Write-Output "Generated: $bin\$name.exe -> $path"
+    Write-Output "Created: $bin\$name.exe -> $path"
     # Put shim config in a .shim file if not hardcoded
     if (-not $hardcode) {
         Set-Content -Path "$bin\$name.shim" -Value `
@@ -50,20 +50,17 @@ function createshim {
                 "args=$arguments"
                 "wait=$($wait.ToString())"
             )
-        Write-Output "Generated: $bin\$name.shim"
+        Write-Output "Created: $bin\$name.shim"
     }
 }
 
-function linktopath {
+function linkshim {
     [CmdletBinding(PositionalBinding=$false)]
     param([Parameter(Position=0)]$target,
           $name=(Get-Item $target).Name,
           $bin=$Conf.BIN)
-    New-Item -ItemType SymbolicLink `
-             -Target $target `
-             -Path $binpath `
-             -Name $name `
-             -Force
+    $link = New-Item -ItemType SymbolicLink -Target $target -Path $bin -Name $name -Force
+    Write-Output "Linked: $($link.FullName) -> $($link.Target)"
 }
 
-Export-ModuleMember -Function createshim, linktopath
+Export-ModuleMember -Function createshim, linkshim
