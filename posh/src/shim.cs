@@ -51,13 +51,15 @@ internal class Shim {
     };
     #endif
 
-    public static string[] HandleCli(string[] argv) {
-        List<string> args_list = new List<string>(argv);
+    public static IEnumerable<string> HandleCli(string[] argv) {
+        IList<string> args_list = new List<string>(argv);
         // Extract shim cli arguments
         if (args_list.Remove("--shim-debug")) {
             Logger.Enable = true;
         }
-        return args_list.ToArray();
+        // If any argument has whitespace. Make sure they are quoted properly
+        return args_list.Select(arg => arg.Contains(' ') ?
+                                       string.Format("\"{0}\"", arg) : arg);
     }
 
     public static int Main(string[] argv) {
