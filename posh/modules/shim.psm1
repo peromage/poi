@@ -7,7 +7,7 @@ $Conf = @{
     PATT_DEFINE = '#undef(?=\s+HARDCODED)'
 }
 
-function createshim {
+function CreateShim {
     [CmdletBinding(PositionalBinding=$false)]
     param([Parameter(Position=0)][string]$path,
           [string]$name="",
@@ -54,13 +54,94 @@ function createshim {
     }
 }
 
-function linkshim {
+function LinkShim {
     [CmdletBinding(PositionalBinding=$false)]
     param([Parameter(Position=0)]$target,
-          $name=(Get-Item $target).Name,
-          $bin=$Conf.BIN)
+          [string]$name=(Get-Item $target).Name,
+          [string]$bin=$Conf.BIN)
     $link = New-Item -ItemType SymbolicLink -Target $target -Path $bin -Name $name -Force
     Write-Output "Linked: $($link.FullName) -> $($link.Target)"
 }
 
-Export-ModuleMember -Function createshim, linkshim
+function CreateShimFromManifest {
+    param([string]$json_file)
+    function is_valid($v, $t) {
+        if ($null -eq $v) {
+            return $false
+        }
+        if ($v.GetType().FullName -eq $t) {
+            if ($t -eq "System.String") {
+                return (-not [System.String]::IsNullOrWhiteSpace($v))
+            }
+            return $true
+        }
+        return $false
+    }
+    # Read json file
+    $j = Get-Content -Raw $json_file | ConvertFrom-Json
+    # Iterate apps key
+    foreach ($app in $j.apps) {
+        # Check parameters
+        # $d dictionary contains arguments for createshim
+        $d = @{}
+        $str_t = "System.String"
+        $bool_t = "System.Boolean"
+        # "path" is mandantory
+        if (-not (is_valid $app.path $str_t)) {
+            continue
+        }
+        $d["path"] = $app.path
+        if (is_valid $app.args $str_t) {
+            $d["arguments"] = $app.args
+        }
+        if (is_valid $app.wait $bool_t) {
+            $d["wait"] = $app.wait
+        }
+        if (is_valid $app.hardcode $bool_t) {
+            $d["hardcode"] = $app.hardcode
+        }
+        if (is_valid $app.name $str_t) {
+            $d["name"] = $app.name
+        }
+        if (is_valid $app.bin $str_t) {
+            $d["bin"] = $app.bin
+        }
+        CreateShim @d
+    }
+}
+
+function GenerateManifest {
+    param([string]$root=$pwd.Path, [int]$depth=1)
+    function new_entry {
+        return [ordered]@{
+            path = ""
+            args = ""
+            name = ""
+            bin = ""
+            wait = $true
+            hardcode = $true
+        }
+    }
+    # Validate path
+    if (-not (Test-Path $root)) {
+        Write-Output "Invalid path"
+        return
+    }
+    # Resolve absolute path
+    $root = (Resolve-Path $root).Path
+    # Walk through root directory and sub directories to get executables
+    $exe_list = Get-ChildItem -Path $root -Name *.exe -Depth $depth
+    # create entries for each executable
+    $json = @{ apps = [System.Collections.ArrayList]@() }
+    foreach ($exe in $exe_list) {
+        $d = new_entry
+        $d.path = (Join-Path $root $exe)
+        Write-Verbose "Find $($d.path)"
+        $json.apps.Add($d) | Out-Null
+    }
+    $json_file = Join-Path $root "manifest.json"
+    $json | ConvertTo-Json | Set-Content $json_file
+    Write-Output "Created $json_file"
+}
+
+Export-ModuleMember -Function CreateShim, LinkShim, CreateShimFromManifest, GenerateManifest
