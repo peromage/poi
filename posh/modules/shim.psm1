@@ -59,6 +59,11 @@ function LinkShim {
     param([Parameter(Position=0)]$target,
           [string]$name=(Get-Item $target).Name,
           [string]$bin=$Conf.BIN)
+    # Append .exe suffix if name doesn't contain .exe extension
+    $patt = "\.exe$"
+    if (($target -match $patt) -and (-not ($name -match $patt))) {
+        $name = "$name.exe"
+    }
     $link = New-Item -ItemType SymbolicLink -Target $target -Path $bin -Name $name -Force
     Write-Output "Linked: $($link.FullName) -> $($link.Target)"
 }
