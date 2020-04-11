@@ -4,10 +4,6 @@
 [core]
 	autocrlf = input
 	quotepath = false
-[alias]
-	gg = log --graph --pretty=format:'%Cred%h%Creset [%an] - %s %Cgreen(%ci)%Creset %C(cyan)%d%Creset' --abbrev-commit --date=relative
-	ss = status
-	ac = "!git add -A && git commit -m"
 [gui]
 	encoding = utf-8
 [i18n "commit"]
