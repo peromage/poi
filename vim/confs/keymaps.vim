@@ -1,0 +1,15 @@
+nnoremap <silent><C-h> <C-W>h
+nnoremap <silent><C-j> <C-W>j
+nnoremap <silent><C-k> <C-W>k
+nnoremap <silent><C-l> <C-W>l
+nnoremap <silent><C--> <C-W>-
+nnoremap <silent><C-S-_> <C-W>_
+nnoremap <silent><C-=> <C-W>=
+nnoremap <silent><C-S-+> <C-W>+
+nnoremap <silent><C-S-<> <C-W><
+nnoremap <silent><C-S->> <C-W>>
+nnoremap <silent><C-S-H> gT
+nnoremap <silent><C-S-L> gt
+nnoremap <silent><C-S-J> :bn<CR>
+nnoremap <silent><C-S-K> :bp<CR>
+nnoremap <silent><C-q> :q<CR>
