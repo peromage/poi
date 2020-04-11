@@ -120,41 +120,37 @@
         "command": "-workbench.action.terminal.new"
     },
     {
-        "key": "alt+w",
+        "key": "alt+q",
         "command": "workbench.action.terminal.kill",
         "when": "terminalFocus"
     },
     {
-        "key": "alt+j",
+        "key": "shift+alt+j",
         "command": "workbench.action.terminal.focusNext",
         "when": "terminalFocus"
     },
     {
-        "key": "alt+k",
+        "key": "shift+alt+k",
         "command": "workbench.action.terminal.focusPrevious",
         "when": "terminalFocus"
     },
     {
-        "key": "alt+i",
-        "command": "workbench.action.terminal.focus"
-    },
-    {
-        "key": "ctrl+alt+h",
+        "key": "alt+=",
         "command": "workbench.action.terminal.resizePaneLeft",
         "when": "terminalFocus"
     },
     {
-        "key": "ctrl+alt+l",
+        "key": "shift+alt+=",
         "command": "workbench.action.terminal.resizePaneRight",
         "when": "terminalFocus"
     },
     {
-        "key": "ctrl+alt+k",
+        "key": "shift+alt+-",
         "command": "workbench.action.terminal.resizePaneUp",
         "when": "terminalFocus"
     },
     {
-        "key": "ctrl+alt+j",
+        "key": "alt+-",
         "command": "workbench.action.terminal.resizePaneDown",
         "when": "terminalFocus"
     },
@@ -162,10 +158,6 @@
         "key": "ctrl+alt+t",
         "command": "workbench.action.terminal.rename",
         "when": "terminalFocus"
-    },
-    {
-        "key": "ctrl+alt+i",
-        "command": "workbench.action.quickOpenTerm"
     },
     {
         "key": "ctrl+shift+j",
@@ -184,6 +176,91 @@
     {
         "key": "alt+c",
         "command": "-workbench.action.terminal.toggleFindCaseSensitive",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-workbench.action.terminal.copySelection",
+        "when": "terminalFocus && terminalTextSelected"
+    },
+    {
+        "key": "ctrl+shift+c",
+        "command": "-workbench.action.terminal.openNativeConsole",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+backspace",
+        "command": "-workbench.action.terminal.deleteWordLeft",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+delete",
+        "command": "-workbench.action.terminal.deleteWordRight",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+v",
+        "command": "-workbench.action.terminal.paste",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+f",
+        "command": "workbench.action.terminal.scrollDownPage",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "shift+pagedown",
+        "command": "-workbench.action.terminal.scrollDownPage",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+e",
+        "command": "workbench.action.terminal.scrollDown",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+alt+pagedown",
+        "command": "-workbench.action.terminal.scrollDown",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "shift+alt+g",
+        "command": "workbench.action.terminal.scrollToBottom",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+end",
+        "command": "-workbench.action.terminal.scrollToBottom",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+g",
+        "command": "workbench.action.terminal.scrollToTop",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+home",
+        "command": "-workbench.action.terminal.scrollToTop",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+y",
+        "command": "workbench.action.terminal.scrollUp",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+alt+pageup",
+        "command": "-workbench.action.terminal.scrollUp",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+b",
+        "command": "workbench.action.terminal.scrollUpPage",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "shift+pageup",
+        "command": "-workbench.action.terminal.scrollUpPage",
         "when": "terminalFocus"
     }
 ]
