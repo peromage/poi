@@ -1,0 +1,23 @@
+# Author: Fang
+# Date: 2020/04/11
+
+function loadmodule {
+    # $1: Folder where the module resides
+    # $2: Module names. Separated by ','
+    # Module name supports glob
+    local modules=(${2//,/ })
+    local found i m mp
+    for i in ${modules[*]}; do
+        mp="$1/$i.shm"
+        for m in $mp; do
+            if [ -e "$m" ]; then
+                source "$m"
+                found=1
+            fi
+        done
+        if [ -z "$found" ]; then
+            echo "Module not found $mp"
+        fi
+    done
+}
+#endregion
