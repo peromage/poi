@@ -22,6 +22,11 @@ let g:netrw_browse_split=4
 let g:netrw_altv=1
 let g:netrw_winsize=15
 
+" Encoding
+set encoding=utf-8
+set fileencoding=uft-8
+set termencoding=utf-8
+
 " Quality of life
 set nobackup
 set noundofile
