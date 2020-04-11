@@ -23,19 +23,25 @@ _scriptroot=$(dirname $(realpath $BASH_SOURCE))
 function loadmodule {
     # $1: Folder where the module resides
     # $2: Module names. Separated by ','
-    modules=(${2//,/ })
+    # Module name supports glob
+    local modules=(${2//,/ })
+    local found i m mp
     for i in ${modules[*]}; do
-        temp="$1/$i.sh"
-        if [ -f "$temp" ]; then
-            . $temp
-        else
-            echo "Module not found: $temp"
+        mp="$1/$i.sh"
+        for m in $mp; do
+            if [ -e "$m" ]; then
+                source "$m"
+                found=1
+            fi
+        done
+        if [ -z "$found" ]; then
+            echo "Module not found $mp"
         fi
     done
 }
 #endregion
 
 #region My code
-loadmodule "$_scriptroot/modules" "alias,test"
-loadmodule "$_scriptroot/prompts" "mybash"
+loadmodule "$_scriptroot/modules" aliases
+loadmodule "$_scriptroot/prompts" mybash
 #endregion
