@@ -5,16 +5,21 @@
 #region Initialization DO NOT TOUCH
 # Module loader: Search and load module in a directory
 function loadmodule {
-    # $p: Folder where the module resides
-    # $m: Module names. Separated by ','
-    param($p, $m)
-    $modules = $m.Split(",")|ForEach-Object {$_.Trim()}
-    foreach ($i in $modules) {
-        $temp = "$p\$i.psm1"
-        if (Test-Path $temp) {
-            Import-Module $temp
-        } else {
-            Write-Output "Module not found: $temp"
+    <#
+    $path: Folder where the module resides
+    $modlist: Module name list
+    Note: modlist supports glob
+    #>
+    param([string]$path, [array]$modlist)
+    foreach ($i in $modlist) {
+        $mp = "$path\$i.psm1"
+        $ml = Get-Item -Path $mp
+        if ($null -eq $ml) {
+            Write-Output "Module not found: $mp"
+            continue
+        }
+        foreach ($m in $ml) {
+            Import-Module -DisableNameChecking $m.FullName
         }
     }
 }
@@ -22,9 +27,9 @@ function loadmodule {
 
 #region My code
 # Loading modules
-loadmodule "$PSScriptRoot\modules" "commands,path,shim"
+loadmodule "$PSScriptRoot\modules" commands,path,shim
 # Loading prompt
-loadmodule "$PSScriptRoot\prompts" "myposh"
+loadmodule "$PSScriptRoot\prompts" myposh
 
 # Clean up
 
