@@ -14,6 +14,7 @@ set nowrap
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 " Status bar view
+set laststatus=2
 set statusline=%<\ [%n%H%M%R%W]\ %-40f\ %=%y\ %10((R%l,C%c)%)\ %P
 " Netrw view
 let g:netrw_banner=0
@@ -31,3 +32,4 @@ set termencoding=utf-8
 set nobackup
 set noundofile
 set mouse=a
+set hidden
