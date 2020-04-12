@@ -639,7 +639,7 @@
 			<value name="StatusBar.Hide.Dpi" type="hex" data="01"/>
 			<value name="TabFlashChanged" type="long" data="8"/>
 			<value name="TabModifiedSuffix" type="string" data="[*]"/>
-			<key name="HotKeys" modified="2020-04-11 17:40:06" build="191012">
+			<key name="HotKeys" modified="2020-04-12 10:26:55" build="191012">
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="0000005b"/>
 				<value name="Multi.ArrowsModifier" type="dword" data="0000005b"/>
@@ -661,11 +661,11 @@
 				<value name="Multi.NewAttach" type="dword" data="00000000"/>
 				<value name="Multi.NewSplitV" type="dword" data="001012ba"/>
 				<value name="Multi.NewSplitH" type="dword" data="000012ba"/>
-				<value name="Multi.SplitMaximize" type="dword" data="00001250"/>
-				<value name="Multi.SplitSizeVU" type="dword" data="001012bd"/>
-				<value name="Multi.SplitSizeVD" type="dword" data="000012bd"/>
-				<value name="Multi.SplitSizeHL" type="dword" data="001012bc"/>
-				<value name="Multi.SplitSizeHR" type="dword" data="001012be"/>
+				<value name="Multi.SplitMaximize" type="dword" data="00001257"/>
+				<value name="Multi.SplitSizeVU" type="dword" data="001012be"/>
+				<value name="Multi.SplitSizeVD" type="dword" data="001012bc"/>
+				<value name="Multi.SplitSizeHL" type="dword" data="000012bc"/>
+				<value name="Multi.SplitSizeHR" type="dword" data="000012be"/>
 				<value name="Key.TabPane1" type="dword" data="00000000"/>
 				<value name="Key.TabPane2" type="dword" data="00000000"/>
 				<value name="Multi.SplitFocusU" type="dword" data="0000124b"/>
@@ -738,9 +738,9 @@
 				<value name="Key.BufTop" type="dword" data="00000000"/>
 				<value name="Key.BufBottom" type="dword" data="00000000"/>
 				<value name="Key.BufCursor" type="dword" data="00000000"/>
-				<value name="FontLargerKey" type="dword" data="001012bb"/>
-				<value name="FontSmallerKey" type="dword" data="000012bb"/>
-				<value name="FontOriginalKey" type="dword" data="00001230"/>
+				<value name="FontLargerKey" type="dword" data="00001230"/>
+				<value name="FontSmallerKey" type="dword" data="00001239"/>
+				<value name="FontOriginalKey" type="dword" data="00101230"/>
 				<value name="PasteFileKey" type="dword" data="00000000"/>
 				<value name="PastePathKey" type="dword" data="00000000"/>
 				<value name="PasteCygwinKey" type="dword" data="00000000"/>
