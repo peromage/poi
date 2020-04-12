@@ -1,6 +1,6 @@
 " Splitting
-nnoremap <silent><C-;> :vs<CR>
-nnoremap <silent><C-S-:> :sp<CR>
+nnoremap <leader>v :vs<CR>
+nnoremap <leader>h :sp<CR>
 
 " Pane movement
 nnoremap <silent><C-h> <C-w>h
@@ -9,23 +9,24 @@ nnoremap <silent><C-k> <C-w>k
 nnoremap <silent><C-l> <C-w>l
 
 " Pane size adjustment
-nnoremap <silent><C--> <C-w>-
-nnoremap <silent><C-S-_> <C-w>_
-nnoremap <silent><C-=> <C-w>=
-nnoremap <silent><C-S-+> <C-w>+
-nnoremap <silent><C-S-<> <C-w><
-nnoremap <silent><C-S->> <C-w>>
+nnoremap <silent><C-Down> <C-w>-
+nnoremap <silent><C-PageUp> <C-w>_
+nnoremap <silent><C-PageDown> <C-w>=
+nnoremap <silent><C-Up> <C-w>+
+nnoremap <silent><C-Left> <C-w><
+nnoremap <silent><C-Right> <C-w>>
 
 " Tabs
-nnoremap <silent><C-S-H> gT
-nnoremap <silent><C-S-L> gt
+nnoremap <silent><Left> gT
+nnoremap <silent><Right> gt
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>T <C-w>T
 
 " Buffers
-nnoremap <silent><C-S-J> :bn<CR>
-nnoremap <silent><C-S-K> :bp<CR>
+nnoremap <silent><Down> :bn<CR>
+nnoremap <silent><Up> :bp<CR>
 nnoremap <leader>b :ls<CR>
 
 " Quick quit
-nnoremap <silent><C-q> :q<CR>
+nnoremap <leader>q :q<CR>
+
