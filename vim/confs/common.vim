@@ -26,6 +26,7 @@ let g:netrw_winsize=15
 " Encoding
 set encoding=utf-8
 set fileencoding=uft-8
+set fileencodings=ucs-bom,uft-8
 set termencoding=utf-8
 
 " Quality of life

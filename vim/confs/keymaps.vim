@@ -9,12 +9,12 @@ nnoremap <silent><C-k> <C-w>k
 nnoremap <silent><C-l> <C-w>l
 
 " Pane size adjustment
-nnoremap <silent><C-Down> <C-w>-
-nnoremap <silent><C-PageUp> <C-w>_
-nnoremap <silent><C-PageDown> <C-w>=
-nnoremap <silent><C-Up> <C-w>+
-nnoremap <silent><C-Left> <C-w><
-nnoremap <silent><C-Right> <C-w>>
+nnoremap <silent>_ <C-w>-
+nnoremap <silent>+ <C-w>+
+nnoremap <silent>- <C-w><
+nnoremap <silent>= <C-w>>
+nnoremap <leader>w <C-w>_
+nnoremap <leader>W <C-w>=
 
 " Tabs
 nnoremap <silent><Left> gT
@@ -29,4 +29,5 @@ nnoremap <leader>b :ls<CR>
 
 " Quick quit
 nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :qa<CR>
 
