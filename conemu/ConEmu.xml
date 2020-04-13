@@ -483,73 +483,25 @@
 			<value name="DndLKey" type="hex" data="00"/>
 			<value name="DndRKey" type="hex" data="a2"/>
 			<value name="WndDragKey" type="dword" data="00121101"/>
-			<key name="Tasks" modified="2020-02-27 16:19:48" build="191012">
-				<value name="Count" type="long" data="6"/>
-				<key name="Task1" modified="2020-02-26 10:43:33" build="191012">
+			<key name="Tasks" modified="2020-04-13 13:37:12" build="191012">
+				<value name="Count" type="long" data="2"/>
+				<key name="Task1" modified="2020-04-13 13:38:45" build="191012">
 					<value name="Name" type="string" data="{posh}"/>
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data="powershell"/>
+					<value name="Cmd1" type="string" data="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="Flags" type="dword" data="00000004"/>
 				</key>
-				<key name="Task2" modified="2020-02-26 10:43:33" build="191012">
+				<key name="Task2" modified="2020-04-13 13:38:45" build="191012">
 					<value name="Name" type="string" data="{cmd}"/>
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data="cmd"/>
+					<value name="Cmd1" type="string" data="C:\Windows\System32\cmd.exe"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="Flags" type="dword" data="00000004"/>
-				</key>
-				<key name="Task3" modified="2020-01-11 01:10:01" build="191012">
-					<value name="Name" type="string" data="{bash}"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data="bash"/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="1"/>
-					<value name="Flags" type="dword" data="00000004"/>
-				</key>
-				<key name="Task4" modified="2020-02-27 16:19:48" build="191012">
-					<value name="Name" type="string" data="{testing::ecg}"/>
-					<value name="Flags" type="dword" data="00000004"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=""/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="5"/>
-					<value name="Cmd1" type="string" data="ssh ecg"/>
-					<value name="Cmd2" type="string" data="export PS1='[ECG]:`pwd`# '"/>
-					<value name="Cmd3" type="string" data="export TERM=xterm"/>
-					<value name="Cmd4" type="string" data="alias ll='ls -lai'"/>
-					<value name="Cmd5" type="string" data="cd /"/>
-				</key>
-				<key name="Task5" modified="2020-02-27 16:19:48" build="191012">
-					<value name="Name" type="string" data="{testing::tcu}"/>
-					<value name="Flags" type="dword" data="00000004"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=""/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="5"/>
-					<value name="Cmd1" type="string" data="ssh ecg"/>
-					<value name="Cmd2" type="string" data="export PS1='[TCU]:`pwd`# '"/>
-					<value name="Cmd3" type="string" data="export TERM=xterm"/>
-					<value name="Cmd4" type="string" data="alias ll='ls -lai'"/>
-					<value name="Cmd5" type="string" data="cd /"/>
-				</key>
-				<key name="Task6" modified="2020-02-27 16:19:48" build="191012">
-					<value name="Name" type="string" data="{testing::sync}"/>
-					<value name="Flags" type="dword" data="00000004"/>
-					<value name="Hotkey" type="dword" data="00000000"/>
-					<value name="GuiArgs" type="string" data=""/>
-					<value name="Active" type="long" data="0"/>
-					<value name="Count" type="long" data="5"/>
-					<value name="Cmd1" type="string" data="ssh ecg"/>
-					<value name="Cmd2" type="string" data="export PS1='[SYNC]:`pwd`# '"/>
-					<value name="Cmd3" type="string" data="export TERM=xterm"/>
-					<value name="Cmd4" type="string" data="alias ll='ls -lai'"/>
-					<value name="Cmd5" type="string" data="cd /"/>
 				</key>
 			</key>
 			<key name="Apps" modified="2018-02-22 06:05:13" build="171109">
@@ -639,7 +591,7 @@
 			<value name="StatusBar.Hide.Dpi" type="hex" data="01"/>
 			<value name="TabFlashChanged" type="long" data="8"/>
 			<value name="TabModifiedSuffix" type="string" data="[*]"/>
-			<key name="HotKeys" modified="2020-04-12 10:26:55" build="191012">
+			<key name="HotKeys" modified="2020-04-12 23:53:50" build="191012">
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="0000005b"/>
 				<value name="Multi.ArrowsModifier" type="dword" data="0000005b"/>
@@ -662,10 +614,10 @@
 				<value name="Multi.NewSplitV" type="dword" data="001012ba"/>
 				<value name="Multi.NewSplitH" type="dword" data="000012ba"/>
 				<value name="Multi.SplitMaximize" type="dword" data="00001257"/>
-				<value name="Multi.SplitSizeVU" type="dword" data="001012be"/>
-				<value name="Multi.SplitSizeVD" type="dword" data="001012bc"/>
-				<value name="Multi.SplitSizeHL" type="dword" data="000012bc"/>
-				<value name="Multi.SplitSizeHR" type="dword" data="000012be"/>
+				<value name="Multi.SplitSizeVU" type="dword" data="001012bb"/>
+				<value name="Multi.SplitSizeVD" type="dword" data="001012bd"/>
+				<value name="Multi.SplitSizeHL" type="dword" data="000012bd"/>
+				<value name="Multi.SplitSizeHR" type="dword" data="000012bb"/>
 				<value name="Key.TabPane1" type="dword" data="00000000"/>
 				<value name="Key.TabPane2" type="dword" data="00000000"/>
 				<value name="Multi.SplitFocusU" type="dword" data="0000124b"/>
@@ -820,11 +772,11 @@
 				<value name="Key.DebugProcess" type="dword" data="00000000"/>
 				<value name="Key.DumpProcess" type="dword" data="00000000"/>
 				<value name="Key.DumpTree" type="dword" data="00000000"/>
-				<value name="Multi.SplitSwap" type="dword" data="00000000"/>
-				<value name="Multi.SplitSwapU" type="dword" data="00001226"/>
-				<value name="Multi.SplitSwapD" type="dword" data="00001228"/>
-				<value name="Multi.SplitSwapL" type="dword" data="00001225"/>
-				<value name="Multi.SplitSwapR" type="dword" data="00001227"/>
+				<value name="Multi.SplitSwap" type="dword" data="000012db"/>
+				<value name="Multi.SplitSwapU" type="dword" data="00000000"/>
+				<value name="Multi.SplitSwapD" type="dword" data="00000000"/>
+				<value name="Multi.SplitSwapL" type="dword" data="00000000"/>
+				<value name="Multi.SplitSwapR" type="dword" data="00000000"/>
 				<value name="Multi.GroupInputAll" type="dword" data="00000000"/>
 				<value name="Multi.GroupInputKey" type="dword" data="00000000"/>
 				<value name="Key.AltNumpad" type="dword" data="00000000"/>
