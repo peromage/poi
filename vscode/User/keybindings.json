@@ -135,12 +135,12 @@
         "when": "terminalFocus"
     },
     {
-        "key": "alt+,",
+        "key": "alt+-",
         "command": "workbench.action.terminal.resizePaneLeft",
         "when": "terminalFocus"
     },
     {
-        "key": "alt+.",
+        "key": "alt+=",
         "command": "workbench.action.terminal.resizePaneRight",
         "when": "terminalFocus"
     },
@@ -254,12 +254,12 @@
         "when": "terminalFocus"
     },
     {
-        "key": "shift+alt+,",
+        "key": "shift+alt+-",
         "command": "workbench.action.terminal.resizePaneDown",
         "when": "terminalFocus"
     },
     {
-        "key": "shift+alt+.",
+        "key": "shift+alt+=",
         "command": "workbench.action.terminal.resizePaneUp",
         "when": "terminalFocus"
     }
