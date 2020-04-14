@@ -5,8 +5,7 @@ set shiftwidth=4
 set expandtab
 
 " Appearance customization
-syntax enable
-syntax on
+set syntax=on
 set number relativenumber
 set hlsearch
 set ruler
@@ -33,6 +32,7 @@ set termencoding=utf-8
 
 " Quality of life
 set nocompatible
+filetype plugin indent on
 " Remove files that are not needed
 set nobackup
 set noundofile
