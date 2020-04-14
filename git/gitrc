@@ -4,11 +4,20 @@
 [core]
 	autocrlf = input
 	quotepath = false
+	editor = vim
+[color]
+	ui = auto
 [gui]
 	encoding = utf-8
 [i18n "commit"]
 	encoding = utf-8
 [i18n]
 	logoutputencoding = utf-8
-[credential]
-	helper = manager
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = false
