@@ -13,7 +13,7 @@ function loadmodule {
             continue
         }
         foreach ($m in $ml) {
-            Import-Module -DisableNameChecking $m.FullName
+            Import-Module -Scope Global -DisableNameChecking -Name $m.FullName
         }
     }
 }
