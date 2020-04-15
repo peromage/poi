@@ -1,6 +1,6 @@
 " Splitting
-nnoremap <leader>; :vs<CR>
-nnoremap <leader>: :sp<CR>
+nnoremap <leader><bslash> :vs<CR>
+nnoremap <leader><bar> :sp<CR>
 
 " Pane movement
 nnoremap <silent><C-h> <C-w>h
