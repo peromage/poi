@@ -1,12 +1,7 @@
 " Rc file root directory
-let s:rcroot = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-
-" Dynamically load .vim files
-function! s:loadvim(path) abort
-    for m in split(glob(a:path . "/*.vim"), "\n")
-        execute "source" m
-    endfor
-endfunction
+let s:rcroot = resolve(expand('<sfile>:h'))
+" Load core module
+execute "source ".s:rcroot."/rcore.vim"
 
 " Load customized configs
-call s:loadvim(s:rcroot . "/confs")
+call rcore#loadvim(s:rcroot."/confs", "*")
