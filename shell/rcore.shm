@@ -4,11 +4,17 @@
 function loadmodule {
     # $1: Folder where the module resides
     # $2: Module names. Separated by ','
+    # $3: The default module extension
     # Module name supports glob
     local modules=(${2//,/ })
-    local found i m mp
+    local found i m mp ext
+    if [ -z $3 ]; then
+        ext=".shm"
+    else
+        ext=$3
+    fi
     for i in ${modules[*]}; do
-        mp="$1/$i.shm"
+        mp="$1/$i$ext"
         for m in $mp; do
             if [ -e "$m" ]; then
                 source "$m"
@@ -20,4 +26,3 @@ function loadmodule {
         fi
     done
 }
-#endregion

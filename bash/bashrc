@@ -4,7 +4,6 @@
 # Date: 2020/02/17
 
 # Don't add code before the initialization
-#region Initialization DO NOT TOUCH
 # Interactive mode initialization script
 # Prevent from being loaded twice
 if [ -z "$INIT_SH_LOADED" ]; then
@@ -18,11 +17,10 @@ case "$-" in
     *) return
 esac
 
+# This rc script
 _rcroot=$(dirname $(realpath $BASH_SOURCE))
-
-
-source "$_rcroot/rcore"
-#region My code
-loadmodule "$_rcroot/modules" aliases
-loadmodule "$_rcroot/bash_prompts" mybash
-#endregion
+# Load core module
+source "$_rcroot/../shell/rcore.shm"
+# Load modules
+loadmodule "$_rcroot/../shell/modules" aliases
+loadmodule "$_rcroot/prompts" mybash
