@@ -1,0 +1,151 @@
+
+// To view the default settings, hold "alt" while clicking on the "Settings" button.
+// For documentation on these settings, see: https://aka.ms/terminal-documentation
+
+{
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+
+  "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+  "initialCols": 100,
+  "initialRows": 30,
+  "initialPosition": ",",
+  "launchMode": "system",
+  "rowsToScroll": "system",
+  "requestedTheme": "system",
+  "alwaysShowTabs": false,
+  "showTabsInTitlebar": true,
+  "showTerminalTitleInTitlebar": true,
+  "tabWidthMode": "titleLength ",
+  "snapToGridOnResize": true,
+  "wordDelimiters": " /\\()\"'-.,:;<>~!@#$%^&*|+=[]{}~?\u2502",
+  "confirmCloseAllTabs": true,
+  "copyOnSelect": true,
+  "copyFormatting": false,
+
+  "profiles": {
+    "defaults": {
+      // Put settings here that you want to apply to all profiles
+      "colorScheme": "Dracula",
+      "cursorColor": "#FFFFFF",
+      "cursorShape": "filledBox",
+      "fontFace": "Cascadia Code PL",
+      "fontSize": 9,
+      "historySize": 9001,
+      "padding": "8, 8, 8, 8",
+      "snapOnInput": true,
+      "useAcrylic": true,
+      "acrylicOpacity": 0.3,
+      "antialiasingMode": "grayscale",
+      "scrollbarState": "visible",
+      "suppressApplicationTitle": false,
+      "closeOnExit": "graceful",
+      "startingDirectory": "%USERPROFILE%",
+      "hidden": false
+    },
+    "list": [
+      {
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "name": "posh",
+        "commandline": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoLogo -NoExit"
+      },
+      {
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "name": "cmd",
+        "commandline": "C:\\Windows\\System32\\cmd.exe"
+      },
+      {
+          "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+          "hidden": true,
+          "name": "Azure Cloud Shell",
+          "source": "Windows.Terminal.Azure"
+      }
+    ]
+  },
+
+  // Add custom color schemes to this array
+  "schemes": [
+    {
+      "name": "Dracula",
+      "background": "#272935",
+      "black": "#21222C",
+      "blue": "#BD93F9",
+      "cyan": "#8BE9FD",
+      "foreground": "#F8F8F2",
+      "green": "#50FA7B",
+      "purple": "#FF79C6",
+      "red": "#FF5555",
+      "white": "#F8F8F2",
+      "yellow": "#FFB86C",
+      "brightBlack": "#6272A4",
+      "brightBlue": "#D6ACFF",
+      "brightCyan": "#A4FFFF",
+      "brightGreen": "#69FF94",
+      "brightPurple": "#FF92DF",
+      "brightRed": "#FF6E6E",
+      "brightWhite": "#F8F8F2",
+      "brightYellow": "#FFFFA5"
+    }
+  ],
+
+  // Add any keybinding overrides to this array.
+  // To unbind a default keybinding, set the command to "unbound"
+  "keybindings": [
+    { "command": "closePane", "keys": "alt+q" },
+    { "command": "closeTab", "keys": "alt+shift+q" },
+    { "command": "closeWindow", "keys": "alt+f4" },
+    { "command": "copy", "keys": "ctrl+shift+c" },
+    { "command": "copy", "keys": "ctrl+insert" },
+    { "command": "decreaseFontSize", "keys": "alt+9" },
+    { "command": "duplicateTab", "keys": "alt+shift+t" },
+    { "command": "increaseFontSize", "keys": "alt+0" },
+    { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+j" },
+    { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+h" },
+    { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+l" },
+    { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+k" },
+    { "command": "newTab", "keys": "alt+t" },
+    { "command": { "action": "newTab", "index": 0 }, "keys": "ctrl+shift+1" },
+    { "command": { "action": "newTab", "index": 1 }, "keys": "ctrl+shift+2" },
+    { "command": { "action": "newTab", "index": 2 }, "keys": "ctrl+shift+3" },
+    { "command": { "action": "newTab", "index": 3 }, "keys": "ctrl+shift+4" },
+    { "command": { "action": "newTab", "index": 4 }, "keys": "ctrl+shift+5" },
+    { "command": { "action": "newTab", "index": 5 }, "keys": "ctrl+shift+6" },
+    { "command": { "action": "newTab", "index": 6 }, "keys": "ctrl+shift+7" },
+    { "command": { "action": "newTab", "index": 7 }, "keys": "ctrl+shift+8" },
+    { "command": { "action": "newTab", "index": 8 }, "keys": "ctrl+shift+9" },
+    { "command": "nextTab", "keys": "ctrl+tab" },
+    { "command": "nextTab", "keys": "alt+right" },
+    { "command": "openNewTabDropdown", "keys": "ctrl+shift+space" },
+    { "command": "openSettings", "keys": "ctrl+f7" },
+    { "command": "paste", "keys": "ctrl+shift+v" },
+    { "command": "paste", "keys": "shift+insert" },
+    { "command": "prevTab", "keys": "ctrl+shift+tab" },
+    { "command": "prevTab", "keys": "alt+left" },
+    { "command": "resetFontSize", "keys": "alt+shift+0" },
+    { "command": { "action": "resizePane", "direction": "down" }, "keys": "alt+shift+-" },
+    { "command": { "action": "resizePane", "direction": "left" }, "keys": "alt+-" },
+    { "command": { "action": "resizePane", "direction": "right" }, "keys": "alt+=" },
+    { "command": { "action": "resizePane", "direction": "up" }, "keys": "alt+shift+=" },
+    { "command": "scrollDown", "keys": "alt+down" },
+    { "command": "scrollDown", "keys": "alt+e" },
+    { "command": "scrollDownPage", "keys": "alt+shift+down" },
+    { "command": "scrollDownPage", "keys": "alt+f" },
+    { "command": "scrollUp", "keys": "alt+up" },
+    { "command": "scrollUp", "keys": "alt+y" },
+    { "command": "scrollUpPage", "keys": "alt+shift+up" },
+    { "command": "scrollUpPage", "keys": "alt+b" },
+    { "command": { "action": "splitPane", "split": "horizontal"}, "keys": "alt+shift+\\" },
+    { "command": { "action": "splitPane", "split": "vertical"}, "keys": "alt+\\" },
+    { "command": { "action": "switchToTab", "index": 0 }, "keys": "ctrl+alt+1" },
+    { "command": { "action": "switchToTab", "index": 1 }, "keys": "ctrl+alt+2" },
+    { "command": { "action": "switchToTab", "index": 2 }, "keys": "ctrl+alt+3" },
+    { "command": { "action": "switchToTab", "index": 3 }, "keys": "ctrl+alt+4" },
+    { "command": { "action": "switchToTab", "index": 4 }, "keys": "ctrl+alt+5" },
+    { "command": { "action": "switchToTab", "index": 5 }, "keys": "ctrl+alt+6" },
+    { "command": { "action": "switchToTab", "index": 6 }, "keys": "ctrl+alt+7" },
+    { "command": { "action": "switchToTab", "index": 7 }, "keys": "ctrl+alt+8" },
+    { "command": { "action": "switchToTab", "index": 8 }, "keys": "ctrl+alt+9" },
+    { "command": "find", "keys": "ctrl+shift+f" },
+    { "command": "toggleFullscreen", "keys": "alt+enter" },
+    { "command": "toggleFullscreen", "keys": "f11" }
+  ]
+}
