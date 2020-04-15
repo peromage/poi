@@ -46,7 +46,7 @@
         "when": "terminalFindWidgetFocused"
     },
     {
-        "key": "alt+;",
+        "key": "alt+\\",
         "command": "workbench.action.terminal.split",
         "when": "terminalFocus"
     },
