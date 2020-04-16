@@ -27,6 +27,10 @@ nnoremap <silent><Down> :bn<CR>
 nnoremap <silent><Up> :bp<CR>
 nnoremap <leader>b :ls<CR>
 
+" Netrw
+nnoremap <leader>e :Ntree<CR>
+nnoremap <leader>E :Lexplore<CR>
+
 " Quick quit
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :qa<CR>
