@@ -24,7 +24,7 @@ function CreateShim {
     $path = (Resolve-Path $path).Path
     # Get output shim name
     if ("" -eq $name) {
-        $name = [System.IO.Path]::GetFileNameWithoutExtension($path)
+        $name = (Get-Item $path).BaseName
     }
     # Valida output bin directory
     if (-not (Test-Path $bin)) {
@@ -56,7 +56,7 @@ function CreateShim {
 
 function LinkShim {
     [CmdletBinding(PositionalBinding=$false)]
-    param([Parameter(Position=0)]$target,
+    param([Parameter(Position=0)][string]$target,
           [string]$name=(Get-Item $target).Name,
           [string]$bin=$Conf.BIN)
     # Append .exe suffix if name doesn't contain .exe extension
@@ -66,6 +66,19 @@ function LinkShim {
     }
     $link = New-Item -ItemType SymbolicLink -Target $target -Path $bin -Name $name -Force
     Write-Output "Linked: $($link.FullName) -> $($link.Target)"
+}
+
+function ShortcutShim {
+    [CmdletBinding(PositionalBinding=$false)]
+    param([Parameter(Position=0)][string]$target,
+          [string]$name=(Get-Item $target).BaseName,
+          [string]$arguments="",
+          [string]$bin=$Conf.BIN)
+    $wshell = New-Object -ComObject WScript.shell
+    $shortcut = $wshell.CreateShortcut("$bin\$name.lnk")
+    $shortcut.TargetPath = (Resolve-Path $target).Path
+    $shortcut.Arguments = $arguments
+    $shortcut.Save()
 }
 
 function CreateShimFromManifest {
@@ -148,5 +161,3 @@ function GenerateManifest {
     $json | ConvertTo-Json | Set-Content $json_file
     Write-Output "Created $json_file"
 }
-
-Export-ModuleMember -Function CreateShim, LinkShim, CreateShimFromManifest, GenerateManifest
