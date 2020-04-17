@@ -1,6 +1,6 @@
 " Splitting
-nnoremap <leader><bslash> :vs<CR>
-nnoremap <leader><bar> :sp<CR>
+nnoremap <silent><leader><bslash> :vs<CR>
+nnoremap <silent><leader><bar> :sp<CR>
 
 " Pane movement
 nnoremap <silent><C-h> <C-w>h
@@ -13,25 +13,27 @@ nnoremap <silent>_ <C-w>-
 nnoremap <silent>+ <C-w>+
 nnoremap <silent>- <C-w><
 nnoremap <silent>= <C-w>>
-nnoremap <leader>w <C-w>_
-nnoremap <leader>W <C-w>=
+nnoremap <silent><leader>w <C-w>_
+nnoremap <silent><leader>W <C-w>=
 
 " Tabs
 nnoremap <silent><Left> gT
 nnoremap <silent><Right> gt
-nnoremap <leader>t :tabnew<CR>
-nnoremap <leader>T <C-w>T
+nnoremap <silent><leader>t :tabnew<CR>
+nnoremap <silent><leader>T <C-w>T
 
 " Buffers
 nnoremap <silent><Down> :bn<CR>
 nnoremap <silent><Up> :bp<CR>
-nnoremap <leader>b :ls<CR>
+nnoremap <silent><leader>b :ls<CR>
 
 " Netrw
-nnoremap <leader>e :Ntree<CR>
-nnoremap <leader>E :Lexplore<CR>
+nnoremap <silent><leader>e :Ntree<CR>
+nnoremap <silent><leader>E :Lexplore<CR>
+
+" Registers
+nnoremap <silent><leader>r :reg<CR>
 
 " Quick quit
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :qa<CR>
-
+nnoremap <silent><leader>q :q<CR>
+nnoremap <silent><leader>Q :qa<CR>
