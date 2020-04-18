@@ -4,6 +4,6 @@
 # Load core module
 Import-Module -DisableNameChecking "$PSScriptRoot\rcore.psm1"
 # Loading modules
-loadmodule "$PSScriptRoot\modules" commands,path,shim
+loadmodule "$PSScriptRoot\modules" commands,shim
 # Loading prompt
 loadmodule "$PSScriptRoot\prompts" myposh
