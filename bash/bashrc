@@ -21,6 +21,8 @@ esac
 _rcroot=$(dirname $(realpath $BASH_SOURCE))
 # Load core module
 source "$_rcroot/../shell/rcore.shm"
+source "$_rcroot/../shell/profile.shm"
 # Load modules
 loadmodule "$_rcroot/../shell/modules" aliases
 loadmodule "$_rcroot/prompts" mybash
+
