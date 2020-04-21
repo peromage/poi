@@ -27,13 +27,10 @@ nnoremap <silent><Down> :bn<CR>
 nnoremap <silent><Up> :bp<CR>
 nnoremap <silent><leader>b :ls<CR>
 
-" Netrw
-nnoremap <silent><leader>e :Ntree<CR>
-nnoremap <silent><leader>E :Lexplore<CR>
-
 " Registers
 nnoremap <silent><leader>r :reg<CR>
 
 " Quick quit
-nnoremap <silent><leader>q :q<CR>
+nnoremap <silent><leader>q :bdelete<CR>
 nnoremap <silent><leader>Q :qa<CR>
+

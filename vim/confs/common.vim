@@ -15,12 +15,6 @@ set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 " Status bar view
 set laststatus=2
 set statusline=%<\ [%n%H%M%R%W]\ %-40f\ %=%y\ %10((R%l,C%c)%)\ %P
-" Netrw view
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-let g:netrw_browse_split=0
-let g:netrw_altv=1
-let g:netrw_winsize=15
 " Theme
 set background=dark
 
