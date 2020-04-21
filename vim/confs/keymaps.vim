@@ -31,5 +31,5 @@ nnoremap <silent><leader>b :ls<CR>
 nnoremap <silent><leader>r :reg<CR>
 
 " Quick quit
-nnoremap <silent><leader>q :bdelete<CR>
+nnoremap <silent><leader>q :q<CR>
 nnoremap <silent><leader>Q :qa<CR>

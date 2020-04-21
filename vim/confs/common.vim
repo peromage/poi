@@ -14,15 +14,22 @@ set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 " Status bar view
 set laststatus=2
-set statusline=%<\ [%n%H%M%R%W]\ %-40f\ %=%y\ %10((R%l,C%c)%)\ %P
+set statusline=
+set statusline+=\ [%n%M%R%W]                                                    "Basic status
+set statusline+=\ %F                                                            "Full path
+set statusline+=%=%<                                                            "Start folding from right aligned elements
+set statusline+=%{v:register}                                                   "Display active register
+set statusline+=\ [%Y,%{&fenc!=''?&fenc:&enc}%{(&bomb?\"(BOM)\":\"\")},%{&ff}]  "Encoding info
+set statusline+=\ (R%l/%L,C%c,%P)                                               "Navigation info
 " Theme
 set background=dark
 
 " Encoding
 set encoding=utf-8
-set fileencoding=uft-8
-set fileencodings=ucs-bom,uft-8,latin1
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,latin1
 set termencoding=utf-8
+set fileformats=unix,dos,mac
 
 " Quality of life
 set nocompatible
