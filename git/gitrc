@@ -14,10 +14,14 @@
 [i18n]
 	logoutputencoding = utf-8
 [diff]
-	tool = vimdiff
+	tool = nvimdiff
 [difftool]
 	prompt = false
+[difftool "nvimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE
 [merge]
-	tool = vimdiff
+	tool = nvimdiff
 [mergetool]
 	prompt = false
+[mergetool "nvimdiff"]
+    cmd = nvim -d $LOCAL $MERGED $REMOTE -c 'wincmd w|wincmd J'
