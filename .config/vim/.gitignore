@@ -1,0 +1,6 @@
+# Plugin dir
+plugged/**
+# Netrw garbage
+.netrwhist
+# Local temp configuration
+init.vim
