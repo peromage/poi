@@ -36,7 +36,8 @@ nnoremap <silent><leader>' :reg<CR>
 
 " Quick quit
 nnoremap <silent><leader>q :q<CR>
-nnoremap <silent><leader>Q :qa<CR>
+nnoremap <silent><leader>Q :tabclose<CR>
+nnoremap <silent><leader>X :qa<CR>
 
 " Turnoff hightlight
 nnoremap <silent><leader># :noh<CR>
