@@ -48,3 +48,5 @@ set autoindent
 set noautoread
 set noautowrite
 set noautowriteall
+" Tags
+set tags=./.tags;,.tags
