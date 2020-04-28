@@ -74,82 +74,103 @@ function ShortcutShim {
           [string]$name="",
           [string]$arguments="",
           [string]$bin=$Conf.BIN,
-          [ValidateSet("cmd", "bat", "ps1", "lnk", "auto")][string]$type="auto")
+          [ValidateSet("cmd", "ps1", "lnk", "auto")][string]$type="auto",
+          [switch]$nowait)
     # Get destination name
     $otar = Get-Item $target
     if ($name -eq "") {
         $name = $otar.BaseName
     }
+    $otarext = $otar.Extension.ToLower()
+    $otarfull = $otar.FullName
     # Functions to generate shortcuts. Return a string of generated file path.
     function genlnk {
         $wshell = New-Object -ComObject WScript.shell
         $dst = "$bin\$name.lnk"
         $shortcut = $wshell.CreateShortcut($dst)
-        $shortcut.TargetPath = $otar.FullName
+        $shortcut.TargetPath = $otarfull
         $shortcut.Arguments = $arguments
         $shortcut.Save()
         return $dst
     }
     function gencmd {
         $dst = "$bin\$name.cmd"
-        @("@echo off","$($otar.FullName) $arguments %*") `
+        @("@echo off", "$otarfull $arguments %*") `
         | Set-Content -Path $dst
         return $dst
     }
-    function genbat {
-        $dst = "$bin\$name.bat"
-        @("@echo off", "$($otar.FullName) $arguments %*") `
+    function gencmd_nowait {
+        $dst = "$bin\$name.cmd"
+        @("@echo off", "start `"`" $otarfull $arguments %*") `
         | Set-Content -Path $dst
         return $dst
     }
-    function genps1_invoke {
+    function genps1 {
         $dst = "$bin\$name.ps1"
-        "Invoke-Expression `"$($otar.FullName) $arguments `$args`"" `
+        ". `"$otarfull`" $arguments @args" `
         | Set-Content -Path $dst
         return $dst
     }
-    function genps1_source {
+    function genps1_nowait {
         $dst = "$bin\$name.ps1"
-        ". `"$($otar.FullName)`" $arguments @args" `
+        "start `"$otarfull`" $arguments @args" `
         | Set-Content -Path $dst
         return $dst
     }
     function genauto {
-        switch ($otar.Extension.ToLower()) {
+        switch ($otarext) {
+            ".bat" {}
             ".cmd" {
                 return gencmd
-            } ".bat" {
-                return genbat
             } ".ps1" {
                 # Instead of execute ps1 script directly, auto mode sources it
                 # (execute in the same context)
-                return genps1_source
+                return genps1
             } default {
                 return genlnk
             }
         }
     }
+
     # Default shortcut type
     Write-Verbose "Generated shortcut type is $type"
+    Write-Verbose "Target extension is $otarext"
     switch ($type) {
         "lnk" {
             $dest = genlnk
             break
         } "cmd" {
-            $dest = gencmd
-            break
-        } "bat" {
-            $dest = genbat
+            if (($otarext -ne ".cmd") -and
+                ($otarext -ne ".bat") -and
+                ($otarext -ne ".exe")) {
+                    Write-Output "Shortcut type $type is not supported by tartget $otarext"
+                    return
+                }
+            if (($otarext -eq ".exe") -and $nowait) {
+                $dest = gencmd_nowait
+            } else {
+                $dest = gencmd
+            }
             break
         } "ps1" {
-            $dest = genps1_invoke
+            if (($otarext -ne ".ps1") -and
+                ($otarext -ne ".exe")) {
+                    Write-Output "Shortcut type $type is not supported by tartget $otarext"
+                    return
+                }
+            if (($otarext -eq ".exe") -and $nowait) {
+                $dest = genps1_nowait
+            } else {
+                $dest = genps1
+            }
             break
         } default {
             $dest = genauto
             break
         }
     }
-    Write-Output "Shortcut: $($otar.FullName) -> $dest"
+    Write-Output "Shortcut: $otarfull -> $dest"
+    Write-Verbose "Generated $dest"
 }
 
 function CreateShimFromManifest {
