@@ -16,8 +16,8 @@ nnoremap <silent>_ <C-w>-
 nnoremap <silent>+ <C-w>+
 nnoremap <silent>- <C-w><
 nnoremap <silent>= <C-w>>
-nnoremap <silent><leader>p <C-w>_
-nnoremap <silent><leader>P <C-w>=
+nnoremap <silent><leader>W <C-w>_
+nnoremap <silent><leader>w <C-w>=
 
 " Tabs
 nnoremap <silent><leader>- gT
@@ -32,12 +32,13 @@ nnoremap <silent><leader>[ :bp<CR>
 nnoremap <silent><leader>b :ls<CR>
 
 " Registers
-nnoremap <silent><leader>' :reg<CR>
+nnoremap <silent><leader>r :reg<CR>
 
 " Quick quit
 nnoremap <silent><leader>q :q<CR>
-nnoremap <silent><leader>Q :tabclose<CR>
-nnoremap <silent><leader>X :qa<CR>
+nnoremap <silent><leader>Q :qa<CR>
+nnoremap <silent><leader>x :bd<CR>
+nnoremap <silent><leader>X :%bd\|e#<CR>
 
 " Turnoff hightlight
 nnoremap <silent><leader># :noh<CR>
