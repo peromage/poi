@@ -14,8 +14,8 @@ function CreateShim {
           [string]$arguments="",
           [string]$source=$Conf.SRC,
           [string]$bin=$Conf.BIN,
-          [bool]$wait=$true,
-          [bool]$hardcode=$true)
+          [switch]$nowait,
+          [switch]$nohardcode)
     # Validate exe path
     if (($null -eq $path) -or ("" -eq $path) -or (-not (Test-Path $path))) {
         Write-Output "Invalid path"
@@ -33,22 +33,23 @@ function CreateShim {
     # Get shim source code
     $src_code = Get-Content -Raw $source
     # Subtitute source code if it's hardcode mode
-    if ($hardcode) {
+    $wait = if($nowait){[bool]::FalseString}else{[bool]::TrueString}
+    if (-not $nohardcode) {
         $src_code = $src_code -replace $Conf.PATT_PATH, $path
         $src_code = $src_code -replace $Conf.PATT_ARGS, $arguments
-        $src_code = $src_code -replace $Conf.PATT_WAIT, $wait.ToString()
+        $src_code = $src_code -replace $Conf.PATT_WAIT, $wait
         $src_code = $src_code -replace $Conf.PATT_DEFINE, "#define"
     }
     # Compile to shim
     Add-Type -OutputAssembly "$bin\$name.exe" -OutputType ConsoleApplication -TypeDefinition $src_code
     Write-Output "Created: $bin\$name.exe -> $path"
     # Put shim config in a .shim file if not hardcoded
-    if (-not $hardcode) {
+    if ($nohardcode) {
         Set-Content -Path "$bin\$name.shim" -Value `
             @(
                 "path=$path"
                 "args=$arguments"
-                "wait=$($wait.ToString())"
+                "wait=$wait"
             )
         Write-Output "Created: $bin\$name.shim"
     }
@@ -205,10 +206,10 @@ function CreateShimFromManifest {
             $d["arguments"] = $app.args
         }
         if (is_valid $app.wait $bool_t) {
-            $d["wait"] = $app.wait
+            $d["nowait"] = $app.nowait
         }
         if (is_valid $app.hardcode $bool_t) {
-            $d["hardcode"] = $app.hardcode
+            $d["nohardcode"] = $app.nohardcode
         }
         if (is_valid $app.name $str_t) {
             $d["name"] = $app.name
@@ -228,8 +229,8 @@ function GenerateManifest {
             args = ""
             name = ""
             bin = ""
-            wait = $true
-            hardcode = $true
+            nowait = $false
+            nohardcode = $false
         }
     }
     # Validate path
