@@ -1,7 +1,12 @@
-call plug#begin()
+" Vim-plug plugins
+" This section must be sourced between plug initial call.
+"""""""""""""""""""
+" call plug#begin()
 
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
 
-call plug#end()
+" call plug#end()
+"""""""""""""""""""
