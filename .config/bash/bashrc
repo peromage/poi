@@ -20,9 +20,18 @@ esac
 # This rc script
 _rcroot=$(dirname $(realpath $BASH_SOURCE))
 # Load core module
-source "$_rcroot/../shell/rcore.shm"
-source "$_rcroot/../shell/profile.shm"
-# Load modules
-loadmodule "$_rcroot/../shell/modules" aliases
-loadmodule "$_rcroot/prompts" mybash
+_saved_cwd=pwd
+cd "$_rcroot/../shell"
+source ./shellrc
+source ./profile
+cd $_saved_cwd
+# Load prompt style
+if [ -z "$1" ]; then
+    loadmodule "$_rcroot/prompts" mybash
+else
+    loadmodule "$_rcroot/prompts" "$1"
+fi
 
+# Clean up
+unset _saved_cwd
+unset _rcroot

@@ -1,0 +1,5 @@
+# Make sure to cd to this directory when source this rc file
+# Check if in the directory before continuing
+[ ! -f "./rcore.shm" ] && return
+. ./rcore.shm
+loadmodule ./autoload *
