@@ -20,7 +20,7 @@ esac
 # This rc script
 _rcroot=$(dirname $(realpath $BASH_SOURCE))
 # Load core module
-_saved_cwd=pwd
+_saved_cwd=$(pwd)
 cd "$_rcroot/../shell"
 source ./shellrc
 source ./profile

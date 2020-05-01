@@ -2,4 +2,5 @@
 # Check if in the directory before continuing
 [ ! -f "./rcore.shm" ] && return
 . ./rcore.shm
-loadmodule ./autoload *
+loadmodule ./autoload "*"
+

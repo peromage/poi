@@ -5,24 +5,29 @@ function loadmodule {
     # $1: Folder where the module resides
     # $2: Module names. Separated by ','
     # $3: The default module extension
-    # Module name supports glob
-    local modules=(${2//,/ })
-    local found i m mp ext
-    if [ -z $3 ]; then
+    # Note: Module name supports glob
+    
+    # Check if give module directory exists
+    [ ! -d "$1" ] && return
+    # Change current working directory
+    local modules i md ext savedcwd
+    savedcwd=$(pwd)
+    cd $1
+    # Expand glob in current module directory
+    modules=(${2//,/ })
+    # Module extension
+    if [ -z "$3" ]; then
         ext=".shm"
     else
         ext=$3
     fi
-    for i in ${modules[*]}; do
-        mp="$1/$i$ext"
-        for m in $mp; do
-            if [ -e "$m" ]; then
-                source "$m"
-                found=1
-            fi
-        done
-        if [ -z "$found" ]; then
-            echo "Module not found $mp"
-        fi
+    # Iterate through module list
+    for i in ${modules[@]}; do
+        # Strip suffix and append with expected module suffix
+        md="${i%.*}$ext"
+        # If module with suffix exists, source it.
+        [ -f "$md" ] && . "$md"
     done
+    # Restore working directory
+    cd "$savedcwd"
 }
