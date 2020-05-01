@@ -53,4 +53,3 @@ autocmd FileType defx call s:my_defx_keymaps()
 
 " Avoid the white space highting issue
 "autocmd FileType defx match ExtraWhitespace /^^/
-

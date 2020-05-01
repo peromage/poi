@@ -8,4 +8,3 @@ let g:netrw_winsize=15
 " Netrw bindings
 nnoremap <silent><leader>e :Ntree<CR>
 nnoremap <silent><leader>E :Lexplore<CR>
-

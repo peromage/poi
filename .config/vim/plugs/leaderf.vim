@@ -26,4 +26,3 @@ nnoremap <silent><C-p>tt :LeaderfTag<CR>
 nnoremap <silent><C-p>bt :LeaderfBufTag<CR>
 nnoremap <silent><C-p>ln :LeaderfLine<CR>
 nnoremap <silent><C-p>ff :LeaderfFunction<CR>
-

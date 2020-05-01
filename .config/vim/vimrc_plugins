@@ -20,4 +20,3 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
 
 " call plug#end()
 """""""""""""""""""
-

@@ -1,17 +1,3 @@
-" Formatting
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-
-" Appearance customization
-set syntax=on
-set number relativenumber
-set hlsearch
-set ruler
-set nowrap
-set list
-set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 " Status bar view
 set laststatus=2
 set statusline=
@@ -44,6 +30,22 @@ set hidden
 " Indentation
 set backspace=indent,eol,start
 set autoindent
+" Formatting
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set syntax=on
+set number relativenumber
+set hlsearch
+set ruler
+set nowrap
+set list
+set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
+set endofline
+set fixendofline
+set nobinary
+
 " Don't auto flush or read files
 set noautoread
 set noautowrite

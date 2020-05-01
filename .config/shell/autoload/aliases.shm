@@ -24,4 +24,3 @@ function inranger {
         echo "In ranger level: $RANGER_LEVEL"
     fi
 }
-
