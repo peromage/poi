@@ -14,8 +14,8 @@ function CreateShim {
           [string]$arguments="",
           [string]$source=$Conf.SRC,
           [string]$bin=$Conf.BIN,
-          [bool]$wait=$true,
-          [bool]$hardcode=$true)
+          [switch]$nowait,
+          [switch]$nohardcode)
     # Validate exe path
     if (($null -eq $path) -or ("" -eq $path) -or (-not (Test-Path $path))) {
         Write-Output "Invalid path"
@@ -33,22 +33,23 @@ function CreateShim {
     # Get shim source code
     $src_code = Get-Content -Raw $source
     # Subtitute source code if it's hardcode mode
-    if ($hardcode) {
+    $wait = if($nowait){[bool]::FalseString}else{[bool]::TrueString}
+    if (-not $nohardcode) {
         $src_code = $src_code -replace $Conf.PATT_PATH, $path
         $src_code = $src_code -replace $Conf.PATT_ARGS, $arguments
-        $src_code = $src_code -replace $Conf.PATT_WAIT, $wait.ToString()
+        $src_code = $src_code -replace $Conf.PATT_WAIT, $wait
         $src_code = $src_code -replace $Conf.PATT_DEFINE, "#define"
     }
     # Compile to shim
     Add-Type -OutputAssembly "$bin\$name.exe" -OutputType ConsoleApplication -TypeDefinition $src_code
     Write-Output "Created: $bin\$name.exe -> $path"
     # Put shim config in a .shim file if not hardcoded
-    if (-not $hardcode) {
+    if ($nohardcode) {
         Set-Content -Path "$bin\$name.shim" -Value `
             @(
                 "path=$path"
                 "args=$arguments"
-                "wait=$($wait.ToString())"
+                "wait=$wait"
             )
         Write-Output "Created: $bin\$name.shim"
     }
@@ -74,82 +75,103 @@ function ShortcutShim {
           [string]$name="",
           [string]$arguments="",
           [string]$bin=$Conf.BIN,
-          [ValidateSet("cmd", "bat", "ps1", "lnk", "auto")][string]$type="auto")
+          [ValidateSet("cmd", "ps1", "lnk", "auto")][string]$type="auto",
+          [switch]$nowait)
     # Get destination name
     $otar = Get-Item $target
     if ($name -eq "") {
         $name = $otar.BaseName
     }
+    $otarext = $otar.Extension.ToLower()
+    $otarfull = $otar.FullName
     # Functions to generate shortcuts. Return a string of generated file path.
     function genlnk {
         $wshell = New-Object -ComObject WScript.shell
         $dst = "$bin\$name.lnk"
         $shortcut = $wshell.CreateShortcut($dst)
-        $shortcut.TargetPath = $otar.FullName
+        $shortcut.TargetPath = $otarfull
         $shortcut.Arguments = $arguments
         $shortcut.Save()
         return $dst
     }
     function gencmd {
         $dst = "$bin\$name.cmd"
-        @("@echo off","$($otar.FullName) $arguments %*") `
+        @("@echo off", "$otarfull $arguments %*") `
         | Set-Content -Path $dst
         return $dst
     }
-    function genbat {
-        $dst = "$bin\$name.bat"
-        @("@echo off", "$($otar.FullName) $arguments %*") `
+    function gencmd_nowait {
+        $dst = "$bin\$name.cmd"
+        @("@echo off", "start `"`" $otarfull $arguments %*") `
         | Set-Content -Path $dst
         return $dst
     }
-    function genps1_invoke {
+    function genps1 {
         $dst = "$bin\$name.ps1"
-        "Invoke-Expression `"$($otar.FullName) $arguments `$args`"" `
+        ". `"$otarfull`" $arguments @args" `
         | Set-Content -Path $dst
         return $dst
     }
-    function genps1_source {
+    function genps1_nowait {
         $dst = "$bin\$name.ps1"
-        ". `"$($otar.FullName)`" $arguments @args" `
+        "start `"$otarfull`" $arguments @args" `
         | Set-Content -Path $dst
         return $dst
     }
     function genauto {
-        switch ($otar.Extension.ToLower()) {
+        switch ($otarext) {
+            ".bat" {}
             ".cmd" {
                 return gencmd
-            } ".bat" {
-                return genbat
             } ".ps1" {
                 # Instead of execute ps1 script directly, auto mode sources it
                 # (execute in the same context)
-                return genps1_source
+                return genps1
             } default {
                 return genlnk
             }
         }
     }
+
     # Default shortcut type
     Write-Verbose "Generated shortcut type is $type"
+    Write-Verbose "Target extension is $otarext"
     switch ($type) {
         "lnk" {
             $dest = genlnk
             break
         } "cmd" {
-            $dest = gencmd
-            break
-        } "bat" {
-            $dest = genbat
+            if (($otarext -ne ".cmd") -and
+                ($otarext -ne ".bat") -and
+                ($otarext -ne ".exe")) {
+                    Write-Output "Shortcut type $type is not supported by tartget $otarext"
+                    return
+                }
+            if (($otarext -eq ".exe") -and $nowait) {
+                $dest = gencmd_nowait
+            } else {
+                $dest = gencmd
+            }
             break
         } "ps1" {
-            $dest = genps1_invoke
+            if (($otarext -ne ".ps1") -and
+                ($otarext -ne ".exe")) {
+                    Write-Output "Shortcut type $type is not supported by tartget $otarext"
+                    return
+                }
+            if (($otarext -eq ".exe") -and $nowait) {
+                $dest = genps1_nowait
+            } else {
+                $dest = genps1
+            }
             break
         } default {
             $dest = genauto
             break
         }
     }
-    Write-Output "Shortcut: $($otar.FullName) -> $dest"
+    Write-Output "Shortcut: $otarfull -> $dest"
+    Write-Verbose "Generated $dest"
 }
 
 function CreateShimFromManifest {
@@ -184,10 +206,10 @@ function CreateShimFromManifest {
             $d["arguments"] = $app.args
         }
         if (is_valid $app.wait $bool_t) {
-            $d["wait"] = $app.wait
+            $d["nowait"] = $app.nowait
         }
         if (is_valid $app.hardcode $bool_t) {
-            $d["hardcode"] = $app.hardcode
+            $d["nohardcode"] = $app.nohardcode
         }
         if (is_valid $app.name $str_t) {
             $d["name"] = $app.name
@@ -207,8 +229,8 @@ function GenerateManifest {
             args = ""
             name = ""
             bin = ""
-            wait = $true
-            hardcode = $true
+            nowait = $false
+            nohardcode = $false
         }
     }
     # Validate path
