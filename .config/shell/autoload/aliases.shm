@@ -8,10 +8,20 @@ alias nv="nvim"
 alias nvf="nvim \$(fzf)"
 
 # Ranger alias. Prevents from launching nested instances
-ranger() {
+function ranger {
     if [ -z "$RANGER_LEVEL" ]; then
         /usr/bin/ranger "$@"
     else
         exit
     fi
 }
+
+# Check if in ranger nested shell
+function inranger {
+    if [ -z "$RANGER_LEVEL" ]; then
+        echo "Not in ranger"
+    else
+        echo "In ranger level: $RANGER_LEVEL"
+    fi
+}
+
