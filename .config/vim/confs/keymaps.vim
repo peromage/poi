@@ -1,9 +1,9 @@
 " My leader key
 let mapleader="\\"
 
-" Splitting
-nnoremap <silent><leader><bslash> :vs<CR>
-nnoremap <silent><leader><bar> :sp<CR>
+" Splittin/
+nnoremap <silent><leader><Bslash> :vs<CR>
+nnoremap <silent><leader><Bar> :sp<CR>
 
 " Pane movement
 nnoremap <silent><leader>h <C-w>h

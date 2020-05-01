@@ -3,10 +3,21 @@
 """""""""""""""""""
 " call plug#begin()
 
-Plug 'preservim/nerdtree'
+"Plug 'preservim/nerdtree'
+
+" Defx
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
 
 " call plug#end()
 """""""""""""""""""
+
