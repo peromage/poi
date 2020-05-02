@@ -1,7 +1,7 @@
 " Rc file root directory
 let s:rcroot = resolve(expand('<sfile>:h'))
 " Load core module
-execute "source ".s:rcroot."/rcore.vim"
+execute "source ".s:rcroot."/vimrccore"
 
 " Load customized configs
-call rcore#loadvim(s:rcroot."/confs", "*")
+call RCloadvim(s:rcroot."/confs", "*")

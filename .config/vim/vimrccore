@@ -1,5 +1,5 @@
 " Dynamically load .vim files
-function! rcore#loadvim(path, patt, ...) abort
+function! g:RCloadvim(path, patt, ...) abort
     " @param path: A comma-separated list of directory names
     " @param patt: A comma-separated list of file glob patterns
     " @param ...: The third parameter is the default extension of module
