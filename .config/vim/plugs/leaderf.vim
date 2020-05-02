@@ -19,10 +19,10 @@ let g:Lf_NormalMap = {
 
 
 let g:Lf_ShortcutF = "<leader>ff"
-nnoremap <silent><C-p>pp :LeaderfFile<CR>
-nnoremap <silent><C-p>bb :LeaderfBuffer<CR>
-nnoremap <silent><C-p>mm :LeaderfMru<CR>
-nnoremap <silent><C-p>tt :LeaderfTag<CR>
-nnoremap <silent><C-p>bt :LeaderfBufTag<CR>
-nnoremap <silent><C-p>ln :LeaderfLine<CR>
-nnoremap <silent><C-p>ff :LeaderfFunction<CR>
+nnoremap <silent><C-p> p :LeaderfFile<CR>
+nnoremap <silent><C-p> b :LeaderfBuffer<CR>
+nnoremap <silent><C-p> m :LeaderfMru<CR>
+nnoremap <silent><C-p> t :LeaderfTag<CR>
+nnoremap <silent><C-p> s :LeaderfBufTag<CR>
+nnoremap <silent><C-p> l :LeaderfLine<CR>
+nnoremap <silent><C-p> f :LeaderfFunction<CR>
