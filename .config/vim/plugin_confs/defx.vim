@@ -20,19 +20,21 @@ function! s:my_defx_keymaps() abort
     setl signcolumn=no
     setl nonumber
     setl norelativenumber
+    setl cursorline
+    setl cursorcolumn
     " Open files
-    nnoremap <silent><buffer><expr> s defx#do_action('drop', 'vsplit')
-    nnoremap <silent><buffer><expr> S defx#do_action('drop', 'split')
-    nnoremap <silent><buffer><expr> t defx#do_action('drop', 'tabe')
+    nnoremap <silent><buffer><expr> v defx#do_action('drop', 'vsplit')
+    nnoremap <silent><buffer><expr> s defx#do_action('drop', 'split')
+    nnoremap <silent><buffer><expr> t defx#do_action('drop', 'tab')
     nnoremap <silent><buffer><expr> i defx#do_action('open')
     nnoremap <silent><buffer><expr> p defx#do_action('print')
     nnoremap <silent><buffer><expr> o
         \ defx#is_directory() ?
         \ defx#do_action('open_or_close_tree') :
         \ defx#do_action('drop')
-    nnoremap <silent><buffer><expr> u defx#do_action('cd', ['..'])
-    nnoremap <silent><buffer><expr> U defx#do_action('open_tree_recursive')
-    nnoremap <silent><buffer><expr> O
+    nnoremap <silent><buffer><expr> u defx#do_action('multi', [['cd', '..'], 'change_vim_cwd'])
+    nnoremap <silent><buffer><expr> O defx#do_action('open_tree_recursive')
+    nnoremap <silent><buffer><expr> U
         \ defx#is_directory() ?
         \ defx#do_action('multi', ['open_directory','change_vim_cwd']) :
         \ defx#do_action('multi', [''])
@@ -40,7 +42,7 @@ function! s:my_defx_keymaps() abort
         \ defx#is_directory() ?
         \ defx#do_action('multi', ['open_directory','change_vim_cwd']) :
         \ defx#do_action('multi', [''])
-    nnoremap <silent><buffer><expr> <BS> defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> <BS> defx#do_action('multi', [['cd', '..'], 'change_vim_cwd'])
     nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
     " File manipulation
     nnoremap <silent><buffer><expr> yy defx#do_action('copy')
@@ -54,8 +56,8 @@ function! s:my_defx_keymaps() abort
     nnoremap <silent><buffer><expr> zm defx#do_action('rename')
     nnoremap <silent><buffer><expr> cd defx#do_action('change_vim_cwd')
     nnoremap <silent><buffer><expr> x defx#do_action('toggle_select')
-    nnoremap <silent><buffer><expr> X defx#do_action('toggle_select_all')
-    nnoremap <silent><buffer><expr> v defx#do_action('toggle_select_visual')
+    nnoremap <silent><buffer><expr> zx defx#do_action('toggle_select_all')
+    nnoremap <silent><buffer><expr> zv defx#do_action('toggle_select_visual')
 endfunction
 autocmd FileType defx call s:my_defx_keymaps()
 
