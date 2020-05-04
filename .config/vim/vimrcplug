@@ -1,6 +1,7 @@
+let s:rcroot = resolve(expand('<sfile>:h'))
 " Vim-plug plugins
-" This section must be sourced between plug initial call.
 function! g:RCloadplug() abort
+    " This section must be sourced between plug initial call.
     """""""""""""""""""
     " call plug#begin()
     
@@ -23,9 +24,8 @@ function! g:RCloadplug() abort
 endfunction
 
 function! g:RCloadplugconfig() abort
-    let l:rcroot = resolve(expand('<sfile>:h'))
-    execute "source ".l:rcroot."/vimrccore"
-    call RCloadvim(l:rcroot."/plugs", "
+    execute "source ".s:rcroot."/vimrccore"
+    call RCloadvim(s:rcroot."/plugs", "
         \ coc_default,
         \ leaderf,
         \ nerdtree
