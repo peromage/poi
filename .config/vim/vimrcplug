@@ -14,7 +14,7 @@ function! g:RCloadplug() abort
     "  Plug 'roxma/vim-hug-neovim-rpc'
     "endif
     
-    Plug 'preservim/nerdtree'
+    "Plug 'preservim/nerdtree'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
@@ -25,9 +25,8 @@ endfunction
 
 function! g:RCloadplugconfig() abort
     execute "source ".s:rcroot."/vimrccore"
-    call RCloadvim(s:rcroot."/plugs", "
-        \ coc_default,
-        \ leaderf,
-        \ nerdtree
+    call RCloadvim(s:rcroot."/plugin_confs", "
+        \ coc,
+        \ leaderf 
         \ ")
 endfunction

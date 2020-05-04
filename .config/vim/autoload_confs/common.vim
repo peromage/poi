@@ -20,6 +20,8 @@ set fileformats=unix,dos,mac
 " Quality of life
 set nocompatible
 filetype plugin indent on
+set splitbelow
+set splitright
 " Remove files that are not needed
 set nobackup
 set noundofile

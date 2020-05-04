@@ -4,4 +4,4 @@ let s:rcroot = resolve(expand('<sfile>:h'))
 execute "source ".s:rcroot."/vimrccore"
 
 " Load customized configs
-call RCloadvim(s:rcroot."/confs", "*")
+call RCloadvim(s:rcroot."/autoload_confs", "*")
