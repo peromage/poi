@@ -22,27 +22,27 @@ function! s:my_defx_keymaps() abort
     setl norelativenumber
     setl cursorline
     setl cursorcolumn
+    let l:sid = matchstr(expand('<sfile>'), '<SNR>\zs\d\+\ze_SID$')
     " Open files
     nnoremap <silent><buffer><expr> v defx#do_action('drop', 'vsplit')
     nnoremap <silent><buffer><expr> s defx#do_action('drop', 'split')
     nnoremap <silent><buffer><expr> t defx#do_action('drop', 'tab')
-    nnoremap <silent><buffer><expr> i defx#do_action('open')
     nnoremap <silent><buffer><expr> p defx#do_action('print')
     nnoremap <silent><buffer><expr> o
         \ defx#is_directory() ?
         \ defx#do_action('open_or_close_tree') :
         \ defx#do_action('drop')
+    nnoremap <silent><buffer><expr> l
+        \ defx#is_directory() ?
+        \ defx#do_action('open_or_close_tree') :
+        \ defx#do_action('drop')
+    nnoremap <silent><buffer><expr> <CR> <SID>open_file_or_tree()
+        \ defx#is_directory() ?
+        \ defx#do_action('open_or_close_tree') :
+        \ defx#do_action('drop')
     nnoremap <silent><buffer><expr> u defx#do_action('multi', [['cd', '..'], 'change_vim_cwd'])
     nnoremap <silent><buffer><expr> O defx#do_action('open_tree_recursive')
-    nnoremap <silent><buffer><expr> U
-        \ defx#is_directory() ?
-        \ defx#do_action('multi', ['open_directory','change_vim_cwd']) :
-        \ defx#do_action('multi', [''])
-    nnoremap <silent><buffer><expr> <CR>
-        \ defx#is_directory() ?
-        \ defx#do_action('multi', ['open_directory','change_vim_cwd']) :
-        \ defx#do_action('multi', [''])
-    nnoremap <silent><buffer><expr> <BS> defx#do_action('multi', [['cd', '..'], 'change_vim_cwd'])
+    nnoremap <silent><buffer><expr> i defx#do_action('multi', ['open_directory','change_vim_cwd'])
     nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
     " File manipulation
     nnoremap <silent><buffer><expr> yy defx#do_action('copy')
