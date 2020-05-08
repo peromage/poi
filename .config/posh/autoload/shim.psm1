@@ -108,6 +108,8 @@ function ShortcutShim {
     }
     function genps1 {
         $dst = "$bin\$name.ps1"
+        # Instead of execute ps1 script directly, auto mode sources it
+        # (execute in the same context)
         ". `"$otarfull`" $arguments @args" `
         | Set-Content -Path $dst
         return $dst
@@ -120,16 +122,10 @@ function ShortcutShim {
     }
     function genauto {
         switch ($otarext) {
-            ".bat" {}
-            ".cmd" {
-                return gencmd
-            } ".ps1" {
-                # Instead of execute ps1 script directly, auto mode sources it
-                # (execute in the same context)
-                return genps1
-            } default {
-                return genlnk
-            }
+            ".bat" { return gencmd }
+            ".cmd" { return gencmd }
+            ".ps1" { return genps1 }
+            default { return genlnk }
         }
     }
 
