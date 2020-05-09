@@ -4,17 +4,10 @@ function LoadModule {
     $modlist: Module name list
     Note: modlist supports glob
     #>
-    param([string]$path, [array]$modlist, [string]$extension=".psm1")
-    foreach ($i in $modlist) {
-        $mp = "$path\$i$extension"
-        $ml = Get-Item -Path $mp
-        if ($null -eq $ml) {
-            Write-Output "Module not found: $mp"
-            continue
-        }
-        foreach ($m in $ml) {
-            Import-Module -Scope Global -DisableNameChecking -Name $m.FullName
-        }
+    param([string]$path, [string[]]$modlist, [string]$extension=".psm1")
+    $modlist | ForEach-Object {
+        Get-ChildItem -Path "$path/$_$extension" `
+        | ForEach-Object { Import-Module -Scope Global -DisableNameChecking -Name $_.FullName }
     }
 }
 
