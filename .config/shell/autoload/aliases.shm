@@ -5,10 +5,20 @@ alias gac="git add -A; git commit -m"
 alias gch="git checkout"
 alias gbr="git branch"
 alias nv="nvim"
-alias nvf="nvim \$(fzf)"
+alias nvv="nvim \$(fzf)"
+alias cdd="cd \$(fzf)"
 
-# Ranger alias. Prevents from launching nested instances
-function ranger {
+# Fzf helper. Calls fzf with any command.
+function fo {
+    if [ -z "$1" ]; then
+        echo "A command must be given!"
+        return
+    fi
+    eval "$1 \$(fzf)"
+}
+
+# Ranger helper. Prevents from launching nested instances.
+function lr {
     if [ -z "$RANGER_LEVEL" ]; then
         /usr/bin/ranger "$@"
     else
@@ -17,7 +27,7 @@ function ranger {
 }
 
 # Check if in ranger nested shell
-function inranger {
+function lrin {
     if [ -z "$RANGER_LEVEL" ]; then
         echo "Not in ranger"
     else
