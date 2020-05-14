@@ -1,27 +1,50 @@
 [user]
-	name = peromage
-	email = peromage@outlook.com
+name = peromage
+email = peromage@outlook.com
+
 [core]
-	autocrlf = input
-	quotepath = false
-	editor = vim
+autocrlf = input
+quotepath = false
+editor = vim
+
 [color]
-	ui = auto
+ui = auto
+status = auto
+branch = auto
+diff = auto
+
 [gui]
-	encoding = utf-8
+encoding = utf-8
+
 [i18n "commit"]
-	encoding = utf-8
+encoding = utf-8
+
 [i18n]
-	logoutputencoding = utf-8
+logoutputencoding = utf-8
+
 [diff]
-	tool = nvimdiff
+tool = nvimdiff
+
 [difftool]
-	prompt = false
+prompt = false
+
 [difftool "nvimdiff"]
-    cmd = nvim -d $LOCAL $REMOTE
+cmd = nvim -d $LOCAL $REMOTE
+
 [merge]
-	tool = nvimdiff
+tool = nvimdiff
+
 [mergetool]
-	prompt = false
+prompt = false
+
 [mergetool "nvimdiff"]
-    cmd = nvim -d $LOCAL $MERGED $REMOTE -c 'wincmd w|wincmd J'
+cmd = nvim -d $LOCAL $MERGED $REMOTE -c 'wincmd w|wincmd J'
+
+[alias]
+ss = status
+ll = log --graph --pretty=format:'%C(red)%h%C(reset) %C(green)[%an]%C(reset) - %s %C(blue)(%cd) %C(yellow)%d' --date=relative
+la = log --graph --pretty=format:'%C(red)%h%C(reset) %C(green)[%an]%C(reset) - %s %C(blue)(%cd) %C(yellow)%d' --numstat
+ltail = log -n 3
+br = branch
+ch = checkout
+ac = !git add -A && git commit -m
