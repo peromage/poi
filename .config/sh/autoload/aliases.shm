@@ -15,7 +15,7 @@ function fo {
 # Ranger helper. Prevents from launching nested instances.
 function lr {
     if [ -z "$RANGER_LEVEL" ]; then
-        /usr/bin/ranger "$@"
+        ranger "$@"
     else
         exit
     fi
