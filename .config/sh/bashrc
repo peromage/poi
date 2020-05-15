@@ -21,15 +21,15 @@ esac
 _rcroot=$(dirname $(realpath $BASH_SOURCE))
 # Load core module
 _saved_cwd=$(pwd)
-cd "$_rcroot/../shell"
-source ./shellrc
+cd "$_rcroot"
+source ./shrc
 source ./profile
 cd $_saved_cwd
 # Load prompt style
 if [ -z "$1" ]; then
-    loadmodule "$_rcroot/prompts" mybash
+    loadmodule "$_rcroot/bash_prompts" mybash
 else
-    loadmodule "$_rcroot/prompts" "$1"
+    loadmodule "$_rcroot/bash_prompts" "$1"
 fi
 
 # Clean up

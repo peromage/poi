@@ -3,7 +3,7 @@
 param([string]$prompt_style="myposh")
 
 # Load core module
-. "$PSScriptRoot\poshrccore.ps1"
+. "$PSScriptRoot\pwshrccore.ps1"
 # Loading modules
 loadmodule "$PSScriptRoot\autoload" *
 # Loading prompt
