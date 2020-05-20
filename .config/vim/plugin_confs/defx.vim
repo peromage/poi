@@ -36,7 +36,7 @@ function! s:my_defx_keymaps() abort
         \ defx#is_directory() ?
         \ defx#do_action('open_or_close_tree') :
         \ defx#do_action('drop')
-    nnoremap <silent><buffer><expr> <CR> <SID>open_file_or_tree()
+    nnoremap <silent><buffer><expr> <CR>
         \ defx#is_directory() ?
         \ defx#do_action('open_or_close_tree') :
         \ defx#do_action('drop')
