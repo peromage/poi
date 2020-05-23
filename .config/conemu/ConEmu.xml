@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2020-05-13 14:52:36" build="191012">
+		<key name=".Vanilla" modified="2020-05-19 22:03:08" build="191012">
 			<value name="ColorTable00" type="dword" data="00362a28"/>
 			<value name="ColorTable01" type="dword" data="00bc4354"/>
 			<value name="ColorTable02" type="dword" data="003dde66"/>
@@ -292,7 +292,7 @@
 			<value name="MinimizeOnLoseFocus" type="hex" data="00"/>
 			<value name="DisableFarFlashing" type="hex" data="00"/>
 			<value name="DisableAllFlashing" type="hex" data="01"/>
-			<value name="FindText" type="string" data="pester"/>
+			<value name="FindText" type="string" data="3c7f7"/>
 			<value name="FindMatchCase" type="hex" data="00"/>
 			<value name="FindMatchWholeWords" type="hex" data="00"/>
 			<value name="FindTransparent" type="hex" data="01"/>
@@ -485,28 +485,28 @@
 			<value name="WndDragKey" type="dword" data="00121101"/>
 			<key name="Tasks" modified="2020-05-13 14:52:10" build="191012">
 				<value name="Count" type="long" data="3"/>
-				<key name="Task1" modified="2020-05-13 14:56:01" build="191012">
+				<key name="Task1" modified="2020-05-22 21:01:54" build="191012">
 					<value name="Name" type="string" data="{powershell}"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Cmd1" type="string" data="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Hotkey" type="dword" data="00001231"/>
+					<value name="Hotkey" type="dword" data="00101231"/>
 					<value name="Flags" type="dword" data="00000005"/>
 				</key>
-				<key name="Task2" modified="2020-05-13 14:56:36" build="191012">
+				<key name="Task2" modified="2020-05-22 21:01:54" build="191012">
 					<value name="Name" type="string" data="{cmd}"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Cmd1" type="string" data="C:\Windows\System32\cmd.exe"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Hotkey" type="dword" data="00001232"/>
+					<value name="Hotkey" type="dword" data="00101232"/>
 					<value name="Flags" type="dword" data="00000004"/>
 				</key>
-				<key name="Task3" modified="2020-05-13 14:56:36" build="191012">
+				<key name="Task3" modified="2020-05-22 21:01:54" build="191012">
 					<value name="Name" type="string" data="{pwsh}"/>
 					<value name="Flags" type="dword" data="00000004"/>
-					<value name="Hotkey" type="dword" data="00001233"/>
+					<value name="Hotkey" type="dword" data="00101233"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
@@ -547,7 +547,7 @@
 			<value name="TabBtnDblClick" type="ulong" data="2"/>
 			<value name="ConsoleExceptionHandler" type="hex" data="00"/>
 			<value name="SaveCmdHistory" type="hex" data="00"/>
-			<value name="CTS.IBeam" type="hex" data="01"/>
+			<value name="CTS.IBeam" type="hex" data="00"/>
 			<value name="Multi.SplitSizeVU" type="dword" data="00105d26"/>
 			<value name="Multi.SplitSizeVD" type="dword" data="00105d28"/>
 			<value name="Multi.SplitSizeHL" type="dword" data="00105d25"/>
@@ -600,7 +600,7 @@
 			<value name="StatusBar.Hide.Dpi" type="hex" data="01"/>
 			<value name="TabFlashChanged" type="long" data="8"/>
 			<value name="TabModifiedSuffix" type="string" data="[*]"/>
-			<key name="HotKeys" modified="2020-05-12 16:53:20" build="191012">
+			<key name="HotKeys" modified="2020-05-22 21:01:54" build="191012">
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="0000005b"/>
 				<value name="Multi.ArrowsModifier" type="dword" data="0000005b"/>
@@ -699,9 +699,9 @@
 				<value name="Key.BufTop" type="dword" data="00000000"/>
 				<value name="Key.BufBottom" type="dword" data="00000000"/>
 				<value name="Key.BufCursor" type="dword" data="00000000"/>
-				<value name="FontLargerKey" type="dword" data="00001230"/>
-				<value name="FontSmallerKey" type="dword" data="00001239"/>
-				<value name="FontOriginalKey" type="dword" data="00101230"/>
+				<value name="FontLargerKey" type="dword" data="000012be"/>
+				<value name="FontSmallerKey" type="dword" data="000012bc"/>
+				<value name="FontOriginalKey" type="dword" data="001012be"/>
 				<value name="PasteFileKey" type="dword" data="00000000"/>
 				<value name="PastePathKey" type="dword" data="00000000"/>
 				<value name="PasteCygwinKey" type="dword" data="00000000"/>
