@@ -26,7 +26,7 @@
     "defaults": {
       // Put settings here that you want to apply to all profiles
       "colorScheme": "Dracula",
-      "cursorColor": "#FFFFFF",
+      "cursorColor": "#FEFEFE",
       "cursorShape": "filledBox",
       "fontFace": "Cascadia Code PL",
       "fontSize": 9,
@@ -45,13 +45,13 @@
     "list": [
       {
         "guid": "{6aa2b33e-bc10-4c5b-9088-579105431da3}",
-        "name": "Posh Acrylic",
+        "name": "PS Acrylic",
         "commandline": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoLogo -NoExit",
         "useAcrylic": true
       },
       {
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-        "name": "Posh",
+        "name": "PowerShell",
         "commandline": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoLogo -NoExit"
       },
       {
@@ -68,7 +68,7 @@
       {
           "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
           "hidden": false,
-          "name": "PowerShell",
+          "name": "Pwsh",
           "source": "Windows.Terminal.PowershellCore"
       }
     ]
@@ -102,56 +102,72 @@
   // Add any keybinding overrides to this array.
   // To unbind a default keybinding, set the command to "unbound"
   "keybindings": [
-    { "command": "closePane", "keys": "alt+q" },
-    { "command": "closeTab", "keys": "alt+shift+q" },
+    // Application-level Keys
     { "command": "closeWindow", "keys": "alt+f4" },
-    { "command": "copy", "keys": "ctrl+shift+c" },
-    { "command": "copy", "keys": "ctrl+insert" },
-    { "command": "decreaseFontSize", "keys": "alt+9" },
-    { "command": "duplicateTab", "keys": "alt+shift+t" },
-    { "command": "increaseFontSize", "keys": "alt+0" },
-    { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+j" },
-    { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+h" },
-    { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+l" },
-    { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+k" },
+    { "command": "toggleFullscreen", "keys": "alt+enter" },
+    { "command": "toggleFullscreen", "keys": "f11" },
+    { "command": "openNewTabDropdown", "keys": "alt+shift+t" },
+    { "command": "openSettings", "keys": "ctrl+," },
+    { "command": "find", "keys": "ctrl+shift+f" },
+
+    // Tab Management
+    // "command": "closeTab" is unbound by default.
+    //   The closeTab command closes a tab without confirmation, even if it has multiple panes.
     { "command": "newTab", "keys": "alt+t" },
-    { "command": { "action": "newTab", "index": 0 }, "keys": "ctrl+shift+1" },
-    { "command": { "action": "newTab", "index": 1 }, "keys": "ctrl+shift+2" },
-    { "command": { "action": "newTab", "index": 2 }, "keys": "ctrl+shift+3" },
-    { "command": { "action": "newTab", "index": 3 }, "keys": "ctrl+shift+4" },
-    { "command": { "action": "newTab", "index": 4 }, "keys": "ctrl+shift+5" },
-    { "command": { "action": "newTab", "index": 5 }, "keys": "ctrl+shift+6" },
-    { "command": { "action": "newTab", "index": 6 }, "keys": "ctrl+shift+7" },
-    { "command": { "action": "newTab", "index": 7 }, "keys": "ctrl+shift+8" },
-    { "command": { "action": "newTab", "index": 8 }, "keys": "ctrl+shift+9" },
+    { "command": { "action": "newTab", "index": 0 }, "keys": "alt+shift+1" },
+    { "command": { "action": "newTab", "index": 1 }, "keys": "alt+shift+2" },
+    { "command": { "action": "newTab", "index": 2 }, "keys": "alt+shift+3" },
+    { "command": { "action": "newTab", "index": 3 }, "keys": "alt+shift+4" },
+    { "command": { "action": "newTab", "index": 4 }, "keys": "alt+shift+5" },
+    { "command": { "action": "newTab", "index": 5 }, "keys": "alt+shift+6" },
+    { "command": { "action": "newTab", "index": 6 }, "keys": "alt+shift+7" },
+    { "command": { "action": "newTab", "index": 7 }, "keys": "alt+shift+8" },
+    { "command": { "action": "newTab", "index": 8 }, "keys": "alt+shift+9" },
+    { "command": "duplicateTab", "keys": "alt+shift+d" },
     { "command": "nextTab", "keys": "ctrl+tab" },
-    { "command": "openNewTabDropdown", "keys": "ctrl+shift+space" },
-    { "command": "openSettings", "keys": "alt+f7" },
-    { "command": "paste", "keys": "ctrl+shift+v" },
-    { "command": "paste", "keys": "shift+insert" },
     { "command": "prevTab", "keys": "ctrl+shift+tab" },
-    { "command": "resetFontSize", "keys": "alt+shift+0" },
+    { "command": { "action": "switchToTab", "index": 0 }, "keys": "alt+1" },
+    { "command": { "action": "switchToTab", "index": 1 }, "keys": "alt+2" },
+    { "command": { "action": "switchToTab", "index": 2 }, "keys": "alt+3" },
+    { "command": { "action": "switchToTab", "index": 3 }, "keys": "alt+4" },
+    { "command": { "action": "switchToTab", "index": 4 }, "keys": "alt+5" },
+    { "command": { "action": "switchToTab", "index": 5 }, "keys": "alt+6" },
+    { "command": { "action": "switchToTab", "index": 6 }, "keys": "alt+7" },
+    { "command": { "action": "switchToTab", "index": 7 }, "keys": "alt+8" },
+    { "command": { "action": "switchToTab", "index": 8 }, "keys": "alt+9" },
+
+    // Pane Management
+    { "command": "closePane", "keys": "alt+q" },
+    { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "alt+shift+\\" },
+    { "command": { "action": "splitPane", "split": "vertical" }, "keys": "alt+\\" },
     { "command": { "action": "resizePane", "direction": "down" }, "keys": "alt+shift+-" },
     { "command": { "action": "resizePane", "direction": "left" }, "keys": "alt+-" },
     { "command": { "action": "resizePane", "direction": "right" }, "keys": "alt+=" },
     { "command": { "action": "resizePane", "direction": "up" }, "keys": "alt+shift+=" },
+    { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+down" },
+    { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+left" },
+    { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+right" },
+    { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+up" },
+    { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+j" },
+    { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+h" },
+    { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+l" },
+    { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+k" },
+    
+    // Clipboard Integration
+    { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+shift+c" },
+    { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+insert" },
+    { "command": "paste", "keys": "ctrl+shift+v" },
+    { "command": "paste", "keys": "shift+insert" },
+
+    // Scrollback
     { "command": "scrollDown", "keys": "alt+e" },
     { "command": "scrollDownPage", "keys": "alt+f" },
     { "command": "scrollUp", "keys": "alt+y" },
     { "command": "scrollUpPage", "keys": "alt+b" },
-    { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "alt+shift+\\" },
-    { "command": { "action": "splitPane", "split": "vertical" }, "keys": "alt+\\" },
-    { "command": { "action": "switchToTab", "index": 0 }, "keys": "ctrl+alt+1" },
-    { "command": { "action": "switchToTab", "index": 1 }, "keys": "ctrl+alt+2" },
-    { "command": { "action": "switchToTab", "index": 2 }, "keys": "ctrl+alt+3" },
-    { "command": { "action": "switchToTab", "index": 3 }, "keys": "ctrl+alt+4" },
-    { "command": { "action": "switchToTab", "index": 4 }, "keys": "ctrl+alt+5" },
-    { "command": { "action": "switchToTab", "index": 5 }, "keys": "ctrl+alt+6" },
-    { "command": { "action": "switchToTab", "index": 6 }, "keys": "ctrl+alt+7" },
-    { "command": { "action": "switchToTab", "index": 7 }, "keys": "ctrl+alt+8" },
-    { "command": { "action": "switchToTab", "index": 8 }, "keys": "ctrl+alt+9" },
-    { "command": "find", "keys": "ctrl+shift+f" },
-    { "command": "toggleFullscreen", "keys": "alt+enter" },
-    { "command": "toggleFullscreen", "keys": "f11" }
+
+    // Visual Adjustments
+    { "command": { "action": "adjustFontSize", "delta": 1 }, "keys": "alt+." },
+    { "command": { "action": "adjustFontSize", "delta": -1 }, "keys": "alt+," },
+    { "command": "resetFontSize", "keys": "alt+shift+." }
   ]
 }
