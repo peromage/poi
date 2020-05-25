@@ -1,5 +1,0 @@
-# Make sure to cd to this directory when source this rc file
-# Check if in the directory before continuing
-[ ! -f "./shrccore" ] && return
-. ./shrccore
-loadmodule ./autoload "*"

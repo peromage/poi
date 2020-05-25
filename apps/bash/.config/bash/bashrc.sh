@@ -1,12 +1,28 @@
-# Author: Fang
-# Date: 2020/04/11
+#!/usr/bin/bash
 
-function loadmodule {
+# Author: Fang
+# Date: 2020/02/17
+
+# Don't add code before the initialization
+# Interactive mode initialization script
+# Prevent from being loaded twice
+if [ -z "$RCLOADED" ]; then
+    RCLOADED=1
+else
+    return
+fi
+# If in non-interactive mode then exit
+case "$-" in
+    *i*) ;;
+    *) return ;;
+esac
+
+function RCLoadModule {
     # $1: Folder where the module resides
     # $2: Module names. Separated by ','
     # $3: The default module extension
     # Note: Module name supports glob
-    
+
     # Check if give module directory exists
     [ ! -d "$1" ] && return
     # Change current working directory
@@ -17,7 +33,7 @@ function loadmodule {
     modules=(${2//,/ })
     # Module extension
     if [ -z "$3" ]; then
-        ext=".shm"
+        ext=".sh"
     else
         ext=$3
     fi
@@ -31,3 +47,21 @@ function loadmodule {
     # Restore working directory
     cd "$savedcwd"
 }
+
+RCROOT=$(dirname $(realpath $BASH_SOURCE))
+# End prerequisites
+
+function RCInit {
+    # This function's parameters correspond to the rc's parameters
+    # This rc script
+    # Load core module
+    RCLoadModule ./autoload "*"
+    # Load prompt style
+    if [ -z "$1" ]; then
+        RCLoadModule "$RCROOT/prompts" mybash
+    else
+        RCLoadModule "$RCROOT/prompts" "$1"
+    fi
+}
+
+RCInit $1
