@@ -54,8 +54,8 @@ RCROOT=$(dirname $(realpath $BASH_SOURCE))
 function RCInit {
     # This function's parameters correspond to the rc's parameters
     # This rc script
-    # Load core module
-    RCLoadModule ./autoload "*"
+    RCLoadModule "$RCROOT/autoload" "*"
+    source "$RCROOT/bash_profile.sh"
     # Load prompt style
     if [ -z "$1" ]; then
         RCLoadModule "$RCROOT/prompts" mybash

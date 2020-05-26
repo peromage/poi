@@ -1,4 +1,4 @@
-alias ll="ls -la --color=always --group-directories-first"
+alias ll="ls -lahF --color=always --group-directories-first"
 alias nv="nvim"
 alias nvv="nvim \$(fzf)"
 alias cdd="cd \$(fzf)"
