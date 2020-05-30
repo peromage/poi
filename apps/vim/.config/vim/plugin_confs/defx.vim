@@ -32,17 +32,13 @@ function! s:my_defx_keymaps() abort
         \ defx#is_directory() ?
         \ defx#do_action('open_or_close_tree') :
         \ defx#do_action('drop')
-    nnoremap <silent><buffer><expr> l
-        \ defx#is_directory() ?
-        \ defx#do_action('open_or_close_tree') :
-        \ defx#do_action('drop')
     nnoremap <silent><buffer><expr> <CR>
         \ defx#is_directory() ?
         \ defx#do_action('open_or_close_tree') :
         \ defx#do_action('drop')
     nnoremap <silent><buffer><expr> u defx#do_action('multi', [['cd', '..'], 'change_vim_cwd'])
-    nnoremap <silent><buffer><expr> O defx#do_action('open_tree_recursive')
-    nnoremap <silent><buffer><expr> i defx#do_action('multi', ['open_directory','change_vim_cwd'])
+    nnoremap <silent><buffer><expr> U defx#do_action('open_tree_recursive')
+    nnoremap <silent><buffer><expr> O defx#do_action('multi', ['open_directory','change_vim_cwd'])
     nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
     " File manipulation
     nnoremap <silent><buffer><expr> yy defx#do_action('copy')

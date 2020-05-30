@@ -14,10 +14,17 @@ let g:netrw_keepdir = 1
 let g:netrw_usetab = 0
 let g:netrw_preview = 0
 
+" Global Hotkey
+nnoremap <silent> <leader>e :Lexplore<CR>
+
 " Keymaps when Netrw is open
 function! s:my_netrw_keymaps() abort
-    
+    setl nospell
+    setl signcolumn=no
+    setl nonumber
+    setl norelativenumber
+    setl cursorline
+    setl cursorcolumn
 endfunction
 
-" Netrw bindings
-nnoremap <silent> <leader>e :Lexplore<CR>
+autocmd FileType netrw call s:my_netrw_keymaps()
