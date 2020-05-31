@@ -51,30 +51,37 @@ internal class Shim {
     };
     #endif
 
-    public static IEnumerable<string> HandleCli(string[] argv) {
-        IList<string> args_list = new List<string>(argv);
-        // Extract shim cli arguments
-        if (args_list.Remove("--shim-debug")) {
-            Logger.Enable = true;
-        }
-        // If any argument has whitespace. Make sure they are quoted properly
-        return args_list.Select(arg => arg.Contains(' ') ?
-                                       string.Format("\"{0}\"", arg) : arg);
-    }
-
     public static int Main(string[] argv) {
-        int exit_code = -1;
         // Get default configuration
         ShimConfig config = Shim.Config();
         if (!config.valid) {
             Logger.Debug("shim", ".shim file not found!");
-            return exit_code;
+            return 1;
         }
         // Handle shim cli arguments first
+        // Extract shim cli arguments
+        IList<string> args_list = new List<string>(argv);
+        // Print shim info and exit
+        if (args_list.Remove("--shim-info")) {
+            Logger.Enable = true;
+            Logger.Debug("", "=== Shim Info ===");
+            Logger.Debug("", "{0,-20}: {1}".FormatWith("Target", config.path));
+            Logger.Debug("", "{0,-20}: {1}".FormatWith("Arguments", config.args));
+            Logger.Debug("", "{0,-20}: {1}".FormatWith("Wait for Exit", config.wait));
+            Logger.Debug("", "{0,-20}: {1}".FormatWith("Working Directory", config.cwd));
+            return 0;
+        }
+        // Enable logging
+        if (args_list.Remove("--shim-debug")) {
+            Logger.Enable = true;
+        }
         // Then combine passed arguments with pre-defined arguments
-        config.args += " " + string.Join(" ", Shim.HandleCli(argv));
-        ShimAgent agent = new ShimAgent(config);
+        config.args += " " + string.Join(" ", args_list.Select(
+            arg => arg.Contains(' ') ? string.Format("\"{0}\"", arg) : arg));
+
         // Start delegated process
+        ShimAgent agent = new ShimAgent(config);
+        int exit_code = 1;
         try {
             exit_code = agent.Execute();
         } catch (Win32Exception ex) {
