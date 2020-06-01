@@ -82,15 +82,15 @@ class Shimctl {
         $dest = $this.BuildDest($dir, ".exe")
         $SRC_PATH = "$PSScriptRoot\..\src\shim.cs"
         $SRC_PATT_PATH = '\{\{PathToExe\}\}'
-        $SRC_PATT_ARGS = '\{\{ExeExecutionArgs\}\}'
-        $SRC_PATT_WAIT = '\{\{WaitForExit\}\}'
-        $SRC_PATT_HARDCODE = '#undef(?=\s+HARDCODED)'
+        $SRC_PATT_ARGS = '\{\{ExeArgs\}\}'
+        $SRC_PATT_GUI = '\{\{IsGuiApp\}\}'
+        $SRC_PATT_HARDCODE = '//#define(?=\sHARDCODE)'
 
         $src = Get-Content -Raw $SRC_PATH
         # Hard code the target into the exe
         $src = $src -replace $SRC_PATT_PATH, $this.Target.FullName
         $src = $src -replace $SRC_PATT_ARGS, $this.Arguments
-        $src = $src -replace $SRC_PATT_WAIT, $(if($this.Gui){[bool]::FalseString}else{[bool]::TrueString})
+        $src = $src -replace $SRC_PATT_GUI, $this.Gui.ToString()
         $src = $src -replace $SRC_PATT_HARDCODE, "#define"
         # Compile exe
         Add-Type -OutputType ConsoleApplication -TypeDefinition $src -OutputAssembly $dest
@@ -116,26 +116,31 @@ function New-Shim {
     } else {
         $obj.Gui = $false
     }
-    switch ($type) {
-        "cmd" {
-            $dest = $obj.GenCmd($bin)
+    try {
+        switch ($type) {
+            "cmd" {
+                $dest = $obj.GenCmd($bin)
+            }
+            "ps1" {
+                $dest = $obj.GenPs1($bin)
+            }
+            "lnk" {
+                $dest = $obj.GenLnk($bin)
+            }
+            "softlink" {
+                $dest = $obj.GenSoftlink($bin)
+            }
+            "exe" {
+                $dest = $obj.GenExe($bin)
+            }
+            default {
+                throw "Invalid Type"
+            }
         }
-        "ps1" {
-            $dest = $obj.GenPs1($bin)
-        }
-        "lnk" {
-            $dest = $obj.GenLnk($bin)
-        }
-        "softlink" {
-            $dest = $obj.GenSoftlink($bin)
-        }
-        "exe" {
-            $dest = $obj.GenExe($bin)
-        }
-        default {
-            Write-Error "Invalid Type"
-            return
-        }
+        Write-Output "Shim: $dest -> $($obj.Target.FullName)"
+    } catch {
+        Write-Error "Failed to create the new shim"
+        Write-Error "Failure reason:"
+        Write-Error "$_"
     }
-    Write-Output "Shim: $dest -> $($obj.Target.FullName)"
 }
