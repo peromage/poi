@@ -1,5 +1,5 @@
 " My leader key
-let mapleader="\\"
+let mapleader=" "
 
 " Splittin/
 nnoremap <silent> <leader><Bslash> :vs<CR>
