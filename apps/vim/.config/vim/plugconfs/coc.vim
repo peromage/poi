@@ -93,7 +93,7 @@ endfunction
 " Coc extension variable
 let g:coc_global_extensions = []
 " Pre-defined coc extensions
-" Override g:RC_Coc_Global_Extensions to get change default extensions
+" Override g:RC_Coc_Extensions to get change default extensions
 if !exists("g:RC_Coc_Extensions")
     let g:RC_Coc_Extensions = [
         \ "coc-explorer",
