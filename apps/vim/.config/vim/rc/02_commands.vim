@@ -1,1 +1,1 @@
-command  Bda :%bd|e#
+command  Bdall :%bd|e#

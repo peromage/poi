@@ -42,3 +42,4 @@ nnoremap <silent> <leader>X :%bd\|e#<CR>
 
 " Turnoff hightlight
 nnoremap <silent> <leader># :noh<CR>
+nnoremap <silent> <leader>* :noh<CR>
