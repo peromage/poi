@@ -1,3 +1,6 @@
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
@@ -87,31 +90,25 @@ endfunction
 
 
 """" Coc plugins
+" Coc extension variable
 let g:coc_global_extensions = []
-let g:COCPlugs = {}
-let g:COCPlugs.DefaultLoadingList = [
-            \ "coc-explorer",
-            \ "coc-tabnine",
-            \ "coc-git",
-            \ "coc-json",
-            \ "coc-markdownlint",
-            \ "coc-vimlsp",
-            \ "coc-clangd",
-            \ "coc-powershell",
-            \ "coc-tsserver",
-            \ "coc-python"
-            \ ]
-
-" Load default plugins
-function! g:COCPlugs.LoadDefault() abort
-    for ppp in g:self.DefaultLoadingList
-        call add(g:coc_global_extensions, ppp)
-    endfor
-endfunction
-
-" Load customized plugins
-function! g:COCPlugs.Load(plug_list) abort
-    for ppp in a:plug_list
-        call add(g:coc_global_extensions, ppp)
-    endfor
-endfunction
+" Pre-defined coc extensions
+" Override g:RC_Coc_Global_Extensions to get change default extensions
+if !exists("g:RC_Coc_Extensions")
+    let g:RC_Coc_Extensions = [
+        \ "coc-explorer",
+        \ "coc-tabnine",
+        \ "coc-git",
+        \ "coc-json",
+        \ "coc-markdownlint",
+        \ "coc-vimlsp",
+        \ "coc-clangd",
+        \ "coc-powershell",
+        \ "coc-tsserver",
+        \ "coc-python"
+        \ ]
+endif
+" Add customized extensions to coc extension variable
+for ppp in g:RC_Coc_Extensions
+    call add(g:coc_global_extensions, ppp)
+endfor

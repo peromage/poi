@@ -1,3 +1,6 @@
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
+
+
 let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0

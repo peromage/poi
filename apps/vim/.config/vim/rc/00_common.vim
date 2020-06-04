@@ -3,7 +3,7 @@ set nocompatible
 filetype plugin indent on
 set splitbelow
 set splitright
-set winaltkeys
+set winaltkeys=no
 set lazyredraw
 
 " Status bar view

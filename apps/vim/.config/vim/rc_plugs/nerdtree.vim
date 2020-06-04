@@ -1,3 +1,6 @@
+Plug 'preservim/nerdtree'
+
+
 " Default view
 let g:NERDTreeShowHidden = 1
 
