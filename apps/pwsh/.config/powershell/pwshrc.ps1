@@ -30,9 +30,9 @@ $RCROOT = $PSScriptRoot
 
 function RCInit {
     # Loading modules
-    RCLoadModule "$RCROOT\rc" *
+    RCLoadModule "$RCROOT\__rc__" *
     # Loading prompt
-    RCLoadModule "$RCROOT\styles" $prompt_style
+    RCLoadModule "$RCROOT\__rcstyles__" $prompt_style
 }
 
 RCInit
