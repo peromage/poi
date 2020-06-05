@@ -71,15 +71,6 @@ nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 
 
-"""" Coc plugin keymaps
-" File explorer
-nnoremap <silent> <leader>e
-            \ :CocCommand explorer
-            \ --position left
-            \ --sources buffer+,file+<CR>
-            \ --toggle
-
-
 """" Script defined functions
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -118,3 +109,11 @@ endif
 for ppp in g:RC_Coc_Extensions
     call add(g:coc_global_extensions, ppp)
 endfor
+
+"""" Coc plugin keymaps
+" File explorer
+nnoremap <silent> <leader>e
+            \ :CocCommand explorer
+            \ --position left
+            \ --sources buffer+,file+<CR>
+            \ --toggle

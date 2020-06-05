@@ -59,11 +59,11 @@ function! g:RCInit() abort
     execute "colorscheme ".g:RC_Color
 
     " Load all modules in rc directory
-    call RCLoadModule(g:RCROOT."/rc", ["*"])
+    call RCLoadModule(g:RCROOT."/__rc__", ["*"])
 
     " Load plugins via vim-plug
     call plug#begin()
-    call RCLoadModule(g:RCROOT."/plugconfs", g:RC_Global_Plugs)
+    call RCLoadModule(g:RCROOT."/__rcplugs__", g:RC_Global_Plugs)
     for vppp in g:RC_Local_Plugs
         execute vppp
     endfor
