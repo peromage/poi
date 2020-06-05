@@ -1,3 +1,9 @@
+""
+"" Created by peromage on 2020/06/04
+""
+"" LeaderF settings
+""
+
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
 
 

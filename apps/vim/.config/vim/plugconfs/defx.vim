@@ -1,3 +1,9 @@
+""
+"" Created by peromage on 2020/06/04
+""
+"" Defx settings
+""
+
 if has('nvim')
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else

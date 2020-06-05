@@ -1,3 +1,9 @@
+""
+"" Created by peromage on 2020/06/04
+""
+"" RC entry file
+""
+
 " A helper function that dynamically loads .vim files by given directory 
 " and name patterns
 function! g:RCLoadModule(path, patterns, ...) abort

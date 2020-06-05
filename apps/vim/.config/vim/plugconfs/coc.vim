@@ -1,3 +1,9 @@
+""
+"" Created by peromage on 2020/06/04
+""
+"" Coc settings
+""
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 

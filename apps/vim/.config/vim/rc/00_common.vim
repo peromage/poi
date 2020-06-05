@@ -1,3 +1,9 @@
+""
+"" Created by peromage on 2020/06/04
+""
+"" Command settings
+""
+
 " Quality of life
 set nocompatible
 filetype plugin indent on
