@@ -1,5 +1,7 @@
 {
     "$schema": "https://github.com/neoclide/coc.nvim/blob/master/data/schema.json",
     "clangd.path": "/home/dev/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
