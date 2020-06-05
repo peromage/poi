@@ -54,12 +54,12 @@ RCROOT=$(dirname $(realpath $BASH_SOURCE))
 function RCInit {
     # This function's parameters correspond to the rc's parameters
     # This rc script
-    RCLoadModule "$RCROOT/rc" "*"
+    RCLoadModule "$RCROOT/__rc__" "*"
     # Load prompt style
     if [ -z "$1" ]; then
-        RCLoadModule "$RCROOT/styles" mybash
+        RCLoadModule "$RCROOT/__rcstyles__" mybash
     else
-        RCLoadModule "$RCROOT/styles" "$1"
+        RCLoadModule "$RCROOT/__rcstyles__" "$1"
     fi
 }
 
