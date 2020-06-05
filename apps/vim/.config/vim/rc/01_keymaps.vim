@@ -1,5 +1,11 @@
+""
+"" Created by peromage on 2020/06/04
+""
+"" Customized keymaps
+""
+
 " My leader key
-let mapleader="\\"
+let mapleader=" "
 
 " Splittin/
 nnoremap <silent> <leader><Bslash> :vs<CR>
@@ -42,3 +48,4 @@ nnoremap <silent> <leader>X :%bd\|e#<CR>
 
 " Turnoff hightlight
 nnoremap <silent> <leader># :noh<CR>
+nnoremap <silent> <leader>* :noh<CR>

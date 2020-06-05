@@ -1,1 +1,0 @@
-command  Bda :%bd|e#

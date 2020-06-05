@@ -1,3 +1,9 @@
+""
+"" Created by peromage on 2020/06/04
+""
+"" Settings for built-in netrw explorer
+""
+
 " Netrw general settings
 let g:netrw_altfile = 1
 let g:netrw_banner = 0
