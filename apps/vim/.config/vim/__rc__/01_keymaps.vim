@@ -50,5 +50,8 @@ nnoremap <silent> <leader>X :%bd\|e#<CR>
 nnoremap <silent> <leader># :noh<CR>
 nnoremap <silent> <leader>* :noh<CR>
 
+" Show history messages
+nnoremap <silent> <leader>m :messages<CR>
+
 " Terminal
-tnoremap <Esc> <C-\><C-n>
+"tnoremap <Esc> <C-\><C-n>

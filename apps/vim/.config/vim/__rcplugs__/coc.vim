@@ -49,14 +49,16 @@ else
 endif
 
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> <leader>cg[ <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>cg] <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>c[ <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>c] <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> <leader>cgd <Plug>(coc-definition)
-nmap <silent> <leader>cgy <Plug>(coc-type-definition)
-nmap <silent> <leader>cgi <Plug>(coc-implementation)
-nmap <silent> <leader>cgr <Plug>(coc-references)
+nmap <silent> <leader>cd <Plug>(coc-definition)
+nmap <silent> <leader>cy <Plug>(coc-type-definition)
+nmap <silent> <leader>ci <Plug>(coc-implementation)
+nmap <silent> <leader>cr <Plug>(coc-references)
+nmap <silent> <leader>ca <Plug>(coc-codeaction)
+
 
 " Use K to show documentation in preview window.
 nnoremap <silent> <leader>cK :call <SID>show_documentation()<CR>
