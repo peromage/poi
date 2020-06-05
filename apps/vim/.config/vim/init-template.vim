@@ -5,8 +5,6 @@
 "" Rename this file to "init.vim" or "vimrc" and make your own changes in it
 ""
 
-execute "so".resolve(expand("<sfile>:h"))."/"."vimrc.vim"
-
 " Override these variables to control RC behaviors
 "let g:RC_Global_Plugs = ["coc"]
 "let g:RC_Local_Plugs = ["Plug 'neoclide/coc.nvim', {'branch': 'release'}"]
@@ -22,4 +20,4 @@ command! RcConfig execute "edit ".s:init_file
 let g:python3_host_prog="/usr/bin/python3"
 let g:python_host_prog="/usr/bin/python2"
 
-call RCInit()
+execute "source ".resolve(expand("<sfile>:h"))."/"."vimrc.vim"

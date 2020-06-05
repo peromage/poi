@@ -4,7 +4,15 @@
 "" RC entry file
 ""
 
-" A helper function that dynamically loads .vim files by given directory 
+" Guard for repeat loading
+if get(g:, "RCINIT", 0) != 0
+    echom "RC already loaded"
+    finish
+else
+    let g:RCINIT = 1
+endif
+
+" A helper function that dynamically loads .vim files by given directory
 " and name patterns
 function! g:RCLoadModule(path, patterns, ...) abort
     " @param path: Directory names
@@ -21,19 +29,8 @@ endfunction
 " Rc file root directory
 let g:RCROOT = resolve(expand('<sfile>:h'))
 
-" Rc loaded flag
-let g:RCINIT = 0
-
 " RC main function
 function! g:RCInit() abort
-    " Guard for repeat loading
-    if get(g:, "RCINIT", 0) != 0
-        echom "RC already loaded"
-        return
-    else
-        let g:RCINIT = 1
-    endif
-
     " Set g:RC_Color to override default color scheme
     " This variable is a string
     if !exists("g:RC_Color")
@@ -74,4 +71,4 @@ function! g:RCInit() abort
 endfunction
 
 """" Start initialization
-"call RCInit()
+call RCInit()
