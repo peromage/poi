@@ -6,8 +6,8 @@
 # Don't add code before the initialization
 # Interactive mode initialization script
 # Prevent from being loaded twice
-if [ -z "$RCLOADED" ]; then
-    RCLOADED=1
+if [ -z "$RCINIT" ]; then
+    RCINIT=1
 else
     return
 fi
@@ -54,14 +54,13 @@ RCROOT=$(dirname $(realpath $BASH_SOURCE))
 function RCInit {
     # This function's parameters correspond to the rc's parameters
     # This rc script
-    RCLoadModule "$RCROOT/autoload" "*"
-    source "$RCROOT/bash_profile.sh"
+    RCLoadModule "$RCROOT/rc" "*"
     # Load prompt style
     if [ -z "$1" ]; then
-        RCLoadModule "$RCROOT/prompts" mybash
+        RCLoadModule "$RCROOT/styles" mybash
     else
-        RCLoadModule "$RCROOT/prompts" "$1"
+        RCLoadModule "$RCROOT/styles" "$1"
     fi
 }
 
-RCInit $1
+RCInit "$@"
