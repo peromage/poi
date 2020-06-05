@@ -1,0 +1,7 @@
+profile.ps1
+Microsoft.PowerShell_profile.ps1
+init.ps1
+Modules/**
+modules/**
+Scripts/**
+scripts/**

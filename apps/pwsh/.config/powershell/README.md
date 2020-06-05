@@ -4,7 +4,10 @@ Get configuration file location for different scope
 - *CurrentUserAllHosts*: `$PROFILE.CurrentUserAllHosts`
 - *CurrentUserCurrentHost*: `$PROFILE.CurrentUserCurrentHost`
 
-Add content to the configuration file above:
+Rename `init-template.ps1` to `init.ps1` and then source it.
+
+Make your own changes in the `init.ps1` file.
+
 ```
-. path/to/poshrc.ps1
+. path/to/init.ps1
 ```

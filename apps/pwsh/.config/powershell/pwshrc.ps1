@@ -1,7 +1,18 @@
-# Author: Fang
-# Date: 2020/02/17
+##
+## Created by peromage on 2020/02/17
+##
+
 param([string]$prompt_style="myposh")
 
+# Guard repeat loading
+if ($null -ne $RCINIT) {
+    Write-Output "RC already loaded"
+    return
+} else {
+    $RCINIT = 1
+}
+
+# Module loader
 function RCLoadModule {
     <#
     $path: Folder where the module resides
@@ -15,29 +26,13 @@ function RCLoadModule {
     }
 }
 
-# Manipulate user environment variables
-function RCSetVar {
-    param([string]$key, [string]$value)
-    [System.Environment]::SetEnvironmentVariable($key, $value, [System.EnvironmentVariableTarget]::User)
-}
-
-function RCGetVar {
-    param([string]$key)
-    return [System.Environment]::GetEnvironmentVariable($key, [System.EnvironmentVariableTarget]::User)
-}
-
-function RCDelVar {
-    param([string]$key)
-    [System.Environment]::SetEnvironmentVariable($key, $null, [System.EnvironmentVariableTarget]::User)
-}
-
 $RCROOT = $PSScriptRoot
 
 function RCInit {
     # Loading modules
-    RCLoadModule "$RCROOT\autoload" *
+    RCLoadModule "$RCROOT\rc" *
     # Loading prompt
-    RCLoadModule "$RCROOT\prompts" $prompt_style
+    RCLoadModule "$RCROOT\styles" $prompt_style
 }
 
 RCInit
