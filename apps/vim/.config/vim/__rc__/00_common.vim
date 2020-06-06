@@ -15,12 +15,12 @@ set lazyredraw
 " Status bar view
 set laststatus=2
 set statusline=
-set statusline+=\ [%n%M%R%W]                                                    "Basic status
-set statusline+=\ %F                                                            "Full path
+"set statusline+=\ %m%r%w                                                        "Basic status
+set statusline+=\ %f\ %m%r%w                                                    "File status
 set statusline+=%=%<                                                            "Start folding from right aligned elements
-set statusline+=%{v:register}                                                   "Display active register
+"set statusline+=\ %{v:register}                                                 "Display active register
 set statusline+=\ [%Y,%{&fenc!=''?&fenc:&enc}%{(&bomb?\"(BOM)\":\"\")},%{&ff}]  "Encoding info
-set statusline+=\ (R%l/%L,C%c,%P)                                               "Navigation info
+set statusline+=\ \(%l:%c,%P\)                                                  "Navigation info
 
 " Appearance
 set background=dark
