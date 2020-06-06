@@ -12,9 +12,12 @@ else
     let g:RCINIT = 1
 endif
 
+" Rc file root directory
+let g:RCROOT = resolve(expand('<sfile>:h'))
+
 " A helper function that dynamically loads .vim files by given directory
 " and name patterns
-function! g:RCLoadModule(path, patterns, ...) abort
+function! g:RCLoadModules(path, patterns, ...) abort
     " @param path: Directory names
     " @param patterns: List of file glob patterns
     " @param ...: The third parameter is the default extension of module
@@ -26,8 +29,8 @@ function! g:RCLoadModule(path, patterns, ...) abort
     endfor
 endfunction
 
-" Rc file root directory
-let g:RCROOT = resolve(expand('<sfile>:h'))
+" A command that loads modules in __rcmodules__
+command! -nargs=1 RCLoadLocalModule execute "source ".g:RCROOT."/__rcmodules__/"."<args>".".vim"
 
 " RC main function
 function! g:RCInit() abort
@@ -59,11 +62,11 @@ function! g:RCInit() abort
     execute "colorscheme ".g:RC_Color
 
     " Load all modules in rc directory
-    call RCLoadModule(g:RCROOT."/__rc__", ["*"])
+    call RCLoadModules(g:RCROOT."/__rc__", ["*"])
 
     " Load plugins via vim-plug
     call plug#begin()
-    call RCLoadModule(g:RCROOT."/__rcplugs__", g:RC_Global_Plugs)
+    call RCLoadModules(g:RCROOT."/__rcplugs__", g:RC_Global_Plugs)
     for vppp in g:RC_Local_Plugs
         execute vppp
     endfor
