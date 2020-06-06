@@ -30,7 +30,7 @@ function! g:RCLoadModules(path, patterns, ...) abort
 endfunction
 
 " A command that loads modules in __rcmodules__
-command! -nargs=1 RCLoadLocalModule execute "source ".g:RCROOT."/__rcmodules__/"."<args>".".vim"
+command! -nargs=1 RCModule execute "source ".g:RCROOT."/__rcmodules__/"."<args>".".vim"
 
 " RC main function
 function! g:RCInit() abort

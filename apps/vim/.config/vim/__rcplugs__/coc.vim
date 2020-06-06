@@ -61,7 +61,10 @@ nmap <silent> <leader>ca <Plug>(coc-codeaction)
 
 
 " Use K to show documentation in preview window.
-nnoremap <silent> <leader>cK :call <SID>show_documentation()<CR>
+nnoremap <silent> <leader>ck :call <SID>show_documentation()<CR>
+
+" Show diagnostics messages
+nnoremap <silent> <leader>cm :CocList diagnostics<CR>
 
 " Symbol renaming.
 nmap <leader>crn <Plug>(coc-rename)
