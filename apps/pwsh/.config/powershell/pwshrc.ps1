@@ -12,8 +12,10 @@ if ($null -ne $RCINIT) {
     $RCINIT = 1
 }
 
+$RCROOT = $PSScriptRoot
+
 # Module loader
-function RCLoadModule {
+function RCLoadModules {
     <#
     $path: Folder where the module resides
     $modlist: Module name list
@@ -26,13 +28,18 @@ function RCLoadModule {
     }
 }
 
-$RCROOT = $PSScriptRoot
+# Local module loader. Modules in __rcmodules__ will be uses
+function RCModule {
+    param([string]$name)
+    Import-Module -Scope Global -DisableNameChecking -Name "$RCROOT/__rcmodules__/$name.psm1"
+}
+
 
 function RCInit {
     # Loading modules
-    RCLoadModule "$RCROOT\__rc__" *
+    RCLoadModules "$RCROOT\__rc__" *
     # Loading prompt
-    RCLoadModule "$RCROOT\__rcstyles__" $prompt_style
+    RCLoadModules "$RCROOT\__rcstyles__" $prompt_style
 }
 
 RCInit
