@@ -2,7 +2,7 @@
 ## Created by peromage on 2020/02/17
 ##
 
-param([string]$prompt_style="myposh")
+param([string]$prompt_style="myprompt")
 
 # Guard repeat loading
 if ($null -ne $RCINIT) {
