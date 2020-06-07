@@ -17,7 +17,10 @@ case "$-" in
     *) return ;;
 esac
 
-function RCLoadModule {
+RCROOT=$(dirname $(realpath $BASH_SOURCE))
+
+# Module loader
+function RCLoadModules {
     # $1: Folder where the module resides
     # $2: Module names. Separated by ','
     # $3: The default module extension
@@ -48,18 +51,22 @@ function RCLoadModule {
     cd "$savedcwd"
 }
 
-RCROOT=$(dirname $(realpath $BASH_SOURCE))
+# Local module loader
+function RCModule {
+    [ -z "$1" ] && return
+    . "$RCROOT/__rcmodules__/$1.sh"
+}
 # End prerequisites
 
 function RCInit {
     # This function's parameters correspond to the rc's parameters
     # This rc script
-    RCLoadModule "$RCROOT/__rc__" "*"
+    RCLoadModules "$RCROOT/__rc__" "*"
     # Load prompt style
     if [ -z "$1" ]; then
-        RCLoadModule "$RCROOT/__rcstyles__" mybash
+        RCLoadModules "$RCROOT/__rcstyles__" mybash
     else
-        RCLoadModule "$RCROOT/__rcstyles__" "$1"
+        RCLoadModules "$RCROOT/__rcstyles__" "$1"
     fi
 }
 
