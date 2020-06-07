@@ -20,7 +20,7 @@ esac
 RCROOT=$(dirname $(realpath $BASH_SOURCE))
 
 # Module loader
-function RCLoadModules {
+function RCLoad {
     # $1: Folder where the module resides
     # $2: Module names. Separated by ','
     # $3: The default module extension
@@ -52,7 +52,7 @@ function RCLoadModules {
 }
 
 # Local module loader
-function RCModule {
+function RCLoadModule {
     [ -z "$1" ] && return
     . "$RCROOT/__rcmodules__/$1.sh"
 }
@@ -61,12 +61,12 @@ function RCModule {
 function RCInit {
     # This function's parameters correspond to the rc's parameters
     # This rc script
-    RCLoadModules "$RCROOT/__rc__" "*"
+    RCLoad "$RCROOT/__rc__" "*"
     # Load prompt style
     if [ -z "$1" ]; then
-        RCLoadModules "$RCROOT/__rcstyles__" mybash
+        RCLoad "$RCROOT/__rcstyles__" mybash
     else
-        RCLoadModules "$RCROOT/__rcstyles__" "$1"
+        RCLoad "$RCROOT/__rcstyles__" "$1"
     fi
 }
 
