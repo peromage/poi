@@ -34,7 +34,7 @@
       "padding": "8, 8, 8, 8",
       "snapOnInput": true,
       "useAcrylic": false,
-      "acrylicOpacity": 0.3,
+      "acrylicOpacity": 0.5,
       "antialiasingMode": "grayscale",
       "scrollbarState": "visible",
       "suppressApplicationTitle": false,
@@ -49,12 +49,6 @@
         "commandline": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoLogo -NoExit"
       },
       {
-        "guid": "{6aa2b33e-bc10-4c5b-9088-579105431da3}",
-        "name": "PowerShell Acrylic",
-        "commandline": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoLogo -NoExit",
-        "useAcrylic": true
-      },
-      {
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "name": "Cmd",
         "commandline": "C:\\Windows\\System32\\cmd.exe"
@@ -67,9 +61,24 @@
       },
       {
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-        "hidden": false,
+        "hidden": true,
         "name": "Pwsh",
         "source": "Windows.Terminal.PowershellCore"
+      },
+      {
+        "guid": "{03b23b3b-63c7-4a39-9091-76020ca93340}",
+        "hidden": false,
+        "name": "Pwsh7",
+        "commandline": "c:\\Program Files\\PowerShell\\7\\pwsh.exe -NoLogo -NoExit"
+      },
+      {
+        "guid": "{e97748fb-3116-440d-bc19-57e880457939}",
+        "hidden": false,
+        "name": "Pwsh7 Acrylic",
+        "commandline": "c:\\Program Files\\PowerShell\\7\\pwsh.exe -NoLogo -NoExit",
+        "useAcrylic": true,
+        "acrylicOpacity": 0.4,
+        "colorScheme": "lovelace"
       }
     ]
   },
@@ -96,6 +105,48 @@
       "brightRed": "#FF6E6E",
       "brightWhite": "#F8F8F2",
       "brightYellow": "#FFFFA5"
+    },
+    {
+      "name": "lovelace",
+      "black": "#282a36",
+      "red": "#f37f97",
+      "green": "#5adecd",
+      "yellow": "#f2a272",
+      "blue": "#8897f4",
+      "purple": "#c574dd",
+      "cyan": "#79e6f3",
+      "white": "#fdfdfd",
+      "brightBlack": "#414458",
+      "brightRed": "#ff4971",
+      "brightGreen": "#18e3c8",
+      "brightYellow": "#ff8037",
+      "brightBlue": "#556fff",
+      "brightPurple": "#b043d1",
+      "brightCyan": "#3fdcee",
+      "brightWhite": "#bebec1",
+      "background": "#1d1f28",
+      "foreground": "#fdfdfd"
+    },
+    {
+      "name": "Spring",
+      "black": "#000000",
+      "red": "#ff4d83",
+      "green": "#1f8c3b",
+      "yellow": "#1fc95b",
+      "blue": "#1dd3ee",
+      "purple": "#8959a8",
+      "cyan": "#3e999f",
+      "white": "#ffffff",
+      "brightBlack": "#000000",
+      "brightRed": "#ff0021",
+      "brightGreen": "#1fc231",
+      "brightYellow": "#d5b807",
+      "brightBlue": "#15a9fd",
+      "brightPurple": "#8959a8",
+      "brightCyan": "#3e999f",
+      "brightWhite": "#ffffff",
+      "background": "#ffffff",
+      "foreground": "#4d4d4c"
     }
   ],
 
