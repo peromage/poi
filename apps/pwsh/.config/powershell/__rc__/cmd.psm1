@@ -1,6 +1,8 @@
 ##
 # Common functions
 ##
+
+# List directory
 function Show-Dir {
     [CmdletBinding(PositionalBinding=$false, DefaultParameterSetName="sortByDefault")]
     param(
@@ -43,8 +45,22 @@ function Show-Dir {
     }
 }
 
+# Lf change directory
+function Set-LfDirectory {
+    $tmp = [System.IO.Path]::GetTempFileName()
+    lf "-last-dir-path=$tmp"
+    if (Test-Path -PathType Leaf $tmp) {
+        $dst = Get-Content $tmp
+        Remove-Item $tmp
+        if ((Test-Path -PathType Container $dst) -and ($dst -ne $pwd.Path)) {
+            Set-Location $dst
+        }
+    }
+}
+
 # Alias
-Set-Alias -Name ll -Value Show-Dir
+Set-Alias ll Show-Dir
+Set-Alias cdlf Set-LfDirectory
 
 # Exporting
 Export-ModuleMember -Function * -Alias *
