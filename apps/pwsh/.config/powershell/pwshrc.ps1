@@ -14,7 +14,7 @@ if ($null -ne $global:RC_HAS_INIT) {
     Write-Output "RC already loaded"
     return
 } else {
-    $global:RC_HAS_INIT = 1
+    $global:RC_HAS_INIT = $true
 }
 # RC root directory
 $global:RC_ROOT = $PSScriptRoot
