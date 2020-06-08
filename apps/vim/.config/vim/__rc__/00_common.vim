@@ -11,6 +11,7 @@ set splitbelow
 set splitright
 set winaltkeys=no
 set lazyredraw
+set paste
 
 " Status bar view
 set laststatus=2
