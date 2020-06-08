@@ -3,6 +3,9 @@
 ## Last modified: 2020/06/07
 ##
 
+# Arguments give rc ability to be customizable
+param([string]$style="style_std")
+
 ##
 # Automatic variables from rc
 #
@@ -17,7 +20,15 @@ if ($null -ne $global:RC_HAS_INIT) {
 $global:RC_ROOT = $PSScriptRoot
 # Current platform: Windows or Unix
 $global:RC_IS_NT = if($IsWindows -or $ENV:OS){ $true }else{ $false }
-
+# Current user privilege
+$global:RC_IS_SU = &{
+    if ($RC_IS_NT) {
+        return ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent() `
+               ).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator) 
+    } else {
+        return (id -u) -eq 0
+    }
+}
 
 ##
 # Module loader
@@ -39,20 +50,21 @@ function global:RCLoadModule {
     Import-Module -Scope Global -DisableNameChecking -Name "$RC_ROOT/__rcmodules__/$name.psm1"
 }
 
-# Make initialization a script block to avoid accidental execution as
-# a function or command
-$global:RCInit = {
-    # Arguments give rc ability to be customizable
-    param([string]$prompt_style="myprompt")
+# Get current path. Replace home with tilde.
+function global:RCPwd {
+    return [string]$pwd -replace ([regex]::Escape($HOME)+'(.*)'),'~$1'
+}
 
+# Initialization function
+function global:RCInit  {
     # Loading modules
     RCLoad "$RC_ROOT/__rc__" *
     # Loading prompt
-    RCLoad "$RC_ROOT/__rcstyles__" $prompt_style
+    RCLoad "$RC_ROOT/__rcstyles__" $style
     # Load NT modules
     if ($RC_IS_NT) {
         RCLoadModule "nt_admin"
     }
 }
 
-&$RCInit @args
+RCInit
