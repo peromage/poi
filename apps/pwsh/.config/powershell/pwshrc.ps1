@@ -1,26 +1,31 @@
 ##
 ## Created by peromage on 2020/02/17
+## Last modified: 2020/06/07
 ##
 
-param([string]$prompt_style="myprompt")
-
+##
+# Automatic variables from rc
+#
 # Guard repeat loading
-if ($null -ne $RCINIT) {
+if ($null -ne $global:RC_HAS_INIT) {
     Write-Output "RC already loaded"
     return
 } else {
-    $RCINIT = 1
+    $global:RC_HAS_INIT = 1
 }
+# RC root directory
+$global:RC_ROOT = $PSScriptRoot
+# Current platform: Windows or Unix
+$global:RC_IS_NT = if($IsWindows -or $ENV:OS){ $true }else{ $false }
 
-$RCROOT = $PSScriptRoot
 
+##
 # Module loader
-function RCLoad {
-    <#
-    $path: Folder where the module resides
-    $modlist: Module name list
-    Note: modlist supports glob
-    #>
+# @$path: Folder where the module resides
+# @$modlist: Module name list
+# @$extension: module type
+# Note: modlist supports glob
+function global:RCLoad {
     param([string]$path, [string[]]$modlist, [string]$extension=".psm1")
     $modlist | ForEach-Object {
         Get-ChildItem -Path "$path/$_$extension" `
@@ -29,17 +34,25 @@ function RCLoad {
 }
 
 # Local module loader. Modules in __rcmodules__ will be uses
-function RCLoadModule {
+function global:RCLoadModule {
     param([string]$name)
-    Import-Module -Scope Global -DisableNameChecking -Name "$RCROOT/__rcmodules__/$name.psm1"
+    Import-Module -Scope Global -DisableNameChecking -Name "$RC_ROOT/__rcmodules__/$name.psm1"
 }
 
+# Make initialization a script block to avoid accidental execution as
+# a function or command
+$global:RCInit = {
+    # Arguments give rc ability to be customizable
+    param([string]$prompt_style="myprompt")
 
-function RCInit {
     # Loading modules
-    RCLoad "$RCROOT\__rc__" *
+    RCLoad "$RC_ROOT/__rc__" *
     # Loading prompt
-    RCLoad "$RCROOT\__rcstyles__" $prompt_style
+    RCLoad "$RC_ROOT/__rcstyles__" $prompt_style
+    # Load NT modules
+    if ($RC_IS_NT) {
+        RCLoadModule "nt_admin"
+    }
 }
 
-RCInit
+&$RCInit @args

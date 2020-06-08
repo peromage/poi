@@ -1,3 +1,10 @@
+##
+# Path utilities for NT system
+##
+
+# Since the APIs are based on the NT system. Don't load them on Unix platforms.
+if (-not $RC_IS_NT) { return }
+
 function Add-UserPath {
     param ($path)
     if (Test-UserPath $path) {
