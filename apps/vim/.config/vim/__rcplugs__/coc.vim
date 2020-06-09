@@ -48,7 +48,7 @@ else
     imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-" Use `[g` and `]g` to navigate diagnostics
+" Use `[` and `]` to navigate diagnostics
 nmap <silent> <leader>c[ <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>c] <Plug>(coc-diagnostic-next)
 
@@ -60,7 +60,7 @@ nmap <silent> <leader>cr <Plug>(coc-references)
 nmap <silent> <leader>ca <Plug>(coc-codeaction)
 
 
-" Use K to show documentation in preview window.
+" Use k to show documentation in preview window.
 nnoremap <silent> <leader>ck :call <SID>show_documentation()<CR>
 
 " Show diagnostics messages
@@ -68,6 +68,9 @@ nnoremap <silent> <leader>cm :CocList diagnostics<CR>
 
 " Symbol renaming.
 nmap <leader>crn <Plug>(coc-rename)
+
+" Formatting selected code
+nmap <leader>cfm <Plug>(coc-format-selected)
 
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
