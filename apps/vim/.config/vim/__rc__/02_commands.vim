@@ -5,4 +5,6 @@
 ""
 
 " Close all but current buffers
-command  Bdall :%bd|e#
+command! Bdall :%bd|e#
+command! Showline :set nu rnu scl=yes
+command! Noshowline :set nonu nornu scl=no

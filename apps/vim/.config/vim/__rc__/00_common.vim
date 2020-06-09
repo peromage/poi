@@ -24,7 +24,11 @@ set statusline+=\ \(%l:%c,%P\)                                                  
 
 " Appearance
 set background=dark
-set signcolumn=no
+
+" Line numbers
+set number
+set relativenumber
+set signcolumn=yes
 
 " Encoding
 set encoding=utf-8
@@ -56,7 +60,6 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set syntax=on
-set number relativenumber
 set ruler
 set nowrap
 set list
