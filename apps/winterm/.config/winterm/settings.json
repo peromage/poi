@@ -6,21 +6,30 @@
   "$schema": "https://aka.ms/terminal-profiles-schema",
 
   "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+
+  // Launch Settings
   "initialCols": 100,
   "initialRows": 30,
-  "initialPosition": ",",
   "launchMode": "default",
-  "rowsToScroll": "system",
-  "requestedTheme": "system",
-  "alwaysShowTabs": false,
+  "initialPosition": ",",
+
+  // Selection
+  "copyOnSelect": true,
+  "copyFormatting": true,
+  "wordDelimiters": " /\\()\"'-.,:;<>~!@#$%^&*|+=[]{}~?\u2502",
+
+  // Tab UI
+  "alwaysShowTabs": true,
   "showTabsInTitlebar": true,
   "showTerminalTitleInTitlebar": true,
   "tabWidthMode": "equal",
-  "snapToGridOnResize": true,
-  "wordDelimiters": " /\\()\"'-.,:;<>~!@#$%^&*|+=[]{}~?\u2502",
+
+  // Miscellaneous
   "confirmCloseAllTabs": true,
-  "copyOnSelect": true,
-  "copyFormatting": false,
+  "theme": "system",
+  "rowsToScroll": "system",
+  "snapToGridOnResize": true,
+  "requestedTheme": "system",
 
   "profiles": {
     "defaults": {
@@ -128,25 +137,46 @@
       "foreground": "#fdfdfd"
     },
     {
-      "name": "Spring",
+      "name": "Elementary",
+      "black": "#242424",
+      "red": "#d71c15",
+      "green": "#5aa513",
+      "yellow": "#fdb40c",
+      "blue": "#063b8c",
+      "purple": "#e40038",
+      "cyan": "#2595e1",
+      "white": "#efefef",
+      "brightBlack": "#4b4b4b",
+      "brightRed": "#fc1c18",
+      "brightGreen": "#6bc219",
+      "brightYellow": "#fec80e",
+      "brightBlue": "#0955ff",
+      "brightPurple": "#fb0050",
+      "brightCyan": "#3ea8fc",
+      "brightWhite": "#8c00ec",
+      "background": "#181818",
+      "foreground": "#efefef"
+    },
+    {
+      "name": "synthwave",
       "black": "#000000",
-      "red": "#ff4d83",
-      "green": "#1f8c3b",
-      "yellow": "#1fc95b",
-      "blue": "#1dd3ee",
-      "purple": "#8959a8",
-      "cyan": "#3e999f",
+      "red": "#f6188f",
+      "green": "#1ebb2b",
+      "yellow": "#fdf834",
+      "blue": "#2186ec",
+      "purple": "#f85a21",
+      "cyan": "#12c3e2",
       "white": "#ffffff",
       "brightBlack": "#000000",
-      "brightRed": "#ff0021",
-      "brightGreen": "#1fc231",
-      "brightYellow": "#d5b807",
-      "brightBlue": "#15a9fd",
-      "brightPurple": "#8959a8",
-      "brightCyan": "#3e999f",
+      "brightRed": "#f841a0",
+      "brightGreen": "#25c141",
+      "brightYellow": "#fdf454",
+      "brightBlue": "#2f9ded",
+      "brightPurple": "#f97137",
+      "brightCyan": "#19cde6",
       "brightWhite": "#ffffff",
-      "background": "#ffffff",
-      "foreground": "#4d4d4c"
+      "background": "#000000",
+      "foreground": "#dad9c7"
     }
   ],
 
@@ -203,7 +233,7 @@
     { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+h" },
     { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+l" },
     { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+k" },
-    
+
     // Clipboard Integration
     { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+shift+c" },
     { "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+insert" },
@@ -217,8 +247,8 @@
     { "command": "scrollUpPage", "keys": "alt+b" },
 
     // Visual Adjustments
-    { "command": { "action": "adjustFontSize", "delta": 1 }, "keys": "alt+." },
-    { "command": { "action": "adjustFontSize", "delta": -1 }, "keys": "alt+," },
-    { "command": "resetFontSize", "keys": "alt+shift+." }
+    { "command": { "action": "adjustFontSize", "delta": 1 }, "keys": "ctrl+=" },
+    { "command": { "action": "adjustFontSize", "delta": -1 }, "keys": "ctrl+-" },
+    { "command": "resetFontSize", "keys": "ctrl+0" }
   ]
 }
