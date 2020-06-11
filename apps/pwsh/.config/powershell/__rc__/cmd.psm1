@@ -60,7 +60,7 @@ function Set-LfDirectory {
 
 # Alias
 Set-Alias ll Show-Dir
-Set-Alias cdlf Set-LfDirectory
+Set-Alias lfcd Set-LfDirectory
 
 # Exporting
 Export-ModuleMember -Function * -Alias *
