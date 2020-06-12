@@ -205,8 +205,8 @@
     { "command": { "action": "newTab", "index": 7 }, "keys": "ctrl+shift+8" },
     { "command": { "action": "newTab", "index": 8 }, "keys": "ctrl+shift+9" },
     { "command": "duplicateTab", "keys": "alt+shift+d" },
-    { "command": "nextTab", "keys": "ctrl+tab" },
-    { "command": "prevTab", "keys": "ctrl+shift+tab" },
+    { "command": "nextTab", "keys": "alt+]" },
+    { "command": "prevTab", "keys": "alt+[" },
     { "command": { "action": "switchToTab", "index": 0 }, "keys": "alt+shift+1" },
     { "command": { "action": "switchToTab", "index": 1 }, "keys": "alt+shift+2" },
     { "command": { "action": "switchToTab", "index": 2 }, "keys": "alt+shift+3" },
@@ -247,8 +247,8 @@
     { "command": "scrollUpPage", "keys": "alt+b" },
 
     // Visual Adjustments
-    { "command": { "action": "adjustFontSize", "delta": 1 }, "keys": "ctrl+=" },
-    { "command": { "action": "adjustFontSize", "delta": -1 }, "keys": "ctrl+-" },
-    { "command": "resetFontSize", "keys": "ctrl+0" }
+    { "command": { "action": "adjustFontSize", "delta": 1 }, "keys": "alt+shift+l" },
+    { "command": { "action": "adjustFontSize", "delta": -1 }, "keys": "alt+shift+h" },
+    { "command": "resetFontSize", "keys": "alt+shift+j" }
   ]
 }
