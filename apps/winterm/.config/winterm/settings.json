@@ -78,13 +78,13 @@
         "guid": "{03b23b3b-63c7-4a39-9091-76020ca93340}",
         "hidden": false,
         "name": "Pwsh7",
-        "commandline": "c:\\Program Files\\PowerShell\\7\\pwsh.exe -NoLogo -NoExit"
+        "commandline": "pwsh -NoLogo -NoExit"
       },
       {
         "guid": "{e97748fb-3116-440d-bc19-57e880457939}",
         "hidden": false,
         "name": "Pwsh7 Acrylic",
-        "commandline": "c:\\Program Files\\PowerShell\\7\\pwsh.exe -NoLogo -NoExit",
+        "commandline": "pwsh -NoLogo -NoExit",
         "useAcrylic": true,
         "acrylicOpacity": 0.4,
         "colorScheme": "lovelace"
