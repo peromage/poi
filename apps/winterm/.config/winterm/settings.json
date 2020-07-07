@@ -83,7 +83,7 @@
       {
         "guid": "{e97748fb-3116-440d-bc19-57e880457939}",
         "hidden": false,
-        "name": "Pwsh7 Acrylic",
+        "name": "Pwsh7A",
         "commandline": "pwsh -NoLogo -NoExit",
         "useAcrylic": true,
         "acrylicOpacity": 0.4,
