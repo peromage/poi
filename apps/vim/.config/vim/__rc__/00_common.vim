@@ -16,9 +16,9 @@ set lazyredraw
 set laststatus=2
 set statusline=
 "Fold at begginning
-set statusline+=%<
+set statusline+=\ %<
 "File status
-set statusline+=%-10.32f%<%([%M%R%W]%)
+set statusline+=%-20.120f%<%([%M%R%W]%)
 "Start folding from right aligned elements
 set statusline+=%=%<
 "Encoding info
