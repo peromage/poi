@@ -8,10 +8,10 @@ XDG_DATA_HOME = Join-Path $HOME ".local/share"
 XDG_CONFIG_HOME = Join-Path $HOME ".config"
 XDG_CACHE_HOME = Join-Path $HOME ".cache"
 EDITOR = "nvim"
-SHELL = "pwsh"
+SHELL = "powershell"
 }
 
-# Only define these functions for NT systems
+# Only define these functions for Windows
 if ($RC_IS_NT) {
 # Function that set the user global environment variable
 # Note: Only works for NT systems
