@@ -5,15 +5,15 @@
 ""
 
 " Guard for repeat loading
-if get(g:, "RCINIT", 0) != 0
+if get(g:, "RC_INIT", 0) != 0
     echom "RC already loaded"
     finish
 else
-    let g:RCINIT = 1
+    let g:RC_INIT = 1
 endif
 
 " Rc file root directory
-let g:RCROOT = resolve(expand('<sfile>:h'))
+let g:RC_ROOT = resolve(expand('<sfile>:h'))
 
 " A helper function that dynamically loads .vim files by given directory
 " and name patterns
@@ -30,44 +30,40 @@ function! g:RCLoad(path, patterns, ...) abort
 endfunction
 
 " A command that loads modules in __rcmodules__
-command! -nargs=1 RCLoadModule execute "source ".g:RCROOT."/__rcmodules__/"."<args>".".vim"
+command! -nargs=1 RCLoadModule execute "source ".g:RC_ROOT."/__rcmodules__/"."<args>".".vim"
 
 " RC main function
 function! g:RCInit() abort
+    " Load global configurations
+    "
+    " Add rc folder to runtime path
+    execute "set runtimepath+=".g:RC_ROOT
+    " Load all modules in rc directory
+    call RCLoad(g:RC_ROOT."/__rc__", ["*"])
+
+    " Handle global configuration variables
+    "
     " Set g:RC_Color to override default color scheme
     " This variable is a string
-    if !exists("g:RC_Color")
-        let g:RC_Color = "dracula"
+    if exists("g:RC_Color")
+        execute "colorscheme ".g:RC_Color
     endif
-
-     " Set g:RC_Global_Plugs to empty to prevent loading default plugins
-    " Or customize the pre-configured plugins
-    if !exists("g:RC_Global_Plugs")
-        let g:RC_Global_Plugs = ["coc", "leaderf"]
+    " Set g:RC_Plugs_Custom to load the plugins in __rcplugs__ with customized
+    " configurations. The names must be the same as the module file names.
+    " This variable is an array of strings.
+    if !exists("g:RC_Plugs_Custom")
+        let g:RC_Plugs_Custom = []
     endif
-
-    " Set g:RC_Local_Plugs to load cusmized plugins by users
+    " Set g:RC_Plugs to load the plugins that users desire.
     " This variable is a list of strings where each string is a vim-plug style
     " loading expression
-    if !exists("g:RC_Local_Plugs")
-        let g:RC_Local_Plugs = []
+    if !exists("g:RC_Plugs")
+        let g:RC_Plugs = []
     endif
-
-    " Start configuring
-
-    " Add rc folder to runtime path
-    execute "set runtimepath+=".g:RCROOT
-
-    " Load color scheme
-    execute "colorscheme ".g:RC_Color
-
-    " Load all modules in rc directory
-    call RCLoad(g:RCROOT."/__rc__", ["*"])
-
     " Load plugins via vim-plug
     call plug#begin()
-    call RCLoad(g:RCROOT."/__rcplugs__", g:RC_Global_Plugs)
-    for vppp in g:RC_Local_Plugs
+    call RCLoad(g:RC_ROOT."/__rcplugs__", g:RC_Plugs_Custom)
+    for vppp in g:RC_Plugs
         execute vppp
     endfor
     call plug#end()

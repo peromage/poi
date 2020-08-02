@@ -95,34 +95,16 @@ endfunction
 
 
 """" Coc plugins
-" Coc extension variable
-let g:coc_global_extensions = []
-" Pre-defined coc extensions
 " Override g:RC_Coc_Extensions to get change default extensions
-if !exists("g:RC_Coc_Extensions")
-    let g:RC_Coc_Extensions = [
-        \ "coc-explorer",
-        \ "coc-tabnine",
-        \ "coc-snippets",
-        \ "coc-git",
-        \ "coc-json",
-        \ "coc-markdownlint",
-        \ "coc-vimlsp",
-        \ "coc-clangd",
-        \ "coc-powershell",
-        \ "coc-tsserver",
-        \ "coc-python"
-        \ ]
+if exists("g:RC_Coc_Extensions")
+    let g:coc_global_extensions = g:RC_Coc_Extensions
 endif
-" Add customized extensions to coc extension variable
-for ppp in g:RC_Coc_Extensions
-    call add(g:coc_global_extensions, ppp)
-endfor
+
 
 """" Coc plugin keymaps
 " File explorer
 nnoremap <silent> <leader>e
-            \ :CocCommand explorer
-            \ --position left
-            \ --sources buffer+,file+<CR>
-            \ --toggle
+    \ :CocCommand explorer
+    \ --position left
+    \ --sources buffer+,file+<CR>
+    \ --toggle

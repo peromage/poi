@@ -6,18 +6,34 @@
 ""
 
 " Override these variables to control RC behaviors
-"let g:RC_Global_Plugs = ["coc"]
-"let g:RC_Local_Plugs = ["Plug 'neoclide/coc.nvim', {'branch': 'release'}"]
-"let g:RC_Color = "default"
-"let g:RC_Coc_Extensions = ["coc-explorer"]
+"
+"let g:RC_Color = "dracula"
+"let g:RC_Plugs_Custom = ["coc", "leaderf"]
+"let g:RC_Plugs = [
+"            \ "Plug 'sheerun/vim-polyglot'"
+"            \ ]
+"let g:RC_Coc_Extensions = [
+"            \ "coc-explorer",
+"            \ "coc-tabnine",
+"            \ "coc-snippets",
+"            \ "coc-git",
+"            \ "coc-json",
+"            \ "coc-markdownlint",
+"            \ "coc-vimlsp",
+"            \ "coc-clangd",
+"            \ "coc-powershell",
+"            \ "coc-tsserver",
+"            \ "coc-python"
+"            \ ]
 
-" Quick open initial file
+" Set runtime paths for plugins
+"
+"set runtimepath+=/home/linuxbrew/.linuxbrew/opt/fzf
+"let g:python3_host_prog="/usr/bin/python3"
+"let g:python_host_prog="/usr/bin/python2"
+
+" Shortcut to open initial file
 let s:init_file = expand("<sfile>:p")
 command! RcConfig execute "edit ".s:init_file
-
-" Set some runtime paths for plugins
-"set runtimepath+=/home/linuxbrew/.linuxbrew/opt/fzf
-let g:python3_host_prog="/usr/bin/python3"
-let g:python_host_prog="/usr/bin/python2"
-
+" Load rc file
 execute "source ".resolve(expand("<sfile>:h"))."/"."vimrc.vim"
