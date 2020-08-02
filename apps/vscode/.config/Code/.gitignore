@@ -1,0 +1,11 @@
+**/*
+# Customized files
+!.gitignore
+!export_extensions.ps1
+!import_extensions.ps1
+!README.md
+
+# Vscode configurations
+!User/
+!User/keybindings.json
+!User/settings.json
