@@ -4,6 +4,7 @@
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
+    "powershell.integratedConsole.showOnStartup": false,
     "languageserver": {
         "ccls": {
             "command": "ccls",
