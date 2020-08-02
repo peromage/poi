@@ -34,6 +34,6 @@
 
 " Shortcut to open initial file
 let s:init_file = expand("<sfile>:p")
-command! RcConfig execute "edit ".s:init_file
+command! RCConfig execute "edit ".s:init_file
 " Load rc file
 execute "source ".resolve(expand("<sfile>:h"))."/"."vimrc.vim"
