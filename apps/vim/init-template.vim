@@ -11,7 +11,9 @@
 "let g:RC_Color = "dracula"
 "let g:RC_Plugins = ["coc", "leaderf"]
 "let g:RC_Plugins_Extra = [
-"            \ "Plug 'sheerun/vim-polyglot'"
+"            \ "Plug 'sheerun/vim-polyglot'",
+"            \ "Plug 'mhinz/vim-startify'",
+"            \ "Plug 'itchyny/lightline.vim'"
 "            \ ]
 "let g:RC_Coc_Extensions = [
 "            \ "coc-explorer",
