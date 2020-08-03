@@ -25,7 +25,7 @@ if has("nvim")
 
 " Use "g:RC_Gui_Font" to set font and font styles
 if exists("g:RC_Gui_Font")
-    execute "Guifont ".g:RC_Gui_Font
+    execute "Guifont! ".g:RC_Gui_Font
 endif
 
 " Misc
