@@ -4,3 +4,4 @@ plugged/**
 .netrwhist
 # Local temp configuration
 init.vim
+ginit.vim
