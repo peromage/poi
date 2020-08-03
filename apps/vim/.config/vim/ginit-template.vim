@@ -1,5 +1,6 @@
-""
-"" Created by peromage on 2020/08/02
+"""""""""""""""""""""""""""""""""""""""
+"" Created by peromage on 2020/08/02 ""
+"""""""""""""""""""""""""""""""""""""""
 ""
 "" ginit.vim template
 "" Rename this file to "ginit.vim" or "gvimrc" and make your own changes in it

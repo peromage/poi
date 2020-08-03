@@ -1,5 +1,6 @@
-""
-"" Created by peromage on 2020/06/04
+"""""""""""""""""""""""""""""""""""""""
+"" Created by peromage on 2020/06/04 ""
+"""""""""""""""""""""""""""""""""""""""
 ""
 "" init.vim template
 "" Rename this file to "init.vim" or "vimrc" and make your own changes in it
@@ -27,6 +28,7 @@
 "            \ "coc-tsserver",
 "            \ "coc-python"
 "            \ ]
+"let g:RC_Modules = ["spacevim-statusline"]
 
 " Runtime paths for plugins
 "
@@ -58,10 +60,10 @@ command! RCConfig execute "edit ".s:INIT_FILE
 
 " A helper function that dynamically loads .vim files by given directory
 " and name patterns
+" @param path: Directory names
+" @param patterns: List of file glob patterns
+" @param ...: The third parameter is the default extension of module
 function! g:RCLoad(path, patterns, ...) abort
-    " @param path: Directory names
-    " @param patterns: List of file glob patterns
-    " @param ...: The third parameter is the default extension of module
     let l:ext = get(a:, 1, ".vim")
     for patt in a:patterns
         for mpath in globpath(a:path, patt.l:ext, 0, 1)
@@ -105,5 +107,10 @@ if exists("g:RC_Plugs")
     endfor
 endif
 call plug#end()
+
+" Load Extra modules
+if exists("g:RC_Modules")
+    call RCLoad(g:RC_ROOT."/__rcmodules__", g:RC_Modules)
+endif
 
 "#endregion
