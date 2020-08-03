@@ -40,6 +40,9 @@ prompt = false
 [mergetool "nvimdiff"]
 cmd = nvim -d $LOCAL $MERGED $REMOTE -c 'wincmd w|wincmd J'
 
+[pull]
+ff = only
+
 [alias]
 ss = status
 ll = log --graph --pretty=format:'%C(red)%h%C(reset) %C(green)[%an]%C(reset) - %s %C(blue)(%cd) %C(yellow)%d' --date=relative
