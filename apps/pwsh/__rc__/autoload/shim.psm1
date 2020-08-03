@@ -80,7 +80,7 @@ class Shimctl {
 
     [string]GenExe([string]$dir) {
         $dest = $this.BuildDest($dir, ".exe")
-        $SRC_PATH = "$PSScriptRoot/../__rcsrc__/shim.cs"
+        $SRC_PATH = "$PSScriptRoot/../src/shim.cs"
         $SRC_PATT_PATH = '\{\{PathToExe\}\}'
         $SRC_PATT_ARGS = '\{\{ExeArgs\}\}'
         $SRC_PATT_GUI = '\{\{IsGuiApp\}\}'
@@ -99,11 +99,12 @@ class Shimctl {
 }
 
 function New-Shim {
-    param([string]$target,
+    param([Parameter(Mandatory=$true)]
+          [string]$target,
+          [string]$name="",
           [string]$arguments="",
           [ValidateSet("cmd", "ps1", "lnk", "softlink", "exe")]
           [string]$type="exe",
-          [string]$name="",
           [string]$bin="$HOME/.local/bin",
           [switch]$gui)
     $obj = [Shimctl]::new($target, $arguments)
