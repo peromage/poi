@@ -48,4 +48,6 @@
     "telemetry.enableTelemetry": false,
     "editor.fontLigatures": true,
     "workbench.sideBar.location": "left",
+    "explorer.confirmDragAndDrop": false,
+    "powershell.integratedConsole.showOnStartup": false,
 }
