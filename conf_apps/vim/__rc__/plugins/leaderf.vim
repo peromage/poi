@@ -25,8 +25,14 @@ nnoremap <silent> <leader>fm :Leaderf mru<CR>
 nnoremap <silent> <leader>ft :Leaderf tag<CR>
 nnoremap <silent> <leader>fT :Leaderf bufTag<CR>
 nnoremap <silent> <leader>fl :Leaderf line<CR>
-nnoremap <silent> <leader>fr :Leaderf rg<CR>
-nnoremap <silent> <leader>fR :Leaderf rg --all-buffers<CR>
+nnoremap <silent> <leader>f# :Leaderf line --cword<CR>
+nnoremap <silent> <leader>fg :Leaderf rg<CR>
+nnoremap <silent> <leader>fG :Leaderf rg --all-buffers<CR>
+nnoremap <silent> <leader>f* :Leaderf rg --cword<CR>
 nnoremap <silent> <leader>fn :Leaderf --next<CR>
 nnoremap <silent> <leader>fN :Leaderf --previous<CR>
 nnoremap <silent> <leader>ff :Leaderf --recall<CR>
+nnoremap <silent> <leader>fh :Leaderf searchHistory<CR>
+nnoremap <silent> <leader>fw :Leaderf window<CR>
+nnoremap <silent> <leader>fi :Leaderf self<CR>
+
