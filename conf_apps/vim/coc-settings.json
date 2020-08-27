@@ -5,6 +5,9 @@
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "powershell.integratedConsole.showOnStartup": false,
+    "markdownlint.config": {
+        "line-length": false
+    },
     "languageserver": {
         "ccls": {
             "command": "ccls",
