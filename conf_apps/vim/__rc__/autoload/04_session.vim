@@ -1,5 +1,9 @@
-" Session saving dir
-let s:SESSION_SAVE_DIR = simplify(g:RC_ROOT."/../saved_sessions")
+" Compatible with Vim
+if has("nvim")
+    let s:SESSION_SAVE_DIR = simplify(stdpath("data")."/saved_sessions")
+else
+    let s:SESSION_SAVE_DIR = simplify(g:RC_ROOT."/../saved_sessions")
+endif
 
 " Generate a template name of a new session.
 " @return: A string of the new session name
