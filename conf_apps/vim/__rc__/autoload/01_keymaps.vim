@@ -29,15 +29,15 @@ nnoremap <silent> <leader>[ gT
 nnoremap <silent> <leader>] gt
 nnoremap <silent> <leader>t :tabnew<CR>
 nnoremap <silent> <leader>T <C-w>T
-nnoremap <silent> <leader>y :tabs<CR>
+nnoremap <silent> <leader>{ :tabs<CR>
 
 " Buffers
 nnoremap <silent> <leader>, :bn<CR>
 nnoremap <silent> <leader>. :bp<CR>
-nnoremap <silent> <leader>b :ls<CR>
+nnoremap <silent> <leader>< :ls<CR>
 
 " Registers
-nnoremap <silent> <leader>r :reg<CR>
+nnoremap <silent> <leader>" :reg<CR>
 
 " Quick quit
 nnoremap <silent> <leader>q :q<CR>
@@ -51,6 +51,14 @@ nnoremap <silent> <leader>* :noh<CR>
 
 " Show history messages
 nnoremap <silent> <leader>m :messages<CR>
+
+" Paste from GUI register
+nnoremap <silent> <leader>p "*p
+vnoremap <silent> <leader>y "*y
+
+" Paste from GUI register
+nnoremap <silent> <leader>y "*y
+vnoremap <silent> <leader>y "*y
 
 " Terminal
 "tnoremap <Esc> <C-\><C-n>
