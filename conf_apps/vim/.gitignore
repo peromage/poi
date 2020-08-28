@@ -2,6 +2,8 @@
 plugged/**
 # Netrw garbage
 .netrwhist
+# Session files
+saved_sessions/**
 # Local temp configuration
 init.vim
 ginit.vim

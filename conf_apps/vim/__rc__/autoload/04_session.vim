@@ -29,11 +29,35 @@ function! s:PrintSessionCollection(collection) abort
     endfor
 endfunction
 
+" Interact with use on a session collection
+" @callback: The callback funcref should accept two parameters: dict of
+" session collection, the selected key. And return a bool indicating if the
+" interactive prompt should be continued.
+function! s:InteractiveSessionCollection(message, prompt, callback) abort
+    let sessions = s:GetSessionCollection()
+    while 1
+        echo a:message
+        call s:PrintSessionCollection(sessions)
+        let user_input = trim(input(a:prompt))
+        echo "\n"
+        " Determine the choice
+        if has_key(sessions, user_input)
+            if !a:callback(sessions, user_input)
+                break
+            endif
+        elseif "q" == user_input || strlen(user_input) == 0
+            echo "No session selected. Quitting..."
+            break
+        else
+            echoerr "Invalid index!"
+        endif
+    endwhile
+endfunction
+
 " Save a session
 function! s:SaveASession() abort
     " Append file suffix .vim
     let save_name = trim(input("Save as: ", s:NewSessionName())).".vim"
-    echo "\n"
     let save_full_path = simplify(s:SESSION_SAVE_DIR."/".save_name)
     " Check directory existence
     if !isdirectory(s:SESSION_SAVE_DIR)
@@ -50,49 +74,25 @@ function! s:RemoveASession(sessions, key) abort
 endfunction
 
 " Open a session
+function! s:OpenSessionCallback(sessions, key) abort
+    execute "source ".a:sessions[a:key]
+    " Delete the session file after loading
+    call s:RemoveASession(a:sessions, a:key)
+    return 0
+endfunction
+
 function! s:OpenSession() abort
-    let sessions = s:GetSessionCollection()
-    while 1
-        echo "Choose a session to open (q to quit):"
-        call s:PrintSessionCollection(sessions)
-        let user_input = trim(input("Open: "))
-        echo "\n"
-        " Determine the choice
-        if has_key(sessions, user_input)
-            execute "source ".sessions[user_input]
-            " Delete the session file after loading
-            call s:RemoveASession(sessions, user_input)
-            break
-        elseif "q" == user_input || strlen(user_input) == 0
-            echo "No session loaded. Quitting..."
-            break
-        else
-            echoerr "Invalid index!"
-            continue
-        endif
-    endwhile
+    call s:InteractiveSessionCollection("Choose a session to open (q to quit):", "Open: ", function("s:OpenSessionCallback"))
 endfunction
 
 " Remove a session
+function! s:RemoveSessionCallback(sessions, key)
+    call s:RemoveASession(a:sessions, a:key)
+    return 1
+endfunction
+
 function! s:RemoveSession() abort
-    let sessions = s:GetSessionCollection()
-    while 1
-        echo "Choose a session to remove (q to quit):"
-        call s:PrintSessionCollection(sessions)
-        let user_input = trim(input("Remove: "))
-        echo "\n"
-        " Determine the choice
-        if has_key(sessions, user_input)
-            call s:RemoveASession(sessions, user_input)
-            continue
-        elseif "q" == user_input || strlen(user_input) == 0
-            echo "No session loaded. Quitting..."
-            break
-        else
-            echoerr "Invalid index!"
-            continue
-        endif
-    endwhile
+    call s:InteractiveSessionCollection("Choose a session to remove (q to quit):", "Remove: ", function("s:RemoveSessionCallback"))
 endfunction
 
 " List sessions
