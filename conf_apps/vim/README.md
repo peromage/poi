@@ -1,5 +1,7 @@
 # Rice Vim Configuration
 
+Mainly configured for NeoVim. It should be compatible with Vim (maybe).
+
 ## Prerequisites
 
 - NodeJs (`node` and `npm` must in path)

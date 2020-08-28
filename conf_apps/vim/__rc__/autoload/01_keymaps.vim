@@ -52,11 +52,11 @@ nnoremap <silent> <leader>* :noh<CR>
 " Show history messages
 nnoremap <silent> <leader>m :messages<CR>
 
-" Paste from GUI register
+" Paste from system clipboard
 nnoremap <silent> <leader>p "*p
 vnoremap <silent> <leader>y "*y
 
-" Paste from GUI register
+" Paste from system clipboard
 nnoremap <silent> <leader>y "*y
 vnoremap <silent> <leader>y "*y
 
