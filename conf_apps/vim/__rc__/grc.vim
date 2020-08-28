@@ -5,16 +5,19 @@
 "" RC core initialization file for GUI
 ""
 
-" Configure GUI options for NeoVim
+" Configurations for neovim-qt
 if has("nvim")
-
 " Use "g:RC_Gui_Font" to set font and font styles
 if exists("g:RC_Gui_Font")
+    " Command to fix the display issue when moving window accross monitors
+    " with difference DPIs
+    command! ResetGuiFont execute "Guifont! ".GuiFont
     execute "Guifont! ".g:RC_Gui_Font
-endif
+endif " GuiFont
 
-" Misc
+" Vim GUI
+else
+endif " nvim
+
+" Common
 set guioptions=mrb
-
-endif
-
