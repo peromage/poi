@@ -8,7 +8,11 @@
 
 " Override these variables to control RC behaviors
 "
+" Gui Font
 "let g:RC_Gui_Font = "Cascadia Code PL:h10"
+
+" Preferred forntend
+"let g:RC_Gui_Frontend = "nvim-qt"
 
 "#region Do Not Touch
 " Shortcut to open this file

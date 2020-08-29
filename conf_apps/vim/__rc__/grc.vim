@@ -6,18 +6,20 @@
 ""
 
 " Configurations for neovim-qt
-if has("nvim")
-" Use "g:RC_Gui_Font" to set font and font styles
-if exists("g:RC_Gui_Font")
+if get(g:, "RC_Gui_Frontend", "null") == "nvim-qt"
+    echo "nvim-qt detected!"
     " Command to fix the display issue when moving window accross monitors
     " with difference DPIs
     command! ResetGuiFont execute "Guifont! ".GuiFont
-    execute "Guifont! ".g:RC_Gui_Font
-endif " GuiFont
+    " Set font
+    if exists("g:RC_Gui_Font")
+        execute "Guifont! ".g:RC_Gui_Font
+    endif
+    " Context menu
+    nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
+    inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
+    vnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
+endif
 
-" Vim GUI
-else
-endif " nvim
-
-" Common
+" Gui common options
 set guioptions=mrb
