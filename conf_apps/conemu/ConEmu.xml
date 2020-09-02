@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2020-05-28 11:52:21" build="191012">
+		<key name=".Vanilla" modified="2020-09-02 13:29:20" build="200604">
 			<value name="ColorTable00" type="dword" data="00362a28"/>
 			<value name="ColorTable01" type="dword" data="00bc4354"/>
 			<value name="ColorTable02" type="dword" data="003dde66"/>
@@ -600,7 +600,7 @@
 			<value name="StatusBar.Hide.Dpi" type="hex" data="01"/>
 			<value name="TabFlashChanged" type="long" data="8"/>
 			<value name="TabModifiedSuffix" type="string" data="[*]"/>
-			<key name="HotKeys" modified="2020-06-11 21:47:30" build="200604">
+			<key name="HotKeys" modified="2020-09-02 13:29:20" build="200604">
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="0000005b"/>
 				<value name="Multi.ArrowsModifier" type="dword" data="0000005b"/>
@@ -620,8 +620,8 @@
 				<value name="Multi.NewConsolePopup" type="dword" data="00101254"/>
 				<value name="Multi.NewConsolePopup2" type="dword" data="00000000"/>
 				<value name="Multi.NewAttach" type="dword" data="00000000"/>
-				<value name="Multi.NewSplitV" type="dword" data="001012dc"/>
-				<value name="Multi.NewSplitH" type="dword" data="000012dc"/>
+				<value name="Multi.NewSplitV" type="dword" data="000012dc"/>
+				<value name="Multi.NewSplitH" type="dword" data="001012dc"/>
 				<value name="Multi.SplitMaximize" type="dword" data="00001257"/>
 				<value name="Multi.SplitSizeVU" type="dword" data="001012bb"/>
 				<value name="Multi.SplitSizeVD" type="dword" data="001012bd"/>
@@ -799,7 +799,7 @@
 			</key>
 			<value name="StartCreateDelay" type="ulong" data="100"/>
 			<value name="DefaultTerminalDebugLog" type="hex" data="00"/>
-			<value name="LastMonitor" type="string" data="0,0,1920,1030"/>
+			<value name="LastMonitor" type="string" data="0,38,1920,1080"/>
 			<value name="Restore2ActiveMon" type="hex" data="01"/>
 			<value name="DownShowExOnTopMessage" type="hex" data="00"/>
 			<value name="EnvironmentSet" type="multi">

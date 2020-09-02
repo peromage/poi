@@ -8,8 +8,8 @@
 let mapleader=" "
 
 " Splittin/
-nnoremap <silent> <leader><Bslash> :vs<CR>
-nnoremap <silent> <leader><Bar> :sp<CR>
+nnoremap <silent> <leader><Bar> :vs<CR>
+nnoremap <silent> <leader><Bslash> :sp<CR>
 
 " Pane movement
 nnoremap <silent> <leader>h <C-w>h

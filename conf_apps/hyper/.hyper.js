@@ -201,8 +201,8 @@ module.exports = {
       "alt+h",
       "alt+k"
     ],
-    "pane:splitVertical": "alt+\\",
-    "pane:splitHorizontal": "alt+shift+\\",
+    "pane:splitVertical": "alt+shift+\\",
+    "pane:splitHorizontal": "alt+\\",
     "pane:close": "alt+q",
     "editor:undo": "ctrl+shift+z",
     "editor:redo": "ctrl+shift+y",
