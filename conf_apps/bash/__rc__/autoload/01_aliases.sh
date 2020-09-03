@@ -15,3 +15,9 @@ function rr {
     [ -n "$RANGER_LEVEL" ] && return
     ranger "$@"
 }
+
+# Homebrew wrapper
+function brew {
+    export HOMEBREW_NO_AUTO_UPDATE=1
+    PATH="/home/linuxbrew/.linuxbrew/bin:$PATH" /home/linuxbrew/.linuxbrew/bin/brew "$@"
+}
