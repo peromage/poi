@@ -58,9 +58,14 @@ function Set-LfDirectory {
     }
 }
 
+function Get-HistorySavePath {
+    return (Get-PSReadlineOption).HistorySavePath
+}
+
 # Alias
 Set-Alias ll Show-Dir
 Set-Alias lfcd Set-LfDirectory
+Set-Alias showhistory Get-HistorySavePath
 
 # Exporting
 Export-ModuleMember -Function * -Alias *
