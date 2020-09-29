@@ -109,5 +109,5 @@ endfunction
 " Defining some commands to call those functions
 command! SaveSession call s:SaveASession()
 command! ListSession call s:ListSession()
-command! OpenSession call s:OpenSession()
+command! LoadSession call s:OpenSession()
 command! RemoveSession call s:RemoveSession()
