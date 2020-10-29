@@ -32,9 +32,9 @@ nnoremap <silent> <leader>T <C-w>T
 nnoremap <silent> <leader>{ :tabs<CR>
 
 " Buffers
-nnoremap <silent> <leader>, :bn<CR>
-nnoremap <silent> <leader>. :bp<CR>
-nnoremap <silent> <leader>< :ls<CR>
+nnoremap <silent> <leader>= :bn<CR>
+nnoremap <silent> <leader>- :bp<CR>
+nnoremap <silent> <leader>} :ls<CR>
 
 " Registers
 nnoremap <silent> <leader>" :reg<CR>
@@ -50,13 +50,13 @@ nnoremap <silent> <leader># :noh<CR>
 nnoremap <silent> <leader>* :noh<CR>
 
 " Show history messages
-nnoremap <silent> <leader>m :messages<CR>
+nnoremap <silent> <leader>: :messages<CR>
 
 " Paste from system clipboard
 nnoremap <silent> <leader>p "*p
-vnoremap <silent> <leader>y "*y
+vnoremap <silent> <leader>p "*p
 
-" Paste from system clipboard
+" Copy to system clipboard
 nnoremap <silent> <leader>y "*y
 vnoremap <silent> <leader>y "*y
 
