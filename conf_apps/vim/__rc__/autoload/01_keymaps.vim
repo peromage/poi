@@ -22,19 +22,20 @@ nnoremap <silent> _ <C-w>-
 nnoremap <silent> + <C-w>+
 nnoremap <silent> - <C-w><
 nnoremap <silent> = <C-w>>
-nnoremap <silent> <leader>w <C-w>o
 
 " Tabs
-nnoremap <silent> <leader>[ gT
-nnoremap <silent> <leader>] gt
+nnoremap <silent> <leader>, gT
+nnoremap <silent> <leader>. gt
+nnoremap <silent> <leader>B :tabs<CR>:tabn<Space>
 nnoremap <silent> <leader>t :tabnew<CR>
-nnoremap <silent> <leader>T <C-w>T
-nnoremap <silent> <leader>{ :tabs<CR>
 
 " Buffers
-nnoremap <silent> <leader>= :bn<CR>
-nnoremap <silent> <leader>- :bp<CR>
-nnoremap <silent> <leader>} :ls<CR>
+nnoremap <silent> gb :bn<CR>
+nnoremap <silent> gB :bp<CR>
+nnoremap <silent> <leader>/ :bn<CR>
+nnoremap <silent> <leader>' :bp<CR>
+nnoremap <silent> <leader>b :buffers<CR>:buffer<Space>
+nnoremap <silent> <leader>n :enew<CR>
 
 " Registers
 nnoremap <silent> <leader>" :reg<CR>
