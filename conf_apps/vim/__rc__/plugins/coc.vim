@@ -58,7 +58,8 @@ nmap <silent> <leader>cy <Plug>(coc-type-definition)
 nmap <silent> <leader>ci <Plug>(coc-implementation)
 nmap <silent> <leader>cr <Plug>(coc-references)
 nmap <silent> <leader>ca <Plug>(coc-codeaction)
-
+nmap <silent> <leader>cp :CocCommand<CR>
+nmap <silent> <leader>cl :CocList<CR>
 
 " Use k to show documentation in preview window.
 nnoremap <silent> <leader>ck :call <SID>show_documentation()<CR>
