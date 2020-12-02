@@ -1,9 +1,17 @@
 {
     "$schema": "https://github.com/neoclide/coc.nvim/blob/master/data/schema.json",
+
+    "python.pythonPath": "python",
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
+
+    "clangd.path": "clangd",
+    "clangd.enabled": true,
+    "clangd.arguments": ["--background-index"],
+
     "powershell.integratedConsole.showOnStartup": false,
+
     "markdownlint.config": {
         "line-length": false
     }
