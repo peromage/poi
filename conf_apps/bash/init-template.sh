@@ -5,7 +5,12 @@
 ######################
 
 # User configurations
-#RC_Prompt_Style="mybash"
+
+# Theme in __rc__/themes directory. This value should be a string.
+#RC_THEME="mybash"
+
+# Modules in __rc__/modules directory. This value should be a list of comma
+# separated array.
 #RC_Modules="test"
 
 # Override this variable if the shell cannot get the path of sourced file

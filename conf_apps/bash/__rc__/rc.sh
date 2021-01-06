@@ -67,8 +67,8 @@ function RCLoadModule {
 # Start initialization
 
 # Load all scripts in autoload
-RCLoad "$RC_ROOT/autoload" "*"
+RCLoad "$RC_ROOT/autoload.d" "*"
 # Load prompt style
-[ -n "$RC_Prompt_Style" ] && RCLoad "$RC_ROOT/prompts" "$RC_Prompt_Style"
+[ -n "$RC_THEME" ] && RCLoad "$RC_ROOT/themes" "$RC_THEME"
 # Load extra modules
 [ -n "$RC_Modules" ] && RCLoad "$RC_ROOT/modules" "$RC_Modules"
