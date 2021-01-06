@@ -12,7 +12,7 @@ $ . /path/to/init.sh
 
 ## Directories
 
-- *__rc__*: Directory that contains all configurations.
-- *__rc__/autoload.d*: Dropdown menu. Modules in this directory are autoloaded.
-- *__rc__/themes*: Command line themes.
-- *__rc__/modules*: Modules that can be loaded on demands.
+- *\_\_rc\_\_*: Directory that contains all configurations.
+- *\_\_rc\_\_/autoload.d*: Dropdown menu. Modules in this directory are autoloaded.
+- *\_\_rc\_\_/themes*: Command line themes.
+- *\_\_rc\_\_/modules*: Modules that can be loaded on demands.
