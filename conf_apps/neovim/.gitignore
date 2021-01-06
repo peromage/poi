@@ -7,3 +7,4 @@ saved_sessions/**
 # Local temp configuration
 init.vim
 ginit.vim
+coc-settings.json
