@@ -2,7 +2,7 @@
 
 ## Usage
 
-Rename `init-template.sh` to `init.sh` or `.bashrc` and source it.
+Rename `template_init.sh` to `init.sh` or `init.sh` and source it.
 
 Make your own changes in that file.
 

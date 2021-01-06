@@ -16,7 +16,7 @@ Mainly configured for NeoVim. It should be compatible with Vim (maybe).
     - Linux: ~/.config/nvim
     - Windows: %APPDATA%\Local\nvim
 
-- Rename `init-template.vim` to `init.vim` or `.vimrc`. All customizations should go in here.
+- Rename `template_init.vim` to `init.vim` or `.vimrc`. All customizations should go in here.
 
 - Uncomment variables starts with `RC_*` to enable functionalities.
 

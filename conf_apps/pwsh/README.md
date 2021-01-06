@@ -2,7 +2,7 @@
 
 ## Usage
 
-Rename `init-template.ps1` to `init.ps1` and then source it.
+Rename `template_init.ps1` to `init.ps1` and then source it.
 
 Make your own changes in the `init.ps1` file.
 
