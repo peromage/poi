@@ -35,8 +35,8 @@ command! -nargs=1 RCLoadModule execute "source ".g:RC_ROOT."/modules/"."<args>".
 " Add configuration folder to runtime path
 execute "set runtimepath+=".g:RC_CONFIG_ROOT
 
-" Load all modules in __rc__/autoload directory
-call RCLoad(g:RC_ROOT."/autoload", ["*"])
+" Load all modules in __rc__/autoload.d directory
+call RCLoad(g:RC_ROOT."/autoload.d", ["*"])
 
 " Handle global configuration variables
 "

@@ -8,14 +8,24 @@
 
 " Override these variables to control RC behaviors
 "
+" The default color scheme.
 "let g:RC_Color = "dracula"
+
+" The loaded pre-configured plugins.
 "let g:RC_Plugins = ["coc", "leaderf"]
+
+" The extra plugins that are loaded by vim-plug.
 "let g:RC_Plugins_Extra = [
 "            \ "Plug 'sheerun/vim-polyglot'",
 "            \ "Plug 'mhinz/vim-startify'",
 "            \ "Plug 'itchyny/lightline.vim'"
 "            \ ]
-"let g:RC_Coc_Extensions = [
+
+" The modules that are loaded on startup. 
+"let g:RC_Modules = ["spacevim-statusline"]
+
+" Coc extensions.
+"let g:coc_global_extensions = [
 "            \ "coc-explorer",
 "            \ "coc-tabnine",
 "            \ "coc-snippets",
@@ -28,7 +38,6 @@
 "            \ "coc-tsserver",
 "            \ "coc-python"
 "            \ ]
-"let g:RC_Modules = ["spacevim-statusline"]
 
 " Runtime paths for plugins
 "

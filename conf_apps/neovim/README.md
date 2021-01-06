@@ -1,4 +1,4 @@
-# Rice Vim Configuration
+# Rice NeoVim Configuration
 
 Mainly configured for NeoVim. It should be compatible with Vim (maybe).
 
@@ -27,5 +27,8 @@ Mainly configured for NeoVim. It should be compatible with Vim (maybe).
 ## Directories
 
 - *\_\_rc\_\_*: This configuration core files.
-- *autoload*: Vim autoload directory.
-- *colors*: Vim color scheme directory.
+- *\_\_rc\_\_/autoload.d*: Dropdown directory. Modules in this directory will be autoloaded.
+- *\_\_rc\_\_/modules*: Modules that can be loaded on demands.
+- *\_\_rc\_\_/plugins*: Pre-configured plugins (need vim-plug to install).
+- *autoload*: NeoVim autoload directory.
+- *colors*: NeoVim color scheme directory.

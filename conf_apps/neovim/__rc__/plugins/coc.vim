@@ -95,13 +95,6 @@ function! s:show_documentation()
 endfunction
 
 
-"""" Coc plugins
-" Override g:RC_Coc_Extensions to get change default extensions
-if exists("g:RC_Coc_Extensions")
-    let g:coc_global_extensions = g:RC_Coc_Extensions
-endif
-
-
 """" Coc plugin keymaps
 " File explorer
 nnoremap <silent> <leader>e
