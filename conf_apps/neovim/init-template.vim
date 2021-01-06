@@ -36,7 +36,7 @@
 "            \ "coc-clangd",
 "            \ "coc-powershell",
 "            \ "coc-tsserver",
-"            \ "coc-python"
+"            \ "coc-pyright"
 "            \ ]
 
 " Runtime paths for plugins
