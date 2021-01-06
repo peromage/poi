@@ -54,10 +54,10 @@ function global:RCPwd {
 # Start Initialization
 #
 # Loading modules
-RCLoad "$RC_ROOT/autoload" *
+RCLoad "$RC_ROOT/autoload.d" *
 # Loading prompt
-if ($RC_Prompt_Style) {
-    RCLoad "$RC_ROOT/prompts" $RC_Prompt_Style
+if ($RC_THEME) {
+    RCLoad "$RC_ROOT/themes" $RC_THEME
 }
 # Load NT modules
 if ($RC_Modules) {

@@ -2,9 +2,12 @@
 ## Created by peromage on 2020/02/17 ##
 #######################################
 
-# Override below variables to control RC behaviors
+# User configurations
+#
+# Themes in __rc__/themes directory. This value should be a string.
+#$RC_THEME = "style_std"
 
-#$RC_Prompt_Style = "style_std"
+# Modules in __rc__/modules directory. This value should be an array.
 #$RC_Modules = @("nt_admin")
 
 # Uncomment this to enable force reload

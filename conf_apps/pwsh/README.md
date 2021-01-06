@@ -12,7 +12,7 @@ $ . path/to/init.ps1
 
 ## Configuration Locations
 
-Get configuration file location for different scope
+Get configuration file location for different scopes.
 
 - *AllUsersAllHosts*: `$PROFILE.AllUsersAllHosts`
 - *AllUsersCurrentHost*: `$PROFILE.AllUsersCurrentHost`
@@ -21,9 +21,8 @@ Get configuration file location for different scope
 
 ## Directories
 
-- *__rc__*: Auto loaded scripts.
-- *__rcmodules__*: Manually loaded scripts.
-- *__rcsrc__*: Dotnet source code.
-- *__rcstyles__*: Shell style scripts.
-- *Modules*: PowerShell defined module directory.
-- *Scripts*: PowerShell defined script directory.
+- *__rc__*: Directory that contains all configurations.
+- *__rc__/autoload.d*: Dropdown menu. Modules in this directory are autoloaded.
+- *__rc__/themes*: Command line themes.
+- *__rc__/modules*: Modules that can be loaded on demands.
+- *__rc__/srcs*: Source code in C# or other languages.
