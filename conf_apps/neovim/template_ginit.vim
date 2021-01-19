@@ -18,6 +18,10 @@
 " Shortcut to open this file
 let s:GUI_INIT_FILE = expand("<sfile>:p")
 command! RCGuiInitFile execute "edit ".s:GUI_INIT_FILE
-" Load rc.vim
-execute "source ".expand("<sfile>:h")."/__rc__/grc.vim"
+" Load grc.vim
+if exists("g:RC_Vim_Root")
+    execute "source ".simplify(g:RC_Vim_Root."/__rc__/grc.vim")
+else
+    execute "source ".expand("<sfile>:h")."/__rc__/grc.vim"
+endif
 "#endregion

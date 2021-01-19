@@ -8,6 +8,10 @@
 
 " Override these variables to control RC behaviors
 "
+" This variable must be changed to the path where the rice configuration 
+" actually is, if this file has been moved to somewhere else
+"let g:RC_Vim_Root = "~/MyData/.rice/conf_apps/neovim"
+
 " The default color scheme.
 "let g:RC_Color = "dracula"
 
@@ -53,5 +57,9 @@
 let s:INIT_FILE = expand("<sfile>:p")
 command! RCInitFile execute "edit ".s:INIT_FILE
 " Load rc.vim
-execute "source ".expand("<sfile>:h")."/__rc__/rc.vim"
+if exists("g:RC_Vim_Root")
+    execute "source ".simplify(g:RC_Vim_Root."/__rc__/rc.vim")
+else
+    execute "source ".expand("<sfile>:h")."/__rc__/rc.vim"
+endif
 "#endregion
