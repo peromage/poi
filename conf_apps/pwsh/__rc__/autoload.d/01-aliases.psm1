@@ -2,8 +2,7 @@
 # Common functions
 ##
 
-# List directory
-function Show-Dir {
+function ListDirectory {
     [CmdletBinding(PositionalBinding=$false, DefaultParameterSetName="sortByDefault")]
     param(
         [Parameter(Position=0)][string]$path=$PWD.Path,
@@ -45,8 +44,11 @@ function Show-Dir {
     }
 }
 
-# Lf change directory
-function Set-LfDirectory {
+function ChangeLfDirectory {
+    <#
+    .Description
+    This function requires lf in the path
+    #>
     $tmp = [System.IO.Path]::GetTempFileName()
     lf "-last-dir-path=$tmp"
     if (Test-Path -PathType Leaf $tmp) {
@@ -58,14 +60,14 @@ function Set-LfDirectory {
     }
 }
 
-function Get-HistorySavePath {
+function GetHistorySavePath {
     return (Get-PSReadlineOption).HistorySavePath
 }
 
 # Alias
-Set-Alias ll Show-Dir
-Set-Alias lfcd Set-LfDirectory
-Set-Alias showhistory Get-HistorySavePath
+Set-Alias ll ListDirectory
+Set-Alias lfcd ChangeLfDirectory
+Set-Alias historypath GetHistorySavePath
 
 # Exporting
 Export-ModuleMember -Function * -Alias *
