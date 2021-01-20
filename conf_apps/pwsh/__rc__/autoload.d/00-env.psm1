@@ -1,6 +1,8 @@
-##
-# Customized environment variable
-##
+<#
+.SYNOPSIS
+Global variable related.
+Modified by peromage on 2021/01/2-
+#>
 
 # User environment variables
 $UserEnvVars = @{
@@ -113,7 +115,7 @@ function TestAdmin {
         [Security.Principal.WindowsBuiltinRole]::Administrator)
 }
 
-function DoAsAdmin {
+function RunAsAdmin {
     if (TestAdmin) {
         Write-Output "Already as admin!"
     } else {

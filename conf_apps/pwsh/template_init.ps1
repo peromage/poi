@@ -1,28 +1,19 @@
-#######################################
-## Created by peromage on 2020/02/17 ##
-#######################################
+<#
+.SYNOPSIS
+This file should be sourced to initialize rice configs.
+Modified by peromage on 2021/01/20
+#>
 
-# User configurations
-#
-# Themes in __rc__/themes directory. This value should be a string.
-#$RC_THEME = "style_std"
-
-# Modules in __rc__/modules directory. This value should be an array.
-#$RC_Modules = @("nt_admin")
-
-# Uncomment this to enable force reload
-#$RC_HAS_INIT = $false
-
-#region Do Not Touch
+#region Initialization
+# Load rice core init file. If this file has been moved to other places change
+# this path accordingly. Otherwise it should stay untouched.
+. "${PSScriptRoot}/__rc__/rc.ps1"
 # Shortcut to edit the init file
 $INIT_FILE = $MyInvocation.MyCommand.Source
-function RcInitFile {
-    if (Test-Path ENV:EDITOR) {
-        Invoke-Expression  "$ENV:EDITOR $INIT_FILE"
-    } else {
-        Write-Host "No ENV:EDITOR found!"
-    }
+# Rice global configs
+$global:RICE_CONFIGS = @{
+#    theme = "style_std"
+#    modules = @("test")
 }
-# Load rc.ps1
-. "${PSScriptRoot}/__rc__/rc.ps1"
+RiceConfigInit
 #endregion

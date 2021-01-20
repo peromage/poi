@@ -1,3 +1,9 @@
+<#
+.SYNOPSIS
+Shim generator used to delegate executable or scripts.
+Modified by peromage on 2021/01/20
+#>
+
 class Shimctl {
     [System.IO.FileInfo]$Target
     [string]$Arguments

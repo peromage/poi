@@ -1,10 +1,12 @@
-##
-# Common functions
-##
+<#
+.SYNOPSIS
+Daily used aliases.
+Modified by peromage on 2012/01/20
+#>
 
 function ListDirectory {
     [CmdletBinding(PositionalBinding=$false, DefaultParameterSetName="sortByDefault")]
-    param(
+    param (
         [Parameter(Position=0)][string]$path=$PWD.Path,
         [Parameter(Mandatory=$false, ParameterSetName="sortByWriteTime")][switch]$write,
         [Parameter(Mandatory=$false, ParameterSetName="sortByAccessTime")][switch]$access,
@@ -44,7 +46,7 @@ function ListDirectory {
     }
 }
 
-function ChangeLfDirectory {
+function LfChangeDirectory {
     <#
     .Description
     This function requires lf in the path
@@ -66,7 +68,7 @@ function GetHistorySavePath {
 
 # Alias
 Set-Alias ll ListDirectory
-Set-Alias lfcd ChangeLfDirectory
+Set-Alias lfcd LfChangeDirectory
 Set-Alias historypath GetHistorySavePath
 
 # Exporting

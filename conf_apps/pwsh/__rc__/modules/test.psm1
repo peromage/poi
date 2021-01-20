@@ -1,5 +1,9 @@
-# Console color test
-function colortest {
+<#
+.SYNOPSIS
+For testing.
+Modified by peromage on 2021/01/20
+#>
+function ColorTest {
     $width = 7
     $word = "gYm"
     $esc = [char]0x1b

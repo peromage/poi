@@ -1,29 +1,33 @@
-# Git functions
-function Git-Status {
+<#
+.SYNOPSIS
+Git aliases.
+Modified by peromage on 2021/01/20
+#>
+function GitStatus {
     git status
 }
 
-function Git-Log {
+function GitLog {
     git log --graph --pretty=format:'%Cred%h%Creset [%an] - %s %Cgreen(%ci)%Creset %C(cyan)%d%Creset' --abbrev-commit --date=relative
 }
 
-function Git-AddCommit {
+function GitAddCommit {
     git add -A
     git commit -m $args[0]
 }
 
-function Git-Branch {
+function GitBranch {
     git branch $args
 }
 
-function Git-Checkout {
+function GitCheckout {
     git checkout $args
 }
 
-Set-Alias -Name gst -Value Git-Status
-Set-Alias -Name glo -Value Git-Log
-Set-Alias -Name gac -Value Git-AddCommit
-Set-Alias -Name gch -Value Git-Checkout
-Set-Alias -Name gbr -Value Git-Branch
+Set-Alias -Name gst -Value GitStatus
+Set-Alias -Name glo -Value GitLog
+Set-Alias -Name gac -Value GitAddCommit
+Set-Alias -Name gch -Value GitCheckout
+Set-Alias -Name gbr -Value GitBranch
 
 Export-ModuleMember -Function * -Alias *
