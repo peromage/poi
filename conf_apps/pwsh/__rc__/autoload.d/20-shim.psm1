@@ -4,42 +4,60 @@ Shim generator used to delegate executable or scripts.
 Modified by peromage on 2021/01/20
 #>
 
-class Shimctl {
-    [System.IO.FileInfo]$Target
-    [string]$Arguments
-    [string]$Name
-    [bool]$Gui
-
-    Shimctl([string]$target, [string]$arguments) {
-        $this.Reset($target, $arguments)
+function CreateShimObject {
+    param ([string]$target, [string]$arguments, [bool]$gui)
+    if (-not (Test-Path $target)) {
+        throw "Invalid target"
+    }
+    $shimObj = [PSCustomObject]@{
+        Target = Get-Item $target
+        Arguments = $arguments
+        Gui = $gui
+    }
+    function addMethod {
+        Add-Member -InputObject $shimObj -MemberType ScriptMethod -Name $args[0] -Value $args[1]
     }
 
-    [void]Reset([string]$target, [string]$arguments) {
-        if (-not (Test-Path $target)) {
-            throw "Invalid target"
+    # Member methods definitions
+    addMethod "resolveDestination" {
+        param ([string]$destination, [string]$extension)
+        if ([string]::IsNullOrWhiteSpace($extension)) {
+            $trimmedExt = [string]::Empty
+        } else {
+            $trimmedExt = ".$($extension.TrimStart("."))"
         }
-        $this.Target = Get-Item $target
-        $this.Arguments = $arguments
-        $this.Name = $this.Target.BaseName
-        $this.Gui = $false
+        $fullDest = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($destination)
+        if (Test-Path -PathType Container $destination) {
+            if ($this.Target.Name.EndsWith($trimmedExt)) {
+                # Use target name and ext in the destination directory
+                $fullDest = Join-Path $fullDest $this.Target.Name
+            } else {
+                # Use target name and provided ext in the destination directory
+                $fullDest = Join-Path $fullDest "$($this.Target.BaseName)${trimmedExt}"
+            }
+        } else {
+            # Otherwise use the given name
+            if (-not $fullDest.EndsWith($trimmedExt)) {
+                $fullDest = "${fullDest}${trimmedExt}"
+            }
+        }
+        return $fullDest
     }
 
-    hidden [string]BuildDest([string]$dir, [string]$ext) {
-        return Join-Path (Resolve-Path $dir).Path "$($this.Name).$($ext.TrimStart("."))"
-    }
-
-    [string]GenLnk([string]$dir) {
-        $dest = $this.BuildDest($dir, ".lnk")
+    addMethod "genLnk" {
+        param ([string]$destination)
+        $fullDestination = $this.resolveDestination($destination, ".lnk")
         $wshell = New-Object -ComObject WScript.shell
-        $shortcut = $wshell.CreateShortcut($dest)
+        $shortcut = $wshell.CreateShortcut($fullDestination)
         $shortcut.TargetPath = $this.Target.FullName
         $shortcut.Arguments = $this.Arguments
         $shortcut.Save()
-        return $dest
+        return $fullDestination
     }
 
-    [string]GenCmd([string]$dir) {
-        $dest = $this.BuildDest($dir, ".cmd")
+    addMethod "genCmd" {
+        param ([string]$destination)
+        $fullDestination = $this.resolveDestination($destination, ".cmd")
         if ($this.Gui) {
             $expr = @(
                 "@echo off"
@@ -51,12 +69,13 @@ class Shimctl {
                 "`"$($this.Target.FullName)`" $($this.Arguments) %*"
             )
         }
-        Set-Content -Value $expr -Path $dest
-        return $dest
+        Set-Content -Value $expr -Path $fullDestination
+        return $fullDestination
     }
 
-    [string]GenPs1([string]$dir) {
-        $dest = $this.BuildDest($dir, ".ps1")
+    addMethod "genPs1" {
+        param ([string]$destination)
+        $fullDestination = $this.resolveDestination($destination, ".ps1")
         if ($this.Target.Extension.ToLower() -eq ".ps1") {
             $expr = @(
                 # Execute ps1 script in current session
@@ -71,21 +90,23 @@ class Shimctl {
                 "& `"$($this.Target.FullName)`" $($this.Arguments) @args"
             )
         }
-        Set-Content -Value $expr -Path $dest
-        return $dest
+        Set-Content -Value $expr -Path $fullDestination
+        return $fullDestination
     }
 
-    [string]GenSoftlink([string]$dir) {
-        $dest = $this.BuildDest($dir, $this.Target.Extension)
+    addMethod "genSymlink" {
+        param ([string]$destination)
+        $fullDestination = $this.resolveDestination($destination, $this.Target.Extension)
         New-Item -ItemType SymbolicLink `
                  -Target $this.Target.FullName `
-                 -Path $dest `
+                 -Path $fullDestination `
                  -Force
-        return $dest
+        return $fullDestination
     }
 
-    [string]GenExe([string]$dir) {
-        $dest = $this.BuildDest($dir, ".exe")
+    addMethod "genExe" {
+        param ([string]$destination)
+        $fullDestination = $this.resolveDestination($destination, ".exe")
         $SRC_PATH = "$PSScriptRoot/../src/shim.cs"
         $SRC_PATT_PATH = '\{\{PathToExe\}\}'
         $SRC_PATT_ARGS = '\{\{ExeArgs\}\}'
@@ -99,46 +120,39 @@ class Shimctl {
         $src = $src -replace $SRC_PATT_GUI, $this.Gui.ToString()
         $src = $src -replace $SRC_PATT_HARDCODE, "#define"
         # Compile exe
-        Add-Type -OutputType ConsoleApplication -TypeDefinition $src -OutputAssembly $dest
-        return $dest
+        Add-Type -OutputType ConsoleApplication -TypeDefinition $src -OutputAssembly $fullDestination
+        return $fullDestination
     }
+
+    return $shimObj
 }
 
-function New-Shim {
+function NewShim {
     param([Parameter(Mandatory=$true)]
           [string]$target,
-          [string]$name="",
+          [Parameter(Mandatory=$true)]
+          [string]$destination,
           [string]$arguments="",
-          [ValidateSet("cmd", "ps1", "lnk", "softlink", "exe")]
-          [string]$type="exe",
-          [string]$bin="$HOME/.local/bin",
+          [ValidateSet("cmd", "ps1", "lnk", "symlink", "exe")]
+          [string]$type="cmd",
           [switch]$gui)
-    $obj = [Shimctl]::new($target, $arguments)
-    # Check for options
-    if ($name -ne "") {
-        $obj.Name = $name
-    }
-    if ($gui) {
-        $obj.Gui = $true
-    } else {
-        $obj.Gui = $false
-    }
+    $obj = CreateShimObject $target $arguments $gui.IsPresent
     try {
         switch ($type) {
             "cmd" {
-                $dest = $obj.GenCmd($bin)
+                $dest = $obj.genCmd($destination)
             }
             "ps1" {
-                $dest = $obj.GenPs1($bin)
+                $dest = $obj.genPs1($destination)
             }
             "lnk" {
-                $dest = $obj.GenLnk($bin)
+                $dest = $obj.genLnk($destination)
             }
-            "softlink" {
-                $dest = $obj.GenSoftlink($bin)
+            "symlink" {
+                $dest = $obj.genSymlink($destination)
             }
             "exe" {
-                $dest = $obj.GenExe($bin)
+                $dest = $obj.genExe($destination)
             }
             default {
                 throw "Invalid Type"
@@ -151,3 +165,5 @@ function New-Shim {
         Write-Error "$_"
     }
 }
+
+Export-ModuleMember -Function *
