@@ -1,5 +1,5 @@
 # Terminal color test
-function testcolor() {
+function colortest() {
     local width=7
     local word="gYm"
 

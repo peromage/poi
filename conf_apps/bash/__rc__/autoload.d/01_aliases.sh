@@ -1,7 +1,7 @@
 alias ll="ls -lahF --color=always --group-directories-first"
 
 # Fzf helper. Calls fzf with any command.
-function fzfcmd {
+function fzfdo {
     [ -z "$1" ] && return
     eval "$1 \$(fzf)"
 }
@@ -11,7 +11,7 @@ function fzfcd {
 }
 
 # Ranger helper. Prevents from launching nested instances.
-function rr {
+function ranger {
     [ -n "$RANGER_LEVEL" ] && return
     ranger "$@"
 }
