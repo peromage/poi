@@ -4,12 +4,6 @@ Rice config core initialization file.
 Modified by peromage on 2021/01/20
 #>
 
-function RiceConfigInit {
-<#
-.SYNOPSIS
-Rice config initialization function
-#>
-
 # RC root directory
 $global:RICE_ROOT = $PSScriptRoot
 
@@ -29,30 +23,35 @@ function global:RiceModuleImport {
     Import-Module -Global -DisableNameChecking -Prefix $prefix -Name $moduleList
 
 }
+
 function global:RiceLoadModule {
     param ([string]$name)
     global:RiceModuleImport "${RICE_ROOT}/modules/${name}.psm1"
 }
+
 function global:RiceLoadTheme {
     param ([string]$name)
     global:RiceModuleImport "${RICE_ROOT}/themes/${name}.psm1"
 }
 
-# Load modules in autoload.d directory
-RiceModuleImport "$RICE_ROOT/autoload.d/*.psm1"
+function RiceConfigInit {
+    <#
+    .SYNOPSIS
+    Rice config initialization function
+    #>
+    # Load modules in autoload.d directory
+    RiceModuleImport "$RICE_ROOT/autoload.d/*.psm1"
 
-# Only proceeds following when rice configuration table presents
-if ($global:RICE_CONFIGS -isnot [hashtable]) { return }
-
-# Loading prompt theme
-if (($val = $global:RICE_CONFIGS["theme"]) -and ($val -is [string])) {
-    RiceModuleImport "${RICE_ROOT}/themes/${val}.psm1"
-}
-# Load additional modules
-if (($val = $global:RICE_CONFIGS["modules"]) -and ($val -is [array])) {
-    foreach ($_ in $val) {
-        RiceModuleImport "${RICE_ROOT}/modules/${_}.psm1"
+    # Only proceeds following when rice configuration table presents
+    if ($global:RICE_CONFIGS -isnot [hashtable]) { return }
+    # Loading prompt theme
+    if (($val = $global:RICE_CONFIGS["theme"]) -and ($val -is [string])) {
+        RiceLoadTheme $val
     }
-}
-
+    # Load additional modules
+    if (($val = $global:RICE_CONFIGS["modules"]) -and ($val -is [array])) {
+        foreach ($_ in $val) {
+            RiceLoadModule $_
+        }
+    }
 }
