@@ -1,8 +1,5 @@
-""
-"" Created by peromage on 2020/06/04
-""
-"" Command settings
-""
+" Command settings
+" Modified by peromage on 2021/01/20
 
 " Quality of life
 set nocompatible

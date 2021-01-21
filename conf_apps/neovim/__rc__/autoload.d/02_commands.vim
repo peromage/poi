@@ -1,8 +1,5 @@
-""
-"" Created by peromage on 2020/06/04
-""
-"" Customized commands
-""
+" Customized commands
+" Modified by peromage on 2021/01/20
 
 " Close all but current buffers
 command! Bdall :%bd|e#

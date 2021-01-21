@@ -1,70 +1,57 @@
-"""""""""""""""""""""""""""""""""""""""
-"" Created by peromage on 2020/08/03 ""
-"""""""""""""""""""""""""""""""""""""""
-""
-"" RC core initialization file
-""
+" Rice NeoVim core config file.
+" Modified by peromage on 2021/01/20
 
-" Guard for repeat loading
-if get(g:, "RC_INIT", 0) != 0 | finish | endif
+" Rice variables
+let g:RICE_ROOT = expand('<sfile>:h')
+let g:RICE_VIM_ROOT = expand('<sfile>:h:h')
 
-" RC variables
-let g:RC_INIT = 1
-let g:RC_ROOT = expand('<sfile>:h')
-let g:RC_CONFIG_ROOT = expand('<sfile>:h:h')
-
-" A helper function that dynamically loads .vim files by given directory
-" and name patterns
-" @param path: Directory names
-" @param patterns: List of file glob patterns
-" @param ...: The third parameter is the default extension of module
-function! g:RCLoad(path, patterns, ...) abort
-    let l:ext = get(a:, 1, ".vim")
-    for patt in a:patterns
-        for mpath in globpath(a:path, patt.l:ext, 0, 1)
-            execute "source ".mpath
-        endfor
+" Rice functions
+function! g:RiceModuleImport(path) abort
+    " Load given modules. Wildcard is supported.
+    for i in glob(a:path, 0, 1)
+        execute 'source '.i
     endfor
 endfunction
+command! -nargs=1 RiceLoadModule execute 'source '.g:RICE_ROOT.'/modules/'.'<args>'.'.vim'
+command! -nargs=1 RiceLoadPlugin execute 'source '.g:RICE_ROOT.'/plugins/'.'<args>'.'.vim'
 
-" A command that loads modules in __rc__/modules
-command! -nargs=1 RCLoadModule execute "source ".g:RC_ROOT."/modules/"."<args>".".vim"
+function! g:RiceConfigInit() abort
+    " Add configuration folder to runtime path
+    execute 'set runtimepath+='.g:RICE_VIM_ROOT
+    " Load all modules in __rc__/autoload.d directory
+    call RiceModuleImport(g:RICE_ROOT.'/autoload.d/*.vim')
 
-" Start initialization
-
-" Add configuration folder to runtime path
-execute "set runtimepath+=".g:RC_CONFIG_ROOT
-
-" Load all modules in __rc__/autoload.d directory
-call RCLoad(g:RC_ROOT."/autoload.d", ["*"])
-
-" Handle global configuration variables
-"
-" Set g:RC_Color to override default color scheme
-" This variable is a string
-if exists("g:RC_Color")
-    execute "colorscheme ".g:RC_Color
-endif
-
-" Load plugins via vim-plug
-call plug#begin()
-" Set g:RC_Plugins to load the plugins in __rc__/plugins with customized
-" configurations. The names must be the same as the module file names.
-" This variable is an array of strings.
-if exists("g:RC_Plugins")
-    call RCLoad(g:RC_ROOT."/plugins", g:RC_Plugins)
-endif
-" Set g:RC_Plugins_Extra to load the plugins that users desire.
-" This variable is a list of strings where each string is a vim-plug style
-" loading expression
-if exists("g:RC_Plugins_Extra")
-    for vppp in g:RC_Plugins_Extra
-        execute vppp
-    endfor
-endif
-call plug#end()
-
-" Load RC modules in __rc__/modules
-if exists("g:RC_Modules")
-    call RCLoad(g:RC_ROOT."/modules", g:RC_Modules)
-endif
+    " Only proceeds following when rice configuration table presents
+    if !exists('g:RICE_CONFIGS') || !(v:t_dict == type(g:RICE_CONFIGS))
+        return
+    endif
+    " Load color scheme
+    let l:val = get(g:RICE_CONFIGS, 'color', 0)
+    if v:t_string == type(l:val)
+        execute 'colorscheme '.l:val
+    endif
+    " Load modules
+    let l:val = get(g:RICE_CONFIGS, 'modules', 0)
+    if v:t_list == type(l:val)
+        for i in l:val
+            execute 'RiceLoadModule '.i
+        endfor
+    endif
+    " Load plugins via vim-plug
+    call plug#begin()
+    " Load pre-configured plugins
+    let l:val = get(g:RICE_CONFIGS, 'plugins', 0)
+    if v:t_list == type(l:val)
+        for i in l:val
+            execute 'RiceLoadPlugin '.i
+        endfor
+    endif
+    " Load additional plugins
+    let l:val = get(g:RICE_CONFIGS, 'plug_install', 0)
+    if v:t_list == type(l:val)
+        for i in l:val
+            execute i
+        endfor
+    endif
+    call plug#end()
+endfunction

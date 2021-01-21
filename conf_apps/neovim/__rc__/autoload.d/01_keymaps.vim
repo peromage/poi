@@ -1,11 +1,8 @@
-""
-"" Created by peromage on 2020/06/04
-""
-"" Customized keymaps
-""
+" Customized keymaps
+" Modified by peromage on 2021/01/20
 
 " My leader key
-let mapleader=" "
+let mapleader=' '
 
 " Splittin/
 nnoremap <silent> <leader><Bar> :vs<CR>

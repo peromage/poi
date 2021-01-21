@@ -1,65 +1,43 @@
-"""""""""""""""""""""""""""""""""""""""
-"" Created by peromage on 2020/06/04 ""
-"""""""""""""""""""""""""""""""""""""""
-""
-"" init.vim template
-"" Rename this file to "init.vim" or "vimrc" and make your own changes in it
-""
+" Rice NeoVim init template file.
+" Modified by peromage on 2021/01/20
 
-" Override these variables to control RC behaviors
-"
-" This variable must be changed to the path where the rice configuration 
-" actually is, if this file has been moved to somewhere else
-"let g:RC_Vim_Root = "~/MyData/.rice/conf_apps/neovim"
+" Rename this file to init.vim or vimrc and make your own changes in it
 
-" The default color scheme.
-"let g:RC_Color = "dracula"
-
-" The loaded pre-configured plugins.
-"let g:RC_Plugins = ["coc", "leaderf"]
-
-" The extra plugins that are loaded by vim-plug.
-"let g:RC_Plugins_Extra = [
-"            \ "Plug 'sheerun/vim-polyglot'",
-"            \ "Plug 'mhinz/vim-startify'",
-"            \ "Plug 'itchyny/lightline.vim'"
-"            \ ]
-
-" The modules that are loaded on startup. 
-"let g:RC_Modules = ["spacevim-statusline"]
-
+"region Initialization
+" Load rice core init file. If this file has been moved to other places change
+" this path accordingly. Otherwise it should stay untouched.
+execute 'source '.expand('<sfile>:h').'/__rc__/rc.vim'
+" Shortcut to open this file
+let g:INIT_FILE = expand('<sfile>:p')
+command! RiceInitFile execute 'edit '.g:INIT_FILE
+" Rice global configs
+"let g:RICE_CONFIGS = {
+"    \ 'color': 'dracula',
+"    \ 'modules': ['spacevim-statusline'],
+"    \ 'plugins': ['coc', 'leaderf'],
+"    \ 'plug_install': [
+"        \ 'Plug ''sheerun/vim-polyglot''',
+"        \ 'Plug ''mhinz/vim-startify''',
+"        \ 'Plug ''itchyny/lightline.vim'''
+"        \ ]
+"    \ }
+call RiceConfigInit()
 " Coc extensions.
 "let g:coc_global_extensions = [
-"            \ "coc-explorer",
-"            \ "coc-tabnine",
-"            \ "coc-snippets",
-"            \ "coc-git",
-"            \ "coc-json",
-"            \ "coc-markdownlint",
-"            \ "coc-vimlsp",
-"            \ "coc-clangd",
-"            \ "coc-powershell",
-"            \ "coc-tsserver",
-"            \ "coc-pyright"
-"            \ ]
-
+"    \ 'coc-explorer',
+"    \ 'coc-tabnine',
+"    \ 'coc-snippets',
+"    \ 'coc-git',
+"    \ 'coc-json',
+"    \ 'coc-markdownlint',
+"    \ 'coc-vimlsp',
+"    \ 'coc-clangd',
+"    \ 'coc-powershell',
+"    \ 'coc-tsserver',
+"    \ 'coc-pyright'
+"    \ ]
 " Runtime paths for plugins
-"
 "set runtimepath+=/home/linuxbrew/.linuxbrew/opt/fzf
-"let g:python3_host_prog="/usr/bin/python3"
-"let g:python_host_prog="/usr/bin/python2"
-
-" Uncomment this to enable force initialization
-"let g:RC_INIT = 0
-
-"#region Do Not Touch
-" Shortcut to open this file
-let s:INIT_FILE = expand("<sfile>:p")
-command! RCInitFile execute "edit ".s:INIT_FILE
-" Load rc.vim
-if exists("g:RC_Vim_Root")
-    execute "source ".simplify(g:RC_Vim_Root."/__rc__/rc.vim")
-else
-    execute "source ".expand("<sfile>:h")."/__rc__/rc.vim"
-endif
-"#endregion
+"let g:python3_host_prog='python3'
+"let g:python_host_prog='python2'
+"endregion

@@ -1,14 +1,11 @@
-""
-"" Created by peromage on 2020/06/04
-""
-"" Settings for built-in netrw explorer
-""
+" Settings for built-in netrw explorer
+" Modified by peromage on 2021/01/20
 
 " Netrw general settings
 let g:netrw_altfile = 1
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
-let g:netrw_sizestyle = "H"
+let g:netrw_sizestyle = 'H'
 let g:netrw_browse_split = 0
 let g:netrw_altv = 1
 let g:netrw_alto = 1

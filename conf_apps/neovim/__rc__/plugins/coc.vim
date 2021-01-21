@@ -1,8 +1,5 @@
-""
-"" Created by peromage on 2020/06/04
-""
-"" Coc settings
-""
+" Coc settings
+" Modified by peromage on 2021/01/20
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -32,10 +29,10 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ pumvisible() ? '\<C-n>' :
+      \ <SID>check_back_space() ? '\<TAB>' :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> pumvisible() ? '\<C-p>' : '\<C-h>'
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -43,9 +40,9 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 if exists('*complete_info')
-    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <expr> <cr> complete_info()['selected'] != '-1' ? '\<C-y>' : '\<C-g>u\<CR>'
 else
-    imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    imap <expr> <cr> pumvisible() ? '\<C-y>' : '\<C-g>u\<CR>'
 endif
 
 " Use `[` and `]` to navigate diagnostics

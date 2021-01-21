@@ -1,16 +1,7 @@
-""
-"" Created by peromage on 2020/06/04
-""
-"" Defx settings
-""
+" Defx settings
+" Modified by peromage on 2021/01/20
 
-if has('nvim')
-    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/defx.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 
 
 " General config
