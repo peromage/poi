@@ -8,7 +8,6 @@ case "$-" in
     *) return;;
 esac
 
-function RiceConfigInit {
 # Initiaize rice config for bash
 if [ -n "$BASH_VERSION" ]; then
     RICE_ROOT=$(dirname $(realpath "$BASH_SOURCE"))
@@ -25,25 +24,27 @@ function RiceModuleImport {
         [ -f "$i" ] && . "$i"
     done
 }
+
 function RiceLoadModule {
     RiceModuleImport $RICE_ROOT/modules/$1.sh
 }
+
 function RiceLoadTheme {
     RiceModuleImport $RICE_ROOT/themes/$1.sh
 }
 
-# Load modules in autoload.d directory
-RiceModuleImport $RICE_ROOT/autoload.d/*.sh
-# Load prompt style
-if [ -n "$RICE_THEME" ]; then
-    RiceLoadTheme "$RICE_THEME"
-fi
-# Load extra modules
-if [ -n "$RICE_MODULES" ]; then
-    for i in $RICE_MODULES; do
-        RiceLoadModule "$i"
-    done
-    unset i
-fi
-
-} #RiceConfigInit
+function RiceConfigInit {
+    # Load modules in autoload.d directory
+    RiceModuleImport $RICE_ROOT/autoload.d/*.sh
+    # Load prompt style
+    if [ -n "$RICE_THEME" ]; then
+        RiceLoadTheme "$RICE_THEME"
+    fi
+    # Load extra modules
+    if [ -n "$RICE_MODULES" ]; then
+        for i in $RICE_MODULES; do
+            RiceLoadModule "$i"
+        done
+        unset i
+    fi
+}
