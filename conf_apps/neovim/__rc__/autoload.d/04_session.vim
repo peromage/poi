@@ -42,7 +42,7 @@ function! s:InteractiveSessionCollection(message, prompt, callback) abort
         echo a:message
         call s:PrintSessionCollection(sessions)
         let user_input = trim(input(a:prompt))
-        echo '\n'
+        echo "\n"
         " Determine the choice
         if has_key(sessions, user_input)
             if !a:callback(sessions, user_input)
