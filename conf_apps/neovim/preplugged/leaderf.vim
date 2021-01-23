@@ -1,6 +1,10 @@
 " LeaderF settings
 " Modified by peromage on 2021/01/20
 
+if exists('g:loaded_rice_plugged_leaderf')
+    finish
+endif
+let g:loaded_rice_plugged_leaderf = 1
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
 
 

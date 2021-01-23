@@ -1,5 +1,10 @@
 " Session management
-" Modified by peromage on 2021/01/20
+" Modified by peromage on 2021/01/22
+
+if exists('g:loaded_rice_session_manager')
+    finish
+endif
+let g:loaded_rice_session_manager = 1
 
 " Compatible with Vim
 let s:SESSION_SAVE_DIR = simplify(stdpath('data').'/saved_sessions')

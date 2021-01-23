@@ -1,6 +1,10 @@
 " NerdTree settings
-" Modified by peromage on 2021/01/20
+" Modified by peromage on 2021/01/22
 
+if exists('g:loaded_rice_plugged_nerdtree')
+    finish
+endif
+let g:loaded_rice_plugged_nerdtree = 1
 Plug 'preservim/nerdtree'
 
 

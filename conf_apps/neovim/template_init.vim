@@ -1,28 +1,18 @@
 " Rice NeoVim init template file.
-" Modified by peromage on 2021/01/20
-
-" Rename this file to init.vim or vimrc and make your own changes in it
+" Modified by peromage on 2021/01/23
 
 "region Initialization
-" Load rice core init file. If this file has been moved to other places change
-" this path accordingly. Otherwise it should stay untouched.
-execute 'source '.expand('<sfile>:h').'/__rc__/rc.vim'
+" Runtime path must be added
+set runtimepath+=expand('<sfile>:h')
 " Shortcut to open this file
-let g:INIT_FILE = expand('<sfile>:p')
-command! RiceInitFile execute 'edit '.g:INIT_FILE
-" Rice global configs
-"let g:RICE_CONFIGS = {
-"    \ 'color': 'dracula',
-"    \ 'modules': ['spacevim-statusline'],
-"    \ 'plugins': ['coc', 'leaderf'],
-"    \ 'plug_install': [
-"        \ 'Plug ''sheerun/vim-polyglot''',
-"        \ 'Plug ''mhinz/vim-startify''',
-"        \ 'Plug ''itchyny/lightline.vim'''
-"        \ ]
-"    \ }
-call RiceConfigInit()
-" Coc extensions.
+let g:init_file = expand('<sfile>:p')
+command! InitFile execute 'edit '.g:init_file
+" Initialize rice
+call rice#begin()
+"let g:rice_config_color = 'dracula'
+"let g:rice_config_preplugged = ['coc', 'leaderf']
+"let g:python3_host_prog='python3'
+"let g:python_host_prog='python2'
 "let g:coc_global_extensions = [
 "    \ 'coc-explorer',
 "    \ 'coc-tabnine',
@@ -36,8 +26,9 @@ call RiceConfigInit()
 "    \ 'coc-tsserver',
 "    \ 'coc-pyright'
 "    \ ]
-" Runtime paths for plugins
-"set runtimepath+=/home/linuxbrew/.linuxbrew/opt/fzf
-"let g:python3_host_prog='python3'
-"let g:python_host_prog='python2'
+" Extra plugins
+"Plug 'sheerun/vim-polyglot'
+"Plug 'mhinz/vim-startify'
+"Plug 'itchyny/lightline.vim'
+call rice#end()
 "endregion
