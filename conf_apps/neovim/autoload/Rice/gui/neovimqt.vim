@@ -1,7 +1,7 @@
 " Configuration for neovim-qt
 " Modified by peromage on 2021/01/23
 
-function! rice#gui#neovimqt#init()
+function! rice#gui#neovimqt#init() abort
     if !exists('g:GuiLoaded')
         return 0
     endif

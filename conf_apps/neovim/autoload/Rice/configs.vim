@@ -1,13 +1,6 @@
 " Rice configuration reader
 " Modified by peromage on 2021/01/23
 
-"region Default configurations
-" Color scheme
-let g:rice_config_color = ''
-" Array of strings. Loads pre-configured plugins in g:rice_root_dir/preplugged.
-let g:rice_config_preplugged = []
-"endregion
-
 " Loading protection flag
 let s:rice_config_loading = 0
 
@@ -27,12 +20,12 @@ function! rice#configs#end() abort
     endif
     let s:rice_config_loading = 0
     " Load color scheme
-    if g:rice_config_color !=# ''
-        execute 'colorscheme '.g:rice_config_color
+    if g:rice_color !=# ''
+        execute 'colorscheme '.g:rice_color
     endif
     " Load pre-configured plugins
-    if v:t_list == type(g:rice_config_preplugged)
-        for i in g:rice_config_preplugged
+    if v:t_list == type(g:rice_preplugged)
+        for i in g:rice_preplugged
             execute 'RiceLoadPreplugged '.i
         endfor
     endif
