@@ -24,9 +24,9 @@ function! rice#configs#end() abort
         execute 'colorscheme '.g:rice_color
     endif
     " Load pre-configured plugins
-    if v:t_list == type(g:rice_preplugged)
-        for i in g:rice_preplugged
-            execute 'RiceLoadPreplugged '.i
+    if v:t_list == type(g:rice_ondemand)
+        for i in g:rice_ondemand
+            call rice#loadOndemand(i)
         endfor
     endif
     call plug#end()

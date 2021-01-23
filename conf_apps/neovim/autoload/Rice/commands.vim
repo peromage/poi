@@ -10,5 +10,5 @@ function! rice#commands#init() abort
     " Toggle paste mode
     command! PasteMode :set paste
     command! NoPasteMode :set nopaste
-    command! -nargs=1 RiceLoadPreplugged execute 'source '.g:rice_root_dir.'/preplugged/'.'<args>'.'.vim'
+    command! -nargs=1 RiceLoadOndemand call rice#loadOndemand(<f-args>)
 endfunction

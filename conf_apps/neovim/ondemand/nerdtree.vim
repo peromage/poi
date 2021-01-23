@@ -1,10 +1,10 @@
 " NerdTree settings
 " Modified by peromage on 2021/01/22
 
-if exists('g:loaded_rice_plugged_nerdtree')
+if exists('g:loaded_rice_nerdtree')
     finish
 endif
-let g:loaded_rice_plugged_nerdtree = 1
+let g:loaded_rice_nerdtree = 1
 Plug 'preservim/nerdtree'
 
 
@@ -15,7 +15,7 @@ let g:NERDTreeShowHidden = 1
 nnoremap <silent> <leader>e :NERDTree<CR>
 
 " Keymaps when nerdtree is open
-function! s:my_nerdtree_keymaps() abort
+function! s:myNerdtreeSettings() abort
     setl nospell
     setl signcolumn=no
     setl nonumber
@@ -24,4 +24,4 @@ function! s:my_nerdtree_keymaps() abort
     setl cursorcolumn
 endfunction
 
-autocmd FileType nerdtree call s:my_nerdtree_keymaps()
+autocmd FileType nerdtree call s:myNerdtreeSettings()

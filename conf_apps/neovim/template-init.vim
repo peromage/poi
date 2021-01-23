@@ -10,7 +10,7 @@ command! InitFile execute 'edit '.g:init_file
 " Initialize rice
 call rice#begin()
 "let g:rice_color = 'dracula'
-"let g:rice_preplugged = ['coc', 'leaderf']
+"let g:rice_ondemand = ['coc', 'leaderf']
 "let g:python3_host_prog='python3'
 "let g:python_host_prog='python2'
 "let g:coc_global_extensions = [

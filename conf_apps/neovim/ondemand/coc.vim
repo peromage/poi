@@ -1,10 +1,10 @@
 " Coc settings
 " Modified by peromage on 2021/01/22
 
-if exists('g:loaded_rice_plugged_coc')
+if exists('g:loaded_rice_coc')
     finish
 endif
-let g:loaded_rice_plugged_coc = 1
+let g:loaded_rice_coc = 1
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 

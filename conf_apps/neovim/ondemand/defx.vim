@@ -1,10 +1,10 @@
 " Defx settings
 " Modified by peromage on 2021/01/22
 
-if exists('g:loaded_rice_plugged_defx')
+if exists('g:loaded_rice_defx')
     finish
 endif
-let g:loaded_rice_plugged_defx = 1
+let g:loaded_rice_defx = 1
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 
 
