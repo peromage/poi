@@ -29,4 +29,4 @@ Configurations are based on NeoVim. It might be compatible with Vim.
 - *autoload*: Common libraries.
 - *colors*: Color schemes.
 - *plugin*: Additional plugins (Loaded all the time).
-- *ondemand*: Manually loaded plugins.
+- *features*: Manually loaded feature plugins.

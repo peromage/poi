@@ -13,7 +13,7 @@ let g:rice_root_dir = expand('<sfile>:h:h')
 " Color scheme
 let g:rice_color = ''
 " Array of strings. Loads pre-configured plugins in g:rice_root_dir/preplugged.
-let g:rice_ondemand = []
+let g:rice_features = []
 " Prefered GUI font
 let g:rice_gui_font = ''
 "endregion
@@ -53,8 +53,8 @@ function! rice#guiEnd() abort
     endif
 endfunction
 
-function! rice#loadOndemand(name) abort
-    execute 'source '.g:rice_root_dir.'/ondemand/'.a:name.'.vim'
+function! rice#loadFeature(name) abort
+    execute 'source '.g:rice_root_dir.'/features/'.a:name.'.vim'
 endfunction
 
 endif "nvim
