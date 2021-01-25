@@ -110,6 +110,14 @@ function script:loadTheme {
     }
     script:sourceDirectory themes $name
 }
+
+function script:addScriptPath {
+    if ($IsWindows) {
+        $ENV:Path += ";$PSScriptRoot\scripts"
+    } else {
+        $ENV:Path += ":$PSScriptRoot/scripts"
+    }
+}
 #endregion
 
 #region Initialization
@@ -120,5 +128,7 @@ function Initialize-Rice {
     script:loadFeatures $global:rice_configs.Features
     # Load theme
     script:loadTheme $global:rice_configs.Theme
+    # Add script path
+    script:addScriptPath
 }
 #endregion
