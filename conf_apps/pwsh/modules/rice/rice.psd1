@@ -27,7 +27,7 @@ Author = 'peromage'
 CompanyName = 'Peromage Labs'
 
 # Copyright statement for this module
-Copyright = 'peromage  All rights reserved.'
+Copyright = 'peromage All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Rice PowerShell configurations'
@@ -69,8 +69,28 @@ PowerShellVersion = '7.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
+# TODO: Find a better way to gather all exported functions
 FunctionsToExport = @(
-    "Initialize-Rice"
+    # base/utils.ps1
+    "Get-DirectoryList",
+    "Get-HistorySavePath",
+    "Set-SessionUserEnvVars",
+    # base_win/admin.ps1
+    "Test-AdminStatus",
+    "Invoke-AdminRole",
+    "Grant-AdminRole",
+    # base_win/env_user_path.ps1
+    "Get-EnvUserPath",
+    "Update-SessionEnvPath",
+    "Set-EnvUserPath",
+    "Test-EnvUserPath",
+    "Add-EnvUserPath",
+    "Remove-EnvUserPath",
+    # base_win/env_user_var.ps1
+    "Set-UserEnvVars",
+    "Remove-UserEnvVars",
+    # feature/shim.ps1
+    "New-Shim"
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -80,7 +100,12 @@ CmdletsToExport = @()
 VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+# TODO: Find a better way to gather all exported aliases
+AliasesToExport = @(
+    # base/utils.ps1
+    "ll",
+    "hispath"
+)
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -128,6 +153,6 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'Rc'
 
 }

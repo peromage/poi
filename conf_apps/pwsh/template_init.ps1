@@ -8,15 +8,12 @@ Modified by peromage on 2021/01/24
 # Shortcut to edit the init file
 $init_file = $MyInvocation.MyCommand.Source
 # Add rice module path
-# For Linux/Mac this value should be like ":$PSScriptRoot/modules"
-$ENV:PSModulePath += ";$PSScriptRoot\modules"
-Import-Module rice
+# For Linux/Mac change ";" to ":"
+$ENV:PSModulePath += ";" + $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("$PSScriptRoot/modules")
+Import-Module rice -ArgumentList @{
 
-# Rice global configs
-#$global:rice_configs = @{
 #Theme = "my_lite"
 #Features = @("shim")
-#}
 
-Initialize-Rice
+}
 #endregion

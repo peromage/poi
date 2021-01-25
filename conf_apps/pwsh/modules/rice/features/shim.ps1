@@ -4,7 +4,7 @@ Shim generator used to delegate executable or scripts.
 Modified by peromage on 2021/01/24
 #>
 
-function New-ShimObject {
+function script:CreateShimObject {
     param ([string]$target, [string]$arguments, [bool]$gui)
     if (-not (Test-Path $target)) {
         throw "Invalid target"
@@ -136,7 +136,7 @@ function New-Shim {
           [ValidateSet("cmd", "ps1", "lnk", "symlink", "exe")]
           [string]$type="cmd",
           [switch]$gui)
-    $obj = New-ShimObject $target $arguments $gui.IsPresent
+    $obj = script:CreateShimObject $target $arguments $gui.IsPresent
     try {
         switch ($type) {
             "cmd" {

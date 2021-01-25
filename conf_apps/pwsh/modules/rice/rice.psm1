@@ -4,7 +4,10 @@ Rice root module. Initialization will be done in this module.
 Modified by peromage on 2012/01/24
 #>
 
+param ([hashtable]$configs=@{})
+
 #region Global variables
+
 # Environment variables
 $global:rice_user_env_vars = @{
 XDG_DATA_HOME = Join-Path $HOME ".local/share"
@@ -14,21 +17,26 @@ EDITOR = "nvim"
 SHELL = "pwsh"
 }
 
-# General configurations
+# Default configurations
 $global:rice_configs = @{
 # CLI prompt theme
 Theme = ""
 # Additional features
 Features = @()
 }
+
 #endregion
 
 #region Global status meta
+
 $global:rice_meta = @{
 HostName = $ENV:COMPUTERNAME
 UserName = $ENV:USERNAME
 Privileged = $false
+PathSeparator = ";"
+RootDir = $PSScriptRoot
 }
+# Update based on the platform
 if ($IsWindows) {
     $global:rice_meta.Privileged = (
         [Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(
@@ -37,98 +45,84 @@ if ($IsWindows) {
 } elseif ($IsLinux) {
     $global:rice_meta.HostName = hostname
     $global:rice_meta.Privileged = (id -u) -eq 0
+    $global:rice_meta.PathSeparator = ":"
 }
+
 #endregion
 
 #region Internal helper functions
-# Function to source all given script files
-function script:sourceScripts {
+
+function script:buildFileSourcingString {
+    <#
+    .SYNOPSIS
+    This function returns a string which can be used to source the given file
+    in current scope.
+    #>
     param ([string]$path)
-    . $path
+
+    # Normal dot-sourcing version
+    return '. "{0}"' -f $path
 
     # Alternative faster version
-    # . (
-    #     [scriptblock]::Create(
-    #         [System.IO.File]::ReadAllText(
-    #             $path, [System.Text.Encoding]::UTF8
-    #         )
-    #     )
-    # )
+    # return '. ([scriptblock]::Create([System.IO.File]::ReadAllText("{0}", [System.Text.Encoding]::UTF8)))' -f $path
 
     # Alternative faster version 2
-    # $ExecutionContext.InvokeCommand.InvokeScript(
-    #     $false,
-    #     (
-    #         [scriptblock]::Create(
-    #             [System.IO.File]::ReadAllText(
-    #                 $path, [System.Text.Encoding]::UTF8
-    #             )
-    #         )
-    #     ),
-    #     $null,
-    #     $null
-    # )
+    # return '$ExecutionContext.InvokeCommand.InvokeScript($false, ([scriptblock]::Create([System.IO.File]::ReadAllText("{0}", [System.Text.Encoding]::UTF8))), $null, $null)' -f $path
 }
 
-# Function to source ps1 files under a directory within this module
-function script:sourceDirectory {
+function script:buildDirectorySourcingString {
+    <#
+    .SYNOPSIS
+    This function returns a string which can be used to source the given directory
+    within this module in current scope.
+    #>
     param ([string]$dir, [string]$namePattern)
-    try {
-        $files = Get-ChildItem -Path "$PSScriptRoot\$dir\$namePattern.ps1" -ErrorAction Stop
-        foreach ($_ in $files) {
-            script:sourceScripts $_.FullName
-        }
-    } catch {
-        Write-Output "Error happened while sourcing scripts:"
-        Write-Output "$_"
-    }
-
+    return @'
+try {{
+    $files = Get-ChildItem -Path "{0}" -ErrorAction Stop
+    foreach ($_ in $files) {{
+        Invoke-Expression (buildFileSourcingString $_.FullName)
+    }}
+}} catch {{
+    Write-Output "Error happened while sourcing scripts:"
+    Write-Output "$_"
+}}
+'@ -f (Join-Path $global:rice_meta.RootDir $dir "$namePattern.ps1")
 }
 
-function script:loadBase {
-    script:sourceDirectory base *
-    # Import Windows related scripts
-    if ($IsWindows) {
-        script:sourceDirectory base_win *
-    }
+function script:normalizePath {
+    param ([string]$path)
+    return $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($path)
 }
 
-function script:loadFeatures {
-    param ([string[]]$names)
-    if ($names.Count -eq 0) {
-        return
-    }
-    foreach ($_ in $names) {
-        script:sourceDirectory features $_
-    }
-}
-
-function script:loadTheme {
-    param ([string]$name)
-    if ([string]::IsNullOrWhiteSpace($name)) {
-        return
-    }
-    script:sourceDirectory themes $name
-}
-
-function script:addScriptPath {
-    if ($IsWindows) {
-        $ENV:Path += ";$PSScriptRoot\scripts"
-    } else {
-        $ENV:Path += ":$PSScriptRoot/scripts"
-    }
-}
 #endregion
 
 #region Initialization
-function Initialize-Rice {
-    # Import base scripts
-    script:loadBase
-    # Load additional features
-    script:loadFeatures $global:rice_configs.Features
-    # Load theme
-    script:loadTheme $global:rice_configs.Theme
-    # Add script path
-    script:addScriptPath
+
+# Avoid using pipe to optimize loading performance
+# Update configuration
+foreach ($_ in $configs.GetEnumerator()) {
+    $global:rice_configs[$_.Key] = $_.Value
 }
+# Import base scripts
+Invoke-Expression (script:buildDirectorySourcingString base *)
+if ($IsWindows) {
+    Invoke-Expression (script:buildDirectorySourcingString base_win *)
+}
+# Load additional features
+if ($global:rice_configs.Features.Count -ne 0) {
+    foreach ($_ in $global:rice_configs.Features) {
+        Invoke-Expression (script:buildDirectorySourcingString features $_)
+    }
+}
+# Load theme
+if (-not ([string]::IsNullOrWhiteSpace($global:rice_configs.Theme))) {
+    Invoke-Expression (script:buildDirectorySourcingString themes $global:rice_configs.Theme)
+}
+# Add script path
+$pathToBeAdded = script:normalizePath "$PSScriptRoot/scripts"
+if (-not ($ENV:Path -match [regex]::Escape($pathToBeAdded))) {
+    $ENV:Path += $global:rice_meta.PathSeparator + $pathToBeAdded
+}
+
 #endregion

@@ -4,7 +4,7 @@ User global environment variable realted commands. Modifications will be persist
 Modified by peromage on 2021/01/24
 #>
 
-function Set-UserEnvVars {
+function Set-EnvUserVars {
     param ([hashtable]$envVarHash)
     foreach ($_ in $envVarHash.GetEnumerator()) {
         [System.Environment]::SetEnvironmentVariable(
@@ -12,7 +12,7 @@ function Set-UserEnvVars {
     }
 }
 
-function Remove-UserEnvVars {
+function Remove-EnvUserVars {
     param ([hashtable]$envVarHash)
     foreach ($_ in $envVarHash.GetEnumerator()) {
         [System.Environment]::SetEnvironmentVariable(
