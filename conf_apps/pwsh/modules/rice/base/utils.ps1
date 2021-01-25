@@ -1,10 +1,10 @@
 <#
 .SYNOPSIS
-Daily used aliases.
-Modified by peromage on 2012/01/20
+Daily used utility commands.
+Modified by peromage on 2012/01/24
 #>
 
-function ListDirectory {
+function Get-DirectoryList {
     [CmdletBinding(PositionalBinding=$false, DefaultParameterSetName="sortByDefault")]
     param (
         [Parameter(Position=0)][string]$path=$PWD.Path,
@@ -46,30 +46,19 @@ function ListDirectory {
     }
 }
 
-function LfChangeDirectory {
-    <#
-    .Description
-    This function requires lf in the path
-    #>
-    $tmp = [System.IO.Path]::GetTempFileName()
-    lf "-last-dir-path=$tmp"
-    if (Test-Path -PathType Leaf $tmp) {
-        $dst = Get-Content $tmp
-        Remove-Item $tmp
-        if ((Test-Path -PathType Container $dst) -and ($dst -ne $pwd.Path)) {
-            Set-Location $dst
-        }
-    }
-}
-
-function GetHistorySavePath {
+function Get-HistorySavePath {
     return (Get-PSReadlineOption).HistorySavePath
 }
 
-# Alias
-Set-Alias ll ListDirectory
-Set-Alias lfcd LfChangeDirectory
-Set-Alias historypath GetHistorySavePath
+function Set-SessionUserEnvVars {
+    if ($global:rice_user_env_vars -isnot [hashtable]) {
+        return
+    }
+    foreach ($_ in $global:rice_user_env_vars.GetEnumerator()) {
+        Set-Item "ENV:$($_.key)" $_.Value
+    }
+}
 
-# Exporting
-Export-ModuleMember -Function * -Alias *
+# Alias
+Set-Alias ll Get-DirectoryList
+Set-Alias hispath Get-HistorySavePath

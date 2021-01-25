@@ -1,19 +1,22 @@
 <#
 .SYNOPSIS
 This file should be sourced to initialize rice configs.
-Modified by peromage on 2021/01/20
+Modified by peromage on 2021/01/24
 #>
 
 #region Initialization
-# Load rice core init file. If this file has been moved to other places change
-# this path accordingly. Otherwise it should stay untouched.
-. "${PSScriptRoot}/__rc__/rc.ps1"
 # Shortcut to edit the init file
-$INIT_FILE = $MyInvocation.MyCommand.Source
+$init_file = $MyInvocation.MyCommand.Source
+# Add rice module path
+# For Linux/Mac this value should be like ":$PSScriptRoot/modules"
+$ENV:PSModulePath += ";$PSScriptRoot\modules"
+Import-Module rice
+
 # Rice global configs
-$global:RICE_CONFIGS = @{
-#    theme = "style_std"
-#    modules = @("test")
-}
-RiceConfigInit
+#$global:rice_configs = @{
+#Theme = "my_lite"
+#Features = @("shim")
+#}
+
+Initialize-Rice
 #endregion

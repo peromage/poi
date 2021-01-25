@@ -1,10 +1,10 @@
 <#
 .SYNOPSIS
 Shim generator used to delegate executable or scripts.
-Modified by peromage on 2021/01/20
+Modified by peromage on 2021/01/24
 #>
 
-function CreateShimObject {
+function New-ShimObject {
     param ([string]$target, [string]$arguments, [bool]$gui)
     if (-not (Test-Path $target)) {
         throw "Invalid target"
@@ -127,7 +127,7 @@ function CreateShimObject {
     return $shimObj
 }
 
-function NewShim {
+function New-Shim {
     param([Parameter(Mandatory=$true)]
           [string]$target,
           [Parameter(Mandatory=$true)]
@@ -136,7 +136,7 @@ function NewShim {
           [ValidateSet("cmd", "ps1", "lnk", "symlink", "exe")]
           [string]$type="cmd",
           [switch]$gui)
-    $obj = CreateShimObject $target $arguments $gui.IsPresent
+    $obj = New-ShimObject $target $arguments $gui.IsPresent
     try {
         switch ($type) {
             "cmd" {
@@ -165,5 +165,3 @@ function NewShim {
         Write-Error "$_"
     }
 }
-
-Export-ModuleMember -Function *
