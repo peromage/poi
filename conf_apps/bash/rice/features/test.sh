@@ -1,3 +1,6 @@
+# Test utilities.
+# Modified by peromage on 2021/01/25
+
 # Terminal color test
 function colortest() {
     local width=7

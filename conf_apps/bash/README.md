@@ -4,7 +4,7 @@
 
 Rename `template_init.sh` to `init.sh` or `init.sh` and source it.
 
-Make your own changes in that file.
+All modifications should go into there.
 
 ```bash
 $ . /path/to/init.sh
@@ -12,7 +12,7 @@ $ . /path/to/init.sh
 
 ## Directories
 
-- *\_\_rc\_\_*: Directory that contains all configurations.
-- *\_\_rc\_\_/autoload.d*: Dropdown menu. Modules in this directory are autoloaded.
-- *\_\_rc\_\_/themes*: Command line themes.
-- *\_\_rc\_\_/modules*: Modules that can be loaded on demands.
+- *base*: Essential scripts
+- *features*: Scripts modules for advanced usage.
+- *themes*: CLI prompt themes.
+- *scripts*: A drop-in directory which will be added to PATH.
