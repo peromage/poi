@@ -90,7 +90,9 @@ FunctionsToExport = @(
     "Set-UserEnvVars",
     "Remove-UserEnvVars",
     # feature/shim.ps1
-    "New-Shim"
+    "New-Shim",
+    # features/lf.ps1
+    "Set-LfDirectory"
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -104,7 +106,8 @@ VariablesToExport = @()
 AliasesToExport = @(
     # base/utils.ps1
     "ll",
-    "hispath"
+    "hispath",
+    "lfcd"
 )
 
 # DSC resources to export from this module
@@ -153,6 +156,6 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-DefaultCommandPrefix = 'Rc'
+# DefaultCommandPrefix = 'Rc'
 
 }
