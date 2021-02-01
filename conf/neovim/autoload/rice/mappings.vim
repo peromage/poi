@@ -48,5 +48,5 @@ function! rice#mappings#init() abort
     nnoremap <silent> <leader>y "*y
     vnoremap <silent> <leader>y "*y
     " Terminal
-    "tnoremap <Esc> <C-\><C-n>
+    tnoremap <Esc><Esc> <C-\><C-n>
 endfunction
