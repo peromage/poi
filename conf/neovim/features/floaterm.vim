@@ -21,7 +21,7 @@ nnoremap <silent> <Esc><Esc>n :FloatermNew<CR>
 " Send a custom command
 nnoremap <Esc><Esc>s :FloatermSend<Space>
 " Execute current file
-nnoremap <Esc><Esc>S :FloatermSend '%:p'<CR>
+nnoremap <Esc><Esc>S :FloatermSend %:p<CR><CR>
 
 " Key bindings in terminal mode
 tnoremap <silent> <Esc><Esc>t <C-\><C-n>:FloatermToggle<CR>
