@@ -3,7 +3,7 @@
 
 function! rice#mappings#init() abort
     " My leader key
-    let g:mapleader=' '
+    let g:mapleader="\<Space>"
     " Splittin/
     nnoremap <silent> <leader><Bar> :vs<CR>
     nnoremap <silent> <leader><Bslash> :sp<CR>
