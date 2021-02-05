@@ -1,5 +1,5 @@
 " Coc settings
-" Modified by peromage on 2021/01/22
+" Modified by peromage on 2021/02/04
 
 if exists('g:loaded_rice_coc')
     finish
@@ -88,8 +88,3 @@ function! s:show_documentation()
         call CocAction('doHover')
     endif
 endfunction
-
-
-"""" Coc plugin keymaps
-" File explorer
-nnoremap <silent> <leader>e :CocCommand explorer --position left --sources buffer+,file+<CR> --toggle
