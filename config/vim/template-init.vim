@@ -42,6 +42,7 @@ call rice#begin()
 "Plug 'sheerun/vim-polyglot'
 "Plug 'mhinz/vim-startify'
 "Plug 'itchyny/lightline.vim'
+"Plug 'tpope/vim-fugitive'
 
 call rice#end()
 "-------------------------------------------------------------------------------
