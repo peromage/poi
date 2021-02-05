@@ -4,7 +4,7 @@
 
 #Initialization
 #-------------------------------------------------------------------------------
-#rice_features="test git"
+#rice_plugins="lf test"
 #rice_theme="mybash"
 
 # Load rice core init file. If this file has been moved to other places change

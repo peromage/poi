@@ -20,9 +20,9 @@ SHELL = "pwsh"
 # Default configurations
 $global:rice_configs = @{
 # CLI prompt theme
-Theme = ""
-# Additional features
-Features = @()
+theme = ""
+# Additional plugins
+plugins = @()
 }
 
 #endregion
@@ -109,15 +109,15 @@ Invoke-Expression (script:buildDirectorySourcingString base *)
 if ($IsWindows) {
     Invoke-Expression (script:buildDirectorySourcingString base_win *)
 }
-# Load additional features
-if ($global:rice_configs.Features.Count -ne 0) {
-    foreach ($_ in $global:rice_configs.Features) {
-        Invoke-Expression (script:buildDirectorySourcingString features $_)
+# Load additional plugins
+if ($global:rice_configs.plugins.Count -ne 0) {
+    foreach ($_ in $global:rice_configs.plugins) {
+        Invoke-Expression (script:buildDirectorySourcingString plugins $_)
     }
 }
 # Load theme
-if (-not ([string]::IsNullOrWhiteSpace($global:rice_configs.Theme))) {
-    Invoke-Expression (script:buildDirectorySourcingString themes $global:rice_configs.Theme)
+if (-not ([string]::IsNullOrWhiteSpace($global:rice_configs.theme))) {
+    Invoke-Expression (script:buildDirectorySourcingString themes $global:rice_configs.theme)
 }
 # Add script path
 $pathToBeAdded = script:normalizePath "$PSScriptRoot/scripts"

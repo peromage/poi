@@ -13,8 +13,8 @@ $init_file = $MyInvocation.MyCommand.Source
 $ENV:PSModulePath += ";" + $PSScriptRoot
 Import-Module rice_pwsh -ArgumentList @{
 
-#Theme = "my_lite"
-#Features = @("shim", "lf")
+#theme = "my_lite"
+#plugins = @("lf", "shim")
 
 }
 #-------------------------------------------------------------------------------

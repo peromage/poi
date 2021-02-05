@@ -15,6 +15,7 @@ Essential
 
 Optional
 
+- [lf][lf]
 - [fzf][fzf_url]
 - [ripgrep][ripgrep_url]
 - [universal-ctags][ctags_url]
@@ -72,6 +73,7 @@ Directories which start with "@" contain configurations for other applications a
 - *rice_bash/scripts*: A drop-in directory which will be added to PATH.
 
 
+[lf]: https://github.com/gokcehan/lf
 [fzf_url]: https://github.com/junegunn/fzf
 [ripgrep_url]: https://github.com/BurntSushi/ripgrep
 [ctags_url]: https://github.com/universal-ctags/ctags!

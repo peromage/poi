@@ -32,8 +32,8 @@ export XDG_DATA_HOME=$HOME/.local/share
 export EDITOR=nvim
 
 # Default configurations
-# Additional features. Space separated string list.
-[ -z "$rice_features" ] && rice_features=""
+# Additional plugins. Space separated string list.
+[ -z "$rice_plugins" ] && rice_plugins=""
 # Shell theme
 [ -z "$rice_theme" ] && rice_theme=""
 
@@ -57,10 +57,10 @@ function _riceSourceFiles {
 
 # Load base scripts
 _riceSourceFiles $rice_root/base/*.sh
-# Load additonal features
-if [ -n "$rice_features" ]; then
-    for i in $rice_features; do
-        _riceSourceFiles $rice_root/features/$i.sh
+# Load additonal plugins
+if [ -n "$rice_plugins" ]; then
+    for i in $rice_plugins; do
+        _riceSourceFiles $rice_root/plugins/$i.sh
     done
     unset i
 fi
