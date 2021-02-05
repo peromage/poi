@@ -7,15 +7,7 @@ endif
 let g:loaded_rice_session_manager = 1
 
 " Compatible with Vim
-if has('nvim')
-    let s:SESSION_SAVE_DIR = simplify(stdpath('config').'/saved_sessions')
-else
-    if has('win32')
-        let s:SESSION_SAVE_DIR = simplify($HOME.'/vimfiles/saved_sessions')
-    else
-        let s:SESSION_SAVE_DIR = simplify($HOME.'/.vim/saved_sessions')
-    endif
-endif
+let s:SESSION_SAVE_DIR = simplify($HOME . '/vim_saved_sessions')
 
 " Generate a template name of a new session.
 " @return: A string of the new session name
