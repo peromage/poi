@@ -7,10 +7,6 @@ function! rice#gui#neovimqt#init() abort
     endif
     echom 'neovim-qt detected'
 
-    " Set font
-    if g:rice_gui_font !=# ''
-        execute 'Guifont! '.g:rice_gui_font
-    endif
     " Disable popup menu
     GuiPopupmenu 0
     " Disable tabline

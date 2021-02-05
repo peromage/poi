@@ -52,7 +52,7 @@ function! s:load_plugging(_name) abort
     execute 'source ' . s:rice_plugging_dir . '/' . a:_name . '.vim'
 endfunction
 
-function! s:init_config()
+function! s:init_config() abort
     " Load color scheme
     if s:validate_config_var('rice_color', v:t_string)
         execute 'colorscheme '.g:rice_color
@@ -65,17 +65,15 @@ function! s:init_config()
     endif
 endfunction
 
-function! s:init_gui_config()
+function! s:init_gui_config() abort
     " Set GUI font
     if s:validate_config_var('rice_gui_font', v:t_string)
         let &guifont = g:rice_gui_font
     endif
     " Select frontend
     if s:validate_config_var('rice_gui_frontend', v:t_string)
-        let l:_init_func_name = '*rice#gui#' . g:rice_gui_frontend . '#init'
-        if exists(l:_init_func_name)
-            execute 'call ' . l:_init_func_name
-        endif
+        let l:_init_func_name = 'rice#gui#' . g:rice_gui_frontend . '#init' . '()'
+        execute 'call ' . l:_init_func_name
     endif
 endfunction
 

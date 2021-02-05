@@ -18,6 +18,8 @@ call rice#begin()
 " Python for Vim
 "let &pythonthreehome = 'Python39'
 "let &pythonthreedll = 'python39.dll'
+"let &pythonhome = 'Python27'
+"let &pythondll = 'python27.dll'
 
 " Rice configs
 "let g:rice_color = 'dracula'
