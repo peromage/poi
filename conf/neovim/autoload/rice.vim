@@ -105,5 +105,6 @@ function! rice#guiBegin() abort
 endfunction
 
 function! rice#guiEnd() abort
+    call rice#gui_common#init()
     call s:init_gui_config()
 endfunction

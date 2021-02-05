@@ -2,5 +2,5 @@
 " Modified by peromage on 2021/02/04
 
 function! rice#gui_common#init() abort
-    set guioptions=mrb
+    set guioptions=egmrLtT
 endfunction
