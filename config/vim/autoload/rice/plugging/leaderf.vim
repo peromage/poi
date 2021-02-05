@@ -1,12 +1,11 @@
 " LeaderF settings
-" Modified by peromage on 2021/01/20
+" Modified by peromage on 2021/02/05
 
 if exists('g:loaded_rice_leaderf')
     finish
 endif
 let g:loaded_rice_leaderf = 1
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
-
 
 let g:Lf_ShowRelativePath = 1
 let g:Lf_HideHelp = 1
@@ -17,7 +16,8 @@ let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_JumpToExistingWindow = 0
 let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewHorizontalPosition = 'left'
+let g:Lf_PreviewHorizontalPosition = 'right'
+let g:Lf_PopupPreviewPosition = 'top'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewResult = {
     \ 'File': 1,

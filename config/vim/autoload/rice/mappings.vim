@@ -18,19 +18,17 @@ function! rice#mappings#init() abort
     nnoremap <silent> - <C-w><
     nnoremap <silent> = <C-w>>
     " Tabs
-    nnoremap <silent> <leader>, gT
-    nnoremap <silent> <leader>. gt
-    nnoremap <silent> <leader>B :tabs<CR>:tabn<Space>
-    nnoremap <silent> <leader>t :tabnew<CR>
+    nnoremap <silent> <leader>H gT
+    nnoremap <silent> <leader>L gt
+    nnoremap <silent> <leader>bt :tabs<CR>:tabn<Space>
+    nnoremap <silent> <leader>n :tabnew<CR>
     " Buffers
-    nnoremap <silent> gb :bn<CR>
-    nnoremap <silent> gB :bp<CR>
-    nnoremap <silent> <leader>/ :bn<CR>
-    nnoremap <silent> <leader>' :bp<CR>
-    nnoremap <silent> <leader>b :buffers<CR>:buffer<Space>
-    nnoremap <silent> <leader>n :enew<CR>
+    nnoremap <silent> <leader>J :bn<CR>
+    nnoremap <silent> <leader>K :bp<CR>
+    nnoremap <silent> <leader>bb :buffers<CR>:buffer<Space>
+    nnoremap <silent> <leader>N :enew<CR>
     " Registers
-    nnoremap <silent> <leader>" :reg<CR>
+    nnoremap <silent> <leader>b" :reg<CR>
     " Quick quit
     nnoremap <silent> <leader>q :q<CR>
     nnoremap <silent> <leader>Q :qa<CR>
@@ -40,13 +38,13 @@ function! rice#mappings#init() abort
     nnoremap <silent> <leader># :noh<CR>
     nnoremap <silent> <leader>* :noh<CR>
     " Show history messages
-    nnoremap <silent> <leader>: :messages<CR>
+    nnoremap <silent> <leader>b: :messages<CR>
     " Paste from system clipboard
-    nnoremap <silent> <leader>p "*p
-    vnoremap <silent> <leader>p "*p
+    nnoremap <silent> <leader>gp "*p
+    vnoremap <silent> <leader>gp "*p
     " Copy to system clipboard
-    nnoremap <silent> <leader>y "*y
-    vnoremap <silent> <leader>y "*y
+    nnoremap <silent> <leader>gy "*y
+    vnoremap <silent> <leader>gy "*y
     " Terminal
     tnoremap <Esc><Esc> <C-\><C-n>
 endfunction

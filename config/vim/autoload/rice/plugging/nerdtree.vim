@@ -7,7 +7,6 @@ endif
 let g:loaded_rice_nerdtree = 1
 Plug 'preservim/nerdtree'
 
-
 " Default view
 let g:NERDTreeShowHidden = 1
 

@@ -14,17 +14,13 @@ let g:floaterm_height = 0.5
 let g:floaterm_width = 0.5
 
 " Key bindings in normal mode
-nnoremap <silent> <Esc><Esc>t :FloatermToggle<CR>
-nnoremap <silent> <Esc><Esc>, :FloatermPrev<CR>
-nnoremap <silent> <Esc><Esc>. :FloatermNext<CR>
-nnoremap <silent> <Esc><Esc>n :FloatermNew<CR>
+nnoremap <silent> <leader>tt :FloatermToggle<CR>
 " Send a custom command
-nnoremap <Esc><Esc>s :FloatermSend<Space>
+nnoremap <leader>ts :FloatermSend<Space>
 " Execute current file
-nnoremap <Esc><Esc>S :FloatermSend %:p<CR><CR>
-
+nnoremap <leader>tS :FloatermSend %:p<CR><CR>
 " Key bindings in terminal mode
-tnoremap <silent> <Esc><Esc>t <C-\><C-n>:FloatermToggle<CR>
-tnoremap <silent> <Esc><Esc>, <C-\><C-n>:FloatermPrev<CR>
-tnoremap <silent> <Esc><Esc>. <C-\><C-n>:FloatermNext<CR>
-tnoremap <silent> <Esc><Esc>n <C-\><C-n>:FloatermNew<CR>
+tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<CR>
+tnoremap <silent> <C-h> <C-\><C-n>:FloatermPrev<CR>
+tnoremap <silent> <C-l> <C-\><C-n>:FloatermNext<CR>
+tnoremap <silent> <C-n> <C-\><C-n>:FloatermNew<CR>
