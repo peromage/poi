@@ -1,3 +1,34 @@
 # Ignore local saved files
 **/.save/*
 .vscode
+
+# Vim
+# Plugin dir
+plugged/**
+# Netrw garbage
+.netrwhist
+# Session files
+saved_sessions/**
+# Local temp configuration
+init.vim
+ginit.vim
+.vimrc
+.gvimrc
+_vimrc
+_gvimrc
+coc-settings.json
+
+# Bash
+init.sh
+init
+profile.sh
+bashrc.sh
+.bashrc
+.bash_history
+.bash_profile
+.profile
+
+# Pwsh
+profile.ps1
+Microsoft.PowerShell_profile.ps1
+init.ps1

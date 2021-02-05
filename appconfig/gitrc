@@ -1,3 +1,10 @@
+# How to include this file
+# [include]
+# # On Windows
+# path = "X:/path/to/gitrc"
+# # On Linux
+# path = "/path/to/gitrc"
+
 [user]
 name = peromage
 email = peromage@outlook.com
