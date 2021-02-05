@@ -1,5 +1,5 @@
 " Session management
-" Modified by peromage on 2021/01/22
+" Modified by peromage on 2021/02/04
 
 if exists('g:loaded_rice_session_manager')
     finish
@@ -7,7 +7,15 @@ endif
 let g:loaded_rice_session_manager = 1
 
 " Compatible with Vim
-let s:SESSION_SAVE_DIR = simplify(stdpath('data').'/saved_sessions')
+if has('nvim')
+    let s:SESSION_SAVE_DIR = simplify(stdpath('config').'/saved_sessions')
+else
+    if has('win32')
+        let s:SESSION_SAVE_DIR = simplify($HOME.'/vimfiles/saved_sessions')
+    else
+        let s:SESSION_SAVE_DIR = simplify($HOME.'/.vim/saved_sessions')
+    endif
+endif
 
 " Generate a template name of a new session.
 " @return: A string of the new session name

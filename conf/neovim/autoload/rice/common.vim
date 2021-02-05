@@ -1,14 +1,18 @@
 " Rice editor common settings
-" Modified by peromage on 2021/01/23
+" Modified by peromage on 2021/02/04
 
 function! rice#common#init() abort
     " Quality of life
     set nocompatible
+    set wildmenu
     filetype plugin indent on
+
+    " Windows
     set splitbelow
     set splitright
     set winaltkeys=no
     set lazyredraw
+
     " Status bar view
     set laststatus=2
     set statusline=
@@ -22,47 +26,55 @@ function! rice#common#init() abort
     set statusline+=\ [%Y,%{&fenc!=''?&fenc:&enc}%{(&bomb?\"(BOM)\":\"\")},%{&ff}]
     "Navigation info
     set statusline+=\ \(%l:%c,%P\)
+
     " Appearance
     set background=dark
     " Line numbers
     set number
     set relativenumber
     set signcolumn=yes
+
     " Encoding
     set encoding=utf-8
     set fileencoding=utf-8
     set fileencodings=ucs-bom,utf-8,latin1
     set termencoding=utf-8
     set fileformats=unix,dos,mac
+
     " Remove warning when switch buffer that is not saved
     set hidden
+
     " Indentation
     set backspace=indent,eol,start
     set autoindent
     set cindent
+
     " Folding
     set foldenable
     set foldmethod=indent
     set foldlevel=99
-    " Formatting
+
+    " Visual
     set colorcolumn=80,120
     set tabstop=4
     set softtabstop=4
     set shiftwidth=4
     set expandtab
-    set syntax=on
     set ruler
     set nowrap
     set list
     set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,nbsp:%
-    set endofline
-    set fixendofline
-    set nobinary
+
+    " Syntax
+    set syntax=on
+
     " Searching
     set hlsearch
     set ignorecase
     set smartcase
     set incsearch
+
+    " Files
     " Don't auto flush or read files
     " Don't keep backup file unless it failed to write
     set autoread
@@ -71,9 +83,13 @@ function! rice#common#init() abort
     set nobackup
     set writebackup
     set noundofile
+    set nobinary
+    set endofline
+    set fixendofline
+
     " Tags
     set tags=./.tags;,.tags
-    " GUI replated
+
+    " Enable mouse
     set mouse=a
-    set guioptions=mrb
 endfunction

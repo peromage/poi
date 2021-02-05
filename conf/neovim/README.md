@@ -1,6 +1,6 @@
 # Rice NeoVim Configuration
 
-Configurations are based on NeoVim. It might be compatible with Vim.
+This configuration is compatible with Vim and NeoVim.
 
 ## Prerequisites
 
@@ -29,4 +29,15 @@ Configurations are based on NeoVim. It might be compatible with Vim.
 - *autoload*: Common libraries.
 - *colors*: Color schemes.
 - *plugin*: Additional plugins (Loaded all the time).
-- *features*: Manually loaded feature plugins.
+
+## Some Other Tools That Might Need To Be Installed
+
+- [fzf][fzf_url]
+- [ripgrep][ripgrep_url]
+- [universal-ctags][ctags_url]
+- [bat][bat_url]
+
+[fzf_url]: https://github.com/junegunn/fzf
+[ripgrep_url]: https://github.com/BurntSushi/ripgrep
+[ctags_url]: https://github.com/universal-ctags/ctags!
+[bat_url]: https://github.com/sharkdp/bat

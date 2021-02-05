@@ -5,7 +5,14 @@ if exists('g:loaded_rice_defx')
     finish
 endif
 let g:loaded_rice_defx = 1
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 
 " General config

@@ -1,7 +1,8 @@
-" Rice NeoVim init template file.
-" Modified by peromage on 2021/01/23
+" Rice init template file.
+" Modified by peromage on 2021/02/04
 
-"region Initialization
+" Initialization
+"-------------------------------------------------------------------------------
 " Runtime path must be added
 set runtimepath+=expand('<sfile>:h')
 " Shortcut to open this file
@@ -9,10 +10,20 @@ let g:init_file = expand('<sfile>:p')
 command! InitFile execute 'edit '.g:init_file
 " Initialize rice
 call rice#begin()
+
+" Python for NeoVim
+"let g:python3_host_prog = 'python3'
+"let g:python_host_prog = 'python2'
+
+" Python for Vim
+"let &pythonthreehome = 'Python39'
+"let &pythonthreedll = 'python39.dll'
+
+" Rice configs
 "let g:rice_color = 'dracula'
-"let g:rice_features = ['coc', 'leaderf']
-"let g:python3_host_prog='python3'
-"let g:python_host_prog='python2'
+"let g:rice_plugging = ['coc', 'leaderf', 'floaterm']
+
+" Coc plugins
 "let g:coc_global_extensions = [
 "    \ 'coc-explorer',
 "    \ 'coc-tabnine',
@@ -26,9 +37,11 @@ call rice#begin()
 "    \ 'coc-tsserver',
 "    \ 'coc-pyright'
 "    \ ]
-" Extra plugins
+
+" Extra plugins via vim-plug
 "Plug 'sheerun/vim-polyglot'
 "Plug 'mhinz/vim-startify'
 "Plug 'itchyny/lightline.vim'
+
 call rice#end()
-"endregion
+"-------------------------------------------------------------------------------

@@ -92,8 +92,4 @@ endfunction
 
 """" Coc plugin keymaps
 " File explorer
-nnoremap <silent> <leader>e
-    \ :CocCommand explorer
-    \ --position left
-    \ --sources buffer+,file+<CR>
-    \ --toggle
+nnoremap <silent> <leader>e :CocCommand explorer --position left --sources buffer+,file+<CR> --toggle
