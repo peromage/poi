@@ -21,14 +21,14 @@ let g:Lf_PopupPreviewPosition = 'top'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewResult = {
 \   'File': 0,
-\   'Buffer': 1,
+\   'Buffer': 0,
 \   'Mru': 0,
-\   'Tag': 1,
-\   'BufTag': 1,
-\   'Function': 1,
-\   'Line': 1,
+\   'Tag': 0,
+\   'BufTag': 0,
+\   'Function': 0,
+\   'Line': 0,
 \   'Colorscheme': 0,
-\   'Jumps': 1
+\   'Jumps': 0
 \ }
 
 " Normal
