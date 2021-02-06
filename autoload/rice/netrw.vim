@@ -28,5 +28,5 @@ function! rice#netrw#init() abort
     let g:netrw_preview = 0
     autocmd FileType netrw call <SID>my_netrw()
     " Global Hotkey
-    nnoremap <silent> <leader>e :Lexplore<CR>
+    "nnoremap <silent> <leader>e :Lexplore<CR>
 endfunction
