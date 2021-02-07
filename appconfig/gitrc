@@ -12,7 +12,7 @@ email = peromage@outlook.com
 [core]
 autocrlf = input
 quotepath = false
-editor = vim
+editor = vim -u NONE
 
 [color]
 ui = auto
@@ -29,23 +29,25 @@ encoding = utf-8
 [i18n]
 logoutputencoding = utf-8
 
-[diff]
-tool = nvimdiff
-
 [difftool]
 prompt = false
+trustExitCode = false
 
-[difftool "nvimdiff"]
-cmd = nvim -d $LOCAL $REMOTE
+[difftool "vimdiff"]
+cmd = vim -u NONE -d $LOCAL $REMOTE
 
-[merge]
-tool = nvimdiff
+[diff]
+tool = vimdiff
 
 [mergetool]
 prompt = false
+keepBackup = false
 
-[mergetool "nvimdiff"]
-cmd = nvim -d $LOCAL $MERGED $REMOTE -c 'wincmd w|wincmd J'
+[mergetool "vimdiff"]
+cmd = vim -u NONE -d $LOCAL $MERGED $REMOTE -c 'wincmd w|wincmd J'
+
+[merge]
+tool = vimdiff
 
 [pull]
 ff = only
