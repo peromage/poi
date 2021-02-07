@@ -63,7 +63,7 @@ let g:coc_explorer_global_presets = {
 \       'content-width-type': 'vim-width'
 \   }
 \ }
-nnoremap <silent> <leader>ee :CocCommand explorer --preset left<CR>
-nnoremap <silent> <leader>eE :CocCommand explorer --preset right<CR>
-nnoremap <silent> <leader>et :CocCommand explorer --preset tab<CR>
-nnoremap <silent> <leader>ef :CocCommand explorer --preset floating<CR>
+nnoremap <silent> <leader><leader>ee :CocCommand explorer --preset left<CR>
+nnoremap <silent> <leader><leader>eE :CocCommand explorer --preset right<CR>
+nnoremap <silent> <leader><leader>et :CocCommand explorer --preset tab<CR>
+nnoremap <silent> <leader><leader>ef :CocCommand explorer --preset floating<CR>

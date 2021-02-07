@@ -21,6 +21,20 @@ set signcolumn=yes
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+"""" Script defined functions
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+
 """" Keymaps
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -43,47 +57,32 @@ else
 endif
 
 " Use `[` and `]` to navigate diagnostics
-nmap <silent> <leader>c[ <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>c] <Plug>(coc-diagnostic-next)
+nmap <silent> <leader><leader>c[ <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader><leader>c] <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> <leader>cd <Plug>(coc-definition)
-nmap <silent> <leader>cy <Plug>(coc-type-definition)
-nmap <silent> <leader>ci <Plug>(coc-implementation)
-nmap <silent> <leader>cr <Plug>(coc-references)
-nmap <silent> <leader>ca <Plug>(coc-codeaction)
-nmap <silent> <leader>cp :CocCommand<CR>
-nmap <silent> <leader>cl :CocList<CR>
+nmap <silent> <leader><leader>cd <Plug>(coc-definition)
+nmap <silent> <leader><leader>cy <Plug>(coc-type-definition)
+nmap <silent> <leader><leader>ci <Plug>(coc-implementation)
+nmap <silent> <leader><leader>cr <Plug>(coc-references)
+nmap <silent> <leader><leader>ca <Plug>(coc-codeaction)
+nmap <silent> <leader><leader>cp :CocCommand<CR>
+nmap <silent> <leader><leader>cl :CocList<CR>
 
 " Use k to show documentation in preview window.
-nnoremap <silent> <leader>ck :call <SID>show_documentation()<CR>
+nnoremap <silent> <leader><leader>ck :call <SID>show_documentation()<CR>
 
 " Show diagnostics messages
-nnoremap <silent> <leader>cm :CocList diagnostics<CR>
+nnoremap <silent> <leader><leader>cm :CocList diagnostics<CR>
 
 " Symbol renaming.
-nmap <leader>crn <Plug>(coc-rename)
+nmap <leader><leader>ccr <Plug>(coc-rename)
 
 " Formatting selected code
-nmap <leader>cfm <Plug>(coc-format-selected)
+nmap <leader><leader>ccf <Plug>(coc-format-selected)
 
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.
 "nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
-
-
-"""" Script defined functions
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
-endfunction
