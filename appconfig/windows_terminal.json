@@ -1,59 +1,85 @@
-
 // To view the default settings, hold "alt" while clicking on the "Settings" button.
 // For documentation on these settings, see: https://aka.ms/terminal-documentation
-
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
 
-    // General tweaks
+    // Default profile settings
+    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+
+    // Startup
     "initialCols": 100,
     "initialRows": 30,
+    "launchMode": "default",
+    "startOnUserLogin": false,
+    "initialPosition": ",",
+
+    // Dynamic profiles
+    "disabledProfileSources": [
+        "Windows.Terminal.Azure",
+        "Windows.Terminal.PowershellCore"
+    ],
 
     // Selection
     "copyOnSelect": true,
     "copyFormatting": true,
 
+    // Window
+    "snapToGridOnResize": true,
+
+    // Tab
+    "tabSwitcherMode": "mru",
+    "alwaysShowTabs": true,
+    "showTabsInTitlebar": true,
+    "showTerminalTitleInTitlebar": true,
+    "tabWidthMode": "equal",
+
     // Paste
     "largePasteWarning": true,
     "multiLinePasteWarning": true,
 
-    // Misc
-    "disabledProfileSources": [
-        "Windows.Terminal.Azure"
-    ],
+    // Appearance
+    "theme": "system",
+    "alwaysOnTop": false,
+    "disableAnimations": true,
+    "confirmCloseAllTabs": true,
 
-    // Default profile settings
-    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-
+    // Profile
     "profiles": {
         "defaults": {
-            "colorScheme": "Dracula",
+            "colorScheme": "synthwave",
             "cursorColor": "#FEFEFE",
-            "cursorShape": "filledBox",
+            "cursorShape": "emptyBox",
             "fontFace": "Cascadia Mono",
             "fontSize": 9,
-            "historySize": 9001,
-            "padding": "8, 8, 8, 8",
-            "snapOnInput": true,
+            "fontWeight": "normal",
             "useAcrylic": false,
             "acrylicOpacity": 0.5,
-            "antialiasingMode": "grayscale",
+            "historySize": 9001,
+            "padding": "8, 8, 8, 8",
             "scrollbarState": "visible",
+            "snapOnInput": true,
+            "antialiasingMode": "cleartype",
             "suppressApplicationTitle": true,
             "closeOnExit": "graceful",
+            "bellStyle": "none",
             "startingDirectory": "%USERPROFILE%"
         },
         "list": [
             {
-                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "guid": "{38cde125-00f4-4397-bc83-a842702235f9}",
+                "commandline": "pwsh -NoLogo",
                 "hidden": false,
                 "name": "PowerShell",
-                "source": "Windows.Terminal.PowershellCore",
-                "tabTitle": "Pwsh"
+                "tabTitle": "pwsh",
+                "icon": "🛵",
+                "colorScheme": "Dracula",
+                "useAcrylic": true,
+                "acrylicOpacity": 0.7
             }
         ]
     },
 
+    // Color
     "schemes": [
         {
             "name": "Dracula",
@@ -141,12 +167,13 @@
         }
     ],
 
+    // Keybinding
     "actions": [
         // Tab
         { "command": "newTab", "keys": "alt+t" },
         { "command": "duplicateTab", "keys": "alt+shift+t" },
-        { "command": "nextTab", "keys": "alt+," },
-        { "command": "prevTab", "keys": "alt+." },
+        { "command": "nextTab", "keys": "alt+shift+l" },
+        { "command": "prevTab", "keys": "alt+shift+h" },
 
         // Pane
         { "command": "closePane", "keys": "alt+q" },
