@@ -16,6 +16,7 @@ let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_JumpToExistingWindow = 0
 let g:Lf_WindowPosition = 'bottom'
+let g:Lf_WindowHeight = '0.2'
 let g:Lf_PreviewHorizontalPosition = 'right'
 let g:Lf_PopupPreviewPosition = 'top'
 let g:Lf_PreviewInPopup = 1
