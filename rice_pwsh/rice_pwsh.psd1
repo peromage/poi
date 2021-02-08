@@ -89,10 +89,12 @@ FunctionsToExport = @(
     # base_win/env_user_var.ps1
     "Set-UserEnvVars",
     "Remove-UserEnvVars",
-    # feature/shim.ps1
+    # plugins/shim.ps1
     "New-Shim",
-    # features/lf.ps1
-    "Set-LfDirectory"
+    # plugins/lf.ps1
+    "Set-LfDirectory",
+    # plugins/test.ps1
+    "Test-ShellColor"
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
