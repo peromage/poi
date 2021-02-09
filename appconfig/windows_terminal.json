@@ -180,8 +180,8 @@
     // Keybinding
     "actions": [
         // Tab
-        { "command": "newTab", "keys": "alt+t" },
-        { "command": "duplicateTab", "keys": "alt+shift+t" },
+        { "command": "newTab", "keys": "alt+n" },
+        { "command": "duplicateTab", "keys": "alt+shift+n" },
         { "command": "nextTab", "keys": "alt+shift+l" },
         { "command": "prevTab", "keys": "alt+shift+h" },
 
