@@ -11,7 +11,7 @@ Plug 'preservim/nerdtree'
 let g:NERDTreeShowHidden = 1
 
 " Global keymaps
-nnoremap <silent> <leader><leader>e :NERDTree<CR>
+nnoremap <silent> <leader>e :NERDTree<CR>
 
 " Keymaps when nerdtree is open
 function! s:myNerdtreeSettings() abort

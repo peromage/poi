@@ -49,50 +49,57 @@ function! rice#mappings#init() abort
     " My leader key
     let g:mapleader="\<Space>"
 
-    nmap <silent> <leader><Bar> <Plug>(rice_vsplit)
-    nmap <silent> <leader><Bslash> <Plug>(rice_hsplit)
+    " The preset keymaps should be minimal
 
+    " <h/j/k/l>
     nmap <silent> <leader>h <Plug>(rice_pane_move_left)
     nmap <silent> <leader>j <Plug>(rice_pane_move_down)
     nmap <silent> <leader>k <Plug>(rice_pane_move_up)
     nmap <silent> <leader>l <Plug>(rice_pane_move_right)
-
-    imap <silent> <C-h> <Plug>(rice_cursor_move_left)
-    imap <silent> <C-j> <Plug>(rice_cursor_move_down)
-    imap <silent> <C-k> <Plug>(rice_cursor_move_up)
-    imap <silent> <C-l> <Plug>(rice_cursor_move_right)
-
+    nmap <silent> <leader>H <Plug>(rice_tab_previous)
+    nmap <silent> <leader>L <Plug>(rice_tab_next)
+    nmap <silent> <leader>J <Plug>(rice_buffer_next)
+    nmap <silent> <leader>K <Plug>(rice_buffer_previous)
+    
+    " <bslash>
+    nmap <silent> <leader><Bar> <Plug>(rice_vsplit)
+    nmap <silent> <leader><Bslash> <Plug>(rice_hsplit)
+    " <minus>/<plus>
     nmap <silent> _ <Plug>(rice_pane_vdecrease)
     nmap <silent> + <Plug>(rice_pane_vincrease)
     nmap <silent> - <Plug>(rice_pane_hdecrease)
     nmap <silent> = <Plug>(rice_pane_hincrease)
-
-    nmap <silent> <leader>H <Plug>(rice_tab_previous)
-    nmap <silent> <leader>L <Plug>(rice_tab_next)
+    " <b>
     nmap <silent> <leader>bt <Plug>(rice_tab_jump)
-    nmap <silent> <leader>n <Plug>(rice_tab_new)
-
-    nmap <silent> <leader>J <Plug>(rice_buffer_next)
-    nmap <silent> <leader>K <Plug>(rice_buffer_previous)
     nmap <silent> <leader>bb <Plug>(rice_buffer_jump)
-    nmap <silent> <leader>N <Plug>(rice_buffer_new)
-    nmap <silent> <leader>x <Plug>(rice_buffer_close)
-    nmap <silent> <leader>X <Plug>(rice_buffer_close_other)
-
-    nmap <silent> <leader>q <Plug>(rice_quit)
-    nmap <silent> <leader>Q <Plug>(rice_quit_all)
-
-    nmap <silent> <leader># <Plug>(rice_highlight_off)
-    nmap <silent> <leader>* <Plug>(rice_highlight_off)
-
     nmap <silent> <leader>b: <Plug>(rice_message)
     nmap <silent> <leader>b" <Plug>(rice_register)
-
+    " <n>
+    nmap <silent> <leader>n <Plug>(rice_tab_new)
+    nmap <silent> <leader>N <Plug>(rice_buffer_new)
+    " <x>
+    nmap <silent> <leader>x <Plug>(rice_buffer_close)
+    nmap <silent> <leader>X <Plug>(rice_buffer_close_other)
+    " <q>
+    nmap <silent> <leader>q <Plug>(rice_quit)
+    nmap <silent> <leader>Q <Plug>(rice_quit_all)
+    " <*>
+    nmap <silent> <leader>* <Plug>(rice_highlight_off)
+    " <g>
     nmap <silent> <leader>gp <Plug>(rice_clipboard_paste)
     vmap <silent> <leader>gp <Plug>(rice_clipboard_paste)
     nmap <silent> <leader>gy <Plug>(rice_clipboard_copy)
     vmap <silent> <leader>gy <Plug>(rice_clipboard_copy)
 
+    " Terminal mode
     tmap <Esc><Esc> <Plug>(rice_terminal_escape)
+
+    " Insert mode
+    imap <silent> <C-h> <Plug>(rice_cursor_move_left)
+    imap <silent> <C-j> <Plug>(rice_cursor_move_down)
+    imap <silent> <C-k> <Plug>(rice_cursor_move_up)
+    imap <silent> <C-l> <Plug>(rice_cursor_move_right)
+    imap <silent> <C-a> <Home>
+    imap <silent> <C-e> <End>
 
 endfunction

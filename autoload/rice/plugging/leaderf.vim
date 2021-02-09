@@ -33,34 +33,34 @@ let g:Lf_PreviewResult = {
 \ }
 
 " Normal
-nnoremap <silent> <leader><leader>fp :Leaderf file --no-ignore<CR>
-nnoremap <silent> <leader><leader>fm :Leaderf mru<CR>
-nnoremap <silent> <leader><leader>fb :Leaderf buffer<CR>
-nnoremap <silent> <leader><leader>fB :Leaderf buffer --tabpage<CR>
-nnoremap <silent> <leader><leader>fl :Leaderf line<CR>
-nnoremap <silent> <leader><leader>fL :Leaderf line --all<CR>
-nnoremap <silent> <leader><leader>ft :Leaderf bufTag<CR>
-nnoremap <silent> <leader><leader>fT :Leaderf tag<CR>
-nnoremap <silent> <leader><leader>ff :Leaderf function<CR>
-nnoremap <silent> <leader><leader>fF :Leaderf function --all<CR>
-nnoremap <silent> <leader><leader>fg :Leaderf rg --all-buffers<CR>
-nnoremap <silent> <leader><leader>fG :Leaderf rg<CR>
+nnoremap <silent> <leader>fp :Leaderf file --no-ignore<CR>
+nnoremap <silent> <leader>fm :Leaderf mru<CR>
+nnoremap <silent> <leader>fb :Leaderf buffer<CR>
+nnoremap <silent> <leader>fB :Leaderf buffer --tabpage<CR>
+nnoremap <silent> <leader>fl :Leaderf line<CR>
+nnoremap <silent> <leader>fL :Leaderf line --all<CR>
+nnoremap <silent> <leader>ft :Leaderf bufTag<CR>
+nnoremap <silent> <leader>fT :Leaderf tag<CR>
+nnoremap <silent> <leader>ff :Leaderf function<CR>
+nnoremap <silent> <leader>fF :Leaderf function --all<CR>
+nnoremap <silent> <leader>fg :Leaderf rg --all-buffers<CR>
+nnoremap <silent> <leader>fG :Leaderf rg<CR>
 " Search for current word
-nnoremap <silent> <leader><leader>fcp :Leaderf file --no-ignore --cword<CR>
-nnoremap <silent> <leader><leader>fcb :Leaderf buffer --cword<CR>
-nnoremap <silent> <leader><leader>fcl :Leaderf line --cword<CR>
-nnoremap <silent> <leader><leader>fct :Leaderf tag --cword<CR>
-nnoremap <silent> <leader><leader>fcf :Leaderf function --all --cword<CR>
-nnoremap <silent> <leader><leader>fcg :Leaderf rg --cword<CR>
+nnoremap <silent> <leader>fcp :Leaderf file --no-ignore --cword<CR>
+nnoremap <silent> <leader>fcb :Leaderf buffer --cword<CR>
+nnoremap <silent> <leader>fcl :Leaderf line --cword<CR>
+nnoremap <silent> <leader>fct :Leaderf tag --cword<CR>
+nnoremap <silent> <leader>fcf :Leaderf function --all --cword<CR>
+nnoremap <silent> <leader>fcg :Leaderf rg --cword<CR>
 " Resume
-nnoremap <silent> <leader><leader>frr :Leaderf --recall<CR>
-nnoremap <silent> <leader><leader>frp :Leaderf file --recall<CR>
-nnoremap <silent> <leader><leader>frb :Leaderf buffer --recall<CR>
-nnoremap <silent> <leader><leader>frl :Leaderf line --recall<CR>
-nnoremap <silent> <leader><leader>frt :Leaderf tag --recall<CR>
-nnoremap <silent> <leader><leader>frf :Leaderf function --recall<CR>
-nnoremap <silent> <leader><leader>frg :Leaderf rg --recall<CR>
+nnoremap <silent> <leader>frr :Leaderf --recall<CR>
+nnoremap <silent> <leader>frp :Leaderf file --recall<CR>
+nnoremap <silent> <leader>frb :Leaderf buffer --recall<CR>
+nnoremap <silent> <leader>frl :Leaderf line --recall<CR>
+nnoremap <silent> <leader>frt :Leaderf tag --recall<CR>
+nnoremap <silent> <leader>frf :Leaderf function --recall<CR>
+nnoremap <silent> <leader>frg :Leaderf rg --recall<CR>
 " Interactive
-nnoremap <silent> <leader><leader>fii :Leaderf self<CR>
-nnoremap <silent> <leader><leader>fig :LeaderfRgInteractive<CR>
-nnoremap <silent> <leader><leader>fif :Leaderf<Space>
+nnoremap <silent> <leader>fii :Leaderf self<CR>
+nnoremap <silent> <leader>fig :LeaderfRgInteractive<CR>
+nnoremap <silent> <leader>fif :Leaderf<Space>
