@@ -62,19 +62,29 @@
             "suppressApplicationTitle": true,
             "closeOnExit": "graceful",
             "bellStyle": "none",
-            "startingDirectory": "%USERPROFILE%"
+            "startingDirectory": "%USERPROFILE%",
+            "hidden": false
         },
         "list": [
             {
-                "guid": "{38cde125-00f4-4397-bc83-a842702235f9}",
+                "guid": "{63fefd1b-654e-4712-a017-509ef6169fef}",
                 "commandline": "pwsh -NoLogo",
-                "hidden": false,
                 "name": "PowerShell",
                 "tabTitle": "pwsh",
-                "icon": "🛵",
+                "icon": "😺",
+                "colorScheme": "Dracula",
+                "fontFace": "Cascadia Code PL"
+            },
+            {
+                "guid": "{38cde125-00f4-4397-bc83-a842702235f9}",
+                "commandline": "pwsh -NoLogo",
+                "name": "PowerShell (Acrylic)",
+                "tabTitle": "pwsh",
+                "icon": "😻",
                 "colorScheme": "Dracula",
                 "useAcrylic": true,
-                "acrylicOpacity": 0.7
+                "acrylicOpacity": 0.5,
+                "fontFace": "Cascadia Code PL"
             }
         ]
     },
