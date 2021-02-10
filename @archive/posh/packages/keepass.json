@@ -1,9 +1,0 @@
-{
-    "dir": "keepass",
-    "bin": [
-        {
-            "name": "keepass",
-            "exec": "KeePass.exe"
-        }
-    ]
-}

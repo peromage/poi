@@ -1,9 +1,0 @@
-{
-    "dir": "vlc",
-    "bin": [
-        {
-            "name": "vlc",
-            "exec": "vlc.exe"
-        }
-    ]
-}

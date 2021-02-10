@@ -1,9 +1,0 @@
-{
-    "dir": "7-zip",
-    "bin": [
-        {
-            "name": "7zfm",
-            "exec": "7zFM.exe"
-        }
-    ]
-}

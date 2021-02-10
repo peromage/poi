@@ -1,9 +1,0 @@
-{
-    "dir": "winscp",
-    "bin": [
-        {
-            "name": "winscp",
-            "exec": "WinSCP.exe"
-        }
-    ]
-}

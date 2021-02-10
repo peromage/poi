@@ -1,9 +1,0 @@
-{
-    "dir": "just_color_picker",
-    "bin": [
-        {
-            "name": "jcp",
-            "exec": "jcpicker.exe"
-        }
-    ]
-}

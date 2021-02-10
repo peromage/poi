@@ -1,9 +1,0 @@
-{
-    "dir": "chrome",
-    "bin": [
-        {
-            "name": "chrome",
-            "exec": "chrome.exe"
-        }
-    ]
-}

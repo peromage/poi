@@ -1,9 +1,0 @@
-{
-    "dir": "notepad++",
-    "bin": [
-        {
-            "name": "npp",
-            "exec": "notepad++.exe"
-        }
-    ]
-}

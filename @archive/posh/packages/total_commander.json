@@ -1,9 +1,0 @@
-{
-    "dir": "total_commander",
-    "bin": [
-        {
-            "name": "tc",
-            "exec": "TOTALCMD64.EXE"
-        }
-    ]
-}
