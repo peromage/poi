@@ -3,6 +3,7 @@
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
     "window.restoreWindows": "none",
 
+    "workbench.colorTheme": "Dracula",
     "workbench.startupEditor": "none",
     "workbench.enableExperiments": false,
     "workbench.tree.renderIndentGuides": "always",
@@ -10,7 +11,6 @@
     "workbench.editor.openPositioning": "last",
     "workbench.settings.useSplitJSON": true,
     "workbench.editor.tabSizing": "shrink",
-    "workbench.colorTheme": "Eva Dark",
     "workbench.iconTheme": "vscode-icons",
     "workbench.sideBar.location": "left",
 
@@ -42,7 +42,6 @@
 
     "extensions.autoCheckUpdates": false,
     "extensions.ignoreRecommendations": true,
-    "extensions.showRecommendationsOnlyOnDemand": true,
     "extensions.autoUpdate": false,
 
     "breadcrumbs.enabled": true,
@@ -57,10 +56,7 @@
     "csharp.referencesCodeLens.enabled": false,
     "powershell.integratedConsole.showOnStartup": false,
     "powershell.powerShellAdditionalExePaths": [
-        {
-            "versionName": "pwsh7",
-            "exePath": "pwsh.exe"
-        }
+        { "versionName": "pwsh7", "exePath": "pwsh.exe" }
     ],
     "powershell.powerShellDefaultVersion": "pwsh7",
     "powershell.pester.useLegacyCodeLens": false,
