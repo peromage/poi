@@ -33,7 +33,7 @@ let g:Lf_PreviewResult = {
 \ }
 
 " Pre-defined shortcuts
-nnoremap <silent> <Plug>(rice_leaderf_file) :Leaderf file --fullPath
+nnoremap <silent> <Plug>(rice_leaderf_file) :Leaderf file --no-ignore --fullPath
 nnoremap <silent> <Plug>(rice_leaderf_mru) :Leaderf mru --fullPath
 nnoremap <silent> <Plug>(rice_leaderf_buffer) :Leaderf buffer --fullPath
 nnoremap <silent> <Plug>(rice_leaderf_buffer_tab) :Leaderf buffer --tabpage --fullPath
