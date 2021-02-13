@@ -9,14 +9,14 @@ let &runtimepath = &runtimepath . ','. expand('<sfile>:h')
 let g:init_file = expand('<sfile>:p')
 command! InitFile execute 'edit '.g:init_file
 " Initialize rice
-call rice#begin()
+call rice#begin('~/.vimplugged')
 
 " Python runtime
-"let g:rice_neovim_python_interpreter = 'python3'
+"let g:rice_neovim_python_interpreter = 'python'
 "let g:rice_neovim_python2_interpreter = 'python2'
-"let g:rice_vim_python_home = 'Python39'
-"let g:rice_vim_python_dll = 'python39.dll'
-"let g:rice_vim_python2_home = 'Python27'
+"let g:rice_vim_python_home = 'python_home'
+"let g:rice_vim_python_dll = 'python3x.dll'
+"let g:rice_vim_python2_home = 'python2_home'
 "let g:rice_vim_python2_dll = 'python27.dll'
 
 " Rice configs

@@ -13,7 +13,7 @@ call rice#guiBegin()
 "let g:rice_gui_font = "Cascadia\ Code\ PL:h9"
 
 " Currently supported: 'neovimqt', 'gvim'
-"let g:rice_gui_frontend = ''
+"let g:rice_gui_frontend = has('nvim') ? 'neovimqt' : 'gvim'
 
 call rice#guiEnd()
 "-------------------------------------------------------------------------------

@@ -119,9 +119,13 @@ endfunction
 " Public functions
 " ------------------------------------------------------------------------------
 
-function! rice#begin() abort
+function! rice#begin(...) abort
     let s:rice_loading = 1
-    call plug#begin()
+    if a:0 > 0
+        call plug#begin(a:1)
+    else
+        call plug#begin()
+    endif
 endfunction
 
 function! rice#end() abort
