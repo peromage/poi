@@ -122,8 +122,12 @@ endfunction
 function! rice#begin(...) abort
     let s:rice_loading = 1
     if a:0 > 0
-        call plug#begin(a:1)
+        " Directory to put plugin and plugin configuration (e.g. vim-plug, Coc)
+        call plug#begin(simplify(a:1 . '/plugged'))
+        let g:coc_config_home = a:1
+        let g:coc_data_home = simplify(a:1 . '/coc-extensions')
     else
+        " Leave it empty to use the default location
         call plug#begin()
     endif
 endfunction

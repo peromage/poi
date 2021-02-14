@@ -3,13 +3,14 @@
 
 " Initialization
 "-------------------------------------------------------------------------------
-" Runtime path must be added
-let &runtimepath = &runtimepath . ','. expand('<sfile>:h')
-" Shortcut to open this file
 let g:init_file = expand('<sfile>:p')
+let g:init_home = expand('<sfile>:h')
+" Runtime path must be added
+let &runtimepath = &runtimepath . ','. g:init_home
+" Shortcut to open this file
 command! InitFile execute 'edit '.g:init_file
 " Initialize rice
-call rice#begin('~/.vimplugged')
+call rice#begin(g:init_home)
 
 " Python runtime
 "let g:rice_neovim_python_interpreter = 'python'

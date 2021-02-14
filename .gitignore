@@ -4,11 +4,17 @@
 
 # Vim
 # Plugin dir
-plugged/**
+plugged/
+vim-plugged/
+vim-plug/
+vim_plugged/
+vim_plug/
+coc-extensions/
+coc_extensions/
 # Netrw garbage
 .netrwhist
 # Session files
-saved_sessions/**
+saved_sessions/
 # Local temp configuration
 init.vim
 ginit.vim
