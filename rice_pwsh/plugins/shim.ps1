@@ -4,109 +4,101 @@ Shim generator used to delegate executable or scripts.
 Modified by peromage on 2021/01/24
 #>
 
-function script:CreateShimObject {
-    param ([string]$target, [string]$arguments, [bool]$gui)
-    if (-not (Test-Path $target)) {
-        throw "Invalid target"
-    }
-    $shimObj = [PSCustomObject]@{
-        Target = Get-Item $target
-        Arguments = $arguments
-        Gui = $gui
-    }
-    function addMethod {
-        Add-Member -InputObject $shimObj -MemberType ScriptMethod -Name $args[0] -Value $args[1]
+class ShimCreator {
+    ShimCreator([string]$target, [string]$arguments, [bool]$gui) {
+        # Target path can be absolute. If it is given in relative form, current
+        # working directory is used as the base path.
+        $target_full = [System.IO.Path]::GetFullPath($target, $pwd)
+        if (-not [System.IO.File]::Exists($target_full)) {
+            throw "Target doesn't exist or it is a directory"
+        }
+        $this.target = $target_full
+        $this.arguments = $arguments
+        $this.gui = $gui
     }
 
-    # Member methods definitions
-    addMethod "resolveDestination" {
-        param ([string]$destination, [string]$extension)
-        if ([string]::IsNullOrWhiteSpace($extension)) {
-            $trimmedExt = [string]::Empty
-        } else {
-            $trimmedExt = ".$($extension.TrimStart("."))"
+    [string]resolveDestination([string]$destination, [string]$extension) {
+        # Destination path can be absolute. If it is given in relative form, current
+        # working directory is used as the base path.
+        $dest_full = [System.IO.Path]::GetFullPath($destination, $pwd)
+        # If the given destination is an existing directory, put the shim under
+        # this directory. Shim name is the target's basename.
+        if ([System.IO.Directory]::Exists($dest_full)) {
+            $dest_full = [System.IO.Path]::Join(
+                    $dest_full,
+                    [System.IO.Path]::GetFileName($this.target)
+            )
         }
-        $fullDest = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($destination)
-        if (Test-Path -PathType Container $destination) {
-            if ($this.Target.Name.EndsWith($trimmedExt)) {
-                # Use target name and ext in the destination directory
-                $fullDest = Join-Path $fullDest $this.Target.Name
-            } else {
-                # Use target name and provided ext in the destination directory
-                $fullDest = Join-Path $fullDest "$($this.Target.BaseName)${trimmedExt}"
-            }
-        } else {
-            # Otherwise use the given name
-            if (-not $fullDest.EndsWith($trimmedExt)) {
-                $fullDest = "${fullDest}${trimmedExt}"
-            }
+        # If the given destination is a new file, use the name of destination
+        # specified.
+        else {
+            # Create directory if it doesn't exist
+            [System.IO.Directory]::CreateDirectory([System.IO.Path]::GetDirectoryName($dest_full))
         }
-        return $fullDest
+        # Change destination extension if it's given
+        if (-not [string]::IsNullOrWhiteSpace($extension)) {
+            $dest_full = [System.IO.Path]::ChangeExtension($dest_full, $extension)
+        }
+        return $dest_full
     }
 
-    addMethod "genLnk" {
-        param ([string]$destination)
-        $fullDestination = $this.resolveDestination($destination, ".lnk")
+    [string]createLnk([string]$destination) {
+        $dest_full = $this.resolveDestination($destination, ".lnk")
         $wshell = New-Object -ComObject WScript.shell
-        $shortcut = $wshell.CreateShortcut($fullDestination)
-        $shortcut.TargetPath = $this.Target.FullName
-        $shortcut.Arguments = $this.Arguments
+        $shortcut = $wshell.CreateShortcut($dest_full)
+        $shortcut.TargetPath = $this.target
+        $shortcut.Arguments = $this.arguments
         $shortcut.Save()
-        return $fullDestination
+        return $dest_full
     }
 
-    addMethod "genCmd" {
-        param ([string]$destination)
-        $fullDestination = $this.resolveDestination($destination, ".cmd")
-        if ($this.Gui) {
-            $expr = @(
-                "@echo off"
-                "start `"`" `"$($this.Target.FullName)`" $($this.Arguments) %*"
-            )
+    [string]createCmd([string]$destination) {
+        $dest_full = $this.resolveDestination($destination, ".cmd")
+        if ($this.gui) {
+            $expr =
+@"
+@echo off
+start "" "$($this.target)" $($this.arguments) %*
+"@
         } else {
-            $expr = @(
-                "@echo off"
-                "`"$($this.Target.FullName)`" $($this.Arguments) %*"
-            )
+            $expr =
+@"
+@echo off
+"$($this.target)" $($this.arguments) %*
+"@
         }
-        Set-Content -Value $expr -Path $fullDestination
-        return $fullDestination
+        Set-Content -Value $expr -Path $dest_full
+        return $dest_full
     }
 
-    addMethod "genPs1" {
-        param ([string]$destination)
-        $fullDestination = $this.resolveDestination($destination, ".ps1")
-        if ($this.Target.Extension.ToLower() -eq ".ps1") {
-            $expr = @(
-                # Execute ps1 script in current session
-                ". `"$($this.Target.FullName)`" $($this.Arguments) @args"
-            )
-        } elseif ($this.Gui) {
-            $expr = @(
-                "start `"$($this.Target.FullName)`" $($this.Arguments) @args"
-            )
+    [string]createPs1([string]$destination) {
+        $dest_full = $this.resolveDestination($destination, ".ps1")
+        if ($this.gui) {
+            $expr =
+@"
+start "$($this.target)" $($this.arguments) @args
+"@
         } else {
-            $expr = @(
-                "& `"$($this.Target.FullName)`" $($this.Arguments) @args"
-            )
+            $expr =
+@"
+& "$($this.target)" $($this.arguments) @args
+"@
         }
-        Set-Content -Value $expr -Path $fullDestination
-        return $fullDestination
+        Set-Content -Value $expr -Path $dest_full
+        return $dest_full
     }
 
-    addMethod "genSymlink" {
-        param ([string]$destination)
-        $fullDestination = $this.resolveDestination($destination, $this.Target.Extension)
+    [string]createSymlink([string]$destination) {
+        $dest_full = $this.resolveDestination($destination, [string]::Empty)
         New-Item -ItemType SymbolicLink `
-                 -Target $this.Target.FullName `
-                 -Path $fullDestination `
+                 -Target $this.target `
+                 -Path $dest_full `
                  -Force
-        return $fullDestination
+        return $dest_full
     }
 
-    addMethod "genExe" {
-        param ([string]$destination)
-        $fullDestination = $this.resolveDestination($destination, ".exe")
+    [string]createExe([string]$destination) {
+        $dest_full = $this.resolveDestination($destination, ".exe")
         $SRC_PATH = "$PSScriptRoot/../src/shim.cs"
         $SRC_PATT_PATH = '\{\{PathToExe\}\}'
         $SRC_PATT_ARGS = '\{\{ExeArgs\}\}'
@@ -115,16 +107,18 @@ function script:CreateShimObject {
 
         $src = Get-Content -Raw $SRC_PATH
         # Hard code the target into the exe
-        $src = $src -replace $SRC_PATT_PATH, $this.Target.FullName
-        $src = $src -replace $SRC_PATT_ARGS, $this.Arguments
-        $src = $src -replace $SRC_PATT_GUI, $this.Gui.ToString()
+        $src = $src -replace $SRC_PATT_PATH, $this.target
+        $src = $src -replace $SRC_PATT_ARGS, $this.arguments
+        $src = $src -replace $SRC_PATT_GUI, $this.gui.ToString()
         $src = $src -replace $SRC_PATT_HARDCODE, "#define"
         # Compile exe
-        Add-Type -OutputType ConsoleApplication -TypeDefinition $src -OutputAssembly $fullDestination
-        return $fullDestination
+        Add-Type -OutputType ConsoleApplication -TypeDefinition $src -OutputAssembly $dest_full
+        return $dest_full
     }
 
-    return $shimObj
+    [string]$target
+    [string]$arguments
+    [bool]$gui
 }
 
 function New-Shim {
@@ -136,29 +130,29 @@ function New-Shim {
           [ValidateSet("cmd", "ps1", "lnk", "symlink", "exe")]
           [string]$type="cmd",
           [switch]$gui)
-    $obj = script:CreateShimObject $target $arguments $gui.IsPresent
+    $obj = [ShimCreator]::new($target, $arguments, $gui.IsPresent)
     try {
         switch ($type) {
             "cmd" {
-                $dest = $obj.genCmd($destination)
+                $dest = $obj.createCmd($destination)
             }
             "ps1" {
-                $dest = $obj.genPs1($destination)
+                $dest = $obj.createPs1($destination)
             }
             "lnk" {
-                $dest = $obj.genLnk($destination)
+                $dest = $obj.createLnk($destination)
             }
             "symlink" {
-                $dest = $obj.genSymlink($destination)
+                $dest = $obj.createSymlink($destination)
             }
             "exe" {
-                $dest = $obj.genExe($destination)
+                $dest = $obj.createExe($destination)
             }
             default {
                 throw "Invalid Type"
             }
         }
-        Write-Output "Shim: $dest -> $($obj.Target.FullName)"
+        Write-Output "Shim: $dest -> $($obj.target)"
     } catch {
         Write-Error "Failed to create the new shim"
         Write-Error "Failure reason:"
