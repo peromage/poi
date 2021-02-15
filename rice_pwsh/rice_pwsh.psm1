@@ -8,15 +8,6 @@ param ([hashtable]$configs=@{})
 
 #region Global variables
 
-# Environment variables
-$global:rice_user_env_vars = @{
-XDG_DATA_HOME = Join-Path $HOME ".local/share"
-XDG_CONFIG_HOME = Join-Path $HOME ".config"
-XDG_CACHE_HOME = Join-Path $HOME ".cache"
-EDITOR = "nvim"
-SHELL = "pwsh"
-}
-
 # Default configurations
 $global:rice_configs = @{
 # CLI prompt theme

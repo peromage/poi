@@ -25,12 +25,6 @@ else
     return
 fi
 
-# Environment variables
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
-export EDITOR=nvim
-
 # Default configurations
 # Additional plugins. Space separated string list.
 [ -z "$rice_plugins" ] && rice_plugins=""

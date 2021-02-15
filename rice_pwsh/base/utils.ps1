@@ -51,11 +51,9 @@ function Get-HistorySavePath {
 }
 
 function Set-SessionUserEnvVars {
-    if ($global:rice_user_env_vars -isnot [hashtable]) {
-        return
-    }
-    foreach ($_ in $global:rice_user_env_vars.GetEnumerator()) {
-        Set-Item "ENV:$($_.key)" $_.Value
+    param ([hashtable]$envVarHash)
+    foreach ($_ in $envVarHash.GetEnumerator()) {
+        Set-Item "ENV:$($_.Key)" $_.Value
     }
 }
 
