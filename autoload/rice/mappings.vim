@@ -37,6 +37,7 @@ nnoremap <silent> <Plug>(rice_quit_all) :qa<CR>
 nnoremap <silent> <Plug>(rice_register) :reg<CR>
 nnoremap <silent> <Plug>(rice_message) :messages<CR>
 nnoremap <silent> <Plug>(rice_highlight_off) :noh<CR>
+nnoremap <silent> <Plug>(rice_highlight_current_word) *N
 " GUI clipboard
 nnoremap <silent> <Plug>(rice_clipboard_paste) "*p
 vnoremap <silent> <Plug>(rice_clipboard_paste) "*p
@@ -60,7 +61,7 @@ function! rice#mappings#init() abort
     nmap <silent> <leader>L <Plug>(rice_tab_next)
     nmap <silent> <leader>J <Plug>(rice_buffer_next)
     nmap <silent> <leader>K <Plug>(rice_buffer_previous)
-    
+
     " <bslash>
     nmap <silent> <leader><Bar> <Plug>(rice_vsplit)
     nmap <silent> <leader><Bslash> <Plug>(rice_hsplit)
@@ -84,7 +85,8 @@ function! rice#mappings#init() abort
     nmap <silent> <leader>q <Plug>(rice_quit)
     nmap <silent> <leader>Q <Plug>(rice_quit_all)
     " <*>
-    nmap <silent> <leader>* <Plug>(rice_highlight_off)
+    nmap <silent> # <Plug>(rice_highlight_off)
+    nmap <silent> * <Plug>(rice_highlight_current_word)
     " <g>
     nmap <silent> <leader>gp <Plug>(rice_clipboard_paste)
     vmap <silent> <leader>gp <Plug>(rice_clipboard_paste)
