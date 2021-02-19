@@ -34,6 +34,8 @@ nnoremap <silent> <Plug>(rice_buffer_close_other) :%bd\|e#<CR>
 " Misc
 nnoremap <silent> <Plug>(rice_quit) :q<CR>
 nnoremap <silent> <Plug>(rice_quit_all) :qa<CR>
+nnoremap <silent> <Plug>(rice_save) :w<CR>
+nnoremap <silent> <Plug>(rice_save_all) :wa<CR>
 nnoremap <silent> <Plug>(rice_register) :reg<CR>
 nnoremap <silent> <Plug>(rice_message) :messages<CR>
 nnoremap <silent> <Plug>(rice_highlight_off) :noh<CR>
@@ -84,6 +86,9 @@ function! rice#mappings#init() abort
     " <q>
     nmap <silent> <leader>q <Plug>(rice_quit)
     nmap <silent> <leader>Q <Plug>(rice_quit_all)
+    " <w>
+    nmap <silent> <leader>w <Plug>(rice_save)
+    nmap <silent> <leader>W <Plug>(rice_save_all)
     " <*>
     nmap <silent> # <Plug>(rice_highlight_off)
     nmap <silent> * <Plug>(rice_highlight_current_word)
