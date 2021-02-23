@@ -1,43 +1,3 @@
-# Keymaps
-unbind-key C-b
-set-option -s escape-time 50
-# Prefix: CTRL+`
-set-option -g prefix `
-bind-key ` send-prefix
-
-# Panes
-bind-key -r h select-pane -L
-bind-key -r l select-pane -R
-bind-key -r j select-pane -D
-bind-key -r k select-pane -U
-bind-key -r - resize-pane -L
-bind-key -r = resize-pane -R
-bind-key -r _ resize-pane -D
-bind-key -r + resize-pane -U
-bind-key -r w resize-pane -Z
-bind-key -r \{ swap-pane -U
-bind-key -r \} swap-pane -D
-bind-key | split-window -h -c "#{pane_current_path}"
-bind-key \\ split-window -v -c "#{pane_current_path}"
-bind-key q kill-pane
-
-# Windows (tabs)
-bind-key m command-prompt -I "#W" "rename-window '%%'"
-bind-key t new-window
-bind-key T break-pane
-bind-key b choose-tree
-bind-key -r H select-window -p
-bind-key -r L select-window -n
-bind-key Q kill-window
-
-# Sessions
-bind-key M command-prompt -I "#S" "rename-session '%%'"
-bind-key X kill-session
-bind-key z detach-client
-bind-key N new-session
-bind-key -r J switch-client -n
-bind-key -r K switch-client -p
-
 # Quality of life
 set-option -g mode-keys vi
 set-option -g history-limit 10000
@@ -45,6 +5,8 @@ set-option -g default-terminal "tmux-256color"
 set-option -g allow-rename off
 set-option -g automatic-rename off
 set-option -g xterm-keys on
+set-option -g renumber-windows on
+set-option -g base-index 1
 
 # Mouse support
 set-option -g mouse on
@@ -56,8 +18,8 @@ set-option -g status-interval 1
 set-option -g status-keys vi
 set-option -g status-position bottom
 set-option -g status-justify left
-set-option -g status-style fg=black,bg=white
-set-option -g status-left " [#S::#{pane_title}] "
+set-option -g status-style fg=white,bg=black
+set-option -g status-left " [#{session_name}::#{pane_title}] "
 set-option -g status-left-length 20
 set-option -g status-left-style default
 set-option -g status-right " %m/%d/%Y %H:%M"
@@ -67,10 +29,52 @@ set-option -g status-right-style default
 #set-option -g window-status-current-format "#I:#W#F"
 set-option -g window-status-separator " "
 set-option -g window-status-style default
-set-option -g window-status-current-style fg=white,bg=black
+set-option -g window-status-current-style fg=black,bg=white
 
 # Misc
 #set -g default-shell /bin/sh
+
+# Keymaps
+unbind-key C-b
+set-option -g prefix `
+set-option -g prefix2 None
+bind-key ` send-prefix
+set-option -s escape-time 50
+
+# Panes
+bind-key -r h select-pane -L
+bind-key -r l select-pane -R
+bind-key -r j select-pane -D
+bind-key -r k select-pane -U
+bind-key -r - resize-pane -L
+bind-key -r = resize-pane -R
+bind-key -r _ resize-pane -D
+bind-key -r + resize-pane -U
+bind-key -r 0 resize-pane -Z
+bind-key w display-pane
+bind-key a swap-pane -dZ -t +1
+bind-key A swap-pane -dZ -t -1
+bind-key | split-window -h -c "#{pane_current_path}"
+bind-key \\ split-window -v -c "#{pane_current_path}"
+bind-key q kill-pane
+
+# Windows (tabs)
+bind-key r command-prompt -I "#{window_name}" "rename-window '%%'"
+bind-key t new-window
+bind-key s swap-window -d -t +1
+bind-key S swap-window -d -t -1
+bind-key g choose-tree -Z
+bind-key -r n select-window -n
+bind-key -r N select-window -p
+bind-key Q kill-window
+
+# Sessions
+bind-key R command-prompt -I "#{session_name}" "rename-session '%%'"
+bind-key X confirm-before kill-session
+bind-key z detach-client
+bind-key T new-session
+bind-key -r b switch-client -n
+bind-key -r B switch-client -p
 
 # Debug
 #bind F5 source ~/.tmux.conf\; display "tmux config sourced"
