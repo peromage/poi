@@ -6,3 +6,6 @@ if exists('g:loaded_rice_startify')
 endif
 let g:loaded_rice_startify = 1
 Plug 'mhinz/vim-startify'
+
+let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 0
