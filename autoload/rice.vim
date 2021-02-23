@@ -1,5 +1,5 @@
 " Rice core configuration
-" Modified by peromage on 2021/02/05
+" Modified by peromage on 2021/02/22
 
 if exists('g:loaded_rice')
     finish
@@ -9,9 +9,9 @@ let g:loaded_rice = 1
 " Global configuration variables
 " ------------------------------------------------------------------------------
 " Color scheme
-let g:rice_color = ''
-" Array of strings. Loads pre-configured plugins in rice/plugging.
-let g:rice_plugging = []
+let g:rice_color = 'dracula'
+" Array of strings. Prevent loading pre-configured plugins in rice/boost.
+let g:rice_disabled_boost = []
 " Python runtime for Vim and NeoVim
 " Python refers to Python3 because Python2 is old
 let g:rice_neovim_python_interpreter = ''
@@ -28,7 +28,8 @@ let g:rice_gui_frontend = ''
 " ------------------------------------------------------------------------------
 " rice root directory
 let s:rice_root_dir = simplify(expand('<sfile>:h') . '/rice')
-let s:rice_plugging_dir = s:rice_root_dir . '/plugging'
+let s:rice_vim_root_dir = expand('<sfile>:h:h')
+let s:rice_boost_dir = s:rice_root_dir . '/boost'
 let s:rice_gui_dir = s:rice_root_dir . '/gui'
 " Loading protection flag
 let s:rice_loading = 0
@@ -46,32 +47,40 @@ function! s:get_config_var(_name, _type) abort
     if l:_value is v:null || l:_value_t != a:_type
         return v:null
     endif
+    " Support checks for string, list, dict for now
     if l:_value_t == v:t_string || l:_value_t == v:t_list ||  l:_value_t == v:t_dict
         return len(l:_value) == 0 ? v:null : l:_value
     endif
     return l:_value
 endfunction
 
-" Load feature scripts under 'features' folder
-function! s:load_plugging(_name) abort
-    execute 'source ' . s:rice_plugging_dir . '/' . a:_name . '.vim'
-endfunction
-
-" Core config loading
-function! s:init_config() abort
-    " Load color scheme
+" Load color scheme
+function! s:load_colorscheme() abort
     let l:_var = s:get_config_var('rice_color', v:t_string)
     if l:_var isnot v:null
         execute 'colorscheme ' . l:_var
     endif
-    " Load pre-configured plugins
-    let l:_var = s:get_config_var('rice_plugging', v:t_list)
+endfunction
+
+" Load pre-configured plugins under 'boost' folder
+function! s:load_boost() abort
+    let l:_var = s:get_config_var('rice_disabled_boost', v:t_list)
+    " Default boost
+    let l:_boost = glob(s:rice_boost_dir . '/*.vim', 0, 1)
+    " Disable boosts from the list
     if l:_var isnot v:null
-        for _iplug in l:_var
-            call s:load_plugging(_iplug)
+        for _name in l:_var
+            call filter(l:_boost, 'v:val !~# "' . _name . '"')
         endfor
     endif
-    " Check python runtime
+    " Load
+    for _name in l:_boost
+        execute 'source ' . _name
+    endfor
+endfunction
+
+" Set python runtime path
+function! s:load_python() abort
     if has('nvim')
         let l:_var = s:get_config_var('rice_neovim_python_interpreter', v:t_string)
         if l:_var isnot v:null
@@ -81,6 +90,7 @@ function! s:init_config() abort
         if l:_var isnot v:null
             let g:python_host_prog = l:_var
         endif
+    " Vim
     else
         let l:_var = s:get_config_var('rice_vim_python_home', v:t_string)
         if l:_var isnot v:null
@@ -101,14 +111,16 @@ function! s:init_config() abort
     endif
 endfunction
 
-" Gui config loading
-function! s:init_gui_config() abort
-    " Set GUI font
+" Set GUI font
+function! s:load_gui_font() abort
     let l:_var = s:get_config_var('rice_gui_font', v:t_string)
     if l:_var isnot v:null
         let &guifont = l:_var
     endif
-    " Select frontend
+endfunction
+
+" Select frontend
+function! s:load_gui_frontend() abort
     let l:_var = s:get_config_var('rice_gui_frontend', v:t_string)
     if l:_var isnot v:null
         let l:_init_func_name = 'rice#gui#' . l:_var . '#init' . '()'
@@ -116,20 +128,29 @@ function! s:init_gui_config() abort
     endif
 endfunction
 
+" Core config loading
+function! s:init_config() abort
+    call s:load_colorscheme()
+    call s:load_python()
+    call s:load_boost()
+endfunction
+
+" Gui config loading
+function! s:init_gui_config() abort
+    call s:load_gui_font()
+    call s:load_gui_frontend()
+endfunction
+
 " Public functions
 " ------------------------------------------------------------------------------
 
 function! rice#begin(...) abort
     let s:rice_loading = 1
-    if a:0 > 0
-        " Directory to put plugin and plugin configuration (e.g. vim-plug, Coc)
-        call plug#begin(simplify(a:1 . '/vim-plugged'))
-        let g:coc_config_home = a:1
-        let g:coc_data_home = simplify(a:1 . '/coc-extensions')
-    else
-        " Leave it empty to use the default location
-        call plug#begin()
-    endif
+    " Directory to put plugin and plugin configuration (e.g. vim-plug, Coc)
+    let l:_data_dir = a:0 > 0 ? a:1 : s:rice_vim_root_dir
+    call plug#begin(simplify(l:_data_dir . '/vim-plugged'))
+    let g:coc_config_home = l:_data_dir
+    let g:coc_data_home = simplify(l:_data_dir . '/coc-extensions')
 endfunction
 
 function! rice#end() abort

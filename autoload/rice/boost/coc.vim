@@ -1,11 +1,28 @@
 " Coc settings
-" Modified by peromage on 2021/02/04
+" Modified by peromage on 2021/02/22
 
 if exists('g:loaded_rice_coc')
     finish
 endif
 let g:loaded_rice_coc = 1
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Default coc extensions
+let s:rice_coc_extensions = [
+\   'coc-explorer',
+\   'coc-tabnine',
+\   'coc-snippets',
+\   'coc-git',
+\   'coc-json',
+\   'coc-markdownlint',
+\   'coc-vimlsp'
+\   ]
+
+if exists('g:coc_global_extensions')
+    call extend(g:coc_global_extensions, s:rice_coc_extensions)
+else
+    let g:coc_global_extensions = s:rice_coc_extensions
+endif
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -19,7 +36,7 @@ set shortmess+=c
 set signcolumn=yes
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent! call CocActionAsync('highlight')
 
 """" Script defined functions
 function! s:check_back_space() abort
@@ -84,3 +101,66 @@ nmap <leader>ccf <Plug>(coc-format-selected)
 " coc-tsserver, coc-python are the examples of servers that support it.
 "nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
+
+"-------------------------------------------------------------------------------
+
+" Extension configs
+" File explorer
+let g:coc_explorer_global_presets = {
+\   'left' : {
+\       'toggle': v:true,
+\       'focus': v:true,
+\       'open-action-strategy': 'select',
+\       'quit-on-open': v:false,
+\       'sources': [
+\           { 'name': 'buffer', 'expand': v:true },
+\           { 'name': 'file', 'expand': v:true }
+\       ],
+\       'position': 'left',
+\       'width': 40,
+\       'content-width-type': 'vim-width',
+\   },
+\   'right' : {
+\       'toggle': v:true,
+\       'focus': v:true,
+\       'open-action-strategy': 'select',
+\       'quit-on-open': v:false,
+\       'sources': [
+\           { 'name': 'buffer', 'expand': v:true },
+\           { 'name': 'file', 'expand': v:true }
+\       ],
+\       'position': 'right',
+\       'width': 40,
+\       'content-width-type': 'vim-width',
+\   },
+\   'floating' : {
+\       'toggle': v:true,
+\       'focus': v:true,
+\       'open-action-strategy': 'sourceWindow',
+\       'quit-on-open': v:true,
+\       'sources': [
+\           { 'name': 'buffer', 'expand': v:true },
+\           { 'name': 'file', 'expand': v:true }
+\       ],
+\       'position': 'floating',
+\       'content-width-type': 'win-width',
+\       'floating-position': 'center'
+\   },
+\   'tab' : {
+\       'toggle': v:true,
+\       'focus': v:true,
+\       'open-action-strategy': 'sourceWindow',
+\       'quit-on-open': v:true,
+\       'sources': [
+\           { 'name': 'buffer', 'expand': v:true },
+\           { 'name': 'file', 'expand': v:true }
+\       ],
+\       'position': 'tab',
+\       'content-width-type': 'vim-width'
+\   }
+\ }
+
+nnoremap <silent> <leader>ee :CocCommand explorer --preset left<CR>
+nnoremap <silent> <leader>eE :CocCommand explorer --preset right<CR>
+nnoremap <silent> <leader>en :CocCommand explorer --preset tab<CR>
+nnoremap <silent> <leader>ef :CocCommand explorer --preset floating<CR>

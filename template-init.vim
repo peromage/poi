@@ -1,7 +1,7 @@
 " Rice init template file.
-" Modified by peromage on 2021/02/05
+" Modified by peromage on 2021/02/22
 
-" Initialization
+" Initialization (use :PlugInstall for the first time)
 "-------------------------------------------------------------------------------
 let g:init_file = expand('<sfile>:p')
 let g:init_home = expand('<sfile>:h')
@@ -10,9 +10,12 @@ let &runtimepath = &runtimepath . ','. g:init_home
 " Shortcut to open this file
 command! InitFile execute 'edit '.g:init_file
 " Initialize rice
-call rice#begin(g:init_home)
+call rice#begin()
 
-" Python runtime
+" Color scheme. Leave this unset to use default color.
+"let g:rice_color = 'dracula'
+
+" Set Python runtime for Vim or NeoVim
 "let g:rice_neovim_python_interpreter = 'python'
 "let g:rice_neovim_python2_interpreter = 'python2'
 "let g:rice_vim_python_home = 'python_home'
@@ -20,19 +23,11 @@ call rice#begin(g:init_home)
 "let g:rice_vim_python2_home = 'python2_home'
 "let g:rice_vim_python2_dll = 'python27.dll'
 
-" Rice configs
-"let g:rice_color = 'dracula'
-"let g:rice_plugging = ['coc', 'leaderf', 'floaterm']
+" To disable built-in boosts, use name patterns to match (regex)
+"let g:rice_disabled_boost = ['coc', 'leaderf']
 
-" Coc plugins
+" Extra Coc plugins
 "let g:coc_global_extensions = [
-"\   'coc-explorer',
-"\   'coc-tabnine',
-"\   'coc-snippets',
-"\   'coc-git',
-"\   'coc-json',
-"\   'coc-markdownlint',
-"\   'coc-vimlsp',
 "\   'coc-clangd',
 "\   'coc-powershell',
 "\   'coc-tsserver',
@@ -41,9 +36,6 @@ call rice#begin(g:init_home)
 
 " Extra plugins via vim-plug
 "Plug 'sheerun/vim-polyglot'
-"Plug 'mhinz/vim-startify'
-"Plug 'itchyny/lightline.vim'
-"Plug 'tpope/vim-fugitive'
 
 call rice#end()
 "-------------------------------------------------------------------------------
