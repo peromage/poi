@@ -180,12 +180,12 @@
     // Keybinding
     "actions": [
         // Tab
-        { "command": "newTab", "keys": "alt+n" },
-        { "command": "duplicateTab", "keys": "alt+shift+n" },
-        { "command": "nextTab", "keys": "alt+shift+l" },
-        { "command": "prevTab", "keys": "alt+shift+h" },
-        { "command": "renameTab" , "keys": "alt+shift+m" },
-        { "command": "openTabRenamer" , "keys": "alt+m" },
+        { "command": "newTab", "keys": "alt+t" },
+        { "command": "duplicateTab", "keys": "alt+shift+t" },
+        { "command": "nextTab", "keys": "alt+n" },
+        { "command": "prevTab", "keys": "alt+shift+n" },
+        { "command": "renameTab" , "keys": "alt+shift+r" },
+        { "command": "openTabRenamer" , "keys": "alt+r" },
 
         // Pane
         { "command": "closePane", "keys": "alt+q" },
@@ -202,8 +202,8 @@
 
         // Scrollback
         { "command": "scrollDown", "keys": "alt+e" },
-        { "command": "scrollDownPage", "keys": "alt+f" },
         { "command": "scrollUp", "keys": "alt+y" },
+        { "command": "scrollDownPage", "keys": "alt+f" },
         { "command": "scrollUpPage", "keys": "alt+b" },
     ]
 }
