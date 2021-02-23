@@ -42,6 +42,7 @@ nnoremap <silent> <Plug>(rice_register) :reg<CR>
 nnoremap <silent> <Plug>(rice_message) :messages<CR>
 nnoremap <silent> <Plug>(rice_highlight_off) :noh<CR>
 nnoremap <silent> <Plug>(rice_highlight_current_word) *N
+nnoremap <Plug>(rice_set_filetype) :set filetype=
 " GUI clipboard
 nnoremap <silent> <Plug>(rice_clipboard_paste) "*p
 vnoremap <silent> <Plug>(rice_clipboard_paste) "*p
@@ -71,38 +72,40 @@ function! rice#mappings#init() abort
     nmap + <Plug>(rice_pane_vincrease)
     nmap - <Plug>(rice_pane_hdecrease)
     nmap = <Plug>(rice_pane_hincrease)
-    " <n>
+    " <n> Tab switching
     nmap <leader>n <Plug>(rice_tab_next)
     nmap <leader>N <Plug>(rice_tab_previous)
-    " <b>
+    " <b> Buffer switching
     nmap <leader>b <Plug>(rice_buffer_next)
     nmap <leader>B <Plug>(rice_buffer_previous)
-    " <s>
+    " <s> Tab movement
     nmap <leader>s <Plug>(rice_tab_move_forward)
     nmap <leader>S <Plug>(rice_tab_move_backward)
-    " <g>
+    " <g> Go to list
     nmap <leader>gt <Plug>(rice_tab_jump)
     nmap <leader>gb <Plug>(rice_buffer_jump)
     nmap <leader>g: <Plug>(rice_message)
     nmap <leader>g" <Plug>(rice_register)
-    " <t>
+    " <t> Tab creation
     nmap <leader>t <Plug>(rice_tab_new)
     nmap <leader>T <Plug>(rice_buffer_new)
-    " <x>
+    " <x> Buffer closing
     nmap <leader>x <Plug>(rice_buffer_close)
     nmap <leader>X <Plug>(rice_buffer_close_other)
-    " <q>
+    " <q> Buffer quiting
     nmap <leader>q <Plug>(rice_quit)
     nmap <leader>Q <Plug>(rice_quit_all)
-    " <w>
+    " <w> Saving
     nmap <leader>w <Plug>(rice_save)
     nmap <leader>W <Plug>(rice_save_all)
-    " <*> <#>
+    " <*> <#> Hightlighting
     nmap # <Plug>(rice_highlight_off)
     nmap * <Plug>(rice_highlight_current_word)
-    " <u>
+    " <u> GUI
     nmap <leader>up <Plug>(rice_clipboard_paste)
     nmap <leader>uy <Plug>(rice_clipboard_copy)
+    " <i> Commands
+    nmap <leader>if <Plug>(rice_set_filetype)
 
     " Visual mode
     vmap <leader>up <Plug>(rice_clipboard_paste)
