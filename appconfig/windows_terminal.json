@@ -46,7 +46,7 @@
     // Profile
     "profiles": {
         "defaults": {
-            "colorScheme": "synthwave",
+            "colorScheme": "Campbell",
             "cursorColor": "#FEFEFE",
             "cursorShape": "emptyBox",
             "fontFace": "Cascadia Mono",
