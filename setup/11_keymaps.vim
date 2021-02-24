@@ -14,12 +14,13 @@ nnoremap <silent> <Plug>(rice_vsplit) :vs<CR>
 nnoremap <silent> <Plug>(rice_hsplit) :sp<CR>
 
 "-------------------------------------------------------------------------------
-" Pane movement
+" Pane jump
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_pane_move_left) <C-w>h
-nnoremap <silent> <Plug>(rice_pane_move_down) <C-w>j
-nnoremap <silent> <Plug>(rice_pane_move_up) <C-w>k
-nnoremap <silent> <Plug>(rice_pane_move_right) <C-w>l
+nnoremap <silent> <Plug>(rice_pane_jump_left) <C-w>h
+nnoremap <silent> <Plug>(rice_pane_jump_down) <C-w>j
+nnoremap <silent> <Plug>(rice_pane_jump_up) <C-w>k
+nnoremap <silent> <Plug>(rice_pane_jump_right) <C-w>l
+nnoremap <silent> <Plug>(rice_pane_jump_previous) <C-w>p
 
 "-------------------------------------------------------------------------------
 " Pane size adjustment
@@ -28,6 +29,7 @@ nnoremap <silent> <Plug>(rice_pane_vdecrease) <C-w>-
 nnoremap <silent> <Plug>(rice_pane_vincrease) <C-w>+
 nnoremap <silent> <Plug>(rice_pane_hdecrease) <C-w><
 nnoremap <silent> <Plug>(rice_pane_hincrease) <C-w>>
+nnoremap <silent> <Plug>(rice_pane_maximize) <C-w>o
 
 "-------------------------------------------------------------------------------
 " Tabs
@@ -98,10 +100,16 @@ let g:mapleader="\<Space>"
 
 " Normal mode
 " <h/j/k/l>
-nmap <leader>h <Plug>(rice_pane_move_left)
-nmap <leader>j <Plug>(rice_pane_move_down)
-nmap <leader>k <Plug>(rice_pane_move_up)
-nmap <leader>l <Plug>(rice_pane_move_right)
+nmap <leader>h <Plug>(rice_pane_jump_left)
+nmap <leader>j <Plug>(rice_pane_jump_down)
+nmap <leader>k <Plug>(rice_pane_jump_up)
+nmap <leader>l <Plug>(rice_pane_jump_right)
+
+" <p>
+nmap <leader>p <Plug>(rice_pane_jump_previous)
+
+" <o>
+nmap <leader>o <Plug>(rice_pane_maximize)
 
 " <bslash>
 nmap <leader><Bar> <Plug>(rice_vsplit)
