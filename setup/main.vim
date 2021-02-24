@@ -21,8 +21,6 @@ let s:rt = {}
 " Color
 if rice#get_var('rice_color', s:rt)
     execute 'colorscheme ' . s:rt.value
-else
-    colorscheme dracula
 endif
 
 " Python runtime for Vim and NeoVim
