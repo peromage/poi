@@ -52,6 +52,12 @@ nnoremap <silent> <Plug>(rice_buffer_close) :bd<CR>
 nnoremap <silent> <Plug>(rice_buffer_close_other) :%bd\|e#<CR>
 
 "-------------------------------------------------------------------------------
+" Quick substitution
+"-------------------------------------------------------------------------------
+nnoremap <Plug>(rice_substitute_all) :%s//gc<Left><Left><Left>
+nnoremap <expr> <Plug>(rice_substitute_all_highlighted) ':%s/' . @/ . '//gc<Left><Left><Left>'
+
+"-------------------------------------------------------------------------------
 " Misc
 "-------------------------------------------------------------------------------
 nnoremap <silent> <Plug>(rice_quit) :q<CR>
@@ -129,9 +135,9 @@ nmap <leader>N <Plug>(rice_tab_previous)
 nmap <leader>b <Plug>(rice_buffer_next)
 nmap <leader>B <Plug>(rice_buffer_previous)
 
-" <s> Tab movement
-nmap <leader>s <Plug>(rice_tab_move_forward)
-nmap <leader>S <Plug>(rice_tab_move_backward)
+" <m> Tab movement
+nmap <leader>m <Plug>(rice_tab_move_forward)
+nmap <leader>M <Plug>(rice_tab_move_backward)
 
 " <g> Go to list
 nmap <leader>gt <Plug>(rice_tab_jump)
@@ -154,6 +160,10 @@ nmap <leader>Q <Plug>(rice_quit_all)
 " <w> Saving
 nmap <leader>w <Plug>(rice_save)
 nmap <leader>W <Plug>(rice_save_all)
+
+" <s> Substitution
+nmap <leader>s <Plug>(rice_substitute_all)
+nmap <leader>S <Plug>(rice_substitute_all_highlighted)
 
 " <*> <#> Hightlighting
 nmap # <Plug>(rice_highlight_off)
