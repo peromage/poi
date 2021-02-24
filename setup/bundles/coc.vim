@@ -1,14 +1,20 @@
+"===============================================================================
+"
 " Coc settings
-" Modified by peromage on 2021/02/22
+"
+" Created by peromage 2021/02/24
+" Last modified 2021/02/24
+"
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"
+"===============================================================================
 
-if exists('g:loaded_rice_coc')
-    finish
-endif
-let g:loaded_rice_coc = 1
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:loaded_rice_bundle_coc = 1
 
 " Default coc extensions
-let s:rice_coc_extensions = [
+" To override the default define g:coc_global_extensions after sourcing this
+" file
+let s:default_extensions = [
 \   'coc-explorer',
 \   'coc-tabnine',
 \   'coc-snippets',
@@ -19,9 +25,9 @@ let s:rice_coc_extensions = [
 \   ]
 
 if exists('g:coc_global_extensions')
-    call extend(g:coc_global_extensions, s:rice_coc_extensions)
+    call extend(g:coc_global_extensions, s:default_extensions)
 else
-    let g:coc_global_extensions = s:rice_coc_extensions
+    let g:coc_global_extensions = s:default_extensions
 endif
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable

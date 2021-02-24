@@ -1,19 +1,21 @@
+"===============================================================================
+"
 " Defx settings
-" Modified by peromage on 2021/01/22
+"
+" Created by peromage 2021/02/24
+" Last modified 2021/02/24
+"
+"if has('nvim')
+"  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  Plug 'Shougo/defx.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+"
+"===============================================================================
 
-if exists('g:loaded_rice_defx')
-    finish
-endif
-let g:loaded_rice_defx = 1
-
-if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
+let g:loaded_rice_bundle_defx = 1
 
 " General config
 call defx#custom#option('_', {

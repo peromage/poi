@@ -1,11 +1,15 @@
-" NerdTree settings
-" Modified by peromage on 2021/01/22
+"===============================================================================
+"
+" Nerdtree settings
+"
+" Created by peromage 2021/02/24
+" Last modified 2021/02/24
+"
+"Plug 'preservim/nerdtree'
+"
+"===============================================================================
 
-if exists('g:loaded_rice_nerdtree')
-    finish
-endif
-let g:loaded_rice_nerdtree = 1
-Plug 'preservim/nerdtree'
+let g:loaded_rice_bundle_nerdtree = 1
 
 " Default view
 let g:NERDTreeShowHidden = 1

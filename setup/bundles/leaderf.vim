@@ -1,11 +1,15 @@
+"===============================================================================
+"
 " LeaderF settings
-" Modified by peromage on 2021/02/22
+"
+" Created by peromage 2021/02/24
+" Last modified 2021/02/24
+"
+"Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
+"
+"===============================================================================
 
-if exists('g:loaded_rice_leaderf')
-    finish
-endif
-let g:loaded_rice_leaderf = 1
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
+let g:loaded_rice_bundle_leaderf = 1
 
 let g:Lf_ShowRelativePath = 1
 let g:Lf_HideHelp = 1

@@ -1,11 +1,15 @@
-" Fzf settings
-" Modified by peromage on 2021/02/01
+"===============================================================================
+"
+" Floaterm settings
+"
+" Created by peromage 2021/02/24
+" Last modified 2021/02/24
+"
+"Plug 'voldikss/vim-floaterm'
+"
+"===============================================================================
 
-if exists('g:loaded_rice_floaterm')
-    finish
-endif
-let g:loaded_rice_floaterm = 1
-Plug 'voldikss/vim-floaterm'
+let g:loaded_rice_bundle_floaterm = 1
 
 let g:floaterm_wintype = 'float'
 let g:floaterm_position = 'topright'

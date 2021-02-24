@@ -1,12 +1,16 @@
+"===============================================================================
+"
 " Fzf settings
-" Modified by peromage on 2021/01/22
+"
+" Created by peromage 2021/02/24
+" Last modified 2021/02/24
+"
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+"
+"===============================================================================
 
-if exists('g:loaded_rice_fzf')
-    finish
-endif
-let g:loaded_rice_fzf = 1
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+let g:loaded_rice_bundle_fzf = 1
 
 " This is the default option:
 "   - Preview window on the right with 50% width
