@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = 'rice_pwsh.psm1'
+RootModule = 'pwshrc.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.0.1'
@@ -70,32 +70,7 @@ PowerShellVersion = '7.0'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 # TODO: Find a better way to gather all exported functions
-FunctionsToExport = @(
-    # base/utils.ps1
-    "Get-DirectoryList",
-    "Get-HistorySavePath",
-    "Set-SessionUserEnvVars",
-    # base_win/admin.ps1
-    "Test-AdminStatus",
-    "Invoke-AdminRole",
-    "Grant-AdminRole",
-    # base_win/env_user_path.ps1
-    "Get-EnvUserPath",
-    "Update-SessionEnvPath",
-    "Set-EnvUserPath",
-    "Test-EnvUserPath",
-    "Add-EnvUserPath",
-    "Remove-EnvUserPath",
-    # base_win/env_user_var.ps1
-    "Set-UserEnvVars",
-    "Remove-UserEnvVars",
-    # plugins/shim.ps1
-    "New-Shim",
-    # plugins/lf.ps1
-    "Set-LfDirectory",
-    # plugins/test.ps1
-    "Test-ShellColor"
-)
+FunctionsToExport = @("*")
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -105,12 +80,7 @@ VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 # TODO: Find a better way to gather all exported aliases
-AliasesToExport = @(
-    # base/utils.ps1
-    "ll",
-    "hispath",
-    "lfcd"
-)
+AliasesToExport = @("*")
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

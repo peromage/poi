@@ -1,10 +1,17 @@
-<#
-.SYNOPSIS
-Daily used utility commands.
-Modified by peromage on 2012/01/24
-#>
+<###############################################################################
 
-function Get-DirectoryList {
+.SYNOPSIS
+Common utility functions
+
+Created by peromage 2021/02/24
+Last modified 2021/02/24
+
+###############################################################################>
+
+<#------------------------------------------------------------------------------
+Functions
+------------------------------------------------------------------------------#>
+function listDirectory {
     [CmdletBinding(PositionalBinding=$false, DefaultParameterSetName="sortByDefault")]
     param (
         [Parameter(Position=0)][string]$path=$PWD.Path,
@@ -46,17 +53,36 @@ function Get-DirectoryList {
     }
 }
 
-function Get-HistorySavePath {
+function getHistoryPath {
     return (Get-PSReadlineOption).HistorySavePath
 }
 
-function Set-SessionUserEnvVars {
+function exportVars {
     param ([hashtable]$envVarHash)
     foreach ($_ in $envVarHash.GetEnumerator()) {
         Set-Item "ENV:$($_.Key)" $_.Value
     }
 }
 
-# Alias
-Set-Alias ll Get-DirectoryList
-Set-Alias hispath Get-HistorySavePath
+function lfChangeDirectory {
+    <#
+    .Description
+    This function requires lf in the path
+    #>
+    $tmp = [System.IO.Path]::GetTempFileName()
+    lf "-last-dir-path=$tmp"
+    if (Test-Path -PathType Leaf $tmp) {
+        $dst = Get-Content $tmp
+        Remove-Item $tmp
+        if ((Test-Path -PathType Container $dst) -and ($dst -ne $pwd.Path)) {
+            Set-Location $dst
+        }
+    }
+}
+
+<#------------------------------------------------------------------------------
+Aliases
+------------------------------------------------------------------------------#>
+Set-Alias lfcd lfChangeDirectory
+Set-Alias ll listDirectory
+Set-Alias hispath getHistoryPath

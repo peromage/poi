@@ -1,3 +1,13 @@
+<###############################################################################
+
+.SYNOPSIS
+PowerShell standard theme
+
+Created by peromage 2021/02/24
+Last modified 2021/02/24
+
+###############################################################################>
+
 function global:prompt {
     $myPwd = { $pwd.Path -replace ([regex]::Escape($HOME)+'(.*)'),'~$1' }
     $hostname = $global:rice_meta.HostName

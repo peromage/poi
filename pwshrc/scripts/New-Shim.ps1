@@ -1,9 +1,55 @@
-<#
+<###############################################################################
+
 .SYNOPSIS
 Shim generator used to delegate executable or scripts.
-Modified by peromage on 2021/01/24
-#>
 
+Created by peromage 2021/02/24
+Last modified 2021/02/24
+
+###############################################################################>
+
+param([Parameter(Mandatory=$true)]
+      [string]$target,
+      [Parameter(Mandatory=$true)]
+      [string]$destination,
+      [string]$arguments="",
+      [ValidateSet("cmd", "ps1", "lnk", "symlink", "exe")]
+      [string]$type="cmd",
+      [switch]$gui)
+
+$obj = [ShimCreator]::new($target, $arguments, $gui.IsPresent)
+
+try {
+    switch ($type) {
+        "cmd" {
+            $dest = $obj.createCmd($destination)
+        }
+        "ps1" {
+            $dest = $obj.createPs1($destination)
+        }
+        "lnk" {
+            $dest = $obj.createLnk($destination)
+        }
+        "symlink" {
+            $dest = $obj.createSymlink($destination)
+        }
+        "exe" {
+            $dest = $obj.createExe($destination)
+        }
+        default {
+            throw "Invalid Type"
+        }
+    }
+    Write-Output "Shim: $dest -> $($obj.target)"
+} catch {
+    Write-Error "Failed to create the new shim"
+    Write-Error "Failure reason:"
+    Write-Error "$_"
+}
+
+<#------------------------------------------------------------------------------
+Shim Implementation
+------------------------------------------------------------------------------#>
 class ShimCreator {
     ShimCreator([string]$target, [string]$arguments, [bool]$gui) {
         # Target path can be absolute. If it is given in relative form, current
@@ -119,43 +165,4 @@ start "$($this.target)" $($this.arguments) @args
     [string]$target
     [string]$arguments
     [bool]$gui
-}
-
-function New-Shim {
-    param([Parameter(Mandatory=$true)]
-          [string]$target,
-          [Parameter(Mandatory=$true)]
-          [string]$destination,
-          [string]$arguments="",
-          [ValidateSet("cmd", "ps1", "lnk", "symlink", "exe")]
-          [string]$type="cmd",
-          [switch]$gui)
-    $obj = [ShimCreator]::new($target, $arguments, $gui.IsPresent)
-    try {
-        switch ($type) {
-            "cmd" {
-                $dest = $obj.createCmd($destination)
-            }
-            "ps1" {
-                $dest = $obj.createPs1($destination)
-            }
-            "lnk" {
-                $dest = $obj.createLnk($destination)
-            }
-            "symlink" {
-                $dest = $obj.createSymlink($destination)
-            }
-            "exe" {
-                $dest = $obj.createExe($destination)
-            }
-            default {
-                throw "Invalid Type"
-            }
-        }
-        Write-Output "Shim: $dest -> $($obj.target)"
-    } catch {
-        Write-Error "Failed to create the new shim"
-        Write-Error "Failure reason:"
-        Write-Error "$_"
-    }
 }

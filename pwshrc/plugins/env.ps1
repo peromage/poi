@@ -1,8 +1,12 @@
-<#
+<###############################################################################
+
 .SYNOPSIS
 Environment variable setup for the session
-Modified by peromage on 2012/02/15
-#>
+
+Created by peromage 2021/02/24
+Last modified 2021/02/24
+
+###############################################################################>
 
 foreach ($_ in @{
 
