@@ -105,7 +105,7 @@ let g:mapleader="\<Space>"
 " The preset keymaps should be minimal
 
 " Normal mode
-" <h/j/k/l>
+" <h> <j> <k> <l>
 nmap <leader>h <Plug>(rice_pane_jump_left)
 nmap <leader>j <Plug>(rice_pane_jump_down)
 nmap <leader>k <Plug>(rice_pane_jump_up)
@@ -161,10 +161,6 @@ nmap <leader>Q <Plug>(rice_quit_all)
 nmap <leader>w <Plug>(rice_save)
 nmap <leader>W <Plug>(rice_save_all)
 
-" <s> Substitution
-nmap <leader>s <Plug>(rice_substitute_all)
-nmap <leader>S <Plug>(rice_substitute_all_highlighted)
-
 " <*> <#> Hightlighting
 nmap # <Plug>(rice_highlight_off)
 nmap * <Plug>(rice_highlight_current_word)
@@ -175,6 +171,8 @@ nmap <leader>uy <Plug>(rice_clipboard_copy)
 
 " <i> Commands
 nmap <leader>if <Plug>(rice_set_filetype)
+nmap <leader>is <Plug>(rice_substitute_all)
+nmap <leader>iS <Plug>(rice_substitute_all_highlighted)
 
 " Visual mode
 vmap <leader>up <Plug>(rice_clipboard_paste)
