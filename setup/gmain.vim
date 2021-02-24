@@ -24,7 +24,7 @@ endif
 
 " Frontend
 if rice#get_var('rice_gui_frontend', s:rt)
-    call rice#load_script('setup/frontends/' . s:rt.value . '.vim')
+    call rice#source_script('setup/frontends/' . s:rt.value . '.vim')
 endif
 
 "-------------------------------------------------------------------------------

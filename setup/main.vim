@@ -11,7 +11,7 @@
 " This works with rice lib
 "-------------------------------------------------------------------------------
 if !exists('g:loaded_rice') && !g:loaded_rice | finish | endif
-command! -nargs=1 LoadSetup call rice#load_script("setup/<args>")
+command! -nargs=1 LoadSetup call rice#source_script("setup/<args>")
 
 "-------------------------------------------------------------------------------
 " Read global config variables

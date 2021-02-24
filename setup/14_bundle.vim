@@ -25,7 +25,7 @@ function! s:check_enabled(group) abort
     return has_key(s:enabled, a:group)
 endfunction
 
-command! -nargs=1 LoadBundle call rice#load_script("setup/bundles/<args>")
+command! -nargs=1 LoadBundle call rice#source_script("setup/bundles/<args>")
 
 "-------------------------------------------------------------------------------
 " Group: basic

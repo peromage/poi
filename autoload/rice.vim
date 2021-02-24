@@ -21,7 +21,7 @@ let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
 " Helper functions
 "-------------------------------------------------------------------------------
 " Load script from rice home. Path should be relative
-function! rice#load_script(rel_path) abort
+function! rice#source_script(rel_path) abort
     execute 'source '. fnameescape(s:home . '/' . a:rel_path)
 endfunction
 
@@ -64,6 +64,11 @@ function! rice#get_var(var_name, out_dict) abort
 endfunction
 
 "-------------------------------------------------------------------------------
+" Helper commands
+"-------------------------------------------------------------------------------
+command! -nargs=1 IncScript call rice#source_script("<args>")
+
+"-------------------------------------------------------------------------------
 " Initializers
 "-------------------------------------------------------------------------------
 " Loading protection flag
@@ -84,11 +89,11 @@ function! rice#end() abort
         echoe 'rice#begin() must be called first!'
         return
     endif
-    call rice#load_script('setup/main.vim')
+    call rice#source_script('setup/main.vim')
     call plug#end()
     let s:loading = 0
 endfunction
 
 function! rice#gui_init() abort
-    call rice#load_script('setup/gmain.vim')
+    call rice#source_script('setup/gmain.vim')
 endfunction
