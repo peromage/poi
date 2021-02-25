@@ -17,10 +17,6 @@ case "$-" in
     *) return;;
 esac
 
-# Prevent being sourced twice
-[ -n "$loaded_rice" ] && return
-loaded_rice=1
-
 # Is it bash?
 # Compatibility check may be added here
 if [ -n "$BASH_VERSION" ]; then
@@ -28,6 +24,10 @@ if [ -n "$BASH_VERSION" ]; then
 else
     return
 fi
+
+# Prevent being sourced twice
+[ -n "$loaded_rice" ] && return
+loaded_rice=1
 
 #-------------------------------------------------------------------------------
 # Helper functions
