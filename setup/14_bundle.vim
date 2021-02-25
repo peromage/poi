@@ -13,13 +13,8 @@
 let s:rt = {}
 let s:enabled = {}
 
-if !rice#get_var('rice_bundle_group', s:rt)
-    let g:rice_bundle_group = []
-endif
-
-for key in g:rice_bundle_group
-    let s:enabled[key] = 1
-endfor
+if !rice#get_var('rice_bundle_group', s:rt) | let g:rice_bundle_group = [] | endif
+for key in g:rice_bundle_group | let s:enabled[key] = 1 | endfor
 
 function! s:check_enabled(group) abort
     return has_key(s:enabled, a:group)
@@ -42,4 +37,28 @@ if s:check_enabled('basic')
 
     Plug 'itchyny/lightline.vim'
     LoadBundle lightline.vim
+endif
+
+"-------------------------------------------------------------------------------
+" Group: git
+"-------------------------------------------------------------------------------
+if s:check_enabled('git')
+    Plug 'tpope/vim-fugitive'
+    LoadBundle fugitive.vim
+endif
+
+"-------------------------------------------------------------------------------
+" Group: terminal
+"-------------------------------------------------------------------------------
+if s:check_enabled('terminal')
+    Plug 'voldikss/vim-floaterm'
+    LoadBundle floaterm.vim
+endif
+
+"-------------------------------------------------------------------------------
+" Group: syntax
+"-------------------------------------------------------------------------------
+if s:check_enabled('syntax')
+    Plug 'sheerun/vim-polyglot'
+    LoadBundle polyglot.vim
 endif

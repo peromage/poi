@@ -24,7 +24,8 @@ call rice#begin()
 "let g:rice_color = 'dracula'
 
 " To disable built-in boosts, use name patterns to match (regex)
-"let g:rice_bundle_group = ['basic']
+" Check 'setup/14_bundle.vim' for more groups
+"let g:rice_bundle_group = ['basic', 'syntax']
 "
 " Set Python runtime for Vim or NeoVim
 "let g:rice_neovim_python_interpreter = 'python'
@@ -45,7 +46,7 @@ call rice#begin()
 
 " Extra plugins via vim-plug
 " To override default bundles define vim-plug after rice#end()
-"Plug 'sheerun/vim-polyglot'
+"Plug 'Kenta11/helloworld-vim'
 
 call rice#end()
 "-------------------------------------------------------------------------------
