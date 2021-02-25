@@ -17,7 +17,7 @@ $init_file = $MyInvocation.MyCommand.Source
 # For Linux/Mac change ";" to ":"
 $ENV:PSModulePath += ";" + $PSScriptRoot
 
-Import-Module pwshrc -ArgumentList @{
+Import-Module ripwsh -ArgumentList @{
 
 #theme = "my_lite"
 

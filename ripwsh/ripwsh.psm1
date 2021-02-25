@@ -8,13 +8,13 @@ Last modified 2021/02/24
 
 ###############################################################################>
 
-param([hashtable]$configs=@{})
+param([hashtable]$config=@{})
 
 <#------------------------------------------------------------------------------
 Default config variables
 ------------------------------------------------------------------------------#>
 # Default configurations
-$global:rice_configs = @{
+$global:ri_config = @{
 
     # CLI prompt theme
     theme = ""
@@ -23,15 +23,15 @@ $global:rice_configs = @{
     plugins = @()
 
 }
-# Update based on passed-in configs
-foreach ($_ in $configs.GetEnumerator()) {
-    $rice_configs[$_.Key] = $_.Value
+# Update based on passed-in config
+foreach ($_ in $config.GetEnumerator()) {
+    $ri_config[$_.Key] = $_.Value
 }
 
 <#------------------------------------------------------------------------------
 Meta
 ------------------------------------------------------------------------------#>
-$global:rice_meta = @{
+$global:ri_meta = @{
     HostName = $ENV:COMPUTERNAME
     UserName = $ENV:USERNAME
     Privileged = $false
@@ -40,14 +40,14 @@ $global:rice_meta = @{
 }
 # Update based on the platform
 if ($IsWindows) {
-    $rice_meta.Privileged = (
+    $ri_meta.Privileged = (
         [Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(
             [Security.Principal.WindowsBuiltinRole]::Administrator
     )
 } elseif ($IsLinux) {
-    $rice_meta.HostName = hostname
-    $rice_meta.Privileged = (id -u) -eq 0
-    $rice_meta.PathSeparator = ":"
+    $ri_meta.HostName = hostname
+    $ri_meta.Privileged = (id -u) -eq 0
+    $ri_meta.PathSeparator = ":"
 }
 
 <#------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ Helper functions
 # In order to source the script in current scope, source the returned scriptblock
 function source_script {
     param([string]$rel_path)
-    $abs_path = Join-Path $rice_meta.Home $rel_path
+    $abs_path = Join-Path $ri_meta.Home $rel_path
     return [scriptblock]::Create([System.IO.File]::ReadAllText($abs_path, [System.Text.Encoding]::UTF8))
 }
 
@@ -77,13 +77,13 @@ if ($IsWindows) {
 }
 
 # Load additional plugins
-$rice_configs.plugins | ForEach-Object { . (source_script plugins/$_.ps1) }
+$ri_config.plugins | ForEach-Object { . (source_script plugins/$_.ps1) }
 
 # Load theme
-if (-not ([string]::IsNullOrWhiteSpace($rice_configs.theme))) { . (source_script themes/$($rice_configs.theme).ps1) }
+if (-not ([string]::IsNullOrWhiteSpace($ri_config.theme))) { . (source_script themes/$($ri_config.theme).ps1) }
 
 # Add script path
 $pathToBeAdded = normalize_path "$PSScriptRoot/scripts"
 if (-not ($ENV:Path -match [regex]::Escape($pathToBeAdded))) {
-    $ENV:Path += $rice_meta.PathSeparator + $pathToBeAdded
+    $ENV:Path += $ri_meta.PathSeparator + $pathToBeAdded
 }

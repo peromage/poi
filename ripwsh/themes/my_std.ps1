@@ -10,9 +10,9 @@ Last modified 2021/02/24
 
 function global:prompt {
     $myPwd = { $pwd.Path -replace ([regex]::Escape($HOME)+'(.*)'),'~$1' }
-    $hostname = $global:rice_meta.HostName
-    $username = $global:rice_meta.UserName
-    if ($global:rice_meta.Privileged) {
+    $hostname = $global:ri_meta.HostName
+    $username = $global:ri_meta.UserName
+    if ($global:ri_meta.Privileged) {
         Write-Host -NoNewline -ForegroundColor Red "$username@$hostname "
         Write-Host -NoNewline -ForegroundColor White "$(&$myPwd)#"
     } else {
