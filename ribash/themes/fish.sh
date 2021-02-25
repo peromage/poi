@@ -1,4 +1,4 @@
-function _PWD_FISH_COLLAPSED_() {
+_PWD_FISH_COLLAPSED_() {
     local pwd="$1"
     local home="$HOME"
     local size=${#home}

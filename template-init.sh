@@ -1,20 +1,28 @@
 #!/bin/sh
-# Bash init template file.
-# Modified by peromage on 2021/02/05
+################################################################################
+#
+# Bash initialization template file
+#
+# Created by peromage 2021/02/24
+# Last modified 2021/02/24
+#
+################################################################################
 
-#Initialization
 #-------------------------------------------------------------------------------
-#rice_plugins="lf env"
-#rice_theme="mybash"
+# Initialization
+#-------------------------------------------------------------------------------
+[ -z "$BASH_VERSION" ] && return
+
+# Shortcu to this file
+init_file=$(realpath "$BASH_SOURCE")
 
 # Load rice core init file. If this file has been moved to other places change
 # this path accordingly. Otherwise it should stay untouched.
-if [ -n "$BASH_VERSION" ]; then
-    # Load rice
-    . $(dirname $(realpath "$BASH_SOURCE"))/rice_bash/rice_bash.sh
-    # Shortcu to this file
-    init_file=$(realpath "$BASH_SOURCE")
-else
-    return
-fi
+ribash_file=$(dirname $(realpath "$BASH_SOURCE"))/ribash/ribash.sh
+
+#rice_plugins=""
+
+#rice_theme="my_bash"
+
+. $ribash_file
 #-------------------------------------------------------------------------------

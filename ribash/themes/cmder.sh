@@ -1,4 +1,4 @@
-function _RET_FACE_COLOR_() {
+_RET_FACE_COLOR_() {
     case "$?" in
         0) echo -e '\e[32m:)\e[0m';;
         *) echo -e '\e[31m:(\e[0m';;

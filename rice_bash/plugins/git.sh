@@ -1,8 +1,0 @@
-# Git helper aliases and functions.
-# Modified by peromage on 2021/01/25
-
-alias gst="git status"
-alias glo="git log --graph --pretty=format:'%Cred%h%Creset [%an] - %s %Cgreen(%ci)%Creset %C(cyan)%d%Creset' --abbrev-commit --date=relative"
-alias gac="git add -A; git commit -m"
-alias gch="git checkout"
-alias gbr="git branch"
