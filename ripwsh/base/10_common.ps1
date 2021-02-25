@@ -80,9 +80,14 @@ function lfChangeDirectory {
     }
 }
 
+function setupCygwin {
+    cygwin-setup --no-admin --no-desktop --no-shortcuts --no-startmenu @args
+}
+
 <#------------------------------------------------------------------------------
 Aliases
 ------------------------------------------------------------------------------#>
 Set-Alias lfcd lfChangeDirectory
 Set-Alias ll listDirectory
 Set-Alias hispath getHistoryPath
+Set-Alias cygwin-install setupCygwin

@@ -55,3 +55,4 @@ ranger() {
 alias ll="ls -lahF --color=always --group-directories-first"
 alias msysupdate="pacman --needed -S bash pacman pacman-mirrors msys2-runtime"
 alias brew="HOMEBREW_NO_AUTO_UPDATE=1 PATH=/home/linuxbrew/.linuxbrew/bin:$PATH /home/linuxbrew/.linuxbrew/bin/brew"
+alias cygwin-install="cygwin-setup --no-admin --no-desktop --no-shortcuts --no-startmenu"
