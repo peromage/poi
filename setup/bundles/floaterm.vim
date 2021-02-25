@@ -18,11 +18,11 @@ let g:floaterm_height = 0.5
 let g:floaterm_width = 0.5
 
 " Key bindings in normal mode
-nnoremap <silent> <leader>tt :FloatermToggle<CR>
+nnoremap <silent> <Bslash>tt :FloatermToggle<CR>
 " Send a custom command
-nnoremap <leader>ts :FloatermSend<Space>
+nnoremap <Bslash>ts :FloatermSend<Space>
 " Execute current file
-nnoremap <leader>tS :FloatermSend %:p<CR><CR>
+nnoremap <Bslash>tS :FloatermSend %:p<CR><CR>
 " Key bindings in terminal mode
 tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> <C-h> <C-\><C-n>:FloatermPrev<CR>
