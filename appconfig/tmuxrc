@@ -55,7 +55,6 @@ set-option -g prefix2 None
 bind-key ` send-prefix
 set-option -s escape-time 50
 
-# Panes
 bind-key -r h select-pane -L
 bind-key -r l select-pane -R
 bind-key -r j select-pane -D
@@ -65,31 +64,44 @@ bind-key -r = resize-pane -R
 bind-key -r _ resize-pane -D
 bind-key -r + resize-pane -U
 bind-key -r 0 resize-pane -Z
+
 bind-key i display-pane
+
 bind-key -r p last-pane
+bind-key -r P last-window
+
 bind-key o break-pane
+bind-key O command-prompt "join-pane -t '%%'"
+
+bind-key -r y next-layout
+bind-key -r Y previous-layout
+
 bind-key -r u swap-pane -d -t +1
 bind-key -r U swap-pane -d -t -1
+
 bind-key | split-window -h -c "#{pane_current_path}"
 bind-key \\ split-window -v -c "#{pane_current_path}"
-bind-key q kill-pane
 
-# Windows (tabs)
-bind-key r command-prompt -I "#{window_name}" "rename-window '%%'"
-bind-key t new-window
-bind-key -r m swap-window -d -t +1
-bind-key -r M swap-window -d -t -1
-bind-key -r P last-window
-bind-key g choose-tree -Z
-bind-key -r n select-window -n
-bind-key -r N select-window -p
+bind-key q kill-pane
 bind-key Q kill-window
 
-# Sessions
+bind-key r command-prompt -I "#{window_name}" "rename-window '%%'"
 bind-key R command-prompt -I "#{session_name}" "rename-session '%%'"
+
+bind-key t new-window
+bind-key T new-session
+
+bind-key -r m swap-window -d -t +1
+bind-key -r M swap-window -d -t -1
+
+bind-key g choose-tree -Z
+
+bind-key -r n select-window -n
+bind-key -r N select-window -p
+
 bind-key X confirm-before kill-session
 bind-key z detach-client
-bind-key T new-session
+
 bind-key -r b switch-client -n
 bind-key -r B switch-client -p
 
