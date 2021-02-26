@@ -20,20 +20,23 @@ ffdo() {
 }
 
 ffcd() {
-    cd $(fzf)
+    local tmp="$(fzf)"
+    [ -n "$tmp" ] && cd "$tmp"
 }
 
 ffnvim() {
-    nvim $(fzf)
+    local tmp="$(fzf)"
+    [ -n "$tmp" ] && nvim "$tmp"
 }
 
 ffvim() {
-    vim $(fzf)
+    local tmp="$(fzf)"
+    [ -n "$tmp" ] && vim "$tmp"
 }
 
 # lf
 lfcd() {
-    tmp="$(mktemp)"
+    local tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
         dir="$(cat "$tmp")"
@@ -58,3 +61,8 @@ ranger() {
 #-------------------------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------------------------
+# z.lua
+alias zb='z -b'
+alias zc='z -c'
+alias zi='z -i'
+alias zf='z -I'
