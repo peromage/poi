@@ -59,13 +59,13 @@ function ri_normalize_path {
 Initialization
 ------------------------------------------------------------------------------#>
 # Sourcing base scripts
-. (ri_source_script base/00_settings.ps1)
-
-# Load additional mods
-$ri_config.mods | ForEach-Object { . (ri_source_script mods/$_.ps1) }
+. (ri_source_script base/10_settings.ps1)
 
 # Load theme
 if (-not ([string]::IsNullOrWhiteSpace($ri_config.theme))) { . (ri_source_script themes/$($ri_config.theme).ps1) }
+
+# Load additional mods
+$ri_config.mods | ForEach-Object { . (ri_source_script mods/$_.ps1) }
 
 # Add script path
 $p = ri_normalize_path "$PSScriptRoot/scripts"

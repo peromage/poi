@@ -47,24 +47,23 @@ ri_init_var() {
 #-------------------------------------------------------------------------------
 # Config variables
 #-------------------------------------------------------------------------------
-# Plugins to be loaded
-ri_init_var rice_plugins ""
 # Shell theme
 ri_init_var rice_theme ""
-
+# Mods to be loaded
+ri_init_var rice_mods ""
 
 #-------------------------------------------------------------------------------
 # Initialization
 #-------------------------------------------------------------------------------
 # Load base scripts
-ri_source_script base/10_common.sh
+ri_source_script base/10_settings.sh
 
 # Load theme
 [ -n "$rice_theme" ] && ri_source_script themes/$rice_theme.sh
 
-# Load plugins
-for i in $rice_plugins; do
-    ri_source_script plugins/$i.sh
+# Load mods
+for i in $rice_mods; do
+    ri_source_script mods/$i.sh
 done
 unset i
 

@@ -23,9 +23,9 @@ init_file=$(realpath "$BASH_SOURCE")
 #-------------
 #rice_theme="my_bash"
 
-# Space separated string for plugins under ribash/plugins
+# Space separated string for mods under ribash/mods
 #--------------------------------------------------------
-#rice_plugins=""
+#rice_mods="basic nav"
 
 #-------------------------------------------------------------------------------
 . $init_home/ribash/ribash.sh
