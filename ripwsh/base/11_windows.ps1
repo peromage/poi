@@ -52,8 +52,8 @@ function evaltoAdmin {
 Operation of path
 ------------------------------------------------------------------------------#>
 function getEnvUserPath {
-    $path = [System.Environment]::GetEnvironmentVariable(
-        "Path", [System.EnvironmentVariableTarget]::User)
+    $path = [Environment]::GetEnvironmentVariable(
+        "Path", [EnvironmentVariableTarget]::User)
     if ($null -eq $path) {
         return ""
     }
@@ -62,10 +62,10 @@ function getEnvUserPath {
 
 function updateSessionPath {
     $env:Path = @(
-        [System.Environment]::GetEnvironmentVariable(
-            "Path", [System.EnvironmentVariableTarget]::Machine),
-        [System.Environment]::GetEnvironmentVariable(
-            "Path", [System.EnvironmentVariableTarget]::User)) -join ";"
+        [Environment]::GetEnvironmentVariable(
+            "Path", [EnvironmentVariableTarget]::Machine),
+        [Environment]::GetEnvironmentVariable(
+            "Path", [EnvironmentVariableTarget]::User)) -join ";"
 }
 
 function setEnvUserPath {
@@ -73,8 +73,8 @@ function setEnvUserPath {
     if (-not $path.EndsWith(";")) {
         $path = $path + ";"
     }
-    [System.Environment]::SetEnvironmentVariable(
-        "Path", $path, [System.EnvironmentVariableTarget]::User)
+    [Environment]::SetEnvironmentVariable(
+        "Path", $path, [EnvironmentVariableTarget]::User)
     updateSessionPath
 }
 
@@ -132,16 +132,16 @@ Operation of environment variables
 function setEnvUserVars {
     param([hashtable]$envVarHash)
     foreach ($_ in $envVarHash.GetEnumerator()) {
-        [System.Environment]::SetEnvironmentVariable(
-            $_.Key, $_.Value, [System.EnvironmentVariableTarget]::User)
+        [Environment]::SetEnvironmentVariable(
+            $_.Key, $_.Value, [EnvironmentVariableTarget]::User)
     }
 }
 
 function removeEnvUserVars {
     param([hashtable]$envVarHash)
     foreach ($_ in $envVarHash.GetEnumerator()) {
-        [System.Environment]::SetEnvironmentVariable(
-            $_.Key, $null, [System.EnvironmentVariableTarget]::User)
+        [Environment]::SetEnvironmentVariable(
+            $_.Key, $null, [EnvironmentVariableTarget]::User)
     }
 }
 

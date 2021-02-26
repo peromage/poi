@@ -19,13 +19,13 @@ init_home=$(dirname $(realpath "$BASH_SOURCE"))
 init_file=$(realpath "$BASH_SOURCE")
 #-------------------------------------------------------------------------------
 
-# Space separated string for plugins under ribash/plugins
-#--------------------------------------------------------
-#rice_plugins=""
-
 # Prompt theme
 #-------------
 #rice_theme="my_bash"
+
+# Space separated string for plugins under ribash/plugins
+#--------------------------------------------------------
+#rice_plugins=""
 
 #-------------------------------------------------------------------------------
 . $init_home/ribash/ribash.sh

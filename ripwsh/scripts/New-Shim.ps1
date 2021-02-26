@@ -54,8 +54,8 @@ class ShimCreator {
     ShimCreator([string]$target, [string]$arguments, [bool]$gui) {
         # Target path can be absolute. If it is given in relative form, current
         # working directory is used as the base path.
-        $target_full = [System.IO.Path]::GetFullPath($target, $pwd)
-        if (-not [System.IO.File]::Exists($target_full)) {
+        $target_full = [IO.Path]::GetFullPath($target, $pwd)
+        if (-not [IO.File]::Exists($target_full)) {
             throw "Target doesn't exist or it is a directory"
         }
         $this.target = $target_full
@@ -66,24 +66,24 @@ class ShimCreator {
     [string]resolveDestination([string]$destination, [string]$extension) {
         # Destination path can be absolute. If it is given in relative form, current
         # working directory is used as the base path.
-        $dest_full = [System.IO.Path]::GetFullPath($destination, $pwd)
+        $dest_full = [IO.Path]::GetFullPath($destination, $pwd)
         # If the given destination is an existing directory, put the shim under
         # this directory. Shim name is the target's basename.
-        if ([System.IO.Directory]::Exists($dest_full)) {
-            $dest_full = [System.IO.Path]::Join(
+        if ([IO.Directory]::Exists($dest_full)) {
+            $dest_full = [IO.Path]::Join(
                     $dest_full,
-                    [System.IO.Path]::GetFileName($this.target)
+                    [IO.Path]::GetFileName($this.target)
             )
         }
         # If the given destination is a new file, use the name of destination
         # specified.
         else {
             # Create directory if it doesn't exist
-            [System.IO.Directory]::CreateDirectory([System.IO.Path]::GetDirectoryName($dest_full))
+            [IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($dest_full))
         }
         # Change destination extension if it's given
         if (-not [string]::IsNullOrWhiteSpace($extension)) {
-            $dest_full = [System.IO.Path]::ChangeExtension($dest_full, $extension)
+            $dest_full = [IO.Path]::ChangeExtension($dest_full, $extension)
         }
         return $dest_full
     }

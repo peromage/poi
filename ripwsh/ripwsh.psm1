@@ -32,22 +32,10 @@ foreach ($_ in $config.GetEnumerator()) {
 Meta
 ------------------------------------------------------------------------------#>
 $global:ri_meta = @{
-    HostName = $ENV:COMPUTERNAME
-    UserName = $ENV:USERNAME
-    Privileged = $false
-    PathSeparator = ";"
+    Privileged = if ($IsWindows) {
+        ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+    } else { (id -u) -eq 0 }
     Home = $PSScriptRoot
-}
-# Update based on the platform
-if ($IsWindows) {
-    $ri_meta.Privileged = (
-        [Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(
-            [Security.Principal.WindowsBuiltinRole]::Administrator
-    )
-} elseif ($IsLinux) {
-    $ri_meta.HostName = hostname
-    $ri_meta.Privileged = (id -u) -eq 0
-    $ri_meta.PathSeparator = ":"
 }
 
 <#------------------------------------------------------------------------------
@@ -58,7 +46,7 @@ Helper functions
 function ri_source_script {
     param([string]$rel_path)
     $abs_path = Join-Path $ri_meta.Home $rel_path
-    return [scriptblock]::Create([System.IO.File]::ReadAllText($abs_path, [System.Text.Encoding]::UTF8))
+    return [scriptblock]::Create([IO.File]::ReadAllText($abs_path, [Text.Encoding]::UTF8))
 }
 
 # Just normalize the given path. No file checks
@@ -83,7 +71,7 @@ $ri_config.plugins | ForEach-Object { . (ri_source_script plugins/$_.ps1) }
 if (-not ([string]::IsNullOrWhiteSpace($ri_config.theme))) { . (ri_source_script themes/$($ri_config.theme).ps1) }
 
 # Add script path
-$pathToBeAdded = ri_normalize_path "$PSScriptRoot/scripts"
-if (-not ($ENV:Path -match [regex]::Escape($pathToBeAdded))) {
-    $ENV:Path += $ri_meta.PathSeparator + $pathToBeAdded
+$p = ri_normalize_path "$PSScriptRoot/scripts"
+if (-not ($env:PATH -match [regex]::Escape($p))) {
+    $env:PATH += [IO.Path]::PathSeparator + $p
 }

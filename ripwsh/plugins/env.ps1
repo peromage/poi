@@ -17,5 +17,5 @@ EDITOR = "nvim"
 SHELL = "pwsh"
 
 }.GetEnumerator()) {
-    Set-Item "ENV:$($_.Key)" $_.Value
+    Set-Item "env:$($_.Key)" $_.Value
 }

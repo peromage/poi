@@ -19,13 +19,13 @@ $ENV:PSModulePath += [IO.Path]::PathSeparator + $init_home
 #-------------------------------------------------------------------------------
 Import-Module ripwsh -ArgumentList @{
 
-# A list of string for plugins under ripwsh/plugins
-#--------------------------------------------------
-#plugins = @()
-
 # Prompt theme
 #-------------
 #theme = "my_lite"
+
+# A list of string for plugins under ripwsh/plugins
+#--------------------------------------------------
+#plugins = @()
 
 }
 #===============================================================================

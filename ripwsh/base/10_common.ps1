@@ -60,7 +60,7 @@ function getHistoryPath {
 function exportVars {
     param ([hashtable]$envVarHash)
     foreach ($_ in $envVarHash.GetEnumerator()) {
-        Set-Item "ENV:$($_.Key)" $_.Value
+        Set-Item "env:$($_.Key)" $_.Value
     }
 }
 
@@ -69,7 +69,7 @@ function lfChangeDirectory {
     .Description
     This function requires lf in the path
     #>
-    $tmp = [System.IO.Path]::GetTempFileName()
+    $tmp = [IO.Path]::GetTempFileName()
     lf "-last-dir-path=$tmp"
     if (Test-Path -PathType Leaf $tmp) {
         $dst = Get-Content $tmp
