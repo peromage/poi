@@ -1,21 +1,24 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Rice initialization template
+" Copy the content of this file to your .vimrc or init.vim to get started
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/02/24
+" Last modified 2021/02/25
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------------------------------------
 " Initialization (use :PlugInstall for the first time)
 "-------------------------------------------------------------------------------
-let g:init_file = expand('<sfile>:p')
-let g:init_home = expand('<sfile>:p:h')
-" Runtime path must be added
-exec 'set rtp+='.g:init_home
 " Shortcut to open this file
+let g:init_file = expand('<sfile>:p')
 comm! InitFile exec 'edit '.g:init_file
+
+" NOTE: Redirect g:init_home to the path of rice repo if this file is not at
+" the root of rice
+let g:init_home = expand('<sfile>:p:h')
+exec 'set rtp+='.g:init_home
 
 " Initialize rice
 call rice#begin()

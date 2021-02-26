@@ -13,7 +13,9 @@ Initialization
 ------------------------------------------------------------------------------#>
 # Shortcut to edit the init file
 $init_file = $MyInvocation.MyCommand.Source
-# Add rice module path
+
+# NOTE: Replace $PSScriptRoot to the path of rice repo if this file is not at
+# the root of rice
 # For Linux/Mac change ";" to ":"
 $ENV:PSModulePath += ";" + $PSScriptRoot
 

@@ -16,13 +16,13 @@
 # Shortcu to this file
 init_file=$(realpath "$BASH_SOURCE")
 
-# Load rice core init file. If this file has been moved to other places change
-# this path accordingly. Otherwise it should stay untouched.
-ribash_file=$(dirname $(realpath "$BASH_SOURCE"))/ribash/ribash.sh
+# NOTE: Redirect init_home to the path of rice repo if this file is not at
+# the root of rice
+init_home=$(dirname $(realpath "$BASH_SOURCE"))
 
 #rice_plugins=""
 
 #rice_theme="my_bash"
 
-. $ribash_file
+. $init_home/ribash/ribash.sh
 #-------------------------------------------------------------------------------
