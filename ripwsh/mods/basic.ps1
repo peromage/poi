@@ -4,7 +4,7 @@
 Common utility functions
 
 Created by peromage 2021/02/24
-Last modified 2021/02/24
+Last modified 2021/02/26
 
 ###############################################################################>
 
@@ -64,30 +64,8 @@ function exportVars {
     }
 }
 
-function lfChangeDirectory {
-    <#
-    .Description
-    This function requires lf in the path
-    #>
-    $tmp = [IO.Path]::GetTempFileName()
-    lf "-last-dir-path=$tmp"
-    if (Test-Path -PathType Leaf $tmp) {
-        $dst = Get-Content $tmp
-        Remove-Item $tmp
-        if ((Test-Path -PathType Container $dst) -and ($dst -ne $pwd.Path)) {
-            Set-Location $dst
-        }
-    }
-}
-
-function setupCygwin {
-    cygwin-setup --no-admin --no-desktop --no-shortcuts --no-startmenu @args
-}
-
 <#------------------------------------------------------------------------------
 Aliases
 ------------------------------------------------------------------------------#>
-Set-Alias lfcd lfChangeDirectory
-Set-Alias ll listDirectory
+Set-Alias lsd listDirectory
 Set-Alias hispath getHistoryPath
-Set-Alias cygwin-install setupCygwin

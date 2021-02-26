@@ -23,9 +23,9 @@ Import-Module ripwsh -ArgumentList @{
 #-------------
 #theme = "my_lite"
 
-# A list of string for plugins under ripwsh/plugins
+# A list of string for mods under ripwsh/mods
 #--------------------------------------------------
-#plugins = @()
+#mods = @('basic', 'nav', 'windows')
 
 }
 #===============================================================================

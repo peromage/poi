@@ -19,8 +19,8 @@ $global:ri_config = @{
     # CLI prompt theme
     theme = ""
 
-    # Additional plugins
-    plugins = @()
+    # Additional mods
+    mods = @()
 
 }
 # Update based on passed-in config
@@ -59,13 +59,10 @@ function ri_normalize_path {
 Initialization
 ------------------------------------------------------------------------------#>
 # Sourcing base scripts
-. (ri_source_script base/10_common.ps1)
-if ($IsWindows) {
-    . (ri_source_script base/11_windows.ps1)
-}
+. (ri_source_script base/00_settings.ps1)
 
-# Load additional plugins
-$ri_config.plugins | ForEach-Object { . (ri_source_script plugins/$_.ps1) }
+# Load additional mods
+$ri_config.mods | ForEach-Object { . (ri_source_script mods/$_.ps1) }
 
 # Load theme
 if (-not ([string]::IsNullOrWhiteSpace($ri_config.theme))) { . (ri_source_script themes/$($ri_config.theme).ps1) }

@@ -146,8 +146,16 @@ function removeEnvUserVars {
 }
 
 <#------------------------------------------------------------------------------
+Cygwin
+------------------------------------------------------------------------------#>
+function setupCygwin {
+    cygwin-setup --no-admin --no-desktop --no-shortcuts --no-startmenu @args
+}
+
+<#------------------------------------------------------------------------------
 Aliases
 ------------------------------------------------------------------------------#>
 Set-Alias sudo runasAdmin
 Set-Alias su evaltoAdmin
 Set-Alias issu testAdmin
+Set-Alias cygwin-install setupCygwin
