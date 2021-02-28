@@ -30,3 +30,6 @@ init_file=$(realpath "$BASH_SOURCE")
 #-------------------------------------------------------------------------------
 . $init_home/ribash/ribash.sh
 #===============================================================================
+
+# z.lua
+#eval "$(lua54 $init_home/bin/z.lua --init bash enhanced once)"

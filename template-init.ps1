@@ -29,3 +29,6 @@ Import-Module ripwsh -ArgumentList @{
 
 }
 #===============================================================================
+
+# z.lua
+#iex ((lua54 $init_home\bin\z.lua --init powershell enhanced once) -join "`n")
