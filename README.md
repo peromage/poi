@@ -52,26 +52,16 @@ source /path/to/init.vim
 
 Directories which start with "@" contain configurations for other applications and stuff that is not used often. Doing it in this way to avoid naming conflicts.
 
-- *@archive*: Old files.
-- *@docs*: Some notes.
+- *notes*: Some notes.
 - *appconfig*: Configurations for daily used applications.
-- *rice_pwsh*: Rice PowerShell module.
-- *rice_bash*: Rice Bash module.
+- *ripwsh*: Rice PowerShell module.
+- *ribash*: Rice Bash module.
 - *autoload*: Vim common libraries.
 - *colors*: Vim color schemes.
 - *plugin*: Vim additional plugins (Loaded all the time).
-- *plugin_disabled*: Vim additional plugins that are disabled.
-- *rice_pwsh/base*: Essential scripts. Required on all platforms.
-- *rice_pwsh/base_win*: Windows related scripts.
-- *rice_pwsh/features*: Additional features for advanced usage.
-- *rice_pwsh/themes*: CLI themes
-- *rice_pwsh/src*: Source code written other than PowerShell scripts, DotNet usually.
-- *rice_pwsh/scripts*: This directory will be added to PATH so any PowerShell script can be dropped in and invoked at any time.
-- *rice_bash/base*: Essential scripts
-- *rice_bash/features*: Scripts modules for advanced usage.
-- *rice_bash/themes*: CLI prompt themes.
-- *rice_bash/scripts*: A drop-in directory which will be added to PATH.
-
+- *plugin_inactive*: Vim additional plugins that are disabled.
+- *setup*: Rice Vim configurations.
+- *bin*: Scripts and executables.
 
 [lf]: https://github.com/gokcehan/lf
 [fzf_url]: https://github.com/junegunn/fzf
