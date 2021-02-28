@@ -52,10 +52,12 @@ nnoremap <silent> <Plug>(rice_buffer_close) :bd<CR>
 nnoremap <silent> <Plug>(rice_buffer_close_other) :%bd\|e#<CR>
 
 "-------------------------------------------------------------------------------
-" Quick substitution
+" Search and substitution
 "-------------------------------------------------------------------------------
 nnoremap <Plug>(rice_substitute_all) :%s//gc<Left><Left><Left>
 nnoremap <expr> <Plug>(rice_substitute_all_highlighted) ':%s/' . @/ . '//gc<Left><Left><Left>'
+nnoremap <silent> <Plug>(rice_search_off) :noh<CR>
+nnoremap <silent> <Plug>(rice_search_cword) *N
 
 "-------------------------------------------------------------------------------
 " Misc
@@ -66,8 +68,6 @@ nnoremap <silent> <Plug>(rice_save) :w<CR>
 nnoremap <silent> <Plug>(rice_save_all) :wa<CR>
 nnoremap <silent> <Plug>(rice_register) :reg<CR>
 nnoremap <silent> <Plug>(rice_message) :messages<CR>
-nnoremap <silent> <Plug>(rice_highlight_off) :noh<CR>
-nnoremap <silent> <Plug>(rice_highlight_current_word) *N
 nnoremap <Plug>(rice_set_filetype) :set filetype=
 
 "-------------------------------------------------------------------------------
@@ -81,6 +81,11 @@ nnoremap <silent> <Plug>(rice_clipboard_copy) "*y
 "-------------------------------------------------------------------------------
 vnoremap <silent> <Plug>(rice_clipboard_paste) "*p
 vnoremap <silent> <Plug>(rice_clipboard_copy) "*y
+
+"-------------------------------------------------------------------------------
+" Visual mode: Search
+"-------------------------------------------------------------------------------
+vnoremap <silent> <Plug>(rice_search_selected) y/\V<C-R>=escape(@",'/\')<CR><CR>N
 
 "-------------------------------------------------------------------------------
 " Insert mode: cursor movement
@@ -162,8 +167,8 @@ nmap <leader>w <Plug>(rice_save)
 nmap <leader>W <Plug>(rice_save_all)
 
 " <*> <#> Hightlighting
-nmap # <Plug>(rice_highlight_off)
-nmap * <Plug>(rice_highlight_current_word)
+nmap # <Plug>(rice_search_off)
+nmap * <Plug>(rice_search_cword)
 
 " <u> GUI
 nmap <leader>up <Plug>(rice_clipboard_paste)
@@ -177,6 +182,7 @@ nmap <leader>iS <Plug>(rice_substitute_all_highlighted)
 " Visual mode
 vmap <leader>up <Plug>(rice_clipboard_paste)
 vmap <leader>uy <Plug>(rice_clipboard_copy)
+vmap * <Plug>(rice_search_selected)
 
 " Terminal mode
 tmap <Esc><Esc> <Plug>(rice_terminal_escape)
