@@ -4,7 +4,7 @@
 Rice root module. Initialization will be done in this module.
 
 Created by peromage 2021/02/24
-Last modified 2021/02/24
+Last modified 2021/02/27
 
 ###############################################################################>
 
@@ -31,12 +31,16 @@ foreach ($_ in $config.GetEnumerator()) {
 <#------------------------------------------------------------------------------
 Meta
 ------------------------------------------------------------------------------#>
-$global:ri_meta = @{
-    Privileged = if ($IsWindows) {
-        ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
-    } else { (id -u) -eq 0 }
-    Home = $PSScriptRoot
-}
+$global:ri_meta = @{}
+
+$ri_meta.Privileged = if ($IsWindows) {
+    ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+} else { (id -u) -eq 0 }
+
+$ri_meta.PwshHome = $PSScriptRoot
+
+$ri_meta.Home = [IO.Path]::GetDirectoryName($ri_meta.PwshHome)
+
 
 <#------------------------------------------------------------------------------
 Helper functions
@@ -45,7 +49,7 @@ Helper functions
 # In order to source the script in current scope, source the returned scriptblock
 function ri_source_script {
     param([string]$rel_path)
-    $abs_path = Join-Path $ri_meta.Home $rel_path
+    $abs_path = Join-Path $ri_meta.PwshHome $rel_path
     return [scriptblock]::Create([IO.File]::ReadAllText($abs_path, [Text.Encoding]::UTF8))
 }
 
@@ -68,7 +72,7 @@ if (-not ([string]::IsNullOrWhiteSpace($ri_config.theme))) { . (ri_source_script
 $ri_config.mods | ForEach-Object { . (ri_source_script mods/$_.ps1) }
 
 # Add script path
-$p = ri_normalize_path "$PSScriptRoot/scripts"
+$p = ri_normalize_path "$($ri_meta.Home)/bin"
 if (-not ($env:PATH -match [regex]::Escape($p))) {
     $env:PATH += [IO.Path]::PathSeparator + $p
 }

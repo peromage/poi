@@ -17,23 +17,24 @@ case "$-" in
     *) return;;
 esac
 
-# Is it bash?
-# Compatibility check may be added here
-if [ -n "$BASH_VERSION" ]; then
-    ri_home=$(dirname $(realpath "$BASH_SOURCE"))
-else
-    return
-fi
-
 # Prevent being sourced twice
 [ -n "$loaded_rice" ] && return
 loaded_rice=1
+
+# Is it bash?
+# Compatibility check may be added here
+if [ -n "$BASH_VERSION" ]; then
+    ri_bash_home=$(dirname $(realpath "$BASH_SOURCE"))
+else
+    return
+fi
+ri_home=$(dirname $ri_bash_home)
 
 #-------------------------------------------------------------------------------
 # Helper functions
 #-------------------------------------------------------------------------------
 ri_source_script() {
-    . $ri_home/$1
+    . $ri_bash_home/$1
 }
 
 ri_init_var() {
@@ -68,4 +69,4 @@ done
 unset i
 
 # Add script fold to path
-export PATH=$PATH:$ri_home/scripts
+export PATH=$PATH:$ri_home/bin
