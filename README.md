@@ -50,8 +50,6 @@ source /path/to/init.vim
 
 ## Directories
 
-Directories which start with "@" contain configurations for other applications and stuff that is not used often. Doing it in this way to avoid naming conflicts.
-
 - *notes*: Some notes.
 - *appconfig*: Configurations for daily used applications.
 - *ripwsh*: Rice PowerShell module.
