@@ -10,20 +10,15 @@ The root of this repo is used as (Neo)Vim runtime path as well as for other tool
 
 Essential
 
-- Latest [Python][python]: `pynvim` installed and with `python` in `PATH` (Required by Vim `Leaderf`)
-- Latest [Node.js][nodejs]: with `node` and `npm` in `PATH` (Required by Vim `Coc.nvim`)
+- Latest [Python][python_url]: `pynvim` installed and with `python` in `PATH` (Required by Vim `Leaderf`)
+- Latest [Node.js][nodejs_url]: with `node` and `npm` in `PATH` (Required by Vim `Coc.nvim`)
 
-Optional
+Recommended
 
-- [lf][lf]
-- [fzf][fzf_url]
-- [ripgrep][ripgrep_url]
+- [Lua][lua_url]
+- [DejaVu Sans Mono For Powerline][dejavu sans mono for powerline url]
+- [Cascadia Code][cascadia code url]
 - [universal-ctags][ctags_url]
-- [bat][bat_url]
-
-Optional fonts
-- [DejaVu Sans Mono For Powerline][dejavu sans mono for powerline]
-- [Cascadia Code][cascadia code]
 
 ## Get Started
 
@@ -61,12 +56,27 @@ source /path/to/init.vim
 - *setup*: Rice Vim configurations.
 - *bin*: Scripts and executables.
 
-[lf]: https://github.com/gokcehan/lf
+## Credits
+
+This bundle uses following awesome projects. Thank them all for the great contributions.
+
+- [lf][lf_url]
+- [fzf][fzf_url]
+- [ripgrep][ripgrep_url]
+- [bat][bat_url]
+- [z.lua][zlua_url]
+
+
+[python_url]: https://www.python.org/downloads/
+[nodejs_url]:https://nodejs.org/en/download/current/
+
+[lua_url]: http://luabinaries.sourceforge.net/download.html
+[dejavu sans mono for powerline url]: https://github.com/powerline/fonts
+[cascadia code url]: https://github.com/microsoft/cascadia-code
+[ctags_url]: https://github.com/universal-ctags/ctags!
+
+[lf_url]: https://github.com/gokcehan/lf
 [fzf_url]: https://github.com/junegunn/fzf
 [ripgrep_url]: https://github.com/BurntSushi/ripgrep
-[ctags_url]: https://github.com/universal-ctags/ctags!
 [bat_url]: https://github.com/sharkdp/bat
-[python]: https://www.python.org/downloads/
-[nodejs]:https://nodejs.org/en/download/current/
-[dejavu sans mono for powerline]: https://github.com/powerline/fonts
-[cascadia code]: https://github.com/microsoft/cascadia-code
+[zlua_url]: https://github.com/skywind3000/z.lua
