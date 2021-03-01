@@ -11,6 +11,9 @@
 " This works with rice lib
 "-------------------------------------------------------------------------------
 if !exists('g:loaded_rice') && !g:loaded_rice | finish | endif
+if !exists(':LoadSetup')
+    command! -nargs=1 LoadSetup call rice#source_script("setup/<args>")
+endif
 
 "-------------------------------------------------------------------------------
 " Read global config variables
@@ -28,10 +31,13 @@ if rice#get_var('rice_gui_frontend', s:rt)
 endif
 
 "-------------------------------------------------------------------------------
-" Some other configs
+" Load components
 "-------------------------------------------------------------------------------
-" Balanced looking
-set guioptions=egmrLtT
+LoadSetup 50_gui_sets.vim
+LoadSetup 51_gui_keymaps.vim
 
+"-------------------------------------------------------------------------------
+" Startup
+"-------------------------------------------------------------------------------
 " Always starts GUI in home directory
 cd $HOME
