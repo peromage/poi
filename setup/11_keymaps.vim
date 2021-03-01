@@ -73,6 +73,7 @@ nnoremap <Plug>(rice_set_filetype) :set filetype=
 "-------------------------------------------------------------------------------
 " Normal: Copy and paste
 "-------------------------------------------------------------------------------
+nnoremap <silent> <Plug>(rice_toggle_paste_mode) :set invpaste<CR>
 nnoremap <silent> <Plug>(rice_clipboard_copy) "*yy
 nnoremap <silent> <Plug>(rice_clipboard_paste) "*p
 
@@ -123,10 +124,11 @@ nmap <leader>k <Plug>(rice_pane_jump_up)
 nmap <leader>l <Plug>(rice_pane_jump_right)
 
 " <p>
-nmap <leader>p <Plug>(rice_pane_jump_previous)
+nmap <silent>p <Plug>(rice_toggle_paste_mode)
 
 " <o>
-nmap <leader>o <Plug>(rice_pane_maximize)
+nmap <leader>o <Plug>(rice_pane_jump_previous)
+nmap <leader>O <Plug>(rice_pane_maximize)
 
 " <bslash>
 nmap <leader><Bar> <Plug>(rice_vsplit)
@@ -183,7 +185,7 @@ nmap <leader>uy <Plug>(rice_clipboard_copy)
 vmap <leader>up <Plug>(rice_clipboard_paste)
 vmap <leader>uy <Plug>(rice_clipboard_copy)
 
-" <i> Commands
+" <i> Input commands
 nmap <leader>if <Plug>(rice_set_filetype)
 nmap <leader>is <Plug>(rice_substitute_all)
 nmap <leader>iS <Plug>(rice_substitute_all_highlighted)
