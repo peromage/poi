@@ -124,7 +124,7 @@ nmap <leader>k <Plug>(rice_pane_jump_up)
 nmap <leader>l <Plug>(rice_pane_jump_right)
 
 " <p>
-nmap <silent>p <Plug>(rice_toggle_paste_mode)
+nmap <leader>p <Plug>(rice_toggle_paste_mode)
 
 " <o>
 nmap <leader>o <Plug>(rice_pane_jump_previous)
