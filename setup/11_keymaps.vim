@@ -69,11 +69,12 @@ nnoremap <silent> <Plug>(rice_save_all) :wa<CR>
 nnoremap <silent> <Plug>(rice_register) :reg<CR>
 nnoremap <silent> <Plug>(rice_message) :messages<CR>
 nnoremap <Plug>(rice_set_filetype) :set filetype=
+nnoremap <silent> <Plug>(rice_toggle_line_wrap) :set wrap!<CR>
 
 "-------------------------------------------------------------------------------
 " Normal: Copy and paste
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_toggle_paste_mode) :set invpaste<CR>
+nnoremap <silent> <Plug>(rice_toggle_paste_mode) :set paste!<CR>
 nnoremap <silent> <Plug>(rice_clipboard_copy) "*yy
 nnoremap <silent> <Plug>(rice_clipboard_paste) "*p
 
@@ -125,6 +126,7 @@ nmap <leader>l <Plug>(rice_pane_jump_right)
 
 " <p>
 nmap <leader>p <Plug>(rice_toggle_paste_mode)
+nmap <leader>P <Plug>(rice_toggle_line_wrap)
 
 " <o>
 nmap <leader>o <Plug>(rice_pane_jump_previous)
