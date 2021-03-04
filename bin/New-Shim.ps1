@@ -10,8 +10,7 @@ Last modified 2021/02/24
 
 param([Parameter(Mandatory=$true)]
       [string]$target,
-      [Parameter(Mandatory=$true)]
-      [string]$destination,
+      [string]$destination=$pwd.Path,
       [string]$arguments="",
       [ValidateSet("cmd", "ps1", "lnk", "symlink", "exe")]
       [string]$type="cmd",
