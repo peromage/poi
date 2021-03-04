@@ -67,11 +67,11 @@ bind-key -r 0 resize-pane -Z
 
 bind-key i display-pane
 
-bind-key -r p last-pane
-bind-key -r P last-window
+bind-key -r o last-pane
+bind-key O break-pane
 
-bind-key o break-pane
-bind-key O command-prompt "join-pane -t '%%'"
+bind-key -r p last-window
+bind-key P command-prompt "join-pane -t '%%'"
 
 bind-key -r y next-layout
 bind-key -r Y previous-layout
