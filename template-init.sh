@@ -25,7 +25,7 @@ init_file=$(realpath "$BASH_SOURCE")
 
 # Space separated string for mods under ribash/mods
 #--------------------------------------------------------
-#rice_mods="basic nav"
+#rice_mods="basic nav env"
 
 #-------------------------------------------------------------------------------
 . $init_home/ribash/ribash.sh

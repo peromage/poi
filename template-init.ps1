@@ -25,7 +25,7 @@ Import-Module ripwsh -ArgumentList @{
 
 # A list of string for mods under ripwsh/mods
 #--------------------------------------------------
-#mods = @('basic', 'nav', 'windows')
+#mods = @('basic', 'nav', 'windows', 'env')
 
 }
 #===============================================================================
