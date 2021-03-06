@@ -14,6 +14,7 @@ let g:loaded_rice_bundle_leaderf = 1
 let g:Lf_ShowRelativePath = 1
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 1
+let g:Lf_UseMemoryCache = 1
 let g:Lf_UseVersionControlTool = 1
 let g:Lf_IgnoreCurrentBufferName = 1
 "let g:Lf_StlSeparator = {'left': "\ue0b0", 'right': "\ue0b2", 'font': 'DejaVu Sans Mono for Powerline'}
