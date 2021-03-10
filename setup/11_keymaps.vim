@@ -10,26 +10,26 @@
 "-------------------------------------------------------------------------------
 " Nomal: Splitting
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_vsplit) :vs<CR>
-nnoremap <silent> <Plug>(rice_hsplit) :sp<CR>
+nnoremap <silent> <Plug>(rice_vsplit) <C-W>v
+nnoremap <silent> <Plug>(rice_hsplit) <C-W>s
 
 "-------------------------------------------------------------------------------
 " Normal: Pane jump
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_pane_jump_left) <C-w>h
-nnoremap <silent> <Plug>(rice_pane_jump_down) <C-w>j
-nnoremap <silent> <Plug>(rice_pane_jump_up) <C-w>k
-nnoremap <silent> <Plug>(rice_pane_jump_right) <C-w>l
-nnoremap <silent> <Plug>(rice_pane_jump_previous) <C-w>p
+nnoremap <silent> <Plug>(rice_pane_jump_left) <C-W>h
+nnoremap <silent> <Plug>(rice_pane_jump_down) <C-W>j
+nnoremap <silent> <Plug>(rice_pane_jump_up) <C-W>k
+nnoremap <silent> <Plug>(rice_pane_jump_right) <C-W>l
+nnoremap <silent> <Plug>(rice_pane_jump_previous) <C-W>p
 
 "-------------------------------------------------------------------------------
 " Normal: Pane size adjustment
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_pane_vdecrease) <C-w>-
-nnoremap <silent> <Plug>(rice_pane_vincrease) <C-w>+
-nnoremap <silent> <Plug>(rice_pane_hdecrease) <C-w><
-nnoremap <silent> <Plug>(rice_pane_hincrease) <C-w>>
-nnoremap <silent> <Plug>(rice_pane_maximize) <C-w>o
+nnoremap <silent> <Plug>(rice_pane_vdecrease) <C-W>-
+nnoremap <silent> <Plug>(rice_pane_vincrease) <C-W>+
+nnoremap <silent> <Plug>(rice_pane_hdecrease) <C-W><
+nnoremap <silent> <Plug>(rice_pane_hincrease) <C-W>>
+nnoremap <silent> <Plug>(rice_pane_maximize) <C-W>o
 
 "-------------------------------------------------------------------------------
 " Normal: Tabs
@@ -106,7 +106,7 @@ inoremap <silent> <Plug>(rice_clipboard_paste) <C-R>*
 "-------------------------------------------------------------------------------
 " Terminal: Terminal related
 "-------------------------------------------------------------------------------
-tnoremap <Plug>(rice_terminal_escape) <C-\><C-n>
+tnoremap <Plug>(rice_terminal_escape) <C-\><C-N>
 
 
 "-------------------------------------------------------------------------------
@@ -132,15 +132,15 @@ nmap <leader>P <Plug>(rice_toggle_line_wrap)
 nmap <leader>o <Plug>(rice_pane_jump_previous)
 nmap <leader>O <Plug>(rice_pane_maximize)
 
-" <bslash>
-nmap <leader><Bar> <Plug>(rice_vsplit)
-nmap <leader><Bslash> <Plug>(rice_hsplit)
-
-" <minus>/<plus>
-nmap _ <Plug>(rice_pane_vdecrease)
-nmap + <Plug>(rice_pane_vincrease)
-nmap - <Plug>(rice_pane_hdecrease)
-nmap = <Plug>(rice_pane_hincrease)
+" <Left> <Right> <Up> <Down> Pane
+nmap <S-Down> <Plug>(rice_pane_vdecrease)
+nmap <S-Up> <Plug>(rice_pane_vincrease)
+nmap <S-Left> <Plug>(rice_pane_hdecrease)
+nmap <S-Right> <Plug>(rice_pane_hincrease)
+nmap <leader><Right> <Plug>(rice_vsplit)
+nmap <leader><Down> <Plug>(rice_hsplit)
+nmap <leader><Left> <Plug>(rice_pane_jump_previous)
+nmap <leader><Up> <Plug>(rice_pane_maximize)
 
 " <n> Tab switching
 nmap <leader>n <Plug>(rice_tab_next)
