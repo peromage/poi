@@ -119,7 +119,7 @@ let g:coc_explorer_global_presets = {
 \       'open-action-strategy': 'select',
 \       'quit-on-open': v:false,
 \       'sources': [
-\           { 'name': 'buffer', 'expand': v:true },
+\           { 'name': 'buffer', 'expand': v:false },
 \           { 'name': 'file', 'expand': v:true }
 \       ],
 \       'position': 'left',
@@ -132,7 +132,7 @@ let g:coc_explorer_global_presets = {
 \       'open-action-strategy': 'select',
 \       'quit-on-open': v:false,
 \       'sources': [
-\           { 'name': 'buffer', 'expand': v:true },
+\           { 'name': 'buffer', 'expand': v:false },
 \           { 'name': 'file', 'expand': v:true }
 \       ],
 \       'position': 'right',
@@ -145,7 +145,7 @@ let g:coc_explorer_global_presets = {
 \       'open-action-strategy': 'sourceWindow',
 \       'quit-on-open': v:true,
 \       'sources': [
-\           { 'name': 'buffer', 'expand': v:true },
+\           { 'name': 'buffer', 'expand': v:false },
 \           { 'name': 'file', 'expand': v:true }
 \       ],
 \       'position': 'floating',
@@ -158,7 +158,7 @@ let g:coc_explorer_global_presets = {
 \       'open-action-strategy': 'sourceWindow',
 \       'quit-on-open': v:true,
 \       'sources': [
-\           { 'name': 'buffer', 'expand': v:true },
+\           { 'name': 'buffer', 'expand': v:false },
 \           { 'name': 'file', 'expand': v:true }
 \       ],
 \       'position': 'tab',
