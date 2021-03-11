@@ -73,7 +73,7 @@ bind-key -r U swap-pane -d -t -1
 
 bind-key Right split-window -h -c "#{pane_current_path}"
 bind-key Down split-window -v -c "#{pane_current_path}"
-bind-key -r Up resize-pane -Z
+bind-key -r Up resize-pane
 bind-key -r Left last-pane
 bind-key -r S-Left resize-pane -L
 bind-key -r S-Right resize-pane -R
@@ -92,7 +92,7 @@ bind-key T new-session
 bind-key -r m swap-window -d -t +1
 bind-key -r M swap-window -d -t -1
 
-bind-key g choose-tree -Z
+bind-key g choose-tree
 
 bind-key -r n select-window -n
 bind-key -r N select-window -p
