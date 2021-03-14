@@ -4,7 +4,7 @@
 " Copy the content of this file to your .vimrc or init.vim to get started
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/02/25
+" Last modified 2021/03/14
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -13,7 +13,6 @@
 " NOTE: Redirect g:init_home to the path of rice repo if this file is not at
 " the root of rice
 let g:init_home = expand('<sfile>:p:h')
-"-------------------------------------------------------------------------------
 let g:init_file = expand('<sfile>:p')
 comm! InitFile exec 'edit '.g:init_file
 exec 'set rtp+='.g:init_home
@@ -22,12 +21,12 @@ call rice#begin()
 
 " Color scheme. Leave this unset to use default color.
 "-----------------------------------------------------
-"let g:rice_color = 'dracula'
+let g:rice_color = 'dracula'
 
 " To disable built-in boosts, use name patterns to match (regex)
 " Check 'setup/14_bundle.vim' for more groups
 "--------------------------------------------
-"let g:rice_plug_group = ['basic', 'syntax']
+let g:rice_plug_group = ['basic', 'syntax', 'coc', 'git']
 "
 " Set Python runtime for Vim or NeoVim
 "-------------------------------------
@@ -41,12 +40,12 @@ call rice#begin()
 " Extra Coc plugins
 " To override default extensions define this variable after rice#end()
 "---------------------------------------------------------------------
-"let g:coc_global_extensions = [
-"\   'coc-clangd',
-"\   'coc-powershell',
-"\   'coc-tsserver',
-"\   'coc-pyright'
-"\   ]
+let g:coc_global_extensions = [
+\   'coc-clangd',
+\   'coc-powershell',
+\   'coc-tsserver',
+\   'coc-pyright'
+\   ]
 
 " Extra plugins via vim-plug
 " To override default bundles define vim-plug after rice#end()
