@@ -1,10 +1,11 @@
-" Session management
-" Modified by peromage on 2021/02/04
-
-if exists('g:loaded_rice_session_manager')
-    finish
-endif
-let g:loaded_rice_session_manager = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Session manager
+"
+" Created by peromage 2021/02/04
+" Last modified 2021/03/14
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Compatible with Vim
 let s:SESSION_SAVE_DIR = simplify($HOME . '/vim_saved_sessions')

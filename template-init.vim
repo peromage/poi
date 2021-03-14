@@ -27,7 +27,7 @@ call rice#begin()
 " To disable built-in boosts, use name patterns to match (regex)
 " Check 'setup/14_bundle.vim' for more groups
 "--------------------------------------------
-"let g:rice_bundle_group = ['basic', 'syntax']
+"let g:rice_plug_group = ['basic', 'syntax']
 "
 " Set Python runtime for Vim or NeoVim
 "-------------------------------------

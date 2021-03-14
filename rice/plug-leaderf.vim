@@ -9,7 +9,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_bundle_leaderf = 1
+let g:loaded_rice_plug_leaderf = 1
 
 let g:Lf_ShowRelativePath = 1
 let g:Lf_HideHelp = 1

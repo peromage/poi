@@ -9,4 +9,4 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_bundle_fugitive = 1
+let g:loaded_rice_plug_fugitive = 1

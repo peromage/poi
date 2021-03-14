@@ -9,4 +9,4 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_bundle_lightline = 1
+let g:loaded_rice_plug_lightline = 1

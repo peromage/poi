@@ -9,4 +9,4 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_bundle_polyglot = 1
+let g:loaded_rice_plug_polyglot = 1

@@ -9,7 +9,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_bundle_startify = 1
+let g:loaded_rice_plug_startify = 1
 
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 0

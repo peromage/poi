@@ -15,7 +15,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_bundle_defx = 1
+let g:loaded_rice_plug_defx = 1
 
 " General config
 call defx#custom#option('_', {

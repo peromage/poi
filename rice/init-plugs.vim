@@ -13,30 +13,33 @@
 let s:rt = {}
 let s:enabled = {}
 
-if !rice#get_var('rice_bundle_group', s:rt) | let g:rice_bundle_group = [] | endif
-for key in g:rice_bundle_group | let s:enabled[key] = 1 | endfor
+if !rice#get_var('rice_plug_group', s:rt)
+    let g:rice_plug_group = []
+endif
+
+for key in g:rice_plug_group
+    let s:enabled[key] = 1
+endfor
 
 function! s:check_enabled(group) abort
     return has_key(s:enabled, a:group)
 endfunction
-
-command! -nargs=1 LoadBundle call rice#source_script("setup/bundles/<args>")
 
 "-------------------------------------------------------------------------------
 " Group: basic
 "-------------------------------------------------------------------------------
 if s:check_enabled('basic')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    LoadBundle coc.vim
+    IncRicePlug coc.vim
 
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
-    LoadBundle leaderf.vim
+    IncRicePlug leaderf.vim
 
     Plug 'mhinz/vim-startify'
-    LoadBundle startify.vim
+    IncRicePlug startify.vim
 
     Plug 'itchyny/lightline.vim'
-    LoadBundle lightline.vim
+    IncRicePlug lightline.vim
 endif
 
 "-------------------------------------------------------------------------------
@@ -44,7 +47,7 @@ endif
 "-------------------------------------------------------------------------------
 if s:check_enabled('git')
     Plug 'tpope/vim-fugitive'
-    LoadBundle fugitive.vim
+    IncRicePlug fugitive.vim
 endif
 
 "-------------------------------------------------------------------------------
@@ -52,7 +55,7 @@ endif
 "-------------------------------------------------------------------------------
 if s:check_enabled('terminal')
     Plug 'voldikss/vim-floaterm'
-    LoadBundle floaterm.vim
+    IncRicePlug floaterm.vim
 endif
 
 "-------------------------------------------------------------------------------
@@ -60,5 +63,5 @@ endif
 "-------------------------------------------------------------------------------
 if s:check_enabled('syntax')
     Plug 'sheerun/vim-polyglot'
-    LoadBundle polyglot.vim
+    IncRicePlug polyglot.vim
 endif

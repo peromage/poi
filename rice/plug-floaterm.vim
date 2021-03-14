@@ -9,7 +9,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_bundle_floaterm = 1
+let g:loaded_rice_plug_floaterm = 1
 
 let g:floaterm_wintype = 'float'
 let g:floaterm_position = 'topright'
