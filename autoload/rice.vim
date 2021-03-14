@@ -68,6 +68,9 @@ endfunction
 " Helper commands
 "-------------------------------------------------------------------------------
 command! -nargs=1 IncScript call rice#source_script("<args>")
+command! -nargs=1 IncBootstrapInit call rice#source_script("bootstrap/init-<args>")
+command! -nargs=1 IncBootstrapPlug call rice#source_script("bootstrap/plug-<args>")
+command! -nargs=1 IncBootstrapGui call rice#source_script("bootstrap/gui-<args>")
 
 "-------------------------------------------------------------------------------
 " Initializers
@@ -90,11 +93,11 @@ function! rice#end() abort
         echoe 'rice#begin() must be called first!'
         return
     endif
-    call rice#source_script('setup/main.vim')
+    call rice#source_script('bootstrap/main.vim')
     call plug#end()
     let s:loading = 0
 endfunction
 
 function! rice#gui_init() abort
-    call rice#source_script('setup/gmain.vim')
+    call rice#source_script('bootstrap/gmain.vim')
 endfunction
