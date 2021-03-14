@@ -48,7 +48,7 @@ function! rice#validate_var(var_name, type, out_dict) abort
     " Support checks for string, list, dict for now
     if a:out_dict.valid
         if l:value_t == v:t_string || l:value_t == v:t_list ||  l:value_t == v:t_dict
-            let a:out_dict.valid = len(l:value) != 0
+            let a:out_dict.valid = !empty(l:value)
         endif
     endif
     return a:out_dict.valid
