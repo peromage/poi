@@ -95,7 +95,11 @@ function! rice#end() abort
         echoe 'rice#begin() must be called first!'
         return
     endif
-    call rice#source_script('rice/main.vim')
+    if exists('g:vscode')
+        call rice#source_script('rice/main-vscode.vim')
+    else
+        call rice#source_script('rice/main.vim')
+    endif
     call plug#end()
     let s:loading = 0
 endfunction
