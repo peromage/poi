@@ -3,8 +3,9 @@
 # Bash environment setup
 #
 # Created by peromage 2021/02/24
-# Last modified 2021/03/05
+# Last modified 2021/03/14
 #
 ################################################################################
 
 export EDITOR=vim
+export SHELL=bash
