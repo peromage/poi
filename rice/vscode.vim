@@ -10,7 +10,7 @@
 "-------------------------------------------------------------------------------
 " This works with rice lib
 "-------------------------------------------------------------------------------
-if !exists('g:loaded_rice_vscode') && !g:loaded_rice_vscode | finish | endif
+if !exists('g:loaded_rice') || !g:loaded_rice | finish | endif
 
 "-------------------------------------------------------------------------------
 " Load components
