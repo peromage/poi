@@ -96,7 +96,7 @@ function! rice#end() abort
         return
     endif
     if exists('g:vscode')
-        call rice#source_script('rice/main-vscode.vim')
+        call rice#source_script('rice/vscode.vim')
     else
         call rice#source_script('rice/main.vim')
     endif
