@@ -19,7 +19,8 @@ command! GuiInitFile execute 'edit '.g:gui_init_file
 "
 " Currently supported: 'neovimqt', 'gvim'
 "----------------------------------------
-"let g:rice_gui_frontend = has('nvim') ? 'neovimqt' : 'gvim'
+"let g:rice_gui_neovim_frontend = 'neovimqt'
+"let g:rice_gui_vim_frontend = 'gvim'
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

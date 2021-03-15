@@ -18,6 +18,12 @@ if rice#get_var('rice_gui_font', s:rt)
 endif
 
 " Frontend
-if rice#get_var('rice_gui_frontend', s:rt)
-    execute "IncRiceGui " . s:rt.value . '.vim'
+if has('nvim')
+    if rice#get_var('rice_gui_neovim_frontend', s:rt)
+        execute "IncRiceGui " . s:rt.value . '.vim'
+    endif
+else
+    if rice#get_var('rice_gui_vim_frontend', s:rt)
+        execute "IncRiceGui " . s:rt.value . '.vim'
+    endif
 endif
