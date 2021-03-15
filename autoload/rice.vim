@@ -3,7 +3,7 @@
 " Rice core initializer
 "
 " Created by peromage 2021/02/23
-" Last modified 2021/02/23
+" Last modified 2021/03/14
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -72,7 +72,7 @@ command! -nargs=1 IncRice call rice#source_script("rice/<args>")
 command! -nargs=1 IncRiceInit call rice#source_script("rice/init-<args>")
 command! -nargs=1 IncRicePlug call rice#source_script("rice/plug-<args>")
 command! -nargs=1 IncRiceGui call rice#source_script("rice/gui-<args>")
-command! -nargs=1 IncRiceMy call rice#source_script("rice/my-<args>")
+command! -nargs=1 IncRiceMisc call rice#source_script("rice/misc-<args>")
 
 "-------------------------------------------------------------------------------
 " Initializers
