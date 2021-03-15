@@ -11,6 +11,9 @@ vim_plugged/
 vim_plug/
 coc-extensions/
 coc_extensions/
+data/
+userdata/
+user/
 
 # Session files
 saved_sessions/
