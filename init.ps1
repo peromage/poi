@@ -25,7 +25,7 @@ Import-Module ripwsh -ArgumentList @{
 #
 # Prompt theme
 #-------------
-#theme = "my_lite"
+#theme = "my-lite"
 #
 # A list of string for mods under ripwsh/mods
 #--------------------------------------------------

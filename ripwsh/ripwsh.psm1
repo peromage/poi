@@ -4,7 +4,7 @@
 Rice root module. Initialization will be done in this module.
 
 Created by peromage 2021/02/24
-Last modified 2021/02/27
+Last modified 2021/03/14
 
 ###############################################################################>
 
@@ -63,13 +63,13 @@ function ri_normalize_path {
 Initialization
 ------------------------------------------------------------------------------#>
 # Sourcing base scripts
-. (ri_source_script base/10_settings.ps1)
+. (ri_source_script base/init-settings.ps1)
 
 # Load theme
-if (-not ([string]::IsNullOrWhiteSpace($ri_config.theme))) { . (ri_source_script themes/$($ri_config.theme).ps1) }
+if (-not ([string]::IsNullOrWhiteSpace($ri_config.theme))) { . (ri_source_script base/theme-$($ri_config.theme).ps1) }
 
 # Load additional mods
-$ri_config.mods | ForEach-Object { . (ri_source_script mods/$_.ps1) }
+$ri_config.mods | ForEach-Object { . (ri_source_script base/mod-$_.ps1) }
 
 # Add script path
 $p = ri_normalize_path "$($ri_meta.Home)/bin"
