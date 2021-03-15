@@ -4,7 +4,7 @@
 # Rice core config file for bash.
 #
 # Created by peromage 2021/02/24
-# Last modified 2021/02/24
+# Last modified 2021/03/14
 #
 ################################################################################
 
@@ -57,14 +57,14 @@ ri_init_var rice_mods ""
 # Initialization
 #-------------------------------------------------------------------------------
 # Load base scripts
-ri_source_script base/10_settings.sh
+ri_source_script base/init-settings.sh
 
 # Load theme
-[ -n "$rice_theme" ] && ri_source_script themes/$rice_theme.sh
+[ -n "$rice_theme" ] && ri_source_script base/theme-$rice_theme.sh
 
 # Load mods
 for i in $rice_mods; do
-    ri_source_script mods/$i.sh
+    ri_source_script base/mod-$i.sh
 done
 unset i
 

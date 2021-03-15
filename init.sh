@@ -23,7 +23,7 @@ init_file=$(realpath "$BASH_SOURCE")
 #
 # Prompt theme
 #-------------
-#rice_theme="my_bash"
+#rice_theme="my-bash"
 #
 # Space separated string for mods under ribash/mods
 #--------------------------------------------------------
