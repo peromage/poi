@@ -83,14 +83,7 @@ let s:loading = 0
 function! rice#begin(...) abort
     let s:loading = 1
     " Directory to put plugin and plugin configuration (e.g. vim-plug, Coc)
-    if a:0 > 0
-        let l:data_dir = simplify(a:1)
-    else
-        let l:data_dir = simplify(s:home . '/data')
-    endif
-    if !isdirectory(l:data_dir)
-        call mkdir(l:data_dir, 'p')
-    endif
+    let l:data_dir = a:0 > 0 ? a:1 : s:home
     call plug#begin(simplify(l:data_dir . '/vim-plugged'))
     let g:coc_data_home = simplify(l:data_dir . '/coc-extensions')
     let g:coc_config_home = l:data_dir
