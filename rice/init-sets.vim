@@ -3,7 +3,7 @@
 " Common settings
 "
 " Created by peromage 2021/02/23
-" Last modified 2021/02/23
+" Last modified 2021/03/16
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -18,7 +18,7 @@ set nocompatible
 set splitbelow
 set splitright
 set winaltkeys=no
-set lazyredraw
+set nolazyredraw
 
 "-------------------------------------------------------------------------------
 " Visual and experience

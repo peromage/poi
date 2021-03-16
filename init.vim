@@ -3,7 +3,7 @@
 " Rice (Neo)Vim initialization
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/03/14
+" Last modified 2021/03/16
 "
 "
 " This section should remain untouched
@@ -25,8 +25,7 @@ call rice#begin()
 "-----------------------------------------------------
 "let g:rice_color = 'dracula'
 "
-" To disable built-in boosts, use name patterns to match (regex)
-" Check 'setup/14_bundle.vim' for more groups
+" Check 'rice/init-plugs.vim' for more groups
 "--------------------------------------------
 "let g:rice_plug_group = ['basic', 'syntax', 'coc', 'git']
 "
