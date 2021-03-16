@@ -11,8 +11,6 @@
 " Quality of life
 "-------------------------------------------------------------------------------
 set nocompatible
-set wildmenu
-filetype plugin indent on
 
 "-------------------------------------------------------------------------------
 " Windows
@@ -21,6 +19,97 @@ set splitbelow
 set splitright
 set winaltkeys=no
 set lazyredraw
+
+"-------------------------------------------------------------------------------
+" Visual and experience
+"-------------------------------------------------------------------------------
+" Experience adjustment
+set wildmenu
+set ruler
+set nowrap
+" Headsup of line length
+set colorcolumn=80,120
+" Line numbers
+set number
+set relativenumber
+set signcolumn=yes
+" Colors
+set background=dark
+set notermguicolors
+" Cursor
+set scrolloff=0
+set backspace=indent,eol,start
+" Remove warning when switch buffer that is not saved
+set hidden
+" Show control characters
+set list
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,nbsp:%
+
+"-------------------------------------------------------------------------------
+" Syntax
+"-------------------------------------------------------------------------------
+filetype plugin indent on
+set syntax=on
+
+"-------------------------------------------------------------------------------
+" Searching
+"-------------------------------------------------------------------------------
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+
+"-------------------------------------------------------------------------------
+" Indentation
+"-------------------------------------------------------------------------------
+" Unify tab width
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+" Folding
+set nofoldenable
+set foldmethod=indent
+set foldlevel=99
+set foldnestmax=20
+" Auto indent
+set autoindent
+set cindent
+
+"-------------------------------------------------------------------------------
+" Format and encoding
+"-------------------------------------------------------------------------------
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,latin1
+set termencoding=utf-8
+set fileformats=unix,dos,mac
+
+"-------------------------------------------------------------------------------
+" Files
+"-------------------------------------------------------------------------------
+" Don't auto flush or read files
+" Don't keep backup file unless it failed to write
+set autoread
+set noautowrite
+set noautowriteall
+set nobackup
+set writebackup
+set noundofile
+set nobinary
+" Fix EOL
+set endofline
+set fixendofline
+
+"-------------------------------------------------------------------------------
+" Tags
+"-------------------------------------------------------------------------------
+set tags=./.tags;,.tags
+
+"-------------------------------------------------------------------------------
+" Interactive
+"-------------------------------------------------------------------------------
+set mouse=a
 
 "-------------------------------------------------------------------------------
 " Status bar view
@@ -37,92 +126,3 @@ set statusline+=%=%<
 set statusline+=\ [%Y,%{&fenc!=''?&fenc:&enc}%{(&bomb?\"(BOM)\":\"\")},%{&ff}]
 "Navigation info
 set statusline+=\ \(%l:%c,%P\)
-
-"-------------------------------------------------------------------------------
-" Appearance
-"-------------------------------------------------------------------------------
-set background=dark
-set notermguicolors
-
-"-------------------------------------------------------------------------------
-" Line numbers
-"-------------------------------------------------------------------------------
-set number
-set relativenumber
-set signcolumn=yes
-
-"-------------------------------------------------------------------------------
-" Encoding
-"-------------------------------------------------------------------------------
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,latin1
-set termencoding=utf-8
-set fileformats=unix,dos,mac
-
-"-------------------------------------------------------------------------------
-" Indentation
-"-------------------------------------------------------------------------------
-set backspace=indent,eol,start
-set autoindent
-set cindent
-
-"-------------------------------------------------------------------------------
-" Folding
-"-------------------------------------------------------------------------------
-set foldenable
-set foldmethod=indent
-set foldlevel=99
-
-"-------------------------------------------------------------------------------
-" Visual
-"-------------------------------------------------------------------------------
-set colorcolumn=80,120
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set ruler
-set nowrap
-set list
-set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,nbsp:%
-
-"-------------------------------------------------------------------------------
-" Syntax
-"-------------------------------------------------------------------------------
-set syntax=on
-
-"-------------------------------------------------------------------------------
-" Searching
-"-------------------------------------------------------------------------------
-set hlsearch
-set ignorecase
-set smartcase
-set incsearch
-
-"-------------------------------------------------------------------------------
-" Files
-"-------------------------------------------------------------------------------
-" Don't auto flush or read files
-" Don't keep backup file unless it failed to write
-set autoread
-set noautowrite
-set noautowriteall
-set nobackup
-set writebackup
-set noundofile
-set nobinary
-set endofline
-set fixendofline
-" Remove warning when switch buffer that is not saved
-set hidden
-
-"-------------------------------------------------------------------------------
-" Tags
-"-------------------------------------------------------------------------------
-set tags=./.tags;,.tags
-
-"-------------------------------------------------------------------------------
-" Enable mouse
-"-------------------------------------------------------------------------------
-set mouse=a
