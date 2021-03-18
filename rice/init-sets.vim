@@ -61,9 +61,11 @@ syntax on
 " Searching
 "-------------------------------------------------------------------------------
 set hlsearch
+set incsearch
 set ignorecase
 set smartcase
-set incsearch
+set tagcase=followscs
+set magic
 
 "-------------------------------------------------------------------------------
 " Indentation
