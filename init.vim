@@ -29,11 +29,13 @@ call rice#begin()
 "--------------------------------------------
 "let g:rice_plug_group = ['basic', 'syntax', 'coc', 'git']
 "
-" Set Python runtime for Vim or NeoVim
+" Set Python runtime for NeoVim and Vim
 "-------------------------------------
-"let g:rice_neovim_python_interpreter = 'python3'
-"let g:rice_vim_python_home = '/path/to/python_dir'
-"let g:rice_vim_python_dll = '/path/to/python.dll'
+" NeoVim
+"let g:rice_python_interpreter = 'python3'
+" Vim
+"let g:rice_python_home = '/path/to/python_dir'
+"let g:rice_python_dll = '/path/to/python.dll'
 "
 " Extra Coc plugins
 " To override default extensions define this variable after rice#end()
