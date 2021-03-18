@@ -27,7 +27,7 @@ call rice#begin()
 "
 " Check 'rice/init-plugs.vim' for more groups
 "--------------------------------------------
-"let g:rice_plug_group = ['basic', 'syntax', 'coc', 'git']
+"let g:rice_plug_group = ['basic', 'navigation', 'syntax', 'coc', 'git']
 "
 " Set Python runtime for NeoVim and Vim
 "-------------------------------------

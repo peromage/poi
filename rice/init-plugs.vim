@@ -10,7 +10,6 @@
 "-------------------------------------------------------------------------------
 " Check enabled bundle group
 "-------------------------------------------------------------------------------
-
 call rice#init_var('rice_plug_group', [])
 
 let s:selected_groups = {}
@@ -26,14 +25,19 @@ endfunction
 " Group: basic
 "-------------------------------------------------------------------------------
 if s:select('basic')
-    Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
-    IncRicePlug leaderf.vim
+    Plug 'itchyny/lightline.vim'
+    IncRicePlug lightline.vim
 
     Plug 'mhinz/vim-startify'
     IncRicePlug startify.vim
+endif
 
-    Plug 'itchyny/lightline.vim'
-    IncRicePlug lightline.vim
+"-------------------------------------------------------------------------------
+" Group: navigation
+"-------------------------------------------------------------------------------
+if s:select('navigation')
+    Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
+    IncRicePlug leaderf.vim
 endif
 
 "-------------------------------------------------------------------------------
