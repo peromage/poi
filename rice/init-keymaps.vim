@@ -96,6 +96,8 @@ inoremap <silent> <Plug>(rice_cursor_move_left) <left>
 inoremap <silent> <Plug>(rice_cursor_move_down) <down>
 inoremap <silent> <Plug>(rice_cursor_move_up) <up>
 inoremap <silent> <Plug>(rice_cursor_move_right) <right>
+inoremap <silent> <Plug>(rice_cursor_move_begin) <Home>
+inoremap <silent> <Plug>(rice_cursor_move_end) <End>
 
 "-------------------------------------------------------------------------------
 " Insert: Copy and paste
@@ -202,5 +204,5 @@ imap <C-H> <Plug>(rice_cursor_move_left)
 imap <C-J> <Plug>(rice_cursor_move_down)
 imap <C-K> <Plug>(rice_cursor_move_up)
 imap <C-L> <Plug>(rice_cursor_move_right)
-imap <C-A> <Home>
-imap <C-E> <End>
+imap <C-A> <Plug>(rice_cursor_move_begin)
+imap <C-E> <Plug>(rice_cursor_move_end)
