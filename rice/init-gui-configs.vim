@@ -22,22 +22,20 @@ endif
 " Functions to check GUI configs
 function! s:use_neovim_config()
     if exists('g:GuiLoaded')
-        let l:fname = 'neovimqt'
+        IncRiceGui neovimqt.vim
     elseif exists('g:fvim_loaded')
-        let l:fname = 'fvim'
+        IncRiceGui fvim.vim
     else
         return
     endif
-    execute 'IncRiceGui ' . l:fname . '.vim'
 endfunction
 
 function! s:use_vim_config()
     if has('gui_running')
-        let l:fname = 'gvim'
+        IncRiceGui gvim.vim
     else
         return
     endif
-    execute 'IncRiceGui ' . l:fname . '.vim'
 endfunction
 
 " Load GUI applications config
