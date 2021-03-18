@@ -37,6 +37,7 @@ set signcolumn=yes
 set background=dark
 set notermguicolors
 " Cursor
+set cursorline
 set scrolloff=0
 set backspace=indent,eol,start
 " Remove warning when switch buffer that is not saved
@@ -44,12 +45,17 @@ set hidden
 " Show control characters
 set list
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,nbsp:%
+" Misc
+set conceallevel=0
+set showtabline=1
+set showmode
+set clipboard=
 
 "-------------------------------------------------------------------------------
 " Syntax
 "-------------------------------------------------------------------------------
 filetype plugin indent on
-set syntax=on
+syntax on
 
 "-------------------------------------------------------------------------------
 " Searching
@@ -64,6 +70,7 @@ set incsearch
 "-------------------------------------------------------------------------------
 " Unify tab width
 set expandtab
+set smarttab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -74,6 +81,7 @@ set foldlevel=99
 set foldnestmax=20
 " Auto indent
 set autoindent
+set smartindent
 set cindent
 
 "-------------------------------------------------------------------------------
