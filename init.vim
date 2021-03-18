@@ -29,6 +29,10 @@ call rice#begin()
 "--------------------------------------------
 "let g:rice_plug_group = ['basic', 'navigation', 'syntax', 'coc', 'git']
 "
+" Whether use config for VSCode integration
+"------------------------------------------
+"let g:rice_vscode_use_config = 1
+"
 " Set Python runtime for NeoVim and Vim
 "-------------------------------------
 " NeoVim

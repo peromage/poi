@@ -20,7 +20,7 @@ endif
 " GUI configs
 "-------------------------------------------------------------------------------
 " Functions to check GUI configs
-function! s:use_neovim_config()
+function! s:use_neovim_config() abort
     if exists('g:GuiLoaded')
         IncRiceGui neovimqt.vim
     elseif exists('g:fvim_loaded')
@@ -30,7 +30,7 @@ function! s:use_neovim_config()
     endif
 endfunction
 
-function! s:use_vim_config()
+function! s:use_vim_config() abort
     if has('gui_running')
         IncRiceGui gvim.vim
     else
@@ -39,7 +39,7 @@ function! s:use_vim_config()
 endfunction
 
 " Load GUI applications config
-if rice#get_var('rice_gui_use_config', s:rt) && s:rt.value
+if rice#check_var('rice_gui_use_config')
     if has('nvim')
         call s:use_neovim_config()
     else

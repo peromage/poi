@@ -3,7 +3,7 @@
 " Rice core initializer
 "
 " Created by peromage 2021/02/23
-" Last modified 2021/03/14
+" Last modified 2021/03/18
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -27,38 +27,39 @@ function! rice#source_script(rel_path) abort
 endfunction
 
 " Initialize global variable if it doesn't exist
-function! rice#init_var(var, value) abort
-    let l:gvar = 'g:' . a:var
+" NOTE: The g: should be ommitted when passed to this function
+function! rice#init_var(name, value) abort
+    let l:gvar = 'g:' . a:name
     if !exists(l:gvar)
         execute 'let ' . l:gvar . '=' . string(a:value)
     endif
 endfunction
 
-" Returns false when the config variable doesn't exist or, is not the expected
-" type or, is empty. Otherwise returns true
-" Results will be stored in the out dict
-function! rice#validate_var(var_name, type, out_dict) abort
-    let l:value = get(g:, a:var_name, v:null)
-    let l:value_t = type(l:value)
-    let a:out_dict.name = 'g:'.a:var_name
+" Check if the given global variable exists and enabled
+" NOTE: The g: should be ommitted when passed to this function
+function! rice#check_var(name) abort
+    let l:gvar = 'g:' . a:name
+    return exists(l:gvar) && eval(l:gvar)
+endfunction
+
+" Returns a boolean indicating if the variable with the given name exists and
+" the type of the value is represented as non-empty. Results will be stored in
+" the out dict
+" NOTE: The g: should be ommitted when passed to this function
+function! rice#get_var_non_empty(name, out_dict) abort
+    let l:value = get(g:, a:name, v:null)
+    let a:out_dict.name = 'g:'.a:name
     let a:out_dict.value = l:value
-    let a:out_dict.type = l:value_t
-    let a:out_dict.valid = l:value isnot v:null || l:value_t == a:type
-    " Non-empty checks
-    " Support checks for string, list, dict for now
-    if a:out_dict.valid
-        if l:value_t == v:t_string || l:value_t == v:t_list ||  l:value_t == v:t_dict
-            let a:out_dict.valid = !empty(l:value)
-        endif
-    endif
+    let a:out_dict.valid = !empty(l:value)
     return a:out_dict.valid
 endfunction
 
-" Returns true if the variable exists
+" Returns a boolean indicating if the variable with the given name exists
 " Results will be stored in the out dict
-function! rice#get_var(var_name, out_dict) abort
-    let l:value = get(g:, a:var_name, v:null)
-    let a:out_dict.name = 'g:'.a:var_name
+" NOTE: The g: should be ommitted when passed to this function
+function! rice#get_var(name, out_dict) abort
+    let l:value = get(g:, a:name, v:null)
+    let a:out_dict.name = 'g:'.a:name
     let a:out_dict.value = l:value
     let a:out_dict.valid = l:value isnot v:null
     return a:out_dict.valid
@@ -95,11 +96,7 @@ function! rice#end() abort
         echoe 'rice#begin() must be called first!'
         return
     endif
-    if exists('g:vscode')
-        call rice#source_script('rice/vscode.vim')
-    else
-        call rice#source_script('rice/main.vim')
-    endif
+    call rice#source_script('rice/main.vim')
     call plug#end()
     let s:loading = 0
 endfunction

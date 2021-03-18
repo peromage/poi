@@ -3,19 +3,18 @@
 " Rice setup entry for VSCode
 "
 " Created by peromage 2021/03/14
-" Last modified 2021/03/15
+" Last modified 2021/03/18
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------------------------------------
-" This works with rice lib
+" Check if VSCode is enabled
 "-------------------------------------------------------------------------------
-if !exists('g:loaded_rice') || !g:loaded_rice | finish | endif
+if !rice#check_var('rice_vscode_use_config') | finish | endif
 
 "-------------------------------------------------------------------------------
 " Load components
 "-------------------------------------------------------------------------------
-
 function! s:split(...) abort
     let direction = a:1
     let file = a:2
