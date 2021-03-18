@@ -25,7 +25,10 @@
     "editor.renderControlCharacters": true,
     "editor.renderLineHighlight": "all",
     "editor.renderWhitespace": "trailing",
-    "editor.rulers": [80, 120],
+    "editor.rulers": [
+        80,
+        120
+    ],
     "editor.showFoldingControls": "always",
     "editor.smoothScrolling": true,
     "editor.suggest.localityBonus": true,
@@ -60,17 +63,15 @@
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.rendererType": "canvas",
     "terminal.integrated.rightClickBehavior": "default",
-    "terminal.integrated.sendKeybindingsToShell": true,
     "terminal.integrated.shell.windows": "pwsh.exe",
+    "terminal.integrated.shellArgs.windows": "-NoLogo",
     "update.enableWindowsBackgroundUpdates": false,
     "update.mode": "manual",
     "vscode-neovim.neovimExecutablePaths.win32": "nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "nvim",
     "vscode-neovim.neovimInitVimPaths.linux": "nvim",
-    "window.menuBarVisibility": "toggle",
     "window.restoreWindows": "none",
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
-    "window.zoomLevel": 0,
     "workbench.colorTheme": "Dracula Soft",
     "workbench.editor.enablePreviewFromCodeNavigation": true,
     "workbench.editor.enablePreviewFromQuickOpen": true,
@@ -87,6 +88,5 @@
     "workbench.sideBar.location": "left",
     "workbench.tree.renderIndentGuides": "always",
     "zenMode.fullScreen": false,
-    "zenMode.hideLineNumbers": false,
-    "zenMode.hideStatusBar": false
+    "zenMode.hideLineNumbers": false
 }
