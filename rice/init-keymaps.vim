@@ -3,7 +3,7 @@
 " Customized keymaps
 "
 " Created by peromage 2021/02/23
-" Last modified 2021/02/23
+" Last modified 2021/03/18
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

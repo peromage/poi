@@ -3,7 +3,7 @@
 " Rice (Neo)Vim initialization
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/03/16
+" Last modified 2021/03/18
 "
 "
 " This section should remain untouched
