@@ -76,7 +76,7 @@ nnoremap <silent> <Plug>(rice_toggle_line_wrap) :set wrap!<CR>
 "-------------------------------------------------------------------------------
 nnoremap <silent> <Plug>(rice_toggle_paste_mode) :set paste!<CR>
 nnoremap <silent> <Plug>(rice_clipboard_copy) "*yy
-nnoremap <silent> <Plug>(rice_clipboard_paste) "*p
+nnoremap <silent> <Plug>(rice_clipboard_paste) :set paste<CR>"*p:set nopaste<CR>
 
 "-------------------------------------------------------------------------------
 " Visual: Search
@@ -87,7 +87,7 @@ vnoremap <silent> <Plug>(rice_search_selected) y/\V<C-R>=escape(@",'/\')<CR><CR>
 " Visual: Copy and paste
 "-------------------------------------------------------------------------------
 vnoremap <silent> <Plug>(rice_clipboard_copy) "*y
-vnoremap <silent> <Plug>(rice_clipboard_paste) "*p
+vnoremap <silent> <Plug>(rice_clipboard_paste) :<C-U>set paste<CR>gv"*p:set nopaste<CR>
 
 "-------------------------------------------------------------------------------
 " Insert: cursor movement
@@ -101,7 +101,7 @@ inoremap <silent> <Plug>(rice_cursor_move_right) <right>
 " Insert: Copy and paste
 "-------------------------------------------------------------------------------
 inoremap <silent> <Plug>(rice_clipboard_copy) <C-O>"*yy
-inoremap <silent> <Plug>(rice_clipboard_paste) <C-R>*
+inoremap <silent> <Plug>(rice_clipboard_paste) <C-O>:set paste<CR><C-R>*<C-O>:set nopaste<CR>
 
 "-------------------------------------------------------------------------------
 " Terminal: Terminal related
@@ -133,14 +133,14 @@ nmap <leader>o <Plug>(rice_pane_jump_previous)
 nmap <leader>O <Plug>(rice_pane_maximize)
 
 " <Left> <Right> <Up> <Down> Pane
-nmap <S-Down> <Plug>(rice_pane_vdecrease)
-nmap <S-Up> <Plug>(rice_pane_vincrease)
-nmap <S-Left> <Plug>(rice_pane_hdecrease)
-nmap <S-Right> <Plug>(rice_pane_hincrease)
-nmap <leader><Right> <Plug>(rice_vsplit)
-nmap <leader><Down> <Plug>(rice_hsplit)
-nmap <leader><Left> <Plug>(rice_pane_jump_previous)
-nmap <leader><Up> <Plug>(rice_pane_maximize)
+nmap <Down> <Plug>(rice_pane_vdecrease)
+nmap <Up> <Plug>(rice_pane_vincrease)
+nmap <Left> <Plug>(rice_pane_hdecrease)
+nmap <Right> <Plug>(rice_pane_hincrease)
+
+" <v>
+nmap <leader>v <Plug>(rice_vsplit)
+nmap <leader>V <Plug>(rice_hsplit)
 
 " <n> Tab switching
 nmap <leader>n <Plug>(rice_tab_next)
