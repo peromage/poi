@@ -62,8 +62,8 @@ bind-key -r k select-pane -U
 
 bind-key i display-pane
 
-bind-key -r o last-window
-bind-key O command-prompt "join-pane -t '%%'"
+bind-key -r p last-window
+bind-key P command-prompt "join-pane -t '%%'"
 
 bind-key -r y next-layout
 bind-key -r Y previous-layout
@@ -71,14 +71,16 @@ bind-key -r Y previous-layout
 bind-key -r u swap-pane -d -t +1
 bind-key -r U swap-pane -d -t -1
 
-bind-key Right split-window -h -c "#{pane_current_path}"
-bind-key Down split-window -v -c "#{pane_current_path}"
-bind-key -r Up resize-pane
-bind-key -r Left last-pane
-bind-key -r S-Left resize-pane -L
-bind-key -r S-Right resize-pane -R
-bind-key -r S-Down resize-pane -D
-bind-key -r S-Up resize-pane -U
+bind-key v split-window -h -c "#{pane_current_path}"
+bind-key V split-window -v -c "#{pane_current_path}"
+
+bind-key -r o last-pane
+bind-key O resize-pane
+
+bind-key -r Left resize-pane -L
+bind-key -r Right resize-pane -R
+bind-key -r Down resize-pane -D
+bind-key -r Up resize-pane -U
 
 bind-key q kill-pane
 bind-key Q kill-window
