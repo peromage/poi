@@ -3,12 +3,8 @@
 " GVim settings
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/02/24
+" Last modified 2021/03/18
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if !has('gui_running')
-    finish
-endif
-
-let g:loaded_rice_frontend = 'gvim'
+let g:loaded_rice_gui = 'gvim'

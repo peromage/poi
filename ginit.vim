@@ -3,7 +3,7 @@
 " Rie GUI initialization template
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/03/14
+" Last modified 2021/03/18
 "
 "
 " This section should remain untouched
@@ -17,10 +17,11 @@ command! GuiInitFile execute 'edit '.g:gui_init_file
 "---------------------------------------
 "let g:rice_gui_font = "Cascadia\ Code\ PL:h9"
 "
-" Currently supported: 'neovimqt', 'gvim'
-"----------------------------------------
-"let g:rice_gui_neovim_frontend = 'neovimqt'
-"let g:rice_gui_vim_frontend = 'gvim'
+" Enable this option to automatically load supported GUI config
+" NeoVim: neovim-qt, fvim
+" Vim: gvim
+"--------------------------------------------------------------
+"let g:rice_gui_use_config = 1
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "### BEGIN: Rice config ###

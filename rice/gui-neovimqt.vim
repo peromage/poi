@@ -3,15 +3,11 @@
 " NeoVim-qt settings
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/03/14
+" Last modified 2021/03/18
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if !exists('g:GuiLoaded')
-    finish
-endif
-
-let g:loaded_rice_frontend = 'neovim-qt'
+let g:loaded_rice_gui = 'neovim-qt'
 
 " Disable popup menu
 GuiPopupmenu 0

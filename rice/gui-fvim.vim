@@ -3,15 +3,11 @@
 " FVim settings
 "
 " Created by peromage 2021/03/14
-" Last modified 2021/03/14
+" Last modified 2021/03/18
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if !exists('g:fvim_loaded')
-    finish
-endif
-
-let g:loaded_rice_frontend = 'fvim'
+let g:loaded_rice_gui = 'fvim'
 
 " Some fancy cursor effects
 FVimCursorSmoothMove v:true
