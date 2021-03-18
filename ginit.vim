@@ -23,8 +23,8 @@ command! GuiInitFile execute 'edit '.g:gui_init_file
 "let g:rice_gui_vim_frontend = 'gvim'
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"### BEGIN: Rice config ###
 
-
-"### Rice config should start before this line ###
+"### END: Rice config ###
 call rice#gui_init()
-"### Other config should start after this line ###
+"### Your config should start after this line ###

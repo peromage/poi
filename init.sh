@@ -30,8 +30,8 @@ init_file=$(realpath "$BASH_SOURCE")
 #rice_mods="basic nav env"
 #
 ################################################################################
+### BEGIN: Rice config ###
 
-
-### Rice config should start before this line ###
+### END: Rice config ###
 . $init_home/ribash/ribash.sh
-### Other config should start after this line ###
+### Your config should start after this line ###

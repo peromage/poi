@@ -32,8 +32,8 @@ Import-Module ripwsh -ArgumentList @{
 #mods = @('basic', 'nav', 'windows', 'env')
 #
 ################################################################################
+### BEGIN: Rice config ###
 
-
-### Rice config should start before this line ###
+### END: Rice config ###
 }
-### Other config should start after this line ###
+### Your config should start after this line ###

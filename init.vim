@@ -51,8 +51,8 @@ call rice#begin()
 "Plug 'Kenta11/helloworld-vim'
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"### BEGIN: Rice config ###
 
-
-"### Rice config should start before this line ###
+"### END: Rice config ###
 call rice#end()
-"### Other config should start after this line ###
+"### Your config should start after this line ###
