@@ -3,7 +3,7 @@
 " Coc settings
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/02/24
+" Last modified 2021/03/19
 "
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
@@ -80,27 +80,27 @@ else
 endif
 
 " GoTo code navigation.
-nmap <silent> <leader>cd <Plug>(coc-definition)
-nmap <silent> <leader>ct <Plug>(coc-type-definition)
-nmap <silent> <leader>ci <Plug>(coc-implementation)
-nmap <silent> <leader>cr <Plug>(coc-references)
-nmap <silent> <leader>ca <Plug>(coc-codeaction)
-nmap <silent> <leader>cp :CocCommand<CR>
-nmap <silent> <leader>cl :CocList<CR>
+nmap <silent> <Leader>cd <Plug>(coc-definition)
+nmap <silent> <Leader>ct <Plug>(coc-type-definition)
+nmap <silent> <Leader>ci <Plug>(coc-implementation)
+nmap <silent> <Leader>cr <Plug>(coc-references)
+nmap <silent> <Leader>ca <Plug>(coc-codeaction)
+nmap <silent> <Leader>cp :CocCommand<CR>
+nmap <silent> <Leader>cl :CocList<CR>
 
 " Use k to show documentation in preview window.
-nnoremap <silent> <leader>ck :call <SID>show_documentation()<CR>
+nnoremap <silent> <Leader>ck :call <SID>show_documentation()<CR>
 
 " Show diagnostics messages
-nnoremap <silent> <leader>cm :CocList diagnostics<CR>
-nmap <silent> <leader>cn <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>cN <Plug>(coc-diagnostic-prev)
+nnoremap <silent> <Leader>cm :CocList diagnostics<CR>
+nmap <silent> <Leader>cn <Plug>(coc-diagnostic-next)
+nmap <silent> <Leader>cN <Plug>(coc-diagnostic-prev)
 
 " Other shortcuts
 " Symbol renaming.
-nmap <leader>ccr <Plug>(coc-rename)
+nmap <Leader>ccr <Plug>(coc-rename)
 " Formatting selected code
-nmap <leader>ccf <Plug>(coc-format-selected)
+nmap <Leader>ccf <Plug>(coc-format-selected)
 
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
@@ -166,7 +166,7 @@ let g:coc_explorer_global_presets = {
 \   }
 \ }
 
-nnoremap <silent> <leader>ee :CocCommand explorer --preset left<CR>
-nnoremap <silent> <leader>eE :CocCommand explorer --preset right<CR>
-nnoremap <silent> <leader>en :CocCommand explorer --preset tab<CR>
-nnoremap <silent> <leader>ef :CocCommand explorer --preset floating<CR>
+nnoremap <silent> <Leader>ee :CocCommand explorer --preset left<CR>
+nnoremap <silent> <Leader>eE :CocCommand explorer --preset right<CR>
+nnoremap <silent> <Leader>en :CocCommand explorer --preset tab<CR>
+nnoremap <silent> <Leader>ef :CocCommand explorer --preset floating<CR>

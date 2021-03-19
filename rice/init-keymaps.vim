@@ -3,7 +3,7 @@
 " Customized keymaps
 "
 " Created by peromage 2021/02/23
-" Last modified 2021/03/18
+" Last modified 2021/03/19
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -121,18 +121,18 @@ let g:mapleader="\<Space>"
 " With leader key
 "
 " <h> <j> <k> <l>
-nmap <leader>h <Plug>(rice_pane_jump_left)
-nmap <leader>j <Plug>(rice_pane_jump_down)
-nmap <leader>k <Plug>(rice_pane_jump_up)
-nmap <leader>l <Plug>(rice_pane_jump_right)
+nmap <Leader>h <Plug>(rice_pane_jump_left)
+nmap <Leader>j <Plug>(rice_pane_jump_down)
+nmap <Leader>k <Plug>(rice_pane_jump_up)
+nmap <Leader>l <Plug>(rice_pane_jump_right)
 
 " <p>
-nmap <leader>p <Plug>(rice_toggle_paste_mode)
-nmap <leader>P <Plug>(rice_toggle_line_wrap)
+nmap <Leader>p <Plug>(rice_toggle_paste_mode)
+nmap <Leader>P <Plug>(rice_toggle_line_wrap)
 
 " <o>
-nmap <leader>o <Plug>(rice_pane_jump_previous)
-nmap <leader>O <Plug>(rice_pane_maximize)
+nmap <Leader>o <Plug>(rice_pane_jump_previous)
+nmap <Leader>O <Plug>(rice_pane_maximize)
 
 " <Left> <Right> <Up> <Down> Pane
 nmap <Down> <Plug>(rice_pane_vdecrease)
@@ -141,42 +141,42 @@ nmap <Left> <Plug>(rice_pane_hdecrease)
 nmap <Right> <Plug>(rice_pane_hincrease)
 
 " <v>
-nmap <leader>v <Plug>(rice_vsplit)
-nmap <leader>V <Plug>(rice_hsplit)
+nmap <Leader>v <Plug>(rice_vsplit)
+nmap <Leader>V <Plug>(rice_hsplit)
 
 " <n> Tab switching
-nmap <leader>n <Plug>(rice_tab_next)
-nmap <leader>N <Plug>(rice_tab_previous)
+nmap <Leader>n <Plug>(rice_tab_next)
+nmap <Leader>N <Plug>(rice_tab_previous)
 
 " <b> Buffer switching
-nmap <leader>b <Plug>(rice_buffer_next)
-nmap <leader>B <Plug>(rice_buffer_previous)
+nmap <Leader>b <Plug>(rice_buffer_next)
+nmap <Leader>B <Plug>(rice_buffer_previous)
 
 " <m> Tab movement
-nmap <leader>m <Plug>(rice_tab_move_forward)
-nmap <leader>M <Plug>(rice_tab_move_backward)
+nmap <Leader>m <Plug>(rice_tab_move_forward)
+nmap <Leader>M <Plug>(rice_tab_move_backward)
 
 " <g> Go to list
-nmap <leader>gt <Plug>(rice_tab_jump)
-nmap <leader>gb <Plug>(rice_buffer_jump)
-nmap <leader>g: <Plug>(rice_message)
-nmap <leader>g" <Plug>(rice_register)
+nmap <Leader>gt <Plug>(rice_tab_jump)
+nmap <Leader>gb <Plug>(rice_buffer_jump)
+nmap <Leader>g: <Plug>(rice_message)
+nmap <Leader>g" <Plug>(rice_register)
 
 " <t> Tab creation
-nmap <leader>t <Plug>(rice_tab_new)
-nmap <leader>T <Plug>(rice_buffer_new)
+nmap <Leader>t <Plug>(rice_tab_new)
+nmap <Leader>T <Plug>(rice_buffer_new)
 
 " <x> Buffer closing
-nmap <leader>x <Plug>(rice_buffer_close)
-nmap <leader>X <Plug>(rice_buffer_close_other)
+nmap <Leader>x <Plug>(rice_buffer_close)
+nmap <Leader>X <Plug>(rice_buffer_close_other)
 
 " <q> Buffer quiting
-nmap <leader>q <Plug>(rice_quit)
-nmap <leader>Q <Plug>(rice_quit_all)
+nmap <Leader>q <Plug>(rice_quit)
+nmap <Leader>Q <Plug>(rice_quit_all)
 
 " <w> Saving
-nmap <leader>w <Plug>(rice_save)
-nmap <leader>W <Plug>(rice_save_all)
+nmap <Leader>w <Plug>(rice_save)
+nmap <Leader>W <Plug>(rice_save_all)
 
 " <*> <#> Hightlighting
 nmap # <Plug>(rice_search_off)
@@ -184,15 +184,15 @@ nmap * <Plug>(rice_search_cword)
 vmap * <Plug>(rice_search_selected)
 
 " <u> System
-nmap <leader>up <Plug>(rice_clipboard_paste)
-nmap <leader>uy <Plug>(rice_clipboard_copy)
-vmap <leader>up <Plug>(rice_clipboard_paste)
-vmap <leader>uy <Plug>(rice_clipboard_copy)
+nmap <Leader>up <Plug>(rice_clipboard_paste)
+nmap <Leader>uy <Plug>(rice_clipboard_copy)
+vmap <Leader>up <Plug>(rice_clipboard_paste)
+vmap <Leader>uy <Plug>(rice_clipboard_copy)
 
 " <i> Input commands
-nmap <leader>if <Plug>(rice_set_filetype)
-nmap <leader>is <Plug>(rice_substitute_all)
-nmap <leader>iS <Plug>(rice_substitute_all_highlighted)
+nmap <Leader>if <Plug>(rice_set_filetype)
+nmap <Leader>is <Plug>(rice_substitute_all)
+nmap <Leader>iS <Plug>(rice_substitute_all_highlighted)
 
 " <Esc>
 tmap <Esc><Esc> <Plug>(rice_terminal_escape)

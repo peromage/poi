@@ -3,7 +3,7 @@
 " LeaderF settings
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/02/24
+" Last modified 2021/03/19
 "
 "Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
 "
@@ -56,40 +56,40 @@ nnoremap <silent> <Plug>(rice_leaderf_self) :Leaderf self
 nnoremap <Plug>(rice_leaderf_prefix) :Leaderf<Space>
 
 " Global search
-nmap <leader>fp <Plug>(rice_leaderf_file)<CR>
-nmap <leader>fm <Plug>(rice_leaderf_mru)<CR>
-nmap <leader>fb <Plug>(rice_leaderf_buffer)<CR>
-nmap <leader>fB <Plug>(rice_leaderf_buffer_tab)<CR>
-nmap <leader>fl <Plug>(rice_leaderf_line)<CR>
-nmap <leader>ft <Plug>(rice_leaderf_tag)<CR>
-nmap <leader>ff <Plug>(rice_leaderf_function)<CR>
-nmap <leader>fg <Plug>(rice_leaderf_rg)<CR>
+nmap <Leader>fp <Plug>(rice_leaderf_file)<CR>
+nmap <Leader>fm <Plug>(rice_leaderf_mru)<CR>
+nmap <Leader>fb <Plug>(rice_leaderf_buffer)<CR>
+nmap <Leader>fB <Plug>(rice_leaderf_buffer_tab)<CR>
+nmap <Leader>fl <Plug>(rice_leaderf_line)<CR>
+nmap <Leader>ft <Plug>(rice_leaderf_tag)<CR>
+nmap <Leader>ff <Plug>(rice_leaderf_function)<CR>
+nmap <Leader>fg <Plug>(rice_leaderf_rg)<CR>
 
 " Buffer search
-nmap <leader>fel <Plug>(rice_leaderf_line_buffer)<CR>
-nmap <leader>fet <Plug>(rice_leaderf_tag_buffer)<CR>
-nmap <leader>fef <Plug>(rice_leaderf_function_buffer)<CR>
-nmap <leader>feg <Plug>(rice_leaderf_rg_buffer)<CR>
-nmap <leader>feG <Plug>(rice_leaderf_rg_all_buffers)<CR>
+nmap <Leader>fel <Plug>(rice_leaderf_line_buffer)<CR>
+nmap <Leader>fet <Plug>(rice_leaderf_tag_buffer)<CR>
+nmap <Leader>fef <Plug>(rice_leaderf_function_buffer)<CR>
+nmap <Leader>feg <Plug>(rice_leaderf_rg_buffer)<CR>
+nmap <Leader>feG <Plug>(rice_leaderf_rg_all_buffers)<CR>
 
 " Word search
-nmap <leader>fwp <Plug>(rice_leaderf_file) --cword<CR><Tab>
-nmap <leader>fwb <Plug>(rice_leaderf_buffer) --cword<CR><Tab>
-nmap <leader>fwl <Plug>(rice_leaderf_line) --cword<CR><Tab>
-nmap <leader>fwt <Plug>(rice_leaderf_tag) --cword<CR><Tab>
-nmap <leader>fwf <Plug>(rice_leaderf_function) --cword<CR><Tab>
-nmap <leader>fwg <Plug>(rice_leaderf_rg) --cword<CR><Tab>
+nmap <Leader>fwp <Plug>(rice_leaderf_file) --cword<CR><Tab>
+nmap <Leader>fwb <Plug>(rice_leaderf_buffer) --cword<CR><Tab>
+nmap <Leader>fwl <Plug>(rice_leaderf_line) --cword<CR><Tab>
+nmap <Leader>fwt <Plug>(rice_leaderf_tag) --cword<CR><Tab>
+nmap <Leader>fwf <Plug>(rice_leaderf_function) --cword<CR><Tab>
+nmap <Leader>fwg <Plug>(rice_leaderf_rg) --cword<CR><Tab>
 
 " Resume
-nmap <leader>frr :Leaderf --recall<CR><Tab>
-nmap <leader>frp <Plug>(rice_leaderf_file) --recall<CR><Tab>
-nmap <leader>frb <Plug>(rice_leaderf_buffer) --recall<CR><Tab>
-nmap <leader>frl <Plug>(rice_leaderf_line) --recall<CR><Tab>
-nmap <leader>frt <Plug>(rice_leaderf_tag) --recall<CR><Tab>
-nmap <leader>frf <Plug>(rice_leaderf_function) --recall<CR><Tab>
-nmap <leader>frg <Plug>(rice_leaderf_rg) --recall<CR><Tab>
+nmap <Leader>frr :Leaderf --recall<CR><Tab>
+nmap <Leader>frp <Plug>(rice_leaderf_file) --recall<CR><Tab>
+nmap <Leader>frb <Plug>(rice_leaderf_buffer) --recall<CR><Tab>
+nmap <Leader>frl <Plug>(rice_leaderf_line) --recall<CR><Tab>
+nmap <Leader>frt <Plug>(rice_leaderf_tag) --recall<CR><Tab>
+nmap <Leader>frf <Plug>(rice_leaderf_function) --recall<CR><Tab>
+nmap <Leader>frg <Plug>(rice_leaderf_rg) --recall<CR><Tab>
 
 " Interactive
-nmap <leader>fii <Plug>(rice_leaderf_self)<CR>
-nmap <leader>fig <Plug>(rice_leaderf_rg_interactive)<CR>
-nmap <leader>fif <Plug>(rice_leaderf_prefix)
+nmap <Leader>fii <Plug>(rice_leaderf_self)<CR>
+nmap <Leader>fig <Plug>(rice_leaderf_rg_interactive)<CR>
+nmap <Leader>fif <Plug>(rice_leaderf_prefix)

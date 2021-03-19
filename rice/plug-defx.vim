@@ -3,7 +3,7 @@
 " Defx settings
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/02/24
+" Last modified 2021/03/19
 "
 "if has('nvim')
 "  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -31,7 +31,7 @@ call defx#custom#option('_', {
 
 " Global keymaps
 " Open Defx
-nnoremap <silent> <leader>e :Defx<CR>
+nnoremap <silent> <Leader>e :Defx<CR>
 
 " Keymaps when Defx is open
 function! s:my_defx_keymaps() abort

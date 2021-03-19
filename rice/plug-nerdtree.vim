@@ -3,7 +3,7 @@
 " Nerdtree settings
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/02/24
+" Last modified 2021/03/19
 "
 "Plug 'preservim/nerdtree'
 "
@@ -15,7 +15,7 @@ let g:loaded_rice_plug_nerdtree = 1
 let g:NERDTreeShowHidden = 1
 
 " Global keymaps
-nnoremap <silent> <leader>e :NERDTree<CR>
+nnoremap <silent> <Leader>e :NERDTree<CR>
 
 " Keymaps when nerdtree is open
 function! s:myNerdtreeSettings() abort
