@@ -63,6 +63,7 @@
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.rendererType": "canvas",
     "terminal.integrated.rightClickBehavior": "default",
+    "terminal.integrated.sendKeybindingsToShell": true,
     "terminal.integrated.shell.windows": "pwsh.exe",
     "terminal.integrated.shellArgs.windows": "-NoLogo",
     "update.enableWindowsBackgroundUpdates": false,
@@ -88,7 +89,7 @@
     "workbench.settings.openDefaultSettings": true,
     "workbench.settings.settingsSearchTocBehavior": "hide",
     "workbench.settings.useSplitJSON": true,
-    "workbench.sideBar.location": "left",
+    "workbench.startupEditor": "welcomePageInEmptyWorkbench",
     "workbench.tree.renderIndentGuides": "always",
     "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false
