@@ -14,7 +14,7 @@
     "editor.detectIndentation": true,
     "editor.fontFamily": "Cascadia Code PL, Sarasa Term CL, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
-    "editor.fontWeight": 100,
+    "editor.fontWeight": "normal",
     "editor.insertSpaces": true,
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
