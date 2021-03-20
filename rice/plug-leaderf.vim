@@ -38,22 +38,22 @@ let g:Lf_PreviewResult = {
 \ }
 
 " Pre-defined shortcuts
-nnoremap <silent> <Plug>(rice_leaderf_file) :Leaderf file --no-ignore --fullPath
-nnoremap <silent> <Plug>(rice_leaderf_mru) :Leaderf mru --fullPath
-nnoremap <silent> <Plug>(rice_leaderf_buffer) :Leaderf buffer --fullPath
-nnoremap <silent> <Plug>(rice_leaderf_buffer_tab) :Leaderf buffer --tabpage --fullPath
-nnoremap <silent> <Plug>(rice_leaderf_line) :Leaderf line --all --fuzzy
-nnoremap <silent> <Plug>(rice_leaderf_line_buffer) :Leaderf line --fuzzy
-nnoremap <silent> <Plug>(rice_leaderf_tag) :Leaderf tag --fuzzy
-nnoremap <silent> <Plug>(rice_leaderf_tag_buffer) :Leaderf bufTag --fuzzy
-nnoremap <silent> <Plug>(rice_leaderf_function) :Leaderf function --all --fuzzy
-nnoremap <silent> <Plug>(rice_leaderf_function_buffer) :Leaderf function --fuzzy
-nnoremap <silent> <Plug>(rice_leaderf_rg) :Leaderf rg --fuzzy
-nnoremap <silent> <Plug>(rice_leaderf_rg_buffer) :Leaderf rg --current-buffer --fuzzy
-nnoremap <silent> <Plug>(rice_leaderf_rg_all_buffers) :Leaderf rg --all-buffers --fuzzy
-nnoremap <silent> <Plug>(rice_leaderf_rg_interactive) :LeaderfRgInteractive
-nnoremap <silent> <Plug>(rice_leaderf_self) :Leaderf self
-nnoremap <Plug>(rice_leaderf_prefix) :Leaderf<Space>
+nnoremap <silent> <Plug>(rice_leaderf_file) :<C-U>Leaderf file --no-ignore --fullPath
+nnoremap <silent> <Plug>(rice_leaderf_mru) :<C-U>Leaderf mru --fullPath
+nnoremap <silent> <Plug>(rice_leaderf_buffer) :<C-U>Leaderf buffer --fullPath
+nnoremap <silent> <Plug>(rice_leaderf_buffer_tab) :<C-U>Leaderf buffer --tabpage --fullPath
+nnoremap <silent> <Plug>(rice_leaderf_line) :<C-U>Leaderf line --all --fuzzy
+nnoremap <silent> <Plug>(rice_leaderf_line_buffer) :<C-U>Leaderf line --fuzzy
+nnoremap <silent> <Plug>(rice_leaderf_tag) :<C-U>Leaderf tag --fuzzy
+nnoremap <silent> <Plug>(rice_leaderf_tag_buffer) :<C-U>Leaderf bufTag --fuzzy
+nnoremap <silent> <Plug>(rice_leaderf_function) :<C-U>Leaderf function --all --fuzzy
+nnoremap <silent> <Plug>(rice_leaderf_function_buffer) :<C-U>Leaderf function --fuzzy
+nnoremap <silent> <Plug>(rice_leaderf_rg) :<C-U>Leaderf rg --fuzzy
+nnoremap <silent> <Plug>(rice_leaderf_rg_buffer) :<C-U>Leaderf rg --current-buffer --fuzzy
+nnoremap <silent> <Plug>(rice_leaderf_rg_all_buffers) :<C-U>Leaderf rg --all-buffers --fuzzy
+nnoremap <silent> <Plug>(rice_leaderf_rg_interactive) :<C-U>LeaderfRgInteractive
+nnoremap <silent> <Plug>(rice_leaderf_self) :<C-U>Leaderf self
+nnoremap <Plug>(rice_leaderf_prefix) :<C-U>Leaderf
 
 " Global search
 nmap <Leader>fp <Plug>(rice_leaderf_file)<CR>
@@ -81,7 +81,7 @@ nmap <Leader>fwf <Plug>(rice_leaderf_function) --cword<CR><Tab>
 nmap <Leader>fwg <Plug>(rice_leaderf_rg) --cword<CR><Tab>
 
 " Resume
-nmap <Leader>frr :Leaderf --recall<CR><Tab>
+nmap <Leader>frr <Plug>(rice_leaderf_prefix) --recall<CR><Tab>
 nmap <Leader>frp <Plug>(rice_leaderf_file) --recall<CR><Tab>
 nmap <Leader>frb <Plug>(rice_leaderf_buffer) --recall<CR><Tab>
 nmap <Leader>frl <Plug>(rice_leaderf_line) --recall<CR><Tab>
@@ -92,4 +92,4 @@ nmap <Leader>frg <Plug>(rice_leaderf_rg) --recall<CR><Tab>
 " Interactive
 nmap <Leader>fii <Plug>(rice_leaderf_self)<CR>
 nmap <Leader>fig <Plug>(rice_leaderf_rg_interactive)<CR>
-nmap <Leader>fif <Plug>(rice_leaderf_prefix)
+nmap <Leader>fif <Plug>(rice_leaderf_prefix)<Space>

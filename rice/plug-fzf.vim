@@ -3,7 +3,7 @@
 " Fzf settings
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/02/24
+" Last modified 2021/03/19
 "
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'junegunn/fzf.vim'
@@ -32,4 +32,4 @@ let g:fzf_tags_command = 'ctags -R -f .tags'
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 " Keymaps
-nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-p> :<C-U>Files<CR>

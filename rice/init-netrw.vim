@@ -3,7 +3,7 @@
 " Settings for netrw
 "
 " Created by peromage 2021/02/23
-" Last modified 2021/02/23
+" Last modified 2021/03/19
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -33,4 +33,4 @@ let g:netrw_usetab = 0
 let g:netrw_preview = 0
 autocmd FileType netrw call <SID>my_netrw()
 
-"nnoremap <silent> <leader>e :Lexplore<CR>
+"nnoremap <silent> <leader>e :<C-U>Lexplore<CR>

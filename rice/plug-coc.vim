@@ -85,14 +85,14 @@ nmap <silent> <Leader>ct <Plug>(coc-type-definition)
 nmap <silent> <Leader>ci <Plug>(coc-implementation)
 nmap <silent> <Leader>cr <Plug>(coc-references)
 nmap <silent> <Leader>ca <Plug>(coc-codeaction)
-nmap <silent> <Leader>cp :CocCommand<CR>
-nmap <silent> <Leader>cl :CocList<CR>
+nmap <silent> <Leader>cp :<C-U>CocCommand<CR>
+nmap <silent> <Leader>cl :<C-U>CocList<CR>
 
 " Use k to show documentation in preview window.
-nnoremap <silent> <Leader>ck :call <SID>show_documentation()<CR>
+nnoremap <silent> <Leader>ck :<C-U>call <SID>show_documentation()<CR>
 
 " Show diagnostics messages
-nnoremap <silent> <Leader>cm :CocList diagnostics<CR>
+nnoremap <silent> <Leader>cm :<C-U>CocList diagnostics<CR>
 nmap <silent> <Leader>cn <Plug>(coc-diagnostic-next)
 nmap <silent> <Leader>cN <Plug>(coc-diagnostic-prev)
 
@@ -166,7 +166,7 @@ let g:coc_explorer_global_presets = {
 \   }
 \ }
 
-nnoremap <silent> <Leader>ee :CocCommand explorer --preset left<CR>
-nnoremap <silent> <Leader>eE :CocCommand explorer --preset right<CR>
-nnoremap <silent> <Leader>en :CocCommand explorer --preset tab<CR>
-nnoremap <silent> <Leader>ef :CocCommand explorer --preset floating<CR>
+nnoremap <silent> <Leader>ee :<C-U>CocCommand explorer --preset left<CR>
+nnoremap <silent> <Leader>eE :<C-U>CocCommand explorer --preset right<CR>
+nnoremap <silent> <Leader>en :<C-U>CocCommand explorer --preset tab<CR>
+nnoremap <silent> <Leader>ef :<C-U>CocCommand explorer --preset floating<CR>

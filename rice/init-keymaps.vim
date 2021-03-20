@@ -34,49 +34,49 @@ nnoremap <silent> <Plug>(rice_pane_maximize) <C-W>o
 "-------------------------------------------------------------------------------
 " Normal: Tabs
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_tab_previous) :tabprevious<CR>
-nnoremap <silent> <Plug>(rice_tab_next) :tabnext<CR>
-nnoremap <Plug>(rice_tab_jump) :tabs<CR>:tabnext<Space>
-nnoremap <silent> <Plug>(rice_tab_new) :tabnew<CR>
-nnoremap <silent> <Plug>(rice_tab_move_forward) :tabmove +<CR>
-nnoremap <silent> <Plug>(rice_tab_move_backward) :tabmove -<CR>
+nnoremap <silent> <Plug>(rice_tab_previous) :<C-U>tabprevious<CR>
+nnoremap <silent> <Plug>(rice_tab_next) :<C-U>tabnext<CR>
+nnoremap <Plug>(rice_tab_jump) :<C-U>tabs<CR>:tabnext<Space>
+nnoremap <silent> <Plug>(rice_tab_new) :<C-U>tabnew<CR>
+nnoremap <silent> <Plug>(rice_tab_move_forward) :<C-U>tabmove +<CR>
+nnoremap <silent> <Plug>(rice_tab_move_backward) :<C-U>tabmove -<CR>
 
 "-------------------------------------------------------------------------------
 " Normal: Buffers
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_buffer_next) :bn<CR>
-nnoremap <silent> <Plug>(rice_buffer_previous) :bp<CR>
-nnoremap <Plug>(rice_buffer_jump) :buffers<CR>:buffer<Space>
-nnoremap <silent> <Plug>(rice_buffer_new) :enew<CR>
-nnoremap <silent> <Plug>(rice_buffer_close) :bd<CR>
-nnoremap <silent> <Plug>(rice_buffer_close_other) :%bd\|e#<CR>
+nnoremap <silent> <Plug>(rice_buffer_next) :<C-U>bn<CR>
+nnoremap <silent> <Plug>(rice_buffer_previous) :<C-U>bp<CR>
+nnoremap <Plug>(rice_buffer_jump) :<C-U>buffers<CR>:buffer<Space>
+nnoremap <silent> <Plug>(rice_buffer_new) :<C-U>enew<CR>
+nnoremap <silent> <Plug>(rice_buffer_close) <C-U>:bd<CR>
+nnoremap <silent> <Plug>(rice_buffer_close_other) :<C-U>%bd\|e#<CR>
 
 "-------------------------------------------------------------------------------
 " Normal: Search and substitution
 "-------------------------------------------------------------------------------
-nnoremap <Plug>(rice_substitute_all) :%s//gc<Left><Left><Left>
-nnoremap <expr> <Plug>(rice_substitute_all_highlighted) ':%s/' . @/ . '//gc<Left><Left><Left>'
-nnoremap <silent> <Plug>(rice_search_off) :noh<CR>
+nnoremap <Plug>(rice_substitute_all) :<C-U>%s//gc<Left><Left><Left>
+nnoremap <expr> <Plug>(rice_substitute_all_highlighted) ':<C-U>%s/' . @/ . '//gc<Left><Left><Left>'
+nnoremap <silent> <Plug>(rice_search_off) :<C-U>noh<CR>
 nnoremap <silent> <Plug>(rice_search_cword) *N
 
 "-------------------------------------------------------------------------------
 " Normal: Misc
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_quit) :q<CR>
-nnoremap <silent> <Plug>(rice_quit_all) :qa<CR>
-nnoremap <silent> <Plug>(rice_save) :w<CR>
-nnoremap <silent> <Plug>(rice_save_all) :wa<CR>
-nnoremap <silent> <Plug>(rice_register) :reg<CR>
-nnoremap <silent> <Plug>(rice_message) :messages<CR>
-nnoremap <Plug>(rice_set_filetype) :set filetype=
-nnoremap <silent> <Plug>(rice_toggle_line_wrap) :set wrap!<CR>
+nnoremap <silent> <Plug>(rice_quit) :<C-U>q<CR>
+nnoremap <silent> <Plug>(rice_quit_all) :<C-U>qa<CR>
+nnoremap <silent> <Plug>(rice_save) :<C-U>w<CR>
+nnoremap <silent> <Plug>(rice_save_all) :<C-U>wa<CR>
+nnoremap <silent> <Plug>(rice_register) :<C-U>reg<CR>
+nnoremap <silent> <Plug>(rice_message) :<C-U>messages<CR>
+nnoremap <Plug>(rice_set_filetype) :<C-U>set filetype=
+nnoremap <silent> <Plug>(rice_toggle_line_wrap) :<C-U>set wrap!<CR>
 
 "-------------------------------------------------------------------------------
 " Normal: Copy and paste
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_toggle_paste_mode) :set paste!<CR>
+nnoremap <silent> <Plug>(rice_toggle_paste_mode) :<C-U>set paste!<CR>
 nnoremap <silent> <Plug>(rice_clipboard_copy) "*yy
-nnoremap <silent> <Plug>(rice_clipboard_paste) :set paste<CR>"*p:set nopaste<CR>
+nnoremap <silent> <Plug>(rice_clipboard_paste) :<C-U>set paste<CR>"*p:set nopaste<CR>
 
 "-------------------------------------------------------------------------------
 " Visual: Search
@@ -103,7 +103,7 @@ inoremap <silent> <Plug>(rice_cursor_move_end) <End>
 " Insert: Copy and paste
 "-------------------------------------------------------------------------------
 inoremap <silent> <Plug>(rice_clipboard_copy) <C-O>"*yy
-inoremap <silent> <Plug>(rice_clipboard_paste) <C-O>:set paste<CR><C-R>*<C-O>:set nopaste<CR>
+inoremap <silent> <Plug>(rice_clipboard_paste) <C-O>:<C-U>set paste<CR><C-R>*<C-O>:set nopaste<CR>
 
 "-------------------------------------------------------------------------------
 " Terminal: Terminal related
