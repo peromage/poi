@@ -58,15 +58,15 @@ Bash
 
 ## Directories
 
-- *notes*: Some notes.
-- *appconfig*: Configurations for daily used applications.
+- *rice*: Rice Vim configurations.
 - *ripwsh*: Rice PowerShell module.
 - *ribash*: Rice Bash module.
+- *rivscode*: Rice VSCode config
+- *notes*: Some notes.
+- *appconfig*: Configurations of other commonly used applications.
 - *autoload*: Vim common libraries.
 - *colors*: Vim color schemes.
 - *plugin*: Vim additional plugins (Loaded all the time).
-- *plugin_inactive*: Vim additional plugins that are disabled.
-- *setup*: Rice Vim configurations.
 - *bin*: Scripts and executables.
 
 ## Credits
@@ -94,3 +94,7 @@ This bundle uses following awesome projects. Thank them all for the great contri
 [bat_url]: https://github.com/sharkdp/bat
 [zlua_url]: https://github.com/skywind3000/z.lua
 [vscode-neovim]: https://github.com/asvetliakov/vscode-neovim
+
+## TODO:
+
+- [ ] Move to Vim native LSP support
