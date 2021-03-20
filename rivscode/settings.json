@@ -54,6 +54,7 @@
     "powershell.promptToUpdatePowerShell": false,
     "powershell.startAsLoginShell.linux": true,
     "problems.showCurrentInStatus": true,
+    "python.languageServer": "Pylance",
     "scm.autoReveal": false,
     "search.experimental.searchInOpenEditors": true,
     "search.showLineNumbers": true,
@@ -84,6 +85,16 @@
     "workbench.editor.restoreViewState": false,
     "workbench.editor.splitSizing": "split",
     "workbench.editor.tabSizing": "shrink",
+    "workbench.editorAssociations": [
+        {
+            "filenamePattern": "*.ipynb",
+            "viewType": "jupyter.notebook.ipynb"
+        },
+        {
+            "filenamePattern": "*.ipynb",
+            "viewType": "jupyter-notebook"
+        }
+    ],
     "workbench.enableExperiments": false,
     "workbench.list.smoothScrolling": true,
     "workbench.settings.openDefaultKeybindings": true,
