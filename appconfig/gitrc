@@ -53,10 +53,39 @@ ff = only
 default = simple
 
 [alias]
-ss = status
-ll = log --graph --pretty=format:'%C(red)%h%C(reset) %C(green)[%an]%C(reset) - %s %C(blue)(%cd) %C(yellow)%d' --date=relative
-la = log --graph --pretty=format:'%C(red)%h%C(reset) %C(green)[%an]%C(reset) - %s %C(blue)(%cd) %C(yellow)%d' --numstat
-ltail = log -n 3
-br = branch
-ch = checkout
-ac = !git add -A && git commit -m
+# status
+s = status
+
+# add
+a = add
+aa = add .
+
+# checkout
+k = checkout
+
+# commit
+c = commit
+cm = commit -m
+can = commit --amend --no-edit
+cam = commit --amend
+
+# branch
+b = branch
+bv = branch -vv
+
+# remote
+r = remote
+rv = remote -vv
+ra = remote add
+
+# log
+l = log --graph --pretty=format:'%C(red)%h%C(reset) %C(green)[%an]%C(reset) - %s %C(blue)(%cd) %C(yellow)%d' --date=rfc
+ll = log --graph --pretty=format:'%C(red)%h%C(reset) %C(green)[%an]%C(reset) - %s %C(blue)(%cd) %C(yellow)%d' --numstat
+ln = log -n 3
+
+# update-index
+isw = update-index --skip-worktree
+noisw = update-index --no-skip-worktree
+
+# ls-files
+fsw = ls-files -v
