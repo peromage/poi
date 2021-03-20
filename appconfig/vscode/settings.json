@@ -73,6 +73,7 @@
     "vscode-neovim.neovimExecutablePaths.linux": "nvim",
     "vscode-neovim.neovimExecutablePaths.win32": "nvim",
     "vscode-neovim.revealCursorScrollLine": true,
+    "vscode-neovim.useCtrlKeysForInsertMode": false,
     "window.restoreWindows": "none",
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
     "workbench.colorTheme": "Dracula Soft",

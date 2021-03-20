@@ -106,5 +106,10 @@
         "key": "alt+w",
         "command": "workbench.action.toggleMaximizedPanel",
         "when": "panelFocus"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-vscode-neovim.escape",
+        "when": "editorTextFocus && neovim.init"
     }
 ]
