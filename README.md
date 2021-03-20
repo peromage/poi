@@ -22,26 +22,39 @@ Recommended
 
 ## Get Started
 
-1. Remove "template" prefix for the files `template-*` and then source this file from your main rc file.
+1. Add init files in your rc config file
+
+(Neo)Vim
 
 ```viml
 " In ~/.vimrc or ~/.config/nvim/init.vim
 source /path/to/init.vim
+
+" In ~/.gvimrc or ~/.config/nvim/ginit.vim
+source /path/to/ginit.vim
 ```
+
+PowerShell
 
 ```powershell
 # In $PROFILE.CurrentUserAllHosts
 . /path/to/init.ps1
 ```
 
+Bash
+
 ```bash
 # In ~/.bashrc
 . /path/to/init.sh
 ```
 
-2. Uncomment and modify configuration variables to enable features.
+2. Read comments in the init files, set configuration variables.
 
-3. Enjoy
+3. For the first time startup, run `:PlugInstall` to get plugins installed.
+
+4. This configuration is also compatible with [VSCode NeoVim plugin][vscode-neovim]. Check `init.vim` for details.
+
+5. Enjoy
 
 ## Directories
 
@@ -80,3 +93,4 @@ This bundle uses following awesome projects. Thank them all for the great contri
 [ripgrep_url]: https://github.com/BurntSushi/ripgrep
 [bat_url]: https://github.com/sharkdp/bat
 [zlua_url]: https://github.com/skywind3000/z.lua
+[vscode-neovim]: https://github.com/asvetliakov/vscode-neovim
