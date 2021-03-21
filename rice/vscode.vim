@@ -3,7 +3,7 @@
 " Rice setup entry for VSCode
 "
 " Created by peromage 2021/03/14
-" Last modified 2021/03/18
+" Last modified 2021/03/21
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -26,6 +26,22 @@ function! s:openVSCodeCommandsInVisualMode()
         let startPos = getpos("v")
         let endPos = getpos(".")
         call VSCodeNotifyRangePos("workbench.action.showCommands", startPos[1], endPos[1], startPos[2], endPos[2], 1)
+    endif
+endfunction
+
+let s:enabled_auto_insert_mode = 0
+function! s:toggleAutoInsertMode()
+    if s:enabled_auto_insert_mode
+        augroup AutoInsertMode
+            autocmd! 
+        augroup END
+        let s:enabled_auto_insert_mode = 0
+    else
+        augroup AutoInsertMode
+            autocmd! 
+            autocmd WinEnter * startinsert
+        augroup END
+        let s:enabled_auto_insert_mode = 1
     endif
 endfunction
 
@@ -97,4 +113,4 @@ vmap <silent> * y/\V<C-R>=escape(@",'/\')<CR><CR>N
 nmap <silent> <Leader>c :call VSCodeNotify('editor.action.clipboardCopyAction')<CR>
 nmap <silent> <Leader>v :call VSCodeNotify('editor.action.clipboardPasteAction')<CR>
 nmap <silent> <Leader>a :call VSCodeNotify('editor.action.selectAll')<CR>
-nmap <silent> <Tab> <Insert>
+nmap <silent> <Tab> :call <SID>toggleAutoInsertMode()<CR>
