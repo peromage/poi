@@ -36,12 +36,16 @@ function! s:toggleAutoInsertMode()
             autocmd! 
         augroup END
         let s:enabled_auto_insert_mode = 0
+        echom 'Disabled AutoInsertMode'
+        stopinsert
     else
         augroup AutoInsertMode
             autocmd! 
             autocmd WinEnter * startinsert
         augroup END
         let s:enabled_auto_insert_mode = 1
+        echom 'Enabled AutoInsertMode'
+        startinsert
     endif
 endfunction
 
@@ -58,49 +62,49 @@ let g:mapleader="\<Space>"
 "-------------------------------------------------------------------------------
 " Nomal: Splitting
 "-------------------------------------------------------------------------------
-nmap <silent> <Leader>v :call VSCodeCall('workbench.action.splitEditorRight')<CR>
-nmap <silent> <Leader>V :call VSCodeCall('workbench.action.splitEditorDown')<CR>
+nmap <silent> <Leader>v :<C-U>call VSCodeCall('workbench.action.splitEditorRight')<CR>
+nmap <silent> <Leader>V :<C-U>call VSCodeCall('workbench.action.splitEditorDown')<CR>
 
 "-------------------------------------------------------------------------------
 " Normal: Pane jump
 "-------------------------------------------------------------------------------
-nmap <silent> <Leader>h :call VSCodeNotify('workbench.action.focusLeftGroup')<CR>
-nmap <silent> <Leader>j :call VSCodeNotify('workbench.action.focusBelowGroup')<CR>
-nmap <silent> <Leader>k :call VSCodeNotify('workbench.action.focusAboveGroup')<CR>
-nmap <silent> <Leader>l :call VSCodeNotify('workbench.action.focusRightGroup')<CR>
-nmap <silent> <Leader>o :call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
+nmap <silent> <Leader>h :<C-U>call VSCodeNotify('workbench.action.focusLeftGroup')<CR>
+nmap <silent> <Leader>j :<C-U>call VSCodeNotify('workbench.action.focusBelowGroup')<CR>
+nmap <silent> <Leader>k :<C-U>call VSCodeNotify('workbench.action.focusAboveGroup')<CR>
+nmap <silent> <Leader>l :<C-U>call VSCodeNotify('workbench.action.focusRightGroup')<CR>
+nmap <silent> <Leader>o :<C-U>call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
 
 "-------------------------------------------------------------------------------
 " Normal: Pane size adjustment
 "-------------------------------------------------------------------------------
-nmap <silent> <Up> :call VSCodeNotify('workbench.action.increaseViewHeight')<CR>
-nmap <silent> <Down> :call VSCodeNotify('workbench.action.decreaseViewHeight')<CR>
-nmap <silent> <Right> :call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
-nmap <silent> <Left> :call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
-nmap <silent> <Leader>O :call VSCodeNotify('workbench.action.joinAllGroups')<CR>
+nmap <silent> <Up> :<C-U>call VSCodeNotify('workbench.action.increaseViewHeight')<CR>
+nmap <silent> <Down> :<C-U>call VSCodeNotify('workbench.action.decreaseViewHeight')<CR>
+nmap <silent> <Right> :<C-U>call VSCodeNotify('workbench.action.increaseViewWidth')<CR>
+nmap <silent> <Left> :<C-U>call VSCodeNotify('workbench.action.decreaseViewWidth')<CR>
+nmap <silent> <Leader>O :<C-U>call VSCodeNotify('workbench.action.joinAllGroups')<CR>
 
 "-------------------------------------------------------------------------------
 " Normal: Tabs
 "-------------------------------------------------------------------------------
-nmap <silent> <Leader>N :call VSCodeCall('workbench.action.previousEditorInGroup')<CR>
-nmap <silent> <Leader>n :call VSCodeCall('workbench.action.nextEditorInGroup')<CR>
-nmap <silent> <Leader>t :tabnew<CR>
+nmap <silent> <Leader>N :<C-U>call VSCodeCall('workbench.action.previousEditorInGroup')<CR>
+nmap <silent> <Leader>n :<C-U>call VSCodeCall('workbench.action.nextEditorInGroup')<CR>
+nmap <silent> <Leader>t :<C-U>tabnew<CR>
 
 "-------------------------------------------------------------------------------
 " Normal: Search and substitution
 "-------------------------------------------------------------------------------
-nmap <Leader>is :%s//gc<Left><Left><Left>
+nmap <Leader>is :<C-U>%s//gc<Left><Left><Left>
 nmap <expr> <Leader>iS ':%s/' . @/ . '//gc<Left><Left><Left>'
-nmap <silent> # :noh<CR>
+nmap <silent> # :<C-U>noh<CR>
 nmap <silent> * *N
 
 "-------------------------------------------------------------------------------
 " Normal: Misc
 "-------------------------------------------------------------------------------
-nmap <silent> <Leader>q :call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
-nmap <silent> <Leader>Q :call VSCodeNotify('workbench.action.closeAllEditors')<CR>
-nmap <silent> <Leader>w :call VSCodeNotify('workbench.action.files.save')<CR>
-nmap <silent> <Leader>W :call VSCodeNotify('workbench.action.files.saveAs')<CR>
+nmap <silent> <Leader>q :<C-U>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
+nmap <silent> <Leader>Q :<C-U>call VSCodeNotify('workbench.action.closeAllEditors')<CR>
+nmap <silent> <Leader>w :<C-U>call VSCodeNotify('workbench.action.files.save')<CR>
+nmap <silent> <Leader>W :<C-U>call VSCodeNotify('workbench.action.files.saveAs')<CR>
 
 "-------------------------------------------------------------------------------
 " Visual: Search
@@ -110,7 +114,8 @@ vmap <silent> * y/\V<C-R>=escape(@",'/\')<CR><CR>N
 "-------------------------------------------------------------------------------
 " Make it easier with mouse
 "-------------------------------------------------------------------------------
-nmap <silent> <Leader>c :call VSCodeNotify('editor.action.clipboardCopyAction')<CR>
-nmap <silent> <Leader>v :call VSCodeNotify('editor.action.clipboardPasteAction')<CR>
-nmap <silent> <Leader>a :call VSCodeNotify('editor.action.selectAll')<CR>
-nmap <silent> <Tab> :call <SID>toggleAutoInsertMode()<CR>
+nmap <silent> <Tab>c :<C-U>call VSCodeNotify('editor.action.clipboardCopyAction')<CR>
+nmap <silent> <Tab>v :<C-U>call VSCodeNotify('editor.action.clipboardPasteAction')<CR>
+nmap <silent> <Tab>a :<C-U>call VSCodeNotify('editor.action.selectAll')<CR>
+nmap <silent> <Tab><Tab> :<C-U>call <SID>toggleAutoInsertMode()<CR>
+nmap <silent> <Enter> o<Esc>
