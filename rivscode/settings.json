@@ -76,7 +76,7 @@
     "vscode-neovim.revealCursorScrollLine": true,
     "vscode-neovim.useCtrlKeysForInsertMode": false,
     "window.restoreWindows": "none",
-    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
+    "window.title": "${rootName}${separator}${activeEditorLong}${dirty}",
     "workbench.colorTheme": "Dracula Soft",
     "workbench.editor.enablePreviewFromCodeNavigation": true,
     "workbench.editor.enablePreviewFromQuickOpen": true,
