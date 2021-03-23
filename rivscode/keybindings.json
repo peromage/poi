@@ -19,93 +19,13 @@
         "when": "editorFocus"
     },
     {
-        "key": "ctrl+0",
-        "command": "-workbench.action.focusSideBar"
-    },
-    {
-        "key": "ctrl+0",
+        "key": "ctrl+k =",
         "command": "editor.action.fontZoomReset",
         "when": "editorFocus"
     },
     {
-        "key": "alt+v",
-        "command": "workbench.action.splitEditor",
-        "when": "editorFocus"
-    },
-    {
-        "key": "shift+alt+v",
-        "command": "workbench.action.splitEditorOrthogonal",
-        "when": "editorFocus"
-    },
-    {
-        "key": "alt+l",
-        "command": "-toggleFindInSelection",
-        "when": "editorFocus"
-    },
-    {
-        "key": "alt+k",
-        "command": "workbench.action.focusAboveGroup",
-        "when": "editorFocus"
-    },
-    {
-        "key": "alt+j",
-        "command": "workbench.action.focusBelowGroup",
-        "when": "editorFocus"
-    },
-    {
-        "key": "alt+h",
-        "command": "workbench.action.focusLeftGroup",
-        "when": "editorFocus"
-    },
-    {
-        "key": "alt+l",
-        "command": "workbench.action.focusRightGroup",
-        "when": "editorFocus"
-    },
-    {
-        "key": "alt+v",
-        "command": "workbench.action.terminal.split",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt+l",
-        "command": "workbench.action.terminal.focusNextPane",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt+h",
-        "command": "workbench.action.terminal.focusPreviousPane",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt+j",
-        "command": "workbench.action.terminal.focusNext",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt+k",
-        "command": "workbench.action.terminal.focusPrevious",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt+t",
-        "command": "workbench.action.terminal.new",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt+q",
-        "command": "workbench.action.terminal.kill",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt+w",
-        "command": "-workbench.action.terminal.toggleFindWholeWord",
-        "when": "terminalFindFocused && terminalProcessSupported || terminalFocus && terminalProcessSupported"
-    },
-    {
-        "key": "alt+w",
-        "command": "workbench.action.toggleMaximizedPanel",
-        "when": "panelFocus"
+        "key": "ctrl+k -",
+        "command": "workbench.action.zoomReset"
     },
     {
         "key": "ctrl+c",

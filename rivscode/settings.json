@@ -55,6 +55,13 @@
     "powershell.startAsLoginShell.linux": true,
     "problems.showCurrentInStatus": true,
     "python.languageServer": "Pylance",
+    "remote.SSH.remotePlatform": {
+        "vm1": "linux",
+        "vm2": "linux",
+        "vm3": "linux",
+        "vm4": "linux",
+        "vm5": "linux"
+    },
     "scm.autoReveal": false,
     "search.experimental.searchInOpenEditors": true,
     "search.showLineNumbers": true,
@@ -62,6 +69,14 @@
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.fontWeight": "normal",
+    "terminal.integrated.localEchoExcludePrograms": [
+        "vim",
+        "vi",
+        "nano",
+        "tmux",
+        "nvim"
+    ],
     "terminal.integrated.rendererType": "canvas",
     "terminal.integrated.rightClickBehavior": "default",
     "terminal.integrated.sendKeybindingsToShell": true,
