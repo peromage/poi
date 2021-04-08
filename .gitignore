@@ -27,3 +27,4 @@ saved_sessions/
 # Temp files
 .bash_history
 .netrwhist
+*.swp
