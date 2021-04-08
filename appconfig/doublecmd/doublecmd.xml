@@ -510,13 +510,13 @@
     <IncludeFileAssociation>True</IncludeFileAssociation>
   </InternalAssociations>
   <TreeViewMenu>
-    <UseTVMDirectoryHotlistFMC>False</UseTVMDirectoryHotlistFMC>
-    <UseTVMDirectoryHotlistFDC>False</UseTVMDirectoryHotlistFDC>
-    <UseTVMFavoriteTabsFMC>False</UseTVMFavoriteTabsFMC>
+    <UseTVMDirectoryHotlistFMC>True</UseTVMDirectoryHotlistFMC>
+    <UseTVMDirectoryHotlistFDC>True</UseTVMDirectoryHotlistFDC>
+    <UseTVMFavoriteTabsFMC>True</UseTVMFavoriteTabsFMC>
     <UseTVMFavoriteTabsFDC>False</UseTVMFavoriteTabsFDC>
-    <UseTVMDirHistory>False</UseTVMDirHistory>
-    <UseTVMViewHistory>False</UseTVMViewHistory>
-    <UseTVMCommandLineHistory>False</UseTVMCommandLineHistory>
+    <UseTVMDirHistory>True</UseTVMDirHistory>
+    <UseTVMViewHistory>True</UseTVMViewHistory>
+    <UseTVMCommandLineHistory>True</UseTVMCommandLineHistory>
     <TreeViewMenuShortcutExit>True</TreeViewMenuShortcutExit>
     <TreeViewMenuSingleClickExit>True</TreeViewMenuSingleClickExit>
     <TreeViewMenuDoubleClickExit>True</TreeViewMenuDoubleClickExit>
@@ -938,10 +938,10 @@
     <Presets/>
   </MultiRenamePresets>
   <Tabs>
-    <Options>54033</Options>
+    <Options>58321</Options>
     <CharacterLimit>32</CharacterLimit>
     <Position>0</Position>
-    <ActionOnDoubleClick>2</ActionOnDoubleClick>
+    <ActionOnDoubleClick>1</ActionOnDoubleClick>
     <OpenedTabs>
       <Left>
         <ActiveTab>0</ActiveTab>
@@ -962,22 +962,7 @@
         </Tab>
       </Left>
       <Right>
-        <ActiveTab>1</ActiveTab>
-        <Tab>
-          <FileView Type="columns">
-            <History>
-              <Entry Active="True">
-                <FileSource Type="FileSystem"/>
-                <Paths>
-                  <Path>C:\Users\fdeng5\a\bin\doublecmd\</Path>
-                </Paths>
-              </Entry>
-            </History>
-            <ColumnsView>
-              <ColumnsSet>Default</ColumnsSet>
-            </ColumnsView>
-          </FileView>
-        </Tab>
+        <ActiveTab>0</ActiveTab>
         <Tab>
           <FileView Type="columns">
             <History>

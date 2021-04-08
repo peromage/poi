@@ -573,6 +573,11 @@
         <Command>cm_Delete</Command>
         <Control>Files Panel</Control>
       </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+;</Shortcut>
+        <Command>cm_FocusCmdLine</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
     </Form>
     <Form Name="Viewer">
       <Hotkey>
