@@ -74,17 +74,6 @@
       </Row>
     </MainToolbar>
   </Toolbars>
-  <MainWindow>
-    <Position Save="False">
-      <Left>80</Left>
-      <Top>48</Top>
-      <Width>1000</Width>
-      <Height>600</Height>
-      <PixelsPerInch>120</PixelsPerInch>
-      <Maximized>True</Maximized>
-      <Splitter>49.0871152842984</Splitter>
-    </Position>
-  </MainWindow>
   <Configuration Save="True" SortOrder="1" TreeType="0">
     <FolderTabs Save="False"/>
     <UseConfigInProgramDir>False</UseConfigInProgramDir>
@@ -383,10 +372,10 @@
     <Options>1023</Options>
   </Log>
   <History>
-    <SearchReplaceHistory Save="False"/>
-    <DirHistory Save="False"/>
-    <CmdLineHistory Save="False"/>
-    <FileMaskHistory Save="False"/>
+    <SearchReplaceHistory Save="True"/>
+    <DirHistory Save="True"/>
+    <CmdLineHistory Save="True"/>
+    <FileMaskHistory Save="True"/>
   </History>
   <QuickSearch>
     <MatchBeginning>True</MatchBeginning>
@@ -951,7 +940,7 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path>C:\Users\fdeng5\AppData\Roaming\doublecmd\</Path>
+                  <Path>C:\Users\Public\</Path>
                 </Paths>
               </Entry>
             </History>
@@ -969,7 +958,7 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path>C:\Users\fdeng5\a\rice\appconfig\doublecmd\</Path>
+                  <Path>C:\Users\Public\</Path>
                 </Paths>
               </Entry>
             </History>
@@ -981,4 +970,7 @@
       </Right>
     </OpenedTabs>
   </Tabs>
+  <MainWindow>
+    <Position Save="False"/>
+  </MainWindow>
 </doublecmd>

@@ -578,6 +578,16 @@
         <Command>cm_FocusCmdLine</Command>
         <Control>Files Panel</Control>
       </Hotkey>
+      <Hotkey>
+        <Shortcut>X</Shortcut>
+        <Command>cm_ExtractFiles</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+X</Shortcut>
+        <Command>cm_PackFiles</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
     </Form>
     <Form Name="Viewer">
       <Hotkey>
