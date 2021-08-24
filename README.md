@@ -1,10 +1,6 @@
-# Peromage's (Neo)Vim Configuration And Other Stuff
+# Peromage's (Neo)Vim Configuration
 
-👻👾🤖🐱‍👤🐱‍🏍🐱‍💻🐱‍🐉🐱‍👓🐱‍🚀😺
-
-Essential needs like rice.
-
-The root of this repo is used as (Neo)Vim runtime path as well as for other tool's entry.
+> This is my old (Neo)Vim setup. I have switched to Emacs so there won't be new updates for this repo (maybe not).
 
 ## Dependencies
 
@@ -34,20 +30,6 @@ source /path/to/init.vim
 source /path/to/ginit.vim
 ```
 
-PowerShell
-
-```powershell
-# In $PROFILE.CurrentUserAllHosts
-. /path/to/init.ps1
-```
-
-Bash
-
-```bash
-# In ~/.bashrc
-. /path/to/init.sh
-```
-
 2. Read comments in the init files, set configuration variables.
 
 3. For the first time startup, run `:PlugInstall` to get plugins installed.
@@ -59,11 +41,6 @@ Bash
 ## Directories
 
 - *rice*: Rice Vim configurations.
-- *ripwsh*: Rice PowerShell module.
-- *ribash*: Rice Bash module.
-- *rivscode*: Rice VSCode config
-- *notes*: Some notes.
-- *appconfig*: Configurations of other commonly used applications.
 - *autoload*: Vim common libraries.
 - *colors*: Vim color schemes.
 - *plugin*: Vim additional plugins (Loaded all the time).
@@ -77,7 +54,6 @@ This bundle uses following awesome projects. Thank them all for the great contri
 - [fzf][fzf_url]
 - [ripgrep][ripgrep_url]
 - [bat][bat_url]
-- [z.lua][zlua_url]
 
 
 [python_url]: https://www.python.org/downloads/
@@ -92,7 +68,6 @@ This bundle uses following awesome projects. Thank them all for the great contri
 [fzf_url]: https://github.com/junegunn/fzf
 [ripgrep_url]: https://github.com/BurntSushi/ripgrep
 [bat_url]: https://github.com/sharkdp/bat
-[zlua_url]: https://github.com/skywind3000/z.lua
 [vscode-neovim]: https://github.com/asvetliakov/vscode-neovim
 
 ## TODO:
