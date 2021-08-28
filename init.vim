@@ -52,6 +52,7 @@
 let g:init_home = expand('<sfile>:p:h')
 let g:init_file = expand('<sfile>:p')
 let g:init_local = resolve(init_home . "/local.vim")
+let g:init_coc_settings = resolve(init_home . "/coc-settings.json")
 command! OpenInitFile exec 'edit '.g:init_file
 execute 'set rtp+='.g:init_home
 
@@ -69,7 +70,34 @@ let g:coc_global_extensions = [
 \   'coc-pyright'
 \   ]
 
-if filereadable(init_local)
+" coc-settings.json
+let s:coc_settings_json =<< EOL
+{
+    "$schema": "https://github.com/neoclide/coc.nvim/blob/master/data/schema.json",
+
+    "python.pythonPath": "python",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+
+    "clangd.path": "clangd",
+    "clangd.enabled": true,
+    "clangd.arguments": ["--background-index"],
+
+    "powershell.integratedConsole.showOnStartup": false,
+
+    "markdownlint.config": {
+        "line-length": false
+    }
+}
+EOL
+
+" Generates coc-settings.json if it does not exist
+if !rice#file_exists(init_coc_settings)
+    call writefile(s:coc_settings_json, init_coc_settings, "s")
+endif
+
+" Sources local config if it exists
+if rice#file_exists(init_local)
     execute 'source ' . init_local
 endif
 
