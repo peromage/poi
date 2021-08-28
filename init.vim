@@ -51,8 +51,8 @@
 
 let g:init_home = expand('<sfile>:p:h')
 let g:init_file = expand('<sfile>:p')
-let g:init_local = resolve(init_home . "/local.vim")
-let g:init_coc_settings = resolve(init_home . "/coc-settings.json")
+let g:init_local = simplify(init_home . "/local.vim")
+let g:init_coc_settings = simplify(init_home . "/coc-settings.json")
 command! OpenInitFile exec 'edit '.g:init_file
 execute 'set rtp+='.g:init_home
 
