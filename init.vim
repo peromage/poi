@@ -59,6 +59,16 @@ execute 'set rtp+='.g:init_home
 
 call rice#begin()
 
+let g:rice_color = 'dracula'
+let g:rice_plug_group = ['basic', 'navigation', 'syntax', 'coc', 'git']
+let g:rice_python_interpreter = 'python3'
+let g:coc_global_extensions = [
+\   'coc-clangd',
+\   'coc-powershell',
+\   'coc-tsserver',
+\   'coc-pyright'
+\   ]
+
 if filereadable(init_local)
     execute 'source ' . init_local
 endif
