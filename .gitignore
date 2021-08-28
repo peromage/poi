@@ -15,12 +15,6 @@ data/
 userdata/
 user/
 
-# VSCode
-rivscode/*
-!rivscode/keybindings.json
-!rivscode/settings.json
-!rivscode/export_extensions.ps1
-
 # Session files
 saved_sessions/
 
@@ -32,3 +26,4 @@ saved_sessions/
 # Local config
 local.vim
 local-gui.vim
+coc-settings.json

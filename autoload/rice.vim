@@ -65,6 +65,11 @@ function! rice#get_var(name, out_dict) abort
     return a:out_dict.valid
 endfunction
 
+" Returns a boolean indicating if the file exists
+function! rice#file_exists(path) abort
+    return len(glob(a:path))
+endfunction
+
 "-------------------------------------------------------------------------------
 " Helper commands
 "-------------------------------------------------------------------------------
