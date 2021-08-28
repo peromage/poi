@@ -24,10 +24,12 @@ Recommended
 
 ```viml
 " In ~/.vimrc or ~/.config/nvim/init.vim
-source /path/to/init.vim
+" Local changes go into rice/local.vim
+source rice/init.vim
 
 " In ~/.gvimrc or ~/.config/nvim/ginit.vim
-source /path/to/ginit.vim
+" Local changes go into rice/local-gui.vim
+source rice/ginit.vim
 ```
 
 2. Read comments in the init files, set configuration variables.
