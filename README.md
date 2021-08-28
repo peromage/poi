@@ -1,6 +1,8 @@
-# Peromage's (Neo)Vim Configuration
+# POI - Peromage's neOvim confIguration
 
-> This is my old (Neo)Vim setup. I have switched to Emacs so there won't be new updates for this repo (maybe not).
+> This is also compatible with Vim poi~
+
+> As of 08/28/2021 I have switched to Emacs so I will not update this rpeo frequently.
 
 ## Dependencies
 
@@ -18,27 +20,42 @@ Recommended
 
 ## Get Started
 
-1. Add init files in your rc config file
+There are two ways to use this configuration.
 
-(Neo)Vim
+Put the following content in the Neovim/Vim's RC file.
 
 ```viml
-" In ~/.vimrc or ~/.config/nvim/init.vim
-" Local changes go into rice/local.vim
+" Neovim: ~/.config/nvim/init.vim
+" Vim: ~/.vimrc
 source rice/init.vim
 
-" In ~/.gvimrc or ~/.config/nvim/ginit.vim
-" Local changes go into rice/local-gui.vim
+" Neovim: ~/.config/nvim/ginit.vim
+" Vim: ~/.gvimrc
 source rice/ginit.vim
 ```
 
-2. Read comments in the init files, set configuration variables.
+Or for Neovim, you can simply clone this repo to the location where Neovim reads its configuration.
 
-3. For the first time startup, run `:PlugInstall` to get plugins installed.
+```bash
+# Linux
+git clone https://github.com/peromage/poi.git ~/.config/nvim
 
-4. This configuration is also compatible with [VSCode NeoVim plugin][vscode-neovim]. Check `init.vim` for details.
+# Windows
+git clone https://github.com/peromage/poi.git ~/AppData/Local/nvim
+```
 
-5. Enjoy
+For the first time startup, run `:PlugInstall` to install plugins.
+
+Notes:
+
+- Read comments in the init files, set configuration variables.
+- This configuration is also compatible with [VSCode NeoVim plugin][vscode-neovim]. Check `init.vim` for details.
+
+Enjoy.
+
+## Local Files
+
+Any local changes can go into `poi/local.vim` and `poi/local-gui.vim`. Local changes will be applied on top of the default poi configuration.
 
 ## Directories
 
