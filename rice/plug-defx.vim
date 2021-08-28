@@ -31,7 +31,7 @@ call defx#custom#option('_', {
 
 " Global keymaps
 " Open Defx
-nnoremap <silent> <Leader>e :<C-U>Defx<CR>
+nnoremap <silent> <Leader>d :<C-U>Defx<CR>
 
 " Keymaps when Defx is open
 function! s:my_defx_keymaps() abort

@@ -10,84 +10,85 @@
 "-------------------------------------------------------------------------------
 " Nomal: Splitting
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_vsplit) <C-W>v
-nnoremap <silent> <Plug>(rice_hsplit) <C-W>s
+nnoremap <silent> <Plug>(rice_vsplit) <C-w>v
+nnoremap <silent> <Plug>(rice_hsplit) <C-w>s
 
 "-------------------------------------------------------------------------------
 " Normal: Pane jump
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_pane_jump_left) <C-W>h
-nnoremap <silent> <Plug>(rice_pane_jump_down) <C-W>j
-nnoremap <silent> <Plug>(rice_pane_jump_up) <C-W>k
-nnoremap <silent> <Plug>(rice_pane_jump_right) <C-W>l
-nnoremap <silent> <Plug>(rice_pane_jump_previous) <C-W>p
+nnoremap <silent> <Plug>(rice_pane_jump_left) <C-w>h
+nnoremap <silent> <Plug>(rice_pane_jump_down) <C-w>j
+nnoremap <silent> <Plug>(rice_pane_jump_up) <C-w>k
+nnoremap <silent> <Plug>(rice_pane_jump_right) <C-w>l
+nnoremap <silent> <Plug>(rice_pane_jump_previous) <C-w>p
 
 "-------------------------------------------------------------------------------
 " Normal: Pane size adjustment
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_pane_vdecrease) <C-W>-
-nnoremap <silent> <Plug>(rice_pane_vincrease) <C-W>+
-nnoremap <silent> <Plug>(rice_pane_hdecrease) <C-W><
-nnoremap <silent> <Plug>(rice_pane_hincrease) <C-W>>
-nnoremap <silent> <Plug>(rice_pane_maximize) <C-W>o
+nnoremap <silent> <Plug>(rice_pane_vdecrease) <C-w>-
+nnoremap <silent> <Plug>(rice_pane_vincrease) <C-w>+
+nnoremap <silent> <Plug>(rice_pane_hdecrease) <C-w><
+nnoremap <silent> <Plug>(rice_pane_hincrease) <C-w>>
+nnoremap <silent> <Plug>(rice_pane_maximize) <C-w>o
 
 "-------------------------------------------------------------------------------
 " Normal: Tabs
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_tab_previous) :<C-U>tabprevious<CR>
-nnoremap <silent> <Plug>(rice_tab_next) :<C-U>tabnext<CR>
-nnoremap <Plug>(rice_tab_jump) :<C-U>tabs<CR>:tabnext<Space>
-nnoremap <silent> <Plug>(rice_tab_new) :<C-U>tabnew<CR>
-nnoremap <silent> <Plug>(rice_tab_move_forward) :<C-U>tabmove +<CR>
-nnoremap <silent> <Plug>(rice_tab_move_backward) :<C-U>tabmove -<CR>
+nnoremap <silent> <Plug>(rice_tab_previous) :<C-u>tabprevious<CR>
+nnoremap <silent> <Plug>(rice_tab_next) :<C-u>tabnext<CR>
+nnoremap <Plug>(rice_tab_jump) :<C-u>tabs<CR>:tabnext<Space>
+nnoremap <silent> <Plug>(rice_tab_new) :<C-u>tabnew<CR>
+nnoremap <silent> <Plug>(rice_tab_move_forward) :<C-u>tabmove +<CR>
+nnoremap <silent> <Plug>(rice_tab_move_backward) :<C-u>tabmove -<CR>
+nnoremap <silent> <Plug>(rice_tab_break) <C-w>T
 
 "-------------------------------------------------------------------------------
 " Normal: Buffers
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_buffer_next) :<C-U>bn<CR>
-nnoremap <silent> <Plug>(rice_buffer_previous) :<C-U>bp<CR>
-nnoremap <Plug>(rice_buffer_jump) :<C-U>buffers<CR>:buffer<Space>
-nnoremap <silent> <Plug>(rice_buffer_new) :<C-U>enew<CR>
-nnoremap <silent> <Plug>(rice_buffer_close) <C-U>:bd<CR>
-nnoremap <silent> <Plug>(rice_buffer_close_other) :<C-U>%bd\|e#<CR>
+nnoremap <silent> <Plug>(rice_buffer_next) :<C-u>bn<CR>
+nnoremap <silent> <Plug>(rice_buffer_previous) :<C-u>bp<CR>
+nnoremap <Plug>(rice_buffer_jump) :<C-u>buffers<CR>:buffer<Space>
+nnoremap <silent> <Plug>(rice_buffer_new) :<C-u>enew<CR>
+nnoremap <silent> <Plug>(rice_buffer_close) <C-u>:bd<CR>
+nnoremap <silent> <Plug>(rice_buffer_close_other) :<C-u>%bd\|e#<CR>
 
 "-------------------------------------------------------------------------------
 " Normal: Search and substitution
 "-------------------------------------------------------------------------------
-nnoremap <Plug>(rice_substitute_all) :<C-U>%s//gc<Left><Left><Left>
-nnoremap <expr> <Plug>(rice_substitute_all_highlighted) ':<C-U>%s/' . @/ . '//gc<Left><Left><Left>'
-nnoremap <silent> <Plug>(rice_search_off) :<C-U>noh<CR>
+nnoremap <Plug>(rice_substitute_all) :<C-u>%s//gc<Left><Left><Left>
+nnoremap <expr> <Plug>(rice_substitute_all_highlighted) ':<C-u>%s/' . @/ . '//gc<Left><Left><Left>'
+nnoremap <silent> <Plug>(rice_search_off) :<C-u>noh<CR>
 nnoremap <silent> <Plug>(rice_search_cword) *N
 
 "-------------------------------------------------------------------------------
 " Normal: Misc
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_quit) :<C-U>q<CR>
-nnoremap <silent> <Plug>(rice_quit_all) :<C-U>qa<CR>
-nnoremap <silent> <Plug>(rice_save) :<C-U>w<CR>
-nnoremap <silent> <Plug>(rice_save_all) :<C-U>wa<CR>
-nnoremap <silent> <Plug>(rice_register) :<C-U>reg<CR>
-nnoremap <silent> <Plug>(rice_message) :<C-U>messages<CR>
-nnoremap <Plug>(rice_set_filetype) :<C-U>set filetype=
-nnoremap <silent> <Plug>(rice_toggle_line_wrap) :<C-U>set wrap!<CR>
+nnoremap <silent> <Plug>(rice_quit) :<C-u>q<CR>
+nnoremap <silent> <Plug>(rice_quit_all) :<C-u>qa<CR>
+nnoremap <silent> <Plug>(rice_save) :<C-u>w<CR>
+nnoremap <silent> <Plug>(rice_save_all) :<C-u>wa<CR>
+nnoremap <silent> <Plug>(rice_register) :<C-u>reg<CR>
+nnoremap <silent> <Plug>(rice_message) :<C-u>messages<CR>
+nnoremap <Plug>(rice_set_filetype) :<C-u>set filetype=
+nnoremap <silent> <Plug>(rice_toggle_line_wrap) :<C-u>set wrap!<CR>
 
 "-------------------------------------------------------------------------------
 " Normal: Copy and paste
 "-------------------------------------------------------------------------------
-nnoremap <silent> <Plug>(rice_toggle_paste_mode) :<C-U>set paste!<CR>
+nnoremap <silent> <Plug>(rice_toggle_paste_mode) :<C-u>set paste!<CR>
 nnoremap <silent> <Plug>(rice_clipboard_copy) "*yy
-nnoremap <silent> <Plug>(rice_clipboard_paste) :<C-U>set paste<CR>"*p:set nopaste<CR>
+nnoremap <silent> <Plug>(rice_clipboard_paste) :<C-u>set paste<CR>"*p:set nopaste<CR>
 
 "-------------------------------------------------------------------------------
 " Visual: Search
 "-------------------------------------------------------------------------------
-vnoremap <silent> <Plug>(rice_search_selected) y/\V<C-R>=escape(@",'/\')<CR><CR>N
+vnoremap <silent> <Plug>(rice_search_selected) y/\V<C-r>=escape(@",'/\')<CR><CR>N
 
 "-------------------------------------------------------------------------------
 " Visual: Copy and paste
 "-------------------------------------------------------------------------------
 vnoremap <silent> <Plug>(rice_clipboard_copy) "*y
-vnoremap <silent> <Plug>(rice_clipboard_paste) :<C-U>set paste<CR>gv"*p:set nopaste<CR>
+vnoremap <silent> <Plug>(rice_clipboard_paste) :<C-u>set paste<CR>gv"*p:set nopaste<CR>
 
 "-------------------------------------------------------------------------------
 " Insert: cursor movement
@@ -102,13 +103,13 @@ inoremap <silent> <Plug>(rice_cursor_move_end) <End>
 "-------------------------------------------------------------------------------
 " Insert: Copy and paste
 "-------------------------------------------------------------------------------
-inoremap <silent> <Plug>(rice_clipboard_copy) <C-O>"*yy
-inoremap <silent> <Plug>(rice_clipboard_paste) <C-O>:<C-U>set paste<CR><C-R>*<C-O>:set nopaste<CR>
+inoremap <silent> <Plug>(rice_clipboard_copy) <C-o>"*yy
+inoremap <silent> <Plug>(rice_clipboard_paste) <C-o>:<C-u>set paste<CR><C-r>*<C-o>:set nopaste<CR>
 
 "-------------------------------------------------------------------------------
 " Terminal: Terminal related
 "-------------------------------------------------------------------------------
-tnoremap <Plug>(rice_terminal_escape) <C-\><C-N>
+tnoremap <Plug>(rice_terminal_escape) <C-\><C-n>
 
 
 "-------------------------------------------------------------------------------
@@ -126,10 +127,6 @@ nmap <Leader>j <Plug>(rice_pane_jump_down)
 nmap <Leader>k <Plug>(rice_pane_jump_up)
 nmap <Leader>l <Plug>(rice_pane_jump_right)
 
-" <p>
-nmap <Leader>p <Plug>(rice_toggle_paste_mode)
-nmap <Leader>P <Plug>(rice_toggle_line_wrap)
-
 " <o>
 nmap <Leader>o <Plug>(rice_pane_jump_previous)
 nmap <Leader>O <Plug>(rice_pane_maximize)
@@ -142,25 +139,19 @@ nmap <Right> <Plug>(rice_pane_hincrease)
 
 " <v>
 nmap <Leader>v <Plug>(rice_vsplit)
-nmap <Leader>V <Plug>(rice_hsplit)
+nmap <Leader>s <Plug>(rice_hsplit)
 
 " <n> Tab switching
-nmap <Leader>n <Plug>(rice_tab_next)
-nmap <Leader>N <Plug>(rice_tab_previous)
+nmap <Leader>f <Plug>(rice_tab_next)
+nmap <Leader>b <Plug>(rice_tab_previous)
 
 " <b> Buffer switching
-nmap <Leader>b <Plug>(rice_buffer_next)
-nmap <Leader>B <Plug>(rice_buffer_previous)
+nmap <Leader>n <Plug>(rice_buffer_next)
+nmap <Leader>p <Plug>(rice_buffer_previous)
 
 " <m> Tab movement
-nmap <Leader>m <Plug>(rice_tab_move_forward)
-nmap <Leader>M <Plug>(rice_tab_move_backward)
-
-" <g> Go to list
-nmap <Leader>gt <Plug>(rice_tab_jump)
-nmap <Leader>gb <Plug>(rice_buffer_jump)
-nmap <Leader>g: <Plug>(rice_message)
-nmap <Leader>g" <Plug>(rice_register)
+nmap <Leader>> <Plug>(rice_tab_move_forward)
+nmap <Leader>< <Plug>(rice_tab_move_backward)
 
 " <t> Tab creation
 nmap <Leader>t <Plug>(rice_tab_new)
@@ -183,26 +174,36 @@ nmap # <Plug>(rice_search_off)
 nmap * <Plug>(rice_search_cword)
 vmap * <Plug>(rice_search_selected)
 
-" <u> System
-nmap <Leader>up <Plug>(rice_clipboard_paste)
-nmap <Leader>uy <Plug>(rice_clipboard_copy)
-vmap <Leader>up <Plug>(rice_clipboard_paste)
-vmap <Leader>uy <Plug>(rice_clipboard_copy)
+" <g> Go to list
+nmap <Leader>gt <Plug>(rice_tab_jump)
+nmap <Leader>gb <Plug>(rice_buffer_jump)
+nmap <Leader>g: <Plug>(rice_message)
+nmap <Leader>g" <Plug>(rice_register)
 
-" <i> Input commands
-nmap <Leader>if <Plug>(rice_set_filetype)
-nmap <Leader>is <Plug>(rice_substitute_all)
-nmap <Leader>iS <Plug>(rice_substitute_all_highlighted)
+" <h> System
+nmap <Leader>hp <Plug>(rice_clipboard_paste)
+nmap <Leader>hy <Plug>(rice_clipboard_copy)
+vmap <Leader>hp <Plug>(rice_clipboard_paste)
+vmap <Leader>hy <Plug>(rice_clipboard_copy)
+
+" <c> Input commands
+nmap <Leader>cf <Plug>(rice_set_filetype)
+nmap <Leader>cs <Plug>(rice_substitute_all_highlighted)
+nmap <Leader>cS <Plug>(rice_substitute_all)
+
+" <i> Toggles
+nmap <Leader>ip <Plug>(rice_toggle_paste_mode)
+nmap <Leader>iw <Plug>(rice_toggle_line_wrap)
 
 " <Esc>
 tmap <Esc><Esc> <Plug>(rice_terminal_escape)
 
 " With combination keys
 "
-" <C-H> <C-J> <C-K> <C-L> <C-A> <C-E>
-imap <C-H> <Plug>(rice_cursor_move_left)
-imap <C-J> <Plug>(rice_cursor_move_down)
-imap <C-K> <Plug>(rice_cursor_move_up)
-imap <C-L> <Plug>(rice_cursor_move_right)
-imap <C-A> <Plug>(rice_cursor_move_begin)
-imap <C-E> <Plug>(rice_cursor_move_end)
+" <C-h> <C-j> <C-k> <C-l> <C-a> <C-e>
+imap <C-h> <Plug>(rice_cursor_move_left)
+imap <C-j> <Plug>(rice_cursor_move_down)
+imap <C-k> <Plug>(rice_cursor_move_up)
+imap <C-l> <Plug>(rice_cursor_move_right)
+imap <C-a> <Plug>(rice_cursor_move_begin)
+imap <C-e> <Plug>(rice_cursor_move_end)
