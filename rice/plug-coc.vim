@@ -80,27 +80,27 @@ else
 endif
 
 " GoTo code navigation.
-nmap <silent> <Leader>cd <Plug>(coc-definition)
-nmap <silent> <Leader>ct <Plug>(coc-type-definition)
-nmap <silent> <Leader>ci <Plug>(coc-implementation)
-nmap <silent> <Leader>cr <Plug>(coc-references)
-nmap <silent> <Leader>ca <Plug>(coc-codeaction)
-nmap <silent> <Leader>cp :<C-U>CocCommand<CR>
-nmap <silent> <Leader>cl :<C-U>CocList<CR>
+nmap <silent> <C-l>d <Plug>(coc-definition)
+nmap <silent> <C-l>t <Plug>(coc-type-definition)
+nmap <silent> <C-l>i <Plug>(coc-implementation)
+nmap <silent> <C-l>r <Plug>(coc-references)
+nmap <silent> <C-l>a <Plug>(coc-codeaction)
+nmap <silent> <C-l>c :<C-U>CocCommand<CR>
+nmap <silent> <C-l>C :<C-U>CocList<CR>
 
 " Use k to show documentation in preview window.
-nnoremap <silent> <Leader>ck :<C-U>call <SID>show_documentation()<CR>
+nnoremap <silent> <C-l>k :<C-U>call <SID>show_documentation()<CR>
 
 " Show diagnostics messages
-nnoremap <silent> <Leader>cm :<C-U>CocList diagnostics<CR>
-nmap <silent> <Leader>cn <Plug>(coc-diagnostic-next)
-nmap <silent> <Leader>cN <Plug>(coc-diagnostic-prev)
+nnoremap <silent> <C-l>m :<C-U>CocList diagnostics<CR>
+nmap <silent> <C-l>n <Plug>(coc-diagnostic-next)
+nmap <silent> <C-l>p <Plug>(coc-diagnostic-prev)
 
 " Other shortcuts
 " Symbol renaming.
-nmap <Leader>ccr <Plug>(coc-rename)
+nmap <C-l>R <Plug>(coc-rename)
 " Formatting selected code
-nmap <Leader>ccf <Plug>(coc-format-selected)
+nmap <C-l>F <Plug>(coc-format-selected)
 
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
@@ -166,7 +166,7 @@ let g:coc_explorer_global_presets = {
 \   }
 \ }
 
-nnoremap <silent> <Leader>ee :<C-U>CocCommand explorer --preset left<CR>
-nnoremap <silent> <Leader>eE :<C-U>CocCommand explorer --preset right<CR>
-nnoremap <silent> <Leader>en :<C-U>CocCommand explorer --preset tab<CR>
-nnoremap <silent> <Leader>ef :<C-U>CocCommand explorer --preset floating<CR>
+nnoremap <silent> <Leader>dd :<C-U>CocCommand explorer --preset left<CR>
+nnoremap <silent> <Leader>dD :<C-U>CocCommand explorer --preset right<CR>
+nnoremap <silent> <Leader>dt :<C-U>CocCommand explorer --preset tab<CR>
+nnoremap <silent> <Leader>df :<C-U>CocCommand explorer --preset floating<CR>

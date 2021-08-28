@@ -15,7 +15,7 @@ let g:loaded_rice_plug_nerdtree = 1
 let g:NERDTreeShowHidden = 1
 
 " Global keymaps
-nnoremap <silent> <Leader>e :<C-U>NERDTree<CR>
+nnoremap <silent> <Leader>d :<C-U>NERDTree<CR>
 
 " Keymaps when nerdtree is open
 function! s:myNerdtreeSettings() abort

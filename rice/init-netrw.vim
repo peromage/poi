@@ -33,4 +33,4 @@ let g:netrw_usetab = 0
 let g:netrw_preview = 0
 autocmd FileType netrw call <SID>my_netrw()
 
-"nnoremap <silent> <leader>e :<C-U>Lexplore<CR>
+nnoremap <silent> <leader>d :<C-U>Lexplore<CR>
