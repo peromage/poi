@@ -3,23 +3,14 @@
 " Rice (Neo)Vim initialization
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/03/18
+" Last modified 2021/08/28
 "
 "
-" This section should remain untouched
+" This file should remain untouched
 " General initialization (use :PlugInstall for the first time)
 "
-let g:init_home = expand('<sfile>:p:h')
-let g:init_file = expand('<sfile>:p')
-comm! InitFile exec 'edit '.g:init_file
-exec 'set rtp+='.g:init_home
 "
-" Initialization template. To avoid merge conflicts, copy lines below to the
-" end of the file to start your customization.
-"
-call rice#begin()
-"
-" Examples of configuration options
+" Examples of configuration options (Put them in local.vim)
 "
 " Color scheme. Leave this unset to use default color.
 "-----------------------------------------------------
@@ -57,4 +48,19 @@ call rice#begin()
 "Plug 'Kenta11/helloworld-vim'
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call rice#end() " Rice config should start before this line
+
+let g:init_home = expand('<sfile>:p:h')
+let g:init_file = expand('<sfile>:p')
+let g:init_local = resolve(init_home . "/local.vim")
+command! OpenInitFile exec 'edit '.g:init_file
+execute 'set rtp+='.g:init_home
+
+" Bootstrap
+
+call rice#begin()
+
+if filereadable(init_local)
+    execute 'source ' . init_local
+endif
+
+call rice#end()

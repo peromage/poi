@@ -28,3 +28,7 @@ saved_sessions/
 .bash_history
 .netrwhist
 *.swp
+
+# Local config
+local.vim
+local-gui.vim

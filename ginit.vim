@@ -1,17 +1,16 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" Rie GUI initialization template
+" Rice GUI initialization template
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/03/18
+" Last modified 2021/08/28
 "
 "
-" This section should remain untouched
+" This file should remain untouched
 " Initialization for GUI
-let g:gui_init_file = expand('<sfile>:p')
-command! GuiInitFile execute 'edit '.g:gui_init_file
 "
-" Examples of configuration options
+"
+" Examples of configuration options (Put them in local-gui.vim)
 "
 " Space in the font name must be escaped
 "---------------------------------------
@@ -24,8 +23,15 @@ command! GuiInitFile execute 'edit '.g:gui_init_file
 "let g:rice_gui_use_config = 1
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"### BEGIN: Rice config ###
 
-"### END: Rice config ###
+let g:gui_init_file = expand('<sfile>:p')
+let g:gui_init_local = resolve(init_home . "/local-gui.vim")
+command! OpenGuiInitFile execute 'edit '.g:gui_init_file
+
+" Bootstrap
+
+if filereadable(gui_init_local)
+    execute 'source ' . gui_init_local
+endif
+
 call rice#gui_init()
-"### Your config should start after this line ###
