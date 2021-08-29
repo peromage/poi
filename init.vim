@@ -1,20 +1,6 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" Poi Neovim initialization
-"
-" Created by peromage 2021/02/24
-" Last modified 2021/08/28
-"
-"
-" This file should remain untouched
-" General initialization (use :PlugInstall for the first time)
-"
-" Check viml/init-plugs.vim' for more groups
-"--------------------------------------------
-"let g:poi_plug_group = ['basic', 'navigation', 'syntax', 'coc', 'git']
-"
+""" init.vim -- Poi Neovim bootstrap
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:loaded_poi_init = 1
 
 execute 'set runtimepath+=' . expand('<sfile>:p:h')
 let g:init_file = expand('<sfile>:p')
@@ -30,7 +16,7 @@ if exists('g:vscode')
     finish
 endif
 
-" Bootstrap
+" General bootstrap (use :PlugInstall for the first time)
 call plug#begin(simplify(poi#home . '/vim-plugged'))
 
 let g:python3_host_prog = 'python3'

@@ -1,10 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" GVim settings
-"
-" Created by peromage 2021/02/24
-" Last modified 2021/03/18
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" gui-gvim.vim -- Gvim related settings
 
+let g:loaded_poi_gui_gvim = 1
 let g:loaded_poi_gui = 'gvim'

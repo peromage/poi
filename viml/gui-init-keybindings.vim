@@ -1,15 +1,7 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" Customized keymaps when GUI is active
-"
-" Created by peromage 2021/03/01
-" Last modified 2021/04/08
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" gui-init-keybindings.vim -- GUI key bindings
 
-"-------------------------------------------------------------------------------
-" Bindings
-"-------------------------------------------------------------------------------
+let g:loaded_poi_gui_init_keybindings = 1
+
 vmap <C-S-c> <Plug>(poi_clipboard_copy)
 vmap <C-S-v> <Plug>(poi_clipboard_paste)
 

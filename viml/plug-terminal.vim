@@ -1,13 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" Floaterm settings
-"
-" Created by peromage 2021/02/24
-" Last modified 2021/03/19
-"
-"Plug 'voldikss/vim-floaterm'
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" plug-terminal.vim -- Terminal plugins
 
 let g:loaded_poi_plug_terminal = 1
 

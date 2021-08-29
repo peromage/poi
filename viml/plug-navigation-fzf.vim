@@ -1,14 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" Fzf settings
-"
-" Created by peromage 2021/02/24
-" Last modified 2021/03/19
-"
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" plug-navigation-fzf.vim -- Fzf settings
 
 let g:loaded_poi_plug_navigation_fzf = 1
 

@@ -1,11 +1,6 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" Settings for netrw
-"
-" Created by peromage 2021/02/23
-" Last modified 2021/03/19
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" init-netrw.vim -- Netrw settings
+
+let g:loaded_poi_init_netrw = 1
 
 " Settings when netrw is open
 function! s:my_netrw() abort
