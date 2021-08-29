@@ -175,11 +175,11 @@ nmap <Leader>gb <Plug>(poi_buffer_jump)
 nmap <Leader>g: <Plug>(poi_message)
 nmap <Leader>g" <Plug>(poi_register)
 
-" <h> System
-nmap <Leader>hp <Plug>(poi_clipboard_paste)
-nmap <Leader>hy <Plug>(poi_clipboard_copy)
-vmap <Leader>hp <Plug>(poi_clipboard_paste)
-vmap <Leader>hy <Plug>(poi_clipboard_copy)
+" <u> System
+nmap <Leader>up <Plug>(poi_clipboard_paste)
+nmap <Leader>uy <Plug>(poi_clipboard_copy)
+vmap <Leader>up <Plug>(poi_clipboard_paste)
+vmap <Leader>uy <Plug>(poi_clipboard_copy)
 
 " <c> Input commands
 nmap <Leader>cf <Plug>(poi_set_filetype)
