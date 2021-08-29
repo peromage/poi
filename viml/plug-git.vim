@@ -1,12 +1,14 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" Lightline settings
+" Vim-fugitive settings
 "
 " Created by peromage 2021/02/24
 " Last modified 2021/02/24
 "
-"Plug 'itchyny/lightline.vim'
+"Plug 'tpope/vim-fugitive'
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_poi_plug_lightline = 1
+let g:loaded_poi_plug_git = 1
+
+Plug 'tpope/vim-fugitive'
