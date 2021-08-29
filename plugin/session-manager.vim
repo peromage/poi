@@ -1,4 +1,8 @@
-""" misc-session-manager.vim -- Session manager
+""" session-manager.vim -- Session manager
+
+if !get(g:, 'session_manager_enabled', 0)
+    finish
+endif
 
 " Compatible with Vim
 let s:SESSION_SAVE_DIR = simplify($HOME . '/vim_saved_sessions')
