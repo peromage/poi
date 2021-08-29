@@ -22,15 +22,18 @@ let g:python3_host_prog = 'python3'
 "let &pythonthreehome = '/path/to/python_dir'
 "let &pythonthreedll = '/path/to/python.dll'
 
+" Core settings
 PoiInclude init-settings
 PoiInclude init-keybindings
 PoiInclude init-commands
 PoiInclude init-netrw
+
+" Configured plugins
+PoiInclude plug-theme
 PoiInclude plug-navigation
-PoiInclude plug-coc
 PoiInclude plug-git
 PoiInclude plug-typing
-PoiInclude plug-theme
+PoiInclude plug-coc
 PoiInclude plug-terminal
 
 " Generates coc-settings.json if it does not exist
