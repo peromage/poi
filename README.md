@@ -24,7 +24,7 @@ There are two ways to use this configuration.
 
 Put the following content in the Neovim/Vim's RC file.
 
-```viml
+```vim
 " Neovim: ~/.config/nvim/init.vim
 " Vim: ~/.vimrc
 source rice/init.vim
@@ -92,3 +92,4 @@ This bundle uses following awesome projects. Thank them all for the great contri
 ## TODO:
 
 - [ ] Move to Vim native LSP support
+- [ ] Rewrite with Lua
