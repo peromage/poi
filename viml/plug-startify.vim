@@ -9,7 +9,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_plug_startify = 1
+let g:loaded_poi_plug_startify = 1
 
 " Don't change working directory automatically
 let g:startify_change_to_dir = 0

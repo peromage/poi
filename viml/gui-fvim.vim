@@ -7,7 +7,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_gui = 'fvim'
+let g:loaded_poi_gui = 'fvim'
 
 " Some fancy cursor effects
 FVimCursorSmoothMove v:true

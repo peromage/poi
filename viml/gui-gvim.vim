@@ -1,12 +1,10 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" Vim-fugitive settings
+" GVim settings
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/02/24
-"
-"Plug 'tpope/vim-fugitive'
+" Last modified 2021/03/18
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_plug_fugitive = 1
+let g:loaded_poi_gui = 'gvim'

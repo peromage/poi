@@ -1,6 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" Rice (Neo)Vim initialization
+" Poi Neovim initialization
 "
 " Created by peromage 2021/02/24
 " Last modified 2021/08/28
@@ -14,26 +14,26 @@
 "
 " Color scheme. Leave this unset to use default color.
 "-----------------------------------------------------
-"let g:rice_color = 'dracula'
+"let g:poi_color = 'dracula'
 "
-" Check 'rice/init-plugs.vim' for more groups
+" Check viml/init-plugs.vim' for more groups
 "--------------------------------------------
-"let g:rice_plug_group = ['basic', 'navigation', 'syntax', 'coc', 'git']
+"let g:poi_plug_group = ['basic', 'navigation', 'syntax', 'coc', 'git']
 "
 " Whether use config for VSCode integration
 "------------------------------------------
-"let g:rice_vscode_use_config = 1
+"let g:poi_vscode_use_config = 1
 "
 " Set Python runtime for NeoVim and Vim
 "-------------------------------------
 " NeoVim
-"let g:rice_python_interpreter = 'python3'
+"let g:poi_python_interpreter = 'python3'
 " Vim
-"let g:rice_python_home = '/path/to/python_dir'
-"let g:rice_python_dll = '/path/to/python.dll'
+"let g:poi_python_home = '/path/to/python_dir'
+"let g:poi_python_dll = '/path/to/python.dll'
 "
 " Extra Coc plugins
-" To override default extensions define this variable after rice#end()
+" To override default extensions define this variable after poi#end()
 "---------------------------------------------------------------------
 "let g:coc_global_extensions = [
 "\   'coc-clangd',
@@ -43,7 +43,7 @@
 "\   ]
 "
 " Extra plugins via vim-plug
-" To override default bundles define vim-plug after rice#end()
+" To override default bundles define vim-plug after poi#end()
 "-------------------------------------------------------------
 "Plug 'Kenta11/helloworld-vim'
 "
@@ -58,11 +58,11 @@ execute 'set rtp+='.g:init_home
 
 " Bootstrap
 
-call rice#begin()
+call poi#begin()
 
-let g:rice_color = 'dracula'
-let g:rice_plug_group = ['basic', 'navigation', 'syntax', 'coc', 'git']
-let g:rice_python_interpreter = 'python3'
+let g:poi_color = 'dracula'
+let g:poi_plug_group = ['basic', 'navigation', 'syntax', 'coc', 'git']
+let g:poi_python_interpreter = 'python3'
 let g:coc_global_extensions = [
 \   'coc-clangd',
 \   'coc-powershell',
@@ -92,13 +92,13 @@ let s:coc_settings_json =<< EOL
 EOL
 
 " Generates coc-settings.json if it does not exist
-if !rice#file_exists(init_coc_settings)
+if !poi#file_exists(init_coc_settings)
     call writefile(s:coc_settings_json, init_coc_settings, "s")
 endif
 
 " Sources local config if it exists
-if rice#file_exists(init_local)
+if poi#file_exists(init_local)
     execute 'source ' . init_local
 endif
 
-call rice#end()
+call poi#end()

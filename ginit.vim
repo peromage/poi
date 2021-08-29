@@ -1,6 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" Rice GUI initialization template
+" Poi GUI initialization
 "
 " Created by peromage 2021/02/24
 " Last modified 2021/08/28
@@ -14,13 +14,13 @@
 "
 " Space in the font name must be escaped
 "---------------------------------------
-"let g:rice_gui_font = "Cascadia\ Code\ PL:h9"
+"let g:poi_gui_font = "Cascadia\ Code\ PL:h9"
 "
 " Enable this option to automatically load supported GUI config
 " NeoVim: neovim-qt, fvim
 " Vim: gvim
 "--------------------------------------------------------------
-"let g:rice_gui_use_config = 1
+"let g:poi_gui_use_config = 1
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -34,4 +34,4 @@ if filereadable(gui_init_local)
     execute 'source ' . gui_init_local
 endif
 
-call rice#gui_init()
+call poi#gui_init()

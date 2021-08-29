@@ -1,6 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" Rice setup entry for VSCode
+" Poi setup entry for VSCode
 "
 " Created by peromage 2021/03/14
 " Last modified 2021/03/21
@@ -10,7 +10,7 @@
 "-------------------------------------------------------------------------------
 " Check if VSCode is enabled
 "-------------------------------------------------------------------------------
-if !rice#check_var('rice_vscode_use_config') | finish | endif
+if !poi#check_var('poi_vscode_use_config') | finish | endif
 
 "-------------------------------------------------------------------------------
 " Helper functions
@@ -33,14 +33,14 @@ let s:enabled_auto_insert_mode = 0
 function! s:toggleAutoInsertMode()
     if s:enabled_auto_insert_mode
         augroup AutoInsertMode
-            autocmd! 
+            autocmd!
         augroup END
         let s:enabled_auto_insert_mode = 0
         echom 'Disabled AutoInsertMode'
         stopinsert
     else
         augroup AutoInsertMode
-            autocmd! 
+            autocmd!
             autocmd WinEnter * startinsert
         augroup END
         let s:enabled_auto_insert_mode = 1

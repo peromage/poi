@@ -10,7 +10,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_plug_fzf = 1
+let g:loaded_poi_plug_fzf = 1
 
 " This is the default option:
 "   - Preview window on the right with 50% width

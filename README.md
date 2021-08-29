@@ -27,11 +27,11 @@ Put the following content in the Neovim/Vim's RC file.
 ```vim
 " Neovim: ~/.config/nvim/init.vim
 " Vim: ~/.vimrc
-source rice/init.vim
+source poi/init.vim
 
 " Neovim: ~/.config/nvim/ginit.vim
 " Vim: ~/.gvimrc
-source rice/ginit.vim
+source poi/ginit.vim
 ```
 
 Or for Neovim, you can simply clone this repo to the location where Neovim reads its configuration.
@@ -59,7 +59,7 @@ Any local changes can go into `poi/local.vim` and `poi/local-gui.vim`. Local cha
 
 ## Directories
 
-- *rice*: Rice Vim configurations.
+- *viml*: Poi Vim configurations.
 - *autoload*: Vim common libraries.
 - *colors*: Vim color schemes.
 - *plugin*: Vim additional plugins (Loaded all the time).

@@ -7,7 +7,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_gui = 'neovim-qt'
+let g:loaded_poi_gui = 'neovim-qt'
 
 " Disable popup menu
 GuiPopupmenu 0

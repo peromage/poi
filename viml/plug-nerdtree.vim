@@ -9,7 +9,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_plug_nerdtree = 1
+let g:loaded_poi_plug_nerdtree = 1
 
 " Default view
 let g:NERDTreeShowHidden = 1
