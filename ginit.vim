@@ -1,14 +1,21 @@
 """ ginit.vim -- Poi GUI bootstrap
 
+""=============================================================================
+"" Setup
+""=============================================================================
 let g:gui_init_file = expand('<sfile>:p')
 let g:gui_init_local = resolve(poi#home . "/local-gui.vim")
 command! OpenGuiInitFile execute 'edit '.g:gui_init_file
 
-" Bootstrap
+""=============================================================================
+"" Bootstrap
+""=============================================================================
 PoiInclude gui-init-settings
 PoiInclude gui-init-keybindings
 
-" GUI configuration
+""=============================================================================
+"" GUI configuration
+""=============================================================================
 if has('nvim')
     if exists('g:GuiLoaded')
         PoiInclude gui-neovimqt
@@ -25,8 +32,12 @@ else
     endif
 endif
 
-" Always starts GUI in home directory
+""=============================================================================
+"" Post startup actions for GUI
+""=============================================================================
 cd $HOME
 
-" Local file
+""=============================================================================
+"" Local file
+""=============================================================================
 call poi#source_if_exits(gui_init_local)
