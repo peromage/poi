@@ -9,7 +9,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_plug_coc = 1
+let g:loaded_poi_plug_coc = 1
 
 " Default coc extensions
 " To override the default define g:coc_global_extensions after sourcing this

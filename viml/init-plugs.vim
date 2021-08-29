@@ -10,10 +10,10 @@
 "-------------------------------------------------------------------------------
 " Check enabled bundle group
 "-------------------------------------------------------------------------------
-call rice#init_var('rice_plug_group', [])
+call poi#init_var('poi_plug_group', [])
 
 let s:selected_groups = {}
-for key in g:rice_plug_group
+for key in g:poi_plug_group
     let s:selected_groups[key] = 1
 endfor
 
@@ -26,10 +26,10 @@ endfunction
 "-------------------------------------------------------------------------------
 if s:select('basic')
     Plug 'itchyny/lightline.vim'
-    IncRicePlug lightline.vim
+    IncPoiPlug lightline.vim
 
     Plug 'mhinz/vim-startify'
-    IncRicePlug startify.vim
+    IncPoiPlug startify.vim
 endif
 
 "-------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ endif
 "-------------------------------------------------------------------------------
 if s:select('navigation')
     Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
-    IncRicePlug leaderf.vim
+    IncPoiPlug leaderf.vim
 endif
 
 "-------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ endif
 "-------------------------------------------------------------------------------
 if s:select('coc')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    IncRicePlug coc.vim
+    IncPoiPlug coc.vim
 endif
 
 "-------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ endif
 "-------------------------------------------------------------------------------
 if s:select('git')
     Plug 'tpope/vim-fugitive'
-    IncRicePlug fugitive.vim
+    IncPoiPlug fugitive.vim
 endif
 
 "-------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ endif
 "-------------------------------------------------------------------------------
 if s:select('terminal')
     Plug 'voldikss/vim-floaterm'
-    IncRicePlug floaterm.vim
+    IncPoiPlug floaterm.vim
 endif
 
 "-------------------------------------------------------------------------------
@@ -69,5 +69,5 @@ endif
 "-------------------------------------------------------------------------------
 if s:select('syntax')
     Plug 'sheerun/vim-polyglot'
-    IncRicePlug polyglot.vim
+    IncPoiPlug polyglot.vim
 endif

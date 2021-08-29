@@ -1,10 +1,12 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" GVim settings
+" Lightline settings
 "
 " Created by peromage 2021/02/24
-" Last modified 2021/03/18
+" Last modified 2021/02/24
+"
+"Plug 'itchyny/lightline.vim'
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_rice_gui = 'gvim'
+let g:loaded_poi_plug_lightline = 1

@@ -1,6 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" Rice GUI setup entry
+" Poi GUI setup entry
 "
 " Created by peromage 2021/02/24
 " Last modified 2021/02/24
@@ -8,17 +8,17 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------------------------------------
-" This works with rice lib
+" This works with poi lib
 "-------------------------------------------------------------------------------
-if !exists('g:loaded_rice') || !g:loaded_rice | finish | endif
+if !exists('g:loaded_poi') || !g:loaded_poi | finish | endif
 
 "-------------------------------------------------------------------------------
 " Load components
 "-------------------------------------------------------------------------------
 " Load configs first
-IncRiceInit gui-configs.vim
-IncRiceInit gui-sets.vim
-IncRiceInit gui-keymaps.vim
+IncPoiInit gui-configs.vim
+IncPoiInit gui-sets.vim
+IncPoiInit gui-keymaps.vim
 
 "-------------------------------------------------------------------------------
 " Startup

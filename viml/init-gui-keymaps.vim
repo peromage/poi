@@ -10,8 +10,8 @@
 "-------------------------------------------------------------------------------
 " Bindings
 "-------------------------------------------------------------------------------
-vmap <C-S-c> <Plug>(rice_clipboard_copy)
-vmap <C-S-v> <Plug>(rice_clipboard_paste)
+vmap <C-S-c> <Plug>(poi_clipboard_copy)
+vmap <C-S-v> <Plug>(poi_clipboard_paste)
 
-imap <C-S-c> <Plug>(rice_clipboard_copy)
-imap <C-S-v> <Plug>(rice_clipboard_paste)
+imap <C-S-c> <Plug>(poi_clipboard_copy)
+imap <C-S-v> <Plug>(poi_clipboard_paste)
