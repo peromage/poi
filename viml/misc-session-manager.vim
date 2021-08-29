@@ -1,7 +1,5 @@
 """ misc-session-manager.vim -- Session manager
 
-let g:loaded_poi_misc_session_manager = 1
-
 " Compatible with Vim
 let s:SESSION_SAVE_DIR = simplify($HOME . '/vim_saved_sessions')
 

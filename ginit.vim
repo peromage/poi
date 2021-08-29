@@ -1,7 +1,5 @@
 """ ginit.vim -- Poi GUI bootstrap
 
-let g:loaded_poi_ginit = 1
-
 let g:gui_init_file = expand('<sfile>:p')
 let g:gui_init_local = resolve(poi#home . "/local-gui.vim")
 command! OpenGuiInitFile execute 'edit '.g:gui_init_file

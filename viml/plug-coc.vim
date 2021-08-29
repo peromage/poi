@@ -1,7 +1,5 @@
 """ plug-coc.vim -- Coc settings
 
-let g:loaded_poi_plug_coc = 1
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable

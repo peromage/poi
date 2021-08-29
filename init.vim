@@ -1,7 +1,5 @@
 """ init.vim -- Poi Neovim bootstrap
 
-let g:loaded_poi_init = 1
-
 execute 'set runtimepath+=' . expand('<sfile>:p:h')
 let g:init_file = expand('<sfile>:p')
 let g:init_local = simplify(poi#home . "/local.vim")

@@ -1,7 +1,5 @@
 """ plug-navigation-fzf.vim -- Fzf settings
 
-let g:loaded_poi_plug_navigation_fzf = 1
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 

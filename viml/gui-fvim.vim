@@ -1,7 +1,6 @@
 """ gui-fvim.vim -- Fvim related settings
 
-let g:loaded_poi_gui_fvim = 1
-let g:loaded_poi_gui = 'fvim'
+let g:loaded_gui = 'fvim'
 
 " Some fancy cursor effects
 FVimCursorSmoothMove v:true

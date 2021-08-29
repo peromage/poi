@@ -1,10 +1,7 @@
 """ plug-navigation.vim -- Navigation plugins
 
-let g:loaded_poi_plug_navigation = 1
-
 " Startup screen
 Plug 'mhinz/vim-startify'
-let g:loaded_poi_plug_startify = 1
 " Don't change working directory automatically
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 0

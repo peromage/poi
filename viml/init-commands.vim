@@ -1,7 +1,5 @@
 """ init-commands.vim -- Ex commands
 
-let g:loaded_poi_init_commands = 1
-
 " Close all but current buffers
 command! Bdall :%bd|e#
 
