@@ -1,7 +1,5 @@
 """ misc-spacevim-statusline.vim -- Spacevim like status line
 
-let g:loaded_poi_misc_spacevim_statusline = 1
-
 function! Buf_total_num()
     return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 endfunction

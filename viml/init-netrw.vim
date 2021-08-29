@@ -1,7 +1,5 @@
 """ init-netrw.vim -- Netrw settings
 
-let g:loaded_poi_init_netrw = 1
-
 " Settings when netrw is open
 function! s:my_netrw() abort
     setl nospell

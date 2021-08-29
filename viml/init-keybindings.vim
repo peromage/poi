@@ -1,7 +1,5 @@
 """ init-keybindings.vim -- Keybindings for vanilla Vim
 
-let g:loaded_poi_init_keybindings = 1
-
 "-------------------------------------------------------------------------------
 " Nomal: Splitting
 "-------------------------------------------------------------------------------

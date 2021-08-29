@@ -1,7 +1,5 @@
 """ plug-terminal.vim -- Terminal plugins
 
-let g:loaded_poi_plug_terminal = 1
-
 Plug 'voldikss/vim-floaterm'
 let g:floaterm_wintype = 'float'
 let g:floaterm_position = 'topright'

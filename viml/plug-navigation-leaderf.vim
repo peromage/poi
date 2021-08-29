@@ -1,7 +1,5 @@
 """ plug-navigation-leaderf.vim -- LeaderF settings
 
-let g:loaded_poi_plug_navigation_leaderf = 1
-
 Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
 
 let g:Lf_ShowRelativePath = 1

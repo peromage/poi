@@ -1,7 +1,6 @@
 """ gui-neovimqt.vim -- Neovim-qt related settings
 
-let g:loaded_poi_gui_neovimqt = 1
-let g:loaded_poi_gui = 'neovim-qt'
+let g:loaded_gui = 'neovim-qt'
 
 " Disable popup menu
 GuiPopupmenu 0
