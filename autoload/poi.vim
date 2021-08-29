@@ -7,16 +7,13 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if exists('g:loaded_poi')
-    finish
-endif
 let g:loaded_poi = 1
 
 "-------------------------------------------------------------------------------
 " Meta
 "-------------------------------------------------------------------------------
 " poi root directory
-let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
+let g:poi#home = expand('<sfile>:p:h:h')
 
 "-------------------------------------------------------------------------------
 " Helper functions
@@ -24,7 +21,7 @@ let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
 " Load script from poi home. Path should be relative
 " This file throws errors if the file does not exists
 function! poi#include(rel_path) abort
-    execute 'source '. fnameescape(s:home . '/' . a:rel_path)
+    execute 'source '. simplify(g:poi#home . '/' . a:rel_path)
 endfunction
 
 " Initialize global variable if it doesn't exist
@@ -84,32 +81,3 @@ endfunction
 "-------------------------------------------------------------------------------
 command! -nargs=1 PoiInclude call poi#include("viml/<args>.vim")
 command! -nargs=1 PoiSourceIfExists call poi#source_if_exits("<args>")
-
-"-------------------------------------------------------------------------------
-" Initializers
-"-------------------------------------------------------------------------------
-" Loading protection flag
-let s:loading = 0
-
-function! poi#begin(...) abort
-    let s:loading = 1
-    " Directory to put plugin and plugin configuration (e.g. vim-plug, Coc)
-    let l:data_dir = a:0 > 0 ? a:1 : s:home
-    call plug#begin(simplify(l:data_dir . '/vim-plugged'))
-    let g:coc_data_home = simplify(l:data_dir . '/coc-extensions')
-    let g:coc_config_home = l:data_dir
-endfunction
-
-function! poi#end() abort
-    " Begin function must be called
-    if !s:loading
-        echoe 'poi#begin() must be called first!'
-        return
-    endif
-    call plug#end()
-    let s:loading = 0
-endfunction
-
-function! poi#gui_init() abort
-
-endfunction
