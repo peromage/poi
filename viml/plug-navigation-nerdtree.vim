@@ -9,7 +9,9 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_poi_plug_nerdtree = 1
+let g:loaded_poi_plug_navigation_nerdtree = 1
+
+Plug 'preservim/nerdtree'
 
 " Default view
 let g:NERDTreeShowHidden = 1

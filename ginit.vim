@@ -16,7 +16,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:gui_init_file = expand('<sfile>:p')
-let g:gui_init_local = resolve(init_home . "/local-gui.vim")
+let g:gui_init_local = resolve(poi#home . "/local-gui.vim")
 command! OpenGuiInitFile execute 'edit '.g:gui_init_file
 
 " Bootstrap

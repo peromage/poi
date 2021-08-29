@@ -10,7 +10,10 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_poi_plug_fzf = 1
+let g:loaded_poi_plug_navigation_fzf = 1
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " This is the default option:
 "   - Preview window on the right with 50% width

@@ -33,13 +33,23 @@ endif
 " Bootstrap
 call plug#begin(simplify(poi#home . '/vim-plugged'))
 
-let g:poi_plug_group = ['basic', 'navigation', 'syntax', 'coc', 'git']
 let g:python3_host_prog = 'python3'
 " For Vim
 "let &pythonthreehome = '/path/to/python_dir'
 "let &pythonthreedll = '/path/to/python.dll'
 
-" coc-settings.json
+PoiInclude init-settings
+PoiInclude init-keybindings
+PoiInclude init-commands
+PoiInclude init-netrw
+PoiInclude plug-navigation
+PoiInclude plug-coc
+PoiInclude plug-git
+PoiInclude plug-typing
+PoiInclude plug-theme
+PoiInclude plug-terminal
+
+" Generates coc-settings.json if it does not exist
 let s:coc_settings_json =<< EOL
 {
     "$schema": "https://github.com/neoclide/coc.nvim/blob/master/data/schema.json",
@@ -55,16 +65,6 @@ let s:coc_settings_json =<< EOL
     }
 }
 EOL
-
-" Load configs first
-PoiInclude init-settings
-PoiInclude init-keybindings
-PoiInclude init-commands
-PoiInclude init-netrw
-PoiInclude init-plugs
-
-
-" Generates coc-settings.json if it does not exist
 if !poi#file_exists(init_coc_settings)
     call writefile(s:coc_settings_json, init_coc_settings, "s")
 endif

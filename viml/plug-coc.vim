@@ -11,24 +11,7 @@
 
 let g:loaded_poi_plug_coc = 1
 
-" Default Coc directory
-let g:coc_data_home = simplify(poi#home . '/coc-extensions')
-let g:coc_config_home = poi#home
-
-" Default Coc extensions
-let g:coc_global_extensions = [
-\   'coc-explorer',
-\   'coc-tabnine',
-\   'coc-snippets',
-\   'coc-git',
-\   'coc-json',
-\   'coc-markdownlint',
-\   'coc-vimlsp',
-\   'coc-clangd',
-\   'coc-powershell',
-\   'coc-tsserver',
-\   'coc-pyright'
-\   ]
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -108,65 +91,4 @@ nmap <C-l>F <Plug>(coc-format-selected)
 "nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 
-"-------------------------------------------------------------------------------
-
-" Extension configs
-" File explorer
-let g:coc_explorer_global_presets = {
-\   'left' : {
-\       'toggle': v:true,
-\       'focus': v:true,
-\       'open-action-strategy': 'select',
-\       'quit-on-open': v:false,
-\       'sources': [
-\           { 'name': 'buffer', 'expand': v:false },
-\           { 'name': 'file', 'expand': v:true }
-\       ],
-\       'position': 'left',
-\       'width': 40,
-\       'content-width-type': 'vim-width',
-\   },
-\   'right' : {
-\       'toggle': v:true,
-\       'focus': v:true,
-\       'open-action-strategy': 'select',
-\       'quit-on-open': v:false,
-\       'sources': [
-\           { 'name': 'buffer', 'expand': v:false },
-\           { 'name': 'file', 'expand': v:true }
-\       ],
-\       'position': 'right',
-\       'width': 40,
-\       'content-width-type': 'vim-width',
-\   },
-\   'floating' : {
-\       'toggle': v:true,
-\       'focus': v:true,
-\       'open-action-strategy': 'sourceWindow',
-\       'quit-on-open': v:true,
-\       'sources': [
-\           { 'name': 'buffer', 'expand': v:false },
-\           { 'name': 'file', 'expand': v:true }
-\       ],
-\       'position': 'floating',
-\       'content-width-type': 'win-width',
-\       'floating-position': 'center'
-\   },
-\   'tab' : {
-\       'toggle': v:true,
-\       'focus': v:true,
-\       'open-action-strategy': 'sourceWindow',
-\       'quit-on-open': v:true,
-\       'sources': [
-\           { 'name': 'buffer', 'expand': v:false },
-\           { 'name': 'file', 'expand': v:true }
-\       ],
-\       'position': 'tab',
-\       'content-width-type': 'vim-width'
-\   }
-\ }
-
-nnoremap <silent> <Leader>dd :<C-U>CocCommand explorer --preset left<CR>
-nnoremap <silent> <Leader>dD :<C-U>CocCommand explorer --preset right<CR>
-nnoremap <silent> <Leader>dt :<C-U>CocCommand explorer --preset tab<CR>
-nnoremap <silent> <Leader>df :<C-U>CocCommand explorer --preset floating<CR>
+PoiInclude plug-coc-extensions

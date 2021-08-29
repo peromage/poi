@@ -9,14 +9,14 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:loaded_poi_plug_floaterm = 1
+let g:loaded_poi_plug_terminal = 1
 
+Plug 'voldikss/vim-floaterm'
 let g:floaterm_wintype = 'float'
 let g:floaterm_position = 'topright'
 let g:floaterm_title = ' term $1/$2 '
 let g:floaterm_height = 0.5
 let g:floaterm_width = 0.5
-
 " Key bindings in normal mode
 nnoremap <silent> <Bslash>tt :<C-U>FloatermToggle<CR>
 " Send a custom command

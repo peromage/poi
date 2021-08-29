@@ -18,11 +18,6 @@ let g:poi#home = expand('<sfile>:p:h:h')
 "-------------------------------------------------------------------------------
 " Helper functions
 "-------------------------------------------------------------------------------
-" Load script from poi home. Path should be relative
-" This file throws errors if the file does not exists
-function! poi#include(rel_path) abort
-    execute 'source '. simplify(g:poi#home . '/' . a:rel_path)
-endfunction
 
 " Initialize global variable if it doesn't exist
 " NOTE: The g: should be ommitted when passed to this function
@@ -33,34 +28,10 @@ function! poi#init_var(name, value) abort
     endif
 endfunction
 
-" Check if the given global variable exists and enabled
-" NOTE: The g: should be ommitted when passed to this function
-function! poi#check_var(name) abort
-    let l:gvar = 'g:' . a:name
-    return exists(l:gvar) && eval(l:gvar)
-endfunction
-
-" Returns a boolean indicating if the variable with the given name exists and
-" the type of the value is represented as non-empty. Results will be stored in
-" the out dict
-" NOTE: The g: should be ommitted when passed to this function
-function! poi#get_var_non_empty(name, out_dict) abort
-    let l:value = get(g:, a:name, v:null)
-    let a:out_dict.name = 'g:'.a:name
-    let a:out_dict.value = l:value
-    let a:out_dict.valid = !empty(l:value)
-    return a:out_dict.valid
-endfunction
-
-" Returns a boolean indicating if the variable with the given name exists
-" Results will be stored in the out dict
-" NOTE: The g: should be ommitted when passed to this function
-function! poi#get_var(name, out_dict) abort
-    let l:value = get(g:, a:name, v:null)
-    let a:out_dict.name = 'g:'.a:name
-    let a:out_dict.value = l:value
-    let a:out_dict.valid = l:value isnot v:null
-    return a:out_dict.valid
+" Load script from poi home. Path should be relative
+" This file throws errors if the file does not exists
+function! poi#include(rel_path) abort
+    execute 'source '. simplify(g:poi#home . '/' . a:rel_path)
 endfunction
 
 " Returns a boolean indicating if the file exists
