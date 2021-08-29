@@ -9,11 +9,15 @@ vim-plugged/
 vim-plug/
 vim_plugged/
 vim_plug/
-coc-extensions/
-coc_extensions/
 data/
 userdata/
 user/
+
+# Coc local files
+coc-extensions/*
+coc_extensions/
+# But includes snippets
+!coc-extensions/ultisnips
 
 # Session files
 saved_sessions/
@@ -27,3 +31,4 @@ saved_sessions/
 local.vim
 local-gui.vim
 coc-settings.json
+
