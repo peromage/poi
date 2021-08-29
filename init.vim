@@ -54,6 +54,6 @@ if !poi#file_exists(init_coc_settings)
 endif
 
 " Sources local config if it exists
-PoiSourceIfExists init_local
+call poi#source_if_exits(init_local)
 
 call plug#end()

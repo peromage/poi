@@ -29,4 +29,4 @@ endif
 cd $HOME
 
 " Local file
-PoiSourceIfExists gui_init_local
+call poi#source_if_exits(gui_init_local)
