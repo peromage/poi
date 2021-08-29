@@ -1,19 +1,6 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" Poi GUI initialization
-"
-" Created by peromage 2021/02/24
-" Last modified 2021/08/28
-"
-"
-" This file should remain untouched
-" Initialization for GUI
-"
-"
-" Examples of configuration options (Put them in local-gui.vim)
-"
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" ginit.vim -- Poi GUI bootstrap
+
+let g:loaded_poi_ginit = 1
 
 let g:gui_init_file = expand('<sfile>:p')
 let g:gui_init_local = resolve(poi#home . "/local-gui.vim")

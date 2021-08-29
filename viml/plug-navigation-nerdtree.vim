@@ -1,13 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" Nerdtree settings
-"
-" Created by peromage 2021/02/24
-" Last modified 2021/03/19
-"
-"Plug 'preservim/nerdtree'
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" plug-navigation-nerdtree.vim -- Nerdtree settings
 
 let g:loaded_poi_plug_navigation_nerdtree = 1
 

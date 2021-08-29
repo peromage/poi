@@ -1,12 +1,6 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" FVim settings
-"
-" Created by peromage 2021/03/14
-" Last modified 2021/03/18
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" gui-fvim.vim -- Fvim related settings
 
+let g:loaded_poi_gui_fvim = 1
 let g:loaded_poi_gui = 'fvim'
 
 " Some fancy cursor effects
@@ -20,9 +14,11 @@ FVimFontAntialias v:true
 FVimFontAutohint v:true
 FVimFontHintLevel 'full'
 FVimFontLigature v:true
+
 " can be 'default', '14.0', '-1.0' etc.
 FVimFontLineHeight 'default'
 FVimFontSubpixel v:true
+
 " Disable built-in Nerd font symbols
 "FVimFontNoBuiltInSymbols v:false
 FVimFontAutoSnap v:true

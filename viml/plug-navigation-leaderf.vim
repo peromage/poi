@@ -1,13 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" LeaderF settings
-"
-" Created by peromage 2021/02/24
-" Last modified 2021/03/19
-"
-"Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" plug-navigation-leaderf.vim -- LeaderF settings
 
 let g:loaded_poi_plug_navigation_leaderf = 1
 

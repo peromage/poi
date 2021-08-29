@@ -1,13 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" Coc settings
-"
-" Created by peromage 2021/02/24
-" Last modified 2021/03/19
-"
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" plug-coc.vim -- Coc settings
 
 let g:loaded_poi_plug_coc = 1
 

@@ -1,12 +1,6 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" NeoVim-qt settings
-"
-" Created by peromage 2021/02/24
-" Last modified 2021/03/18
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" gui-neovimqt.vim -- Neovim-qt related settings
 
+let g:loaded_poi_gui_neovimqt = 1
 let g:loaded_poi_gui = 'neovim-qt'
 
 " Disable popup menu
