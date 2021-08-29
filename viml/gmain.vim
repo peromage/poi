@@ -16,9 +16,9 @@ if !exists('g:loaded_poi') || !g:loaded_poi | finish | endif
 " Load components
 "-------------------------------------------------------------------------------
 " Load configs first
-IncPoiInit gui-configs.vim
-IncPoiInit gui-sets.vim
-IncPoiInit gui-keymaps.vim
+PoiInc init-gui-configs
+PoiInc init-gui-sets
+PoiInc init-gui-keymaps
 
 "-------------------------------------------------------------------------------
 " Startup
