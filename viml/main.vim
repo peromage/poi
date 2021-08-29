@@ -16,13 +16,13 @@ if !exists('g:loaded_poi') || !g:loaded_poi | finish | endif
 " Load components
 "-------------------------------------------------------------------------------
 if exists('g:vscode')
-    IncPoi vscode.vim
+    IncPoi vscode
 else
     " Load configs first
-    IncPoiInit configs.vim
-    IncPoiInit sets.vim
-    IncPoiInit keymaps.vim
-    IncPoiInit commands.vim
-    IncPoiInit netrw.vim
-    IncPoiInit plugs.vim
+    PoiInc init-configs
+    PoiInc init-sets
+    PoiInc init-keymaps
+    PoiInc init-commands
+    PoiInc init-netrw
+    PoiInc init-plugs
 endif

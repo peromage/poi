@@ -74,11 +74,7 @@ endfunction
 " Helper commands
 "-------------------------------------------------------------------------------
 command! -nargs=1 IncScript call poi#source_script("<args>")
-command! -nargs=1 IncPoi call poi#source_script("viml/<args>")
-command! -nargs=1 IncPoiInit call poi#source_script("viml/init-<args>")
-command! -nargs=1 IncPoiPlug call poi#source_script("viml/plug-<args>")
-command! -nargs=1 IncPoiGui call poi#source_script("viml/gui-<args>")
-command! -nargs=1 IncPoiMisc call poi#source_script("viml/misc-<args>")
+command! -nargs=1 PoiInc call poi#source_script("viml/<args>.vim")
 
 "-------------------------------------------------------------------------------
 " Initializers
@@ -101,11 +97,11 @@ function! poi#end() abort
         echoe 'poi#begin() must be called first!'
         return
     endif
-    call poi#source_script('viml/main.vim')
+    PoiInc main
     call plug#end()
     let s:loading = 0
 endfunction
 
 function! poi#gui_init() abort
-    call poi#source_script('viml/gmain.vim')
+    PoiInc gmain
 endfunction
