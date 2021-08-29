@@ -11,7 +11,11 @@
 
 let g:loaded_poi_plug_coc = 1
 
-" Default coc extensions
+" Default Coc directory
+let g:coc_data_home = simplify(poi#home . '/coc-extensions')
+let g:coc_config_home = poi#home
+
+" Default Coc extensions
 let g:coc_global_extensions = [
 \   'coc-explorer',
 \   'coc-tabnine',
