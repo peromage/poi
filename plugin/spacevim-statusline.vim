@@ -1,4 +1,8 @@
-""" misc-spacevim-statusline.vim -- Spacevim like status line
+""" spacevim-statusline.vim -- Spacevim like status line
+
+if !get(g:, 'spacevim_statusline_enabled', 0)
+    finish
+endif
 
 function! Buf_total_num()
     return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
