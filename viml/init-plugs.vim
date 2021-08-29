@@ -26,10 +26,10 @@ endfunction
 "-------------------------------------------------------------------------------
 if s:select('basic')
     Plug 'itchyny/lightline.vim'
-    PoiInc plug-lightline
+    PoiInclude plug-lightline
 
     Plug 'mhinz/vim-startify'
-    PoiInc plug-startify
+    PoiInclude plug-startify
 endif
 
 "-------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ endif
 "-------------------------------------------------------------------------------
 if s:select('navigation')
     Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
-    PoiInc plug-leaderf
+    PoiInclude plug-leaderf
 endif
 
 "-------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ endif
 "-------------------------------------------------------------------------------
 if s:select('coc')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    PoiInc plug-coc
+    PoiInclude plug-coc
 endif
 
 "-------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ endif
 "-------------------------------------------------------------------------------
 if s:select('git')
     Plug 'tpope/vim-fugitive'
-    PoiInc plug-fugitive
+    PoiInclude plug-fugitive
 endif
 
 "-------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ endif
 "-------------------------------------------------------------------------------
 if s:select('terminal')
     Plug 'voldikss/vim-floaterm'
-    PoiInc plug-floaterm
+    PoiInclude plug-floaterm
 endif
 
 "-------------------------------------------------------------------------------
@@ -69,5 +69,5 @@ endif
 "-------------------------------------------------------------------------------
 if s:select('syntax')
     Plug 'sheerun/vim-polyglot'
-    PoiInc plug-polyglot
+    PoiInclude plug-polyglot
 endif

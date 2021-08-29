@@ -22,9 +22,9 @@ endif
 " Functions to check GUI configs
 function! s:use_neovim_config() abort
     if exists('g:GuiLoaded')
-        PoiInc gui-neovimqt
+        PoiInclude gui-neovimqt
     elseif exists('g:fvim_loaded')
-        PoiInc gui-fvim
+        PoiInclude gui-fvim
     else
         return
     endif
@@ -32,7 +32,7 @@ endfunction
 
 function! s:use_vim_config() abort
     if has('gui_running')
-        PoiInc gui-gvim
+        PoiInclude gui-gvim
     else
         return
     endif

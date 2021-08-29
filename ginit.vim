@@ -29,7 +29,14 @@ let g:gui_init_local = resolve(init_home . "/local-gui.vim")
 command! OpenGuiInitFile execute 'edit '.g:gui_init_file
 
 " Bootstrap
+PoiInclude gui-init-configvars
+PoiInclude gui-init-settings
+PoiInclude gui-init-keybindings
 
+" Always starts GUI in home directory
+cd $HOME
+
+" Local file
 if filereadable(gui_init_local)
     execute 'source ' . gui_init_local
 endif

@@ -22,7 +22,8 @@ let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
 " Helper functions
 "-------------------------------------------------------------------------------
 " Load script from poi home. Path should be relative
-function! poi#source_script(rel_path) abort
+" This file throws errors if the file does not exists
+function! poi#include(rel_path) abort
     execute 'source '. fnameescape(s:home . '/' . a:rel_path)
 endfunction
 
@@ -70,11 +71,19 @@ function! poi#file_exists(path) abort
     return len(glob(a:path))
 endfunction
 
+" Source any file from anywhere only if it exists
+" This function does not throw errors if file does not exist
+function! poi#source_if_exits(path) abort
+    if poi#file_exists(a:path)
+        execute 'source ' . a:path
+    endif
+endfunction
+
 "-------------------------------------------------------------------------------
 " Helper commands
 "-------------------------------------------------------------------------------
-command! -nargs=1 IncScript call poi#source_script("<args>")
-command! -nargs=1 PoiInc call poi#source_script("viml/<args>.vim")
+command! -nargs=1 PoiInclude call poi#include("viml/<args>.vim")
+command! -nargs=1 PoiSourceIfExists call poi#source_if_exits("<args>")
 
 "-------------------------------------------------------------------------------
 " Initializers
@@ -97,11 +106,10 @@ function! poi#end() abort
         echoe 'poi#begin() must be called first!'
         return
     endif
-    PoiInc main
     call plug#end()
     let s:loading = 0
 endfunction
 
 function! poi#gui_init() abort
-    PoiInc gmain
+
 endfunction

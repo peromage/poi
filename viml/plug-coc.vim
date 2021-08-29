@@ -12,23 +12,19 @@
 let g:loaded_poi_plug_coc = 1
 
 " Default coc extensions
-" To override the default define g:coc_global_extensions after sourcing this
-" file
-let s:default_extensions = [
+let g:coc_global_extensions = [
 \   'coc-explorer',
 \   'coc-tabnine',
 \   'coc-snippets',
 \   'coc-git',
 \   'coc-json',
 \   'coc-markdownlint',
-\   'coc-vimlsp'
+\   'coc-vimlsp',
+\   'coc-clangd',
+\   'coc-powershell',
+\   'coc-tsserver',
+\   'coc-pyright'
 \   ]
-
-if exists('g:coc_global_extensions')
-    call extend(g:coc_global_extensions, s:default_extensions)
-else
-    let g:coc_global_extensions = s:default_extensions
-endif
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
