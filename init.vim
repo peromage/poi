@@ -54,7 +54,15 @@ let s:coc_settings_json =<< EOL
     "python.linting.pylintEnabled": true,
     "clangd.path": "clangd",
     "clangd.enabled": true,
-    "clangd.arguments": ["--background-index"],
+    "clangd.arguments": [
+        "-j=2",
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=bundled",
+        "--pch-storage=memory",
+        "--header-insertion=never",
+        "--header-insertion-decorators=0"
+    ],
     "powershell.integratedConsole.showOnStartup": false,
     "markdownlint.config": {
         "line-length": false
