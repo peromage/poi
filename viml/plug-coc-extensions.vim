@@ -26,6 +26,42 @@ let g:coc_global_extensions = [
 \   ]
 
 ""------------------------------------------------------------------------------
+"" Default extension config
+""------------------------------------------------------------------------------
+
+function! s:write_coc_settings_json() abort
+    let l:coc_settings_json_file = simplify(g:poi.home_dir . '/coc-settings.json')
+    let l:coc_settings_json =<< EOL
+{
+    "$schema": "https://github.com/neoclide/coc.nvim/blob/master/data/schema.json",
+    "python.pythonPath": "python",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "clangd.path": "clangd",
+    "clangd.enabled": true,
+    "clangd.arguments": [
+        "-j=2",
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=bundled",
+        "--pch-storage=memory",
+        "--header-insertion=never",
+        "--header-insertion-decorators=0"
+    ],
+    "powershell.integratedConsole.showOnStartup": false,
+    "markdownlint.config": {
+        "line-length": false
+    }
+}
+EOL
+    if !poi#file_exists(l:coc_settings_json_file)
+        call writefile(l:coc_settings_json, l:coc_settings_json_file, 's')
+    endif
+endfunction
+
+command! WriteCocSettingsJson call <SID>write_coc_settings_json()
+
+""------------------------------------------------------------------------------
 "" File explorer
 ""------------------------------------------------------------------------------
 

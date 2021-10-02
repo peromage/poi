@@ -9,7 +9,6 @@ let poi.loaded = 1
 let poi.home_dir = expand('<sfile>:p:h')
 let poi.local_file = simplify(poi.home_dir . "/local.vim")
 let poi.local_vscode_file = simplify(poi.home_dir . "/local-vscode.vim")
-let poi.coc_settings_file = simplify(poi.home_dir . "/coc-settings.json")
 exec 'set runtimepath+=' . poi.home_dir
 call poi#init()
 
@@ -49,41 +48,10 @@ PoiInclude plug-coc
 PoiInclude plug-terminal
 
 ""------------------------------------------------------------------------------
-"" Generates coc-settings.json if it does not exist
+"" Local config files
 ""------------------------------------------------------------------------------
 
-let s:coc_settings_json =<< EOL
-{
-    "$schema": "https://github.com/neoclide/coc.nvim/blob/master/data/schema.json",
-    "python.pythonPath": "python",
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "clangd.path": "clangd",
-    "clangd.enabled": true,
-    "clangd.arguments": [
-        "-j=2",
-        "--background-index",
-        "--clang-tidy",
-        "--completion-style=bundled",
-        "--pch-storage=memory",
-        "--header-insertion=never",
-        "--header-insertion-decorators=0"
-    ],
-    "powershell.integratedConsole.showOnStartup": false,
-    "markdownlint.config": {
-        "line-length": false
-    }
-}
-EOL
-
-if !poi#file_exists(poi.coc_settings_file)
-    call writefile(s:coc_settings_json, poi.coc_settings_file, "s")
-endif
-
-""------------------------------------------------------------------------------
-"" Sources local config if it exists
-""------------------------------------------------------------------------------
-
+WriteCocSettingsJson
 call poi#source_if_exits(poi.local_file)
 
 call plug#end()

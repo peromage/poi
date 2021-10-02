@@ -29,6 +29,6 @@ saved_sessions/
 
 # Local config
 local.vim
+local-vscode.vim
 local-gui.vim
 coc-settings.json
-
