@@ -1,28 +1,33 @@
 """ init.vim -- Poi Neovim bootstrap
 
 ""=============================================================================
-"" Setup
+"" Initialization
 ""=============================================================================
-execute 'set runtimepath+=' . expand('<sfile>:p:h')
-let g:init_file = expand('<sfile>:p')
-let g:init_local = simplify(poi#home . "/local.vim")
-let g:init_local_vscode = simplify(poi#home . "/local-vscode.vim")
-let g:init_coc_settings = simplify(poi#home . "/coc-settings.json")
-command! OpenInitFile exec 'edit '.g:init_file
+
+let g:poi = {}
+let poi.loaded = 1
+let poi.home_dir = expand('<sfile>:p:h')
+let poi.local_file = simplify(poi.home_dir . "/local.vim")
+let poi.local_vscode_file = simplify(poi.home_dir . "/local-vscode.vim")
+let poi.coc_settings_file = simplify(poi.home_dir . "/coc-settings.json")
+exec 'set runtimepath+=' . poi.home_dir
+call poi#init()
 
 ""=============================================================================
-"" VSCode bootstrap
+"" VSCode bootstrap. Do not load the following packages
 ""=============================================================================
+
 if exists('g:vscode')
     PoiInclude init-vscode
-    PoiSourceIfExists init_local_vscode
+    call poi#source_if_exits(poi.local_vscode_file)
     finish
 endif
 
 ""=============================================================================
 "" General bootstrap (use :PlugInstall for the first time)
 ""=============================================================================
-call plug#begin(simplify(poi#home . '/vim-plugged'))
+
+call plug#begin(simplify(poi.home_dir . '/vim-plugged'))
 
 let g:python3_host_prog = 'python3'
 " For Vim
@@ -46,6 +51,7 @@ PoiInclude plug-terminal
 ""=============================================================================
 "" Generates coc-settings.json if it does not exist
 ""=============================================================================
+
 let s:coc_settings_json =<< EOL
 {
     "$schema": "https://github.com/neoclide/coc.nvim/blob/master/data/schema.json",
@@ -69,13 +75,15 @@ let s:coc_settings_json =<< EOL
     }
 }
 EOL
-if !poi#file_exists(init_coc_settings)
-    call writefile(s:coc_settings_json, init_coc_settings, "s")
+
+if !poi#file_exists(poi.coc_settings_file)
+    call writefile(s:coc_settings_json, poi.coc_settings_file, "s")
 endif
 
 ""=============================================================================
 "" Sources local config if it exists
 ""=============================================================================
-call poi#source_if_exits(init_local)
+
+call poi#source_if_exits(poi.local_file)
 
 call plug#end()

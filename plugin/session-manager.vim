@@ -1,6 +1,6 @@
 """ session-manager.vim -- Session manager
 
-if !get(g:, 'session_manager_enabled', 0)
+if !get(g:, 'enable_session_manager', 0)
     finish
 endif
 
