@@ -1,10 +1,16 @@
 """ plug-coc-extensions.vim -- Coc extensions
 
-" Default Coc directory
+""------------------------------------------------------------------------------
+"" Default COC directory
+""------------------------------------------------------------------------------
+
 let g:coc_data_home = simplify(poi.home_dir . '/coc-extensions')
 let g:coc_config_home = poi.home_dir
 
-" Default Coc extensions
+""------------------------------------------------------------------------------
+"" Default COC extensions
+""------------------------------------------------------------------------------
+
 let g:coc_global_extensions = [
 \   'coc-explorer',
 \   'coc-tabnine',
@@ -19,7 +25,10 @@ let g:coc_global_extensions = [
 \   'coc-pyright'
 \   ]
 
-" File explorer
+""------------------------------------------------------------------------------
+"" File explorer
+""------------------------------------------------------------------------------
+
 let g:coc_explorer_global_presets = {
 \   'left' : {
 \       'toggle': v:true,
