@@ -8,7 +8,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-" General config
+"" General config
 call defx#custom#option('_', {
     \ 'winwidth': 30,
     \ 'split': 'vertical',
@@ -20,11 +20,11 @@ call defx#custom#option('_', {
     \ 'sort': 'filename'
     \ })
 
-" Global keymaps
-" Open Defx
+"" Global keymaps
+"" Open Defx
 nnoremap <silent> <Leader>d :<C-U>Defx<CR>
 
-" Keymaps when Defx is open
+"" Keymaps when Defx is open
 function! s:my_defx_keymaps() abort
     setl nospell
     setl signcolumn=no
@@ -33,7 +33,7 @@ function! s:my_defx_keymaps() abort
     setl cursorline
     setl cursorcolumn
     let l:sid = matchstr(expand('<sfile>'), '<SNR>\zs\d\+\ze_SID$')
-    " Open files
+    "" Open files
     nnoremap <silent><buffer><expr> v defx#do_action('drop', 'vsplit')
     nnoremap <silent><buffer><expr> s defx#do_action('drop', 'split')
     nnoremap <silent><buffer><expr> t defx#do_action('drop', 'tab')
@@ -50,7 +50,7 @@ function! s:my_defx_keymaps() abort
     nnoremap <silent><buffer><expr> U defx#do_action('open_tree_recursive')
     nnoremap <silent><buffer><expr> O defx#do_action('multi', ['open_directory','change_vim_cwd'])
     nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
-    " File manipulation
+    "" File manipulation
     nnoremap <silent><buffer><expr> yy defx#do_action('copy')
     nnoremap <silent><buffer><expr> pp defx#do_action('paste')
     nnoremap <silent><buffer><expr> dD defx#do_action('remove')
@@ -67,5 +67,5 @@ function! s:my_defx_keymaps() abort
 endfunction
 autocmd FileType defx call s:my_defx_keymaps()
 
-" Avoid the white space highting issue
+"" Avoid the white space highting issue
 "autocmd FileType defx match ExtraWhitespace /^^/

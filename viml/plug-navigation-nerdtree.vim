@@ -2,13 +2,13 @@
 
 Plug 'preservim/nerdtree'
 
-" Default view
+"" Default view
 let g:NERDTreeShowHidden = 1
 
-" Global keymaps
+"" Global keymaps
 nnoremap <silent> <Leader>d :<C-U>NERDTree<CR>
 
-" Keymaps when nerdtree is open
+"" Keymaps when nerdtree is open
 function! s:myNerdtreeSettings() abort
     setl nospell
     setl signcolumn=no

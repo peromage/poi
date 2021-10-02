@@ -1,4 +1,4 @@
-""" init-commands.vim -- Ex commands
+""" init-lib.vim -- Ex commands and utility functions
 
 " Close all but current buffers
 command! Bdall :%bd|e#

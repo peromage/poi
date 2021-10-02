@@ -1,6 +1,6 @@
 """ init-netrw.vim -- Netrw settings
 
-" Settings when netrw is open
+"" Settings when netrw is open
 function! s:my_netrw() abort
     setl nospell
     setl signcolumn=no
@@ -24,6 +24,7 @@ let g:netrw_hide = 1
 let g:netrw_keepdir = 1
 let g:netrw_usetab = 0
 let g:netrw_preview = 0
+
 autocmd FileType netrw call <SID>my_netrw()
 
 nnoremap <silent> <leader>d :<C-U>Lexplore<CR>
