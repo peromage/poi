@@ -1,8 +1,8 @@
 """ plug-coc-extensions.vim -- Coc extensions
 
 " Default Coc directory
-let g:coc_data_home = simplify(poi#home . '/coc-extensions')
-let g:coc_config_home = poi#home
+let g:coc_data_home = simplify(poi.home_dir . '/coc-extensions')
+let g:coc_config_home = poi.home_dir
 
 " Default Coc extensions
 let g:coc_global_extensions = [

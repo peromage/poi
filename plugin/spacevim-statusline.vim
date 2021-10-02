@@ -1,6 +1,6 @@
 """ spacevim-statusline.vim -- Spacevim like status line
 
-if !get(g:, 'spacevim_statusline_enabled', 0)
+if !get(g:, 'enable_spacevim_statusline', 0)
     finish
 endif
 
