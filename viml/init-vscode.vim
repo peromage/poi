@@ -1,5 +1,7 @@
 """ init-vscode.vim -- VSCode related settings
 
+let g:loaded_vscode = 1
+
 ""------------------------------------------------------------------------------
 "" Helper functions
 ""------------------------------------------------------------------------------
@@ -55,7 +57,7 @@ let g:mapleader="\<Space>"
 ""------------------------------------------------------------------------------
 
 nmap <silent> <Leader>v :<C-U>call VSCodeCall('workbench.action.splitEditorRight')<CR>
-nmap <silent> <Leader>V :<C-U>call VSCodeCall('workbench.action.splitEditorDown')<CR>
+nmap <silent> <Leader>s :<C-U>call VSCodeCall('workbench.action.splitEditorDown')<CR>
 
 ""------------------------------------------------------------------------------
 "" Normal: Pane jump
