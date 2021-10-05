@@ -83,7 +83,7 @@ nmap <silent> <Leader>O :<C-U>call VSCodeNotify('workbench.action.joinAllGroups'
 "" Normal: Tabs
 ""------------------------------------------------------------------------------
 
-nmap <silent> <Leader>N :<C-U>call VSCodeCall('workbench.action.previousEditorInGroup')<CR>
+nmap <silent> <Leader>p :<C-U>call VSCodeCall('workbench.action.previousEditorInGroup')<CR>
 nmap <silent> <Leader>n :<C-U>call VSCodeCall('workbench.action.nextEditorInGroup')<CR>
 nmap <silent> <Leader>t :<C-U>tabnew<CR>
 
@@ -91,8 +91,8 @@ nmap <silent> <Leader>t :<C-U>tabnew<CR>
 "" Normal: Search and substitution
 ""------------------------------------------------------------------------------
 
-nmap <Leader>is :<C-U>%s//gc<Left><Left><Left>
-nmap <expr> <Leader>iS ':%s/' . @/ . '//gc<Left><Left><Left>'
+nmap <expr> <Leader>cs ':<C-u>%s/' . @/ . '//gc<Left><Left><Left>'
+nmap <Leader>cS :<C-U>%s//gc<Left><Left><Left>
 nmap <silent> # :<C-U>noh<CR>
 nmap <silent> * *N
 
