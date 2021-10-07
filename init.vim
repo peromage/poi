@@ -41,10 +41,9 @@ PoiInclude init-netrw
 
 "" Configured plugins
 PoiInclude plug-theme
-PoiInclude plug-navigation
 PoiInclude plug-git
-PoiInclude plug-typing
-PoiInclude plug-coc
+PoiInclude plug-navigation
+PoiInclude plug-coding
 PoiInclude plug-terminal
 
 ""------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-""" plug-coc.vim -- Coc settings
+""" plug-coding-coc.vim -- Coc settings
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -86,9 +86,3 @@ nmap <C-l>F <Plug>(coc-format-selected)
 "" coc-tsserver, coc-python are the examples of servers that support it.
 "nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
-
-""------------------------------------------------------------------------------
-"" Extensions
-""------------------------------------------------------------------------------
-
-PoiInclude plug-coc-extensions
