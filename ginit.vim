@@ -4,7 +4,7 @@
 "" Setup
 ""------------------------------------------------------------------------------
 
-let g:gui_init_local = simplify(poi.home_dir . "/local-gui.vim")
+let g:gui_local_file = simplify(poi#home_dir . "/local-gui.vim")
 
 ""------------------------------------------------------------------------------
 "" Bootstrap
@@ -43,4 +43,4 @@ cd $HOME
 "" The local config file for GUI
 ""------------------------------------------------------------------------------
 
-call poi#source_if_exits(gui_init_local)
+call poi#source_if_exits(gui_local_file)
