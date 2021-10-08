@@ -4,8 +4,8 @@
 "" Default COC directory
 ""------------------------------------------------------------------------------
 
-let g:coc_data_home = simplify(poi#home_dir . '/coc-extensions')
-let g:coc_config_home = poi#home_dir
+let g:coc_data_home = simplify(poi#plug_dir . '/coc-extensions')
+let g:coc_config_home = g:coc_data_home
 
 ""------------------------------------------------------------------------------
 "" Default COC extensions
@@ -30,7 +30,10 @@ let g:coc_global_extensions = [
 ""------------------------------------------------------------------------------
 
 function! s:write_coc_settings_json() abort
-    let l:coc_settings_json_file = simplify(g:poi#home_dir . '/coc-settings.json')
+    let l:coc_settings_json_file = simplify(g:coc_config_home . '/coc-settings.json')
+    if !isdirectory(g:coc_config_home) || filereadable(l:coc_settings_json_file)
+        return
+    endif
     let l:coc_settings_json =<< EOL
 {
     "$schema": "https://github.com/neoclide/coc.nvim/blob/master/data/schema.json",
@@ -51,12 +54,13 @@ function! s:write_coc_settings_json() abort
     "powershell.integratedConsole.showOnStartup": false,
     "markdownlint.config": {
         "line-length": false
-    }
+    },
+    "snippets.userSnippetsDirectory": "__STR__"
 }
 EOL
-    if !poi#file_exists(l:coc_settings_json_file)
-        call writefile(l:coc_settings_json, l:coc_settings_json_file, 's')
-    endif
+    let l:coc_snippet_dir = simplify(g:poi#home_dir . '/snippets')
+    let l:coc_settings_json[20] = substitute(l:coc_settings_json[20], '__STR__', l:coc_snippet_dir, '')
+    call writefile(l:coc_settings_json, l:coc_settings_json_file, 's')
 endfunction
 
 command! WriteCocSettingsJson call <SID>write_coc_settings_json()

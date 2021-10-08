@@ -9,6 +9,8 @@ vim-plugged/
 vim-plug/
 vim_plugged/
 vim_plug/
+plugged-*/
+plugged_*/
 data/
 userdata/
 user/

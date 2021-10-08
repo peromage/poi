@@ -24,6 +24,7 @@ endif
 "" General bootstrap (use :PlugInstall for the first time)
 ""------------------------------------------------------------------------------
 
+"" Python supports
 let g:python3_host_prog = 'python3'
 "" For Vim
 "let &pythonthreehome = '/path/to/python_dir'

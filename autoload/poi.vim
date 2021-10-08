@@ -39,15 +39,15 @@ function! poi#include(rel_path) abort
     execute 'source '. simplify(g:poi#home_dir . '/' . a:rel_path)
 endfunction
 
-" Returns a boolean indicating if the file exists
-function! poi#file_exists(path) abort
+" Returns a boolean indicating if the path exists
+function! poi#path_exists(path) abort
     return len(glob(a:path))
 endfunction
 
 " Source any file from anywhere only if it exists
 " This function does not throw errors if file does not exist
 function! poi#source_if_exits(path) abort
-    if poi#file_exists(a:path)
+    if filereadable(a:path)
         execute 'source ' . a:path
     endif
 endfunction
