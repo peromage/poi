@@ -1,12 +1,28 @@
 """ poi.vim -- Poi library
 
 ""------------------------------------------------------------------------------
-" Utility functions
+" Initialization
 ""------------------------------------------------------------------------------
+
+"" Config directories
+let poi#home_dir = expand('<sfile>:p:h:h')
+let poi#plug_dir = simplify(poi#home_dir . '/plugged-' . (has('nvim') ? 'nvim-' : 'vim-') . v:version)
 
 function! poi#init() abort
     "" Does nothing. Only for autoloading this library
 endfunction
+
+function! poi#begin() abort
+    call plug#begin(g:poi#plug_dir)
+endfunction
+
+function! poi#end() abort
+    call plug#end()
+endfunction
+
+""------------------------------------------------------------------------------
+" Utility functions
+""------------------------------------------------------------------------------
 
 " Initialize global variable if it doesn't exist
 " NOTE: The g: should be ommitted when passed to this function
@@ -20,7 +36,7 @@ endfunction
 " Load script from poi home. Path should be relative
 " This file throws errors if the file does not exists
 function! poi#include(rel_path) abort
-    execute 'source '. simplify(g:poi.home_dir . '/' . a:rel_path)
+    execute 'source '. simplify(g:poi#home_dir . '/' . a:rel_path)
 endfunction
 
 " Returns a boolean indicating if the file exists

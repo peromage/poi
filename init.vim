@@ -4,13 +4,11 @@
 "" Initialization
 ""------------------------------------------------------------------------------
 
-let g:poi = {}
-let poi.loaded = 1
-let poi.home_dir = expand('<sfile>:p:h')
-let poi.local_file = simplify(poi.home_dir . "/local.vim")
-let poi.local_vscode_file = simplify(poi.home_dir . "/local-vscode.vim")
-exec 'set runtimepath+=' . poi.home_dir
-call poi#init()
+exec 'set runtimepath+=' . expand('<sfile>:p:h')
+call poi#begin()
+
+let s:local_file = simplify(poi#home_dir . "/local.vim")
+let s:local_vscode_file = simplify(poi#home_dir . "/local-vscode.vim")
 
 ""------------------------------------------------------------------------------
 "" VSCode bootstrap. Do not load the following packages
@@ -18,15 +16,13 @@ call poi#init()
 
 if exists('g:vscode')
     PoiInclude init-vscode
-    call poi#source_if_exits(poi.local_vscode_file)
+    call poi#source_if_exits(s:local_vscode_file)
     finish
 endif
 
 ""------------------------------------------------------------------------------
 "" General bootstrap (use :PlugInstall for the first time)
 ""------------------------------------------------------------------------------
-
-call plug#begin(simplify(poi.home_dir . '/vim-plugged'))
 
 let g:python3_host_prog = 'python3'
 "" For Vim
@@ -51,6 +47,6 @@ PoiInclude plug-terminal
 ""------------------------------------------------------------------------------
 
 WriteCocSettingsJson
-call poi#source_if_exits(poi.local_file)
+call poi#source_if_exits(s:local_file)
 
-call plug#end()
+call poi#end()
