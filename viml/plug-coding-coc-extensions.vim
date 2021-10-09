@@ -31,7 +31,8 @@ let g:coc_global_extensions = [
 
 function! s:write_coc_settings_json() abort
     let l:coc_settings_json_file = simplify(g:coc_config_home . '/coc-settings.json')
-    if !isdirectory(g:coc_config_home) || filereadable(l:coc_settings_json_file)
+    "" Do not overwrite the existing one
+    if filereadable(l:coc_settings_json_file)
         return
     endif
     let l:coc_settings_json =<< EOL
@@ -58,8 +59,11 @@ function! s:write_coc_settings_json() abort
     "snippets.userSnippetsDirectory": "__STR__"
 }
 EOL
-    let l:coc_snippet_dir = simplify(g:poi#home_dir . '/snippets')
+    let l:coc_snippet_dir = substitute(simplify(g:poi#home_dir . '/snippets'), '\\', '/', 'g')
     let l:coc_settings_json[20] = substitute(l:coc_settings_json[20], '__STR__', l:coc_snippet_dir, '')
+    if !isdirectory(g:coc_config_home)
+        call mkdir(g:coc_config_home, 'p')
+    endif
     call writefile(l:coc_settings_json, l:coc_settings_json_file, 's')
 endfunction
 
