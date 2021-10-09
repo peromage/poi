@@ -2,7 +2,7 @@
 
 > This is also compatible with Vim poi~
 
-> As of 08/28/2021 I have switched to Emacs so I will not update this rpeo frequently.
+> As of 08/28/2021 I have switched to Emacs so I will not update this rpeo very often
 
 ## Dependencies
 
