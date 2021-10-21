@@ -11,7 +11,6 @@ let g:gui_local_file = simplify(poi#home_dir . "/local-gui.vim")
 ""------------------------------------------------------------------------------
 
 PoiInclude gui-init-config
-PoiInclude gui-init-keys
 
 ""------------------------------------------------------------------------------
 "" GUI configuration
