@@ -33,7 +33,6 @@ let g:python3_host_prog = 'python3'
 "" Core settings
 PoiInclude init-lib
 PoiInclude init-config
-PoiInclude init-netrw
 
 "" Configured plugins
 PoiInclude plug-theme
