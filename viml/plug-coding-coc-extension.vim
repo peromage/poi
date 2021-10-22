@@ -1,4 +1,4 @@
-""" plug-coding-coc-extensions.vim -- Coc extensions
+""" plug-coding-coc-extension.vim -- Coc extensions
 
 ""------------------------------------------------------------------------------
 "" Default COC directory
