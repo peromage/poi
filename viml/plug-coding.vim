@@ -11,4 +11,4 @@ Plug 'sheerun/vim-polyglot'
 ""------------------------------------------------------------------------------
 
 PoiInclude plug-coding-coc
-PoiInclude plug-coding-coc-extensions
+PoiInclude plug-coding-coc-extension
