@@ -57,9 +57,3 @@ let g:startify_lists = [
       \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
       \ { 'type': 'commands',  'header': ['   Commands']       },
       \ ]
-
-""------------------------------------------------------------------------------
-"" Dependencies
-""------------------------------------------------------------------------------
-
-PoiInclude plug-navigation-leaderf

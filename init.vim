@@ -29,7 +29,7 @@ let g:python3_host_prog = 'python3'
 "let &pythonthreehome = '/path/to/python_dir'
 "let &pythonthreedll = '/path/to/python.dll'
 
-"" Core settings
+"" Base settings
 PoiInclude init-lib
 PoiInclude init-keymap
 PoiInclude init-config
@@ -37,8 +37,17 @@ PoiInclude init-config
 "" Configured plugins
 PoiInclude plug-theme
 PoiInclude plug-git
+
+"" Navigation packages
 PoiInclude plug-navigation
+PoiInclude plug-navigation-leaderf
+
+"" Coding packages
 PoiInclude plug-coding
+PoiInclude plug-coding-coc
+PoiInclude plug-coding-coc-extension
+
+"" Other packages
 PoiInclude plug-terminal
 
 "" Local config files
