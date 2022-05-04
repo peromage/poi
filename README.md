@@ -1,8 +1,8 @@
-# POI - Peromage's neOvim confIguration
+# POI - Peromage's neOvIm configuration
 
 > This is also compatible with Vim poi~
 
-> As of 08/28/2021 I have switched to Emacs so I will not update this rpeo very often
+> As of 08/28/2021 I have switched to Emacs so this configuration will not be updated very often
 
 ## Dependencies
 
